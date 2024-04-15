@@ -1,7 +1,9 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1713195885
-final_boss.tscn::PackedScene::2746157070208158876::1713195870::0::1::::<><>::uid://baj52amprcwev::::res://Resources/BodyParts/Head/cabeza-amebaPlayer.glb<>uid://cmmmc0xkhbufh::::res://Resources/BodyParts/Body/cuerpo-amebaPlayer.glb<>uid://cexay7lte532a::::res://Resources/BodyParts/Arms/brazo-amebaPlayer.glb<>uid://dddhw7tfvtpky::::res://Resources/BodyParts/Legs/piernas-amebaPlayer.glb
+::res://::1713198481
 icon.svg::CompressedTexture2D::8306870108414935278::1713193961::1713193961::1::::<><>::
+rock.tscn::PackedScene::7313192337925012909::1713200534::0::1::::<><>::uid://d3crhyiyq2il::::res://Resources/Obstacles/piedras.glb
+tree.tscn::PackedScene::1759268279296246017::1713198481::0::1::::<><>::uid://cvsqcmbhyb10r::::res://Resources/Obstacles/arbol.glb
+::res://Objets/::1713198108
 ::res://Resources/::1713193961
 ::res://Resources/BodyParts/::1713193961
 ::res://Resources/BodyParts/Arms/::1713194056
@@ -44,4 +46,6 @@ ojosBola.glb::PackedScene::4892331749275174481::1712683908::1713194654::1::::<><
 arbol.glb::PackedScene::6284941559005227763::1712852939::1713194654::1::::<><>::
 nube.glb::PackedScene::7180187169425276218::1712852992::1713194654::1::::<><>::
 piedras.glb::PackedScene::268521305644659847::1713193961::1713194034::1::::<><>::
-::res://Scenes/::1713195885
+::res://Scenes/::1713198155
+final_boss.tscn::PackedScene::2746157070208158876::1713198155::0::1::::<><>::uid://baj52amprcwev::::res://Resources/BodyParts/Head/cabeza-amebaPlayer.glb<>uid://cmmmc0xkhbufh::::res://Resources/BodyParts/Body/cuerpo-amebaPlayer.glb<>uid://cexay7lte532a::::res://Resources/BodyParts/Arms/brazo-amebaPlayer.glb<>uid://dddhw7tfvtpky::::res://Resources/BodyParts/Legs/piernas-amebaPlayer.glb
+main.tscn::PackedScene::5002390575757515993::1713198100::0::1::::<><>::

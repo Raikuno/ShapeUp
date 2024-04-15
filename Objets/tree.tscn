@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://0cg5kuus6aon"]
+
+[ext_resource type="PackedScene" uid="uid://cvsqcmbhyb10r" path="res://Resources/Obstacles/arbol.glb" id="1_g2eey"]
+[ext_resource type="Script" path="res://Objets/tree.gd" id="1_hyts8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h8jj8"]
+height = 34.581
+radius = 2.34369
+
+[node name="tree" type="Node3D"]
+script = ExtResource("1_hyts8")
+
+[node name="tree-model" parent="." instance=ExtResource("1_g2eey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.588087, 0, -1.47249)
+
+[node name="tronco" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212913, 14.8076, -1.54288)
+shape = SubResource("CylinderShape3D_h8jj8")

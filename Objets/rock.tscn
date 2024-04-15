@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcgthd8xx1r5n"]
+
+[ext_resource type="Script" path="res://Objets/rock.gd" id="1_1o4i8"]
+[ext_resource type="PackedScene" uid="uid://d3crhyiyq2il" path="res://Resources/Obstacles/piedras.glb" id="1_bbmk0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4bk0f"]
+size = Vector3(1.24994, 1, 1.20325)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5143n"]
+size = Vector3(0.598145, 0.5, 0.541992)
+
+[node name="rock" type="Node3D"]
+script = ExtResource("1_1o4i8")
+
+[node name="rock-model" parent="." instance=ExtResource("1_bbmk0")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.0121059, 0.36974, -0.0182344)
+shape = SubResource("BoxShape3D_4bk0f")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.77208, 0, 0.635526, 0, 1, 0, -0.635526, 0, 0.77208, 0.533393, 0.125738, -0.958805)
+shape = SubResource("BoxShape3D_5143n")
