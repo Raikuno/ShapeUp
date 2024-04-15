@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfei2nolampqa"]
+
+[ext_resource type="PackedScene" uid="uid://baj52amprcwev" path="res://Resources/BodyParts/Head/cabeza-amebaPlayer.glb" id="1_d7dyc"]
+[ext_resource type="PackedScene" uid="uid://cmmmc0xkhbufh" path="res://Resources/BodyParts/Body/cuerpo-amebaPlayer.glb" id="2_uslgh"]
+[ext_resource type="PackedScene" uid="uid://cexay7lte532a" path="res://Resources/BodyParts/Arms/brazo-amebaPlayer.glb" id="3_tve83"]
+[ext_resource type="PackedScene" uid="uid://dddhw7tfvtpky" path="res://Resources/BodyParts/Legs/piernas-amebaPlayer.glb" id="4_6c5rk"]
+
+[node name="FINAL-BOSS" type="Node3D"]
+
+[node name="cabeza-amebaPlayer" parent="." instance=ExtResource("1_d7dyc")]
+transform = Transform3D(0.947499, 0.189935, -0.257234, -0.1833, 0.981796, 0.0497637, 0.262004, 1.25357e-08, 0.965067, 0.999927, 5.8069, 1.18668)
+
+[node name="cuerpo-amebaPlayer" parent="." instance=ExtResource("2_uslgh")]
+transform = Transform3D(0.00282736, 0, 0.999996, 0, 1, 0, -0.999996, 0, 0.00282736, 0.951134, 4.00772, 1.32555)
+
+[node name="brazo-amebaPlayer" parent="." instance=ExtResource("3_tve83")]
+transform = Transform3D(0.0643576, 0.00425859, 0.997918, -0.000274075, 0.999991, -0.00424976, -0.997927, 0, 0.0643581, 0.907971, 1.87746, 3.76635)
+
+[node name="piernas-amebaPlayer" parent="." instance=ExtResource("4_6c5rk")]
+transform = Transform3D(1, 0, 0, 0, 0.99273, 0.120362, 0, -0.120362, 0.99273, 0.929317, -0.244021, 2.28392)
+
+[node name="piernas-amebaPlayer2" parent="." instance=ExtResource("4_6c5rk")]
+transform = Transform3D(1, 0, 0, 0, 0.975515, -0.219931, 0, 0.219931, 0.975515, 0.929317, -0.244021, 0.120141)
+
+[node name="brazo-amebaPlayer2" parent="." instance=ExtResource("3_tve83")]
+transform = Transform3D(0.0623865, -0.245629, 0.967354, 0.0158082, 0.969364, 0.24512, -0.997927, 1.71744e-10, 0.0643581, 1.63412, 1.93269, -1.09132)
