@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdjgv3cgtq3dt"]
+[gd_scene load_steps=9 format=3 uid="uid://cdjgv3cgtq3dt"]
 
 [ext_resource type="PackedScene" uid="uid://0cg5kuus6aon" path="res://Objets/tree.tscn" id="1_32qud"]
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_iq3yo"]
 [ext_resource type="PackedScene" uid="uid://dcgthd8xx1r5n" path="res://Objets/rock.tscn" id="2_xg0ka"]
 [ext_resource type="PackedScene" uid="uid://dakevsqwteftq" path="res://Resources/Obstacles/nube.glb" id="3_3i0lf"]
+[ext_resource type="PackedScene" uid="uid://bdm0cur8gw70l" path="res://Scenes/player.tscn" id="5_ky6cs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0jysc"]
 size = Vector3(1500, 2, 1500)
@@ -270,8 +271,11 @@ transform = Transform3D(3, 0, 0, 0, -2.99938, -0.0608903, 0, 0.0608903, -2.99938
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -485.87, 214.159, -243.604)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.690314, -0.113731, 0.714515, 0, 0.987568, 0.157193, -0.72351, 0.108513, -0.681732, -54.0162, 11.8583, 65.9672)
+transform = Transform3D(-0.75033, 0, -0.661063, 0, 1, 0, 0.661063, 0, -0.75033, 206.219, 4.6125, -4.00618)
 
 [node name="sol" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.965926, -0.258819, 9.26352e-09, 0.25, -0.933013, 0.258819, -0.0669873, 0.25, 0.965926, 0, 582, 379)
 shadow_enabled = true
+
+[node name="player" parent="." instance=ExtResource("5_ky6cs")]
+transform = Transform3D(0.261296, 0, 0.965259, 0, 1, 0, -0.965259, 0, 0.261296, 208.314, 2, 5.785)

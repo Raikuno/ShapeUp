@@ -1,9 +1,12 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1713198481
+::res://::1713252450
 icon.svg::CompressedTexture2D::8306870108414935278::1713193961::1713193961::1::::<><>::
-rock.tscn::PackedScene::7313192337925012909::1713200534::0::1::::<><>::uid://d3crhyiyq2il::::res://Resources/Obstacles/piedras.glb
-tree.tscn::PackedScene::1759268279296246017::1713198481::0::1::::<><>::uid://cvsqcmbhyb10r::::res://Resources/Obstacles/arbol.glb
-::res://Objets/::1713198108
+player.tscn::PackedScene::2623282322299854413::1713253834::0::1::::<><>::uid://baj52amprcwev::::res://Resources/BodyParts/Head/cabeza-amebaPlayer.glb<>uid://jyi33vbbk11o::::res://Resources/BodyParts/Head/cabeza-cilindroPlayer.glb<>uid://cb6ilapwovi7h::::res://Resources/BodyParts/Head/cabeza-cuboPlayer.glb<>uid://boav54b7e613f::::res://Resources/BodyParts/Head/cabeza-esferaPlayer.glb<>uid://cyuiva4rtkoxa::::res://Resources/BodyParts/Head/cabeza-piramidePlayer.glb<>uid://cmmmc0xkhbufh::::res://Resources/BodyParts/Body/cuerpo-amebaPlayer.glb<>uid://c71oumdlro7wj::::res://Resources/BodyParts/Body/cuerpo-cilindroPlayer.glb<>uid://c4imn3shangj0::::res://Resources/BodyParts/Body/cuerpo-cuboPlayer.glb<>uid://b0bmt26j8lmvk::::res://Resources/BodyParts/Body/cuerpo-piramidePlayer.glb<>uid://by73aj3lq4ab6::::res://Resources/BodyParts/Body/esfera-CuerpoPlayer.glb<>uid://cexay7lte532a::::res://Resources/BodyParts/Arms/brazo-amebaPlayer.glb<>uid://bm1ibomko8glu::::res://Resources/BodyParts/Arms/brazo-cilindroPlayer.glb<>uid://cq0j2erpuodbe::::res://Resources/BodyParts/Arms/brazo-cuboPlayer.glb<>uid://bheibhfkrbt2::::res://Resources/BodyParts/Arms/brazo-esferaPlayer.glb<>uid://bkp58g2kmp5qo::::res://Resources/BodyParts/Arms/brazo-trianguloPlayer.glb<>uid://dddhw7tfvtpky::::res://Resources/BodyParts/Legs/piernas-amebaPlayer.glb<>uid://xs1cwwkaj1jb::::res://Resources/BodyParts/Legs/piernas-cilindroPlayer.glb<>uid://c8gyxpwu2km3s::::res://Resources/BodyParts/Legs/piernas-cuadradoPlayer.glb<>uid://b8fll3a5laa56::::res://Resources/BodyParts/Legs/piernas-esferaPlayer.glb<>uid://crkwcgesbomod::::res://Resources/BodyParts/Legs/piernas-piramidePlayer.glb
+::res://Objets/::1713250824
+rock.gd::GDScript::-1::1713206126::0::1::::<>Node3D<>::
+rock.tscn::PackedScene::7313192337925012909::1713250824::0::1::::<><>::res://Objets/rock.gd<>uid://d3crhyiyq2il::::res://Resources/Obstacles/piedras.glb
+tree.gd::GDScript::-1::1713206126::0::1::::<>Node3D<>::
+tree.tscn::PackedScene::1759268279296246017::1713250824::0::1::::<><>::uid://cvsqcmbhyb10r::::res://Resources/Obstacles/arbol.glb<>res://Objets/tree.gd
 ::res://Resources/::1713193961
 ::res://Resources/BodyParts/::1713193961
 ::res://Resources/BodyParts/Arms/::1713194056
@@ -46,6 +49,7 @@ ojosBola.glb::PackedScene::4892331749275174481::1712683908::1713194654::1::::<><
 arbol.glb::PackedScene::6284941559005227763::1712852939::1713194654::1::::<><>::
 nube.glb::PackedScene::7180187169425276218::1712852992::1713194654::1::::<><>::
 piedras.glb::PackedScene::268521305644659847::1713193961::1713194034::1::::<><>::
-::res://Scenes/::1713198155
-final_boss.tscn::PackedScene::2746157070208158876::1713198155::0::1::::<><>::uid://baj52amprcwev::::res://Resources/BodyParts/Head/cabeza-amebaPlayer.glb<>uid://cmmmc0xkhbufh::::res://Resources/BodyParts/Body/cuerpo-amebaPlayer.glb<>uid://cexay7lte532a::::res://Resources/BodyParts/Arms/brazo-amebaPlayer.glb<>uid://dddhw7tfvtpky::::res://Resources/BodyParts/Legs/piernas-amebaPlayer.glb
-main.tscn::PackedScene::5002390575757515993::1713198100::0::1::::<><>::
+::res://Scenes/::1713250824
+final_boss.tscn::PackedScene::2746157070208158876::1713250824::0::1::::<><>::uid://baj52amprcwev::::res://Resources/BodyParts/Head/cabeza-amebaPlayer.glb<>uid://cmmmc0xkhbufh::::res://Resources/BodyParts/Body/cuerpo-amebaPlayer.glb<>uid://cexay7lte532a::::res://Resources/BodyParts/Arms/brazo-amebaPlayer.glb<>uid://dddhw7tfvtpky::::res://Resources/BodyParts/Legs/piernas-amebaPlayer.glb
+main.gd::GDScript::-1::1713206126::0::1::::<>Node<>::
+main.tscn::PackedScene::5002390575757515993::1713250824::0::1::::<><>::uid://0cg5kuus6aon::::res://Objets/tree.tscn<>res://Scenes/main.gd<>uid://dcgthd8xx1r5n::::res://Objets/rock.tscn<>uid://dakevsqwteftq::::res://Resources/Obstacles/nube.glb

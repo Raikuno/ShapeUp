@@ -1,0 +1,167 @@
+[gd_scene load_steps=22 format=3 uid="uid://bdm0cur8gw70l"]
+
+[ext_resource type="PackedScene" uid="uid://baj52amprcwev" path="res://Resources/BodyParts/Head/cabeza-amebaPlayer.glb" id="1_c3xuf"]
+[ext_resource type="Script" path="res://Scenes/player.gd" id="1_yexxh"]
+[ext_resource type="PackedScene" uid="uid://jyi33vbbk11o" path="res://Resources/BodyParts/Head/cabeza-cilindroPlayer.glb" id="2_b7ha8"]
+[ext_resource type="PackedScene" uid="uid://cb6ilapwovi7h" path="res://Resources/BodyParts/Head/cabeza-cuboPlayer.glb" id="3_lkolk"]
+[ext_resource type="PackedScene" uid="uid://boav54b7e613f" path="res://Resources/BodyParts/Head/cabeza-esferaPlayer.glb" id="4_qp71l"]
+[ext_resource type="PackedScene" uid="uid://cyuiva4rtkoxa" path="res://Resources/BodyParts/Head/cabeza-piramidePlayer.glb" id="5_rgjti"]
+[ext_resource type="PackedScene" uid="uid://cmmmc0xkhbufh" path="res://Resources/BodyParts/Body/cuerpo-amebaPlayer.glb" id="6_kliej"]
+[ext_resource type="PackedScene" uid="uid://c71oumdlro7wj" path="res://Resources/BodyParts/Body/cuerpo-cilindroPlayer.glb" id="7_8x5t1"]
+[ext_resource type="PackedScene" uid="uid://c4imn3shangj0" path="res://Resources/BodyParts/Body/cuerpo-cuboPlayer.glb" id="8_ayuo4"]
+[ext_resource type="PackedScene" uid="uid://b0bmt26j8lmvk" path="res://Resources/BodyParts/Body/cuerpo-piramidePlayer.glb" id="9_23y1q"]
+[ext_resource type="PackedScene" uid="uid://by73aj3lq4ab6" path="res://Resources/BodyParts/Body/esfera-CuerpoPlayer.glb" id="10_esih7"]
+[ext_resource type="PackedScene" uid="uid://cexay7lte532a" path="res://Resources/BodyParts/Arms/brazo-amebaPlayer.glb" id="11_brila"]
+[ext_resource type="PackedScene" uid="uid://bm1ibomko8glu" path="res://Resources/BodyParts/Arms/brazo-cilindroPlayer.glb" id="12_sgly2"]
+[ext_resource type="PackedScene" uid="uid://cq0j2erpuodbe" path="res://Resources/BodyParts/Arms/brazo-cuboPlayer.glb" id="13_rkjrh"]
+[ext_resource type="PackedScene" uid="uid://bheibhfkrbt2" path="res://Resources/BodyParts/Arms/brazo-esferaPlayer.glb" id="14_nbrq2"]
+[ext_resource type="PackedScene" uid="uid://bkp58g2kmp5qo" path="res://Resources/BodyParts/Arms/brazo-trianguloPlayer.glb" id="15_jdfgr"]
+[ext_resource type="PackedScene" uid="uid://dddhw7tfvtpky" path="res://Resources/BodyParts/Legs/piernas-amebaPlayer.glb" id="16_23g85"]
+[ext_resource type="PackedScene" uid="uid://xs1cwwkaj1jb" path="res://Resources/BodyParts/Legs/piernas-cilindroPlayer.glb" id="17_svpt7"]
+[ext_resource type="PackedScene" uid="uid://c8gyxpwu2km3s" path="res://Resources/BodyParts/Legs/piernas-cuadradoPlayer.glb" id="18_vlvk7"]
+[ext_resource type="PackedScene" uid="uid://b8fll3a5laa56" path="res://Resources/BodyParts/Legs/piernas-esferaPlayer.glb" id="19_bpvqr"]
+[ext_resource type="PackedScene" uid="uid://crkwcgesbomod" path="res://Resources/BodyParts/Legs/piernas-piramidePlayer.glb" id="20_kgwoi"]
+
+[node name="player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30558, 0)
+script = ExtResource("1_yexxh")
+
+[node name="pivot" type="Node3D" parent="."]
+
+[node name="head" type="Node3D" parent="pivot"]
+
+[node name="cabeza-amebaPlayer" parent="pivot/head" instance=ExtResource("1_c3xuf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490313, 4.44571, -0.0315164)
+visible = false
+
+[node name="cabeza-cilindroPlayer" parent="pivot/head" instance=ExtResource("2_b7ha8")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.612043, 4.26522, 0.0901697)
+visible = false
+
+[node name="cabeza-cuboPlayer" parent="pivot/head" instance=ExtResource("3_lkolk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.620658, 4.69744, 0.137335)
+visible = false
+
+[node name="cabeza-esferaPlayer" parent="pivot/head" instance=ExtResource("4_qp71l")]
+transform = Transform3D(0.0146777, 0, 0.999892, 0, 1, 0, -0.999892, 0, 0.0146777, -0.262501, 4.41525, 0.177128)
+visible = false
+
+[node name="cabeza-piramidePlayer" parent="pivot/head" instance=ExtResource("5_rgjti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.316294, 3.95254, 0.340647)
+visible = false
+
+[node name="body" type="Node3D" parent="pivot"]
+
+[node name="cuerpo-amebaPlayer" parent="pivot/body" instance=ExtResource("6_kliej")]
+transform = Transform3D(-0.019555, -3.15893e-08, -0.899788, -0.899413, -0.0259616, 0.0195469, -0.0259555, 0.899625, 0.000564057, -0.452101, 2.06717, 0.130315)
+visible = false
+
+[node name="cuerpo-cilindroPlayer" parent="pivot/body" instance=ExtResource("7_8x5t1")]
+transform = Transform3D(0.0520919, 0, 0.998642, 0, 1, 0, -0.998642, 0, 0.0520919, -0.603795, 1.39849, 0.129496)
+visible = false
+
+[node name="cuerpo-cuboPlayer" parent="pivot/body" instance=ExtResource("8_ayuo4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.497078, 2.25005, 0.164231)
+visible = false
+
+[node name="cuerpo-piramidePlayer" parent="pivot/body" instance=ExtResource("9_23y1q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.348783, 1.31074, 0.176539)
+visible = false
+
+[node name="esfera-CuerpoPlayer" parent="pivot/body" instance=ExtResource("10_esih7")]
+transform = Transform3D(0.0225975, 0, -1.2998, 0, 1.3, 0, 1.2998, 0, 0.0225975, -0.772508, 2.13825, 0.173539)
+visible = false
+
+[node name="leftArm" type="Node3D" parent="pivot"]
+
+[node name="brazo-amebaPlayer" parent="pivot/leftArm" instance=ExtResource("11_brila")]
+transform = Transform3D(0.232791, -0.511618, 0.827076, 0.0507347, 0.855672, 0.515026, -0.971202, -0.0779322, 0.22515, 0.570439, 0.163965, 2.12599)
+visible = false
+
+[node name="brazo-cilindroPlayer" parent="pivot/leftArm" instance=ExtResource("12_sgly2")]
+transform = Transform3D(0.140941, -0.895938, -0.421226, 0.987852, 0.1554, 0, 0.0654585, -0.416109, 0.906956, 0.129211, 2.17211, 2.34999)
+visible = false
+
+[node name="brazo-cuboPlayer" parent="pivot/leftArm" instance=ExtResource("13_rkjrh")]
+transform = Transform3D(0.462744, 0, -0.525231, -0.304705, 0.570165, -0.268454, 0.427812, 0.406094, 0.376915, -0.302568, 2.1317, 2.58995)
+visible = false
+
+[node name="brazo-esferaPlayer" parent="pivot/leftArm" instance=ExtResource("14_nbrq2")]
+transform = Transform3D(0.821906, 0.569624, 0, -0.529623, 0.764189, -0.368125, -0.209693, 0.302564, 0.929776, -0.992529, 1.73018, 2.30501)
+visible = false
+
+[node name="brazo-trianguloPlayer" parent="pivot/leftArm" instance=ExtResource("15_jdfgr")]
+transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134522, 0, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
+visible = false
+
+[node name="rightArm" type="Node3D" parent="pivot"]
+
+[node name="brazo-amebaPlayer" parent="pivot/rightArm" instance=ExtResource("11_brila")]
+transform = Transform3D(-0.219624, -0.509782, 0.831797, -0.0367256, 0.85633, 0.515121, -0.974893, 0.082585, -0.206793, 0.625589, 0.20993, -1.8244)
+visible = false
+
+[node name="brazo-cilindroPlayer" parent="pivot/rightArm" instance=ExtResource("12_sgly2")]
+transform = Transform3D(0.325216, -0.785179, 0.527, 0.923886, 0.382667, 0, -0.201666, 0.486888, 0.849865, 0.533123, 1.75723, -2.34149)
+visible = false
+
+[node name="brazo-cuboPlayer" parent="pivot/rightArm" instance=ExtResource("13_rkjrh")]
+transform = Transform3D(0.67474, 0.133302, 0.130216, 0, 0.489144, -0.500737, -0.186349, 0.482668, 0.471493, -0.420057, 1.91021, -2.30986)
+visible = false
+
+[node name="brazo-esferaPlayer" parent="pivot/rightArm" instance=ExtResource("14_nbrq2")]
+transform = Transform3D(0.49982, 0.418864, 0.758112, -0.642306, 0.766448, 0, -0.581053, -0.48694, 0.652125, -0.540076, 2.01696, -1.9455)
+visible = false
+
+[node name="brazo-trianguloPlayer" parent="pivot/rightArm" instance=ExtResource("15_jdfgr")]
+transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, 0, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
+visible = false
+
+[node name="legs" type="Node3D" parent="pivot"]
+
+[node name="ameba" type="Node3D" parent="pivot/legs"]
+visible = false
+
+[node name="piernas-amebaPlayer" parent="pivot/legs/ameba" instance=ExtResource("16_23g85")]
+transform = Transform3D(0.587233, -0.123118, 0, 0.121715, 0.580541, 0.0903217, -0.0185337, -0.0883998, 0.593163, 0.306767, -0.997052, 0.85936)
+
+[node name="piernas-amebaPlayer2" parent="pivot/legs/ameba" instance=ExtResource("16_23g85")]
+transform = Transform3D(0.593197, -0.0900939, 0, 0.0897399, 0.590866, -0.0531384, 0.00797908, 0.0525359, 0.597642, 0.127688, -0.997052, -0.708542)
+
+[node name="piernas-amebaPlayer3" parent="pivot/legs/ameba" instance=ExtResource("16_23g85")]
+transform = Transform3D(0.589496, 0.111781, 0, -0.109841, 0.579267, 0.111287, 0.0207329, -0.109338, 0.589589, -1.4228, -0.997052, 1.10363)
+
+[node name="piernas-amebaPlayer4" parent="pivot/legs/ameba" instance=ExtResource("16_23g85")]
+transform = Transform3D(0.591909, 0.0982022, 0, -0.0953421, 0.57467, -0.143751, -0.0235277, 0.141812, 0.582525, -1.59617, -0.997052, -0.78958)
+
+[node name="cilinders" type="Node3D" parent="pivot/legs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.165544)
+visible = false
+
+[node name="piernas-cilindroPlayer" parent="pivot/legs/cilinders" instance=ExtResource("17_svpt7")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.27937, 0, 0.357224)
+
+[node name="piernas-cilindroPlayer2" parent="pivot/legs/cilinders" instance=ExtResource("17_svpt7")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.01479, 0, 0.401369)
+
+[node name="cubes" type="Node3D" parent="pivot/legs"]
+visible = false
+
+[node name="piernas-cuadradoPlayer" parent="pivot/legs/cubes" instance=ExtResource("18_vlvk7")]
+transform = Transform3D(0.0224362, 0, -0.59958, 0, 0.6, 0, 0.59958, 0, 0.0224362, 0.0137253, 0, 0.832952)
+
+[node name="piernas-cuadradoPlayer2" parent="pivot/legs/cubes" instance=ExtResource("18_vlvk7")]
+transform = Transform3D(0.000753996, 0, -0.6, 0, 0.6, 0, 0.6, 0, 0.000753996, -0.00568199, 0, -0.763839)
+
+[node name="spheres" type="Node3D" parent="pivot/legs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.975523)
+visible = false
+
+[node name="piernas-esferaPlayer" parent="pivot/legs/spheres" instance=ExtResource("19_bpvqr")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.411328, 0, 0.0153701)
+
+[node name="piernas-esferaPlayer2" parent="pivot/legs/spheres" instance=ExtResource("19_bpvqr")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.647879, 0, -1.87322)
+
+[node name="piernas-piramidePlayer" parent="pivot/legs" instance=ExtResource("20_kgwoi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545794, 0, 0.0168476)
+visible = false
