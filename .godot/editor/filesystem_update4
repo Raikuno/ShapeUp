@@ -5,3 +5,4 @@ res://Objets/rock.tscn
 res://Scenes/player.tscn
 res://Scenes/player_bienHecho.tscn
 res://Scenes/title_screen.tscn
+res://Scenes/player_bienHecho.gd
