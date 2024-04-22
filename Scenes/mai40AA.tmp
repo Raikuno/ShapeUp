@@ -290,6 +290,6 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 221.196, 2.35973, 4.57447)
 
 [node name="Camera3D2" type="Camera3D" parent="player"]
-transform = Transform3D(2.58096e-08, 0.5, -0.866025, -1.49012e-08, 0.866025, 0.5, 1, 0, 2.98023e-08, -103.645, 63.6612, 0.502476)
+transform = Transform3D(-3.78552e-08, 0.5, -0.866025, 2.18557e-08, 0.866025, 0.5, 1, 0, -4.37114e-08, -35.0671, 20.0365, 0)
 projection = 1
-size = 47.6986
+size = 37.4745

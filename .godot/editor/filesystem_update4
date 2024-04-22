@@ -1,8 +1,6 @@
-res://Scenes/final_boss.tscn
 res://Scenes/main.tscn
-res://Objets/tree.tscn
-res://Objets/rock.tscn
+res://Scenes/main.gd
 res://Scenes/player.tscn
 res://Scenes/player_bienHecho.tscn
-res://Scenes/title_screen.tscn
 res://Scenes/player_bienHecho.gd
+res://Scenes/title_screen.tscn

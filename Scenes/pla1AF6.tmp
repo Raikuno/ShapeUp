@@ -93,7 +93,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("legs/amebaEvil/piernaizquierda-amebaPlayer:position")
+tracks/5/path = NodePath("pivot/legs/amebaEvil/piernaizquierda-amebaPlayer:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -105,7 +105,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("legs/amebaEvil/piernaizquierda-amebaPlayer:rotation")
+tracks/6/path = NodePath("pivot/legs/amebaEvil/piernaizquierda-amebaPlayer:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -117,7 +117,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("legs/amebaEvil/piernaderecha-amebaPlayer:position")
+tracks/7/path = NodePath("pivot/legs/amebaEvil/piernaderecha-amebaPlayer:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -129,7 +129,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("legs/amebaEvil/piernaderecha-amebaPlayer:rotation")
+tracks/8/path = NodePath("pivot/legs/amebaEvil/piernaderecha-amebaPlayer:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -215,7 +215,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("legs/amebaEvil/piernaderecha-amebaPlayer:position")
+tracks/0/path = NodePath("pivot/legs/amebaEvil/piernaderecha-amebaPlayer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -227,7 +227,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("legs/amebaEvil/piernaderecha-amebaPlayer:rotation")
+tracks/1/path = NodePath("pivot/legs/amebaEvil/piernaderecha-amebaPlayer:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -239,7 +239,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("legs/amebaEvil/piernaizquierda-amebaPlayer:position")
+tracks/2/path = NodePath("pivot/legs/amebaEvil/piernaizquierda-amebaPlayer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -251,7 +251,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("legs/amebaEvil/piernaizquierda-amebaPlayer:rotation")
+tracks/3/path = NodePath("pivot/legs/amebaEvil/piernaizquierda-amebaPlayer:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -266,7 +266,7 @@ resource_name = "new_animation"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("legs/amebaEvil/piernaderecha-amebaPlayer:position")
+tracks/0/path = NodePath("pivot/legs/amebaEvil/piernaderecha-amebaPlayer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -278,7 +278,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("legs/amebaEvil/piernaderecha-amebaPlayer:rotation")
+tracks/1/path = NodePath("pivot/legs/amebaEvil/piernaderecha-amebaPlayer:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -290,7 +290,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("legs/amebaEvil/piernaizquierda-amebaPlayer:position")
+tracks/2/path = NodePath("pivot/legs/amebaEvil/piernaizquierda-amebaPlayer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -302,7 +302,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("legs/amebaEvil/piernaizquierda-amebaPlayer:rotation")
+tracks/3/path = NodePath("pivot/legs/amebaEvil/piernaizquierda-amebaPlayer:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -324,10 +324,9 @@ transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0, 1.3
 script = ExtResource("1_4kplc")
 
 [node name="pivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -0.596186, 0, -1.30301e-07)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="head" type="Node3D" parent="pivot"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="cabeza-amebaPlayer" parent="pivot/head" instance=ExtResource("2_h7yxf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490313, 4.44571, -0.0315164)
@@ -353,7 +352,6 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.449202, 3.29897, 0.118929)
 
 [node name="body" type="Node3D" parent="pivot"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="cuerpo-amebaPlayer" parent="pivot/body" instance=ExtResource("8_aesci")]
 transform = Transform3D(-0.0196617, -3.17616e-08, -0.904697, -0.90432, -0.0261033, 0.0196536, -0.0260971, 0.904534, 0.000567134, -0.452101, 2.06717, 0.130315)
@@ -379,7 +377,6 @@ visible = false
 transform = Transform3D(1.3, 0, 1.42109e-14, 0, 1.3, 0, -1.42109e-14, 0, 1.3, -0.547843, 1.69892, 0.0263429)
 
 [node name="leftArm" type="Node3D" parent="pivot"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="brazo-amebaPlayer" parent="pivot/leftArm" instance=ExtResource("14_6tgmt")]
 transform = Transform3D(0.232791, -0.511618, 0.827076, 0.0507347, 0.855672, 0.515026, -0.971202, -0.0779322, 0.22515, 0.570439, 0.163965, 2.12599)
@@ -405,7 +402,6 @@ visible = false
 transform = Transform3D(0.126027, 0.444316, -0.653224, 0.663847, 0.299042, 0.331482, 0.42828, -0.594271, -0.321588, -0.378383, 1.91522, 2.18661)
 
 [node name="rightArm" type="Node3D" parent="pivot"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="brazo-amebaPlayer" parent="pivot/rightArm" instance=ExtResource("14_6tgmt")]
 transform = Transform3D(-0.219624, -0.509782, 0.831797, -0.0367256, 0.85633, 0.515121, -0.974893, 0.082585, -0.206793, 0.621129, 0.216805, -1.81436)
@@ -430,6 +426,64 @@ visible = false
 [node name="brazo-amebaPlayerMKII" parent="pivot/rightArm" instance=ExtResource("19_hh71a")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.680637, 1.92706, -2.12493)
 
+[node name="legs" type="Node3D" parent="pivot"]
+
+[node name="ameba" type="Node3D" parent="pivot/legs"]
+visible = false
+
+[node name="piernas-amebaPlayer" parent="pivot/legs/ameba" instance=ExtResource("20_y5wve")]
+transform = Transform3D(0.587233, -0.123118, 0, 0.121715, 0.580541, 0.0903217, -0.0185337, -0.0883998, 0.593163, 0.306767, -0.997052, 0.85936)
+
+[node name="piernas-amebaPlayer2" parent="pivot/legs/ameba" instance=ExtResource("20_y5wve")]
+transform = Transform3D(0.593197, -0.0900939, 0, 0.0897399, 0.590866, -0.0531384, 0.00797908, 0.0525359, 0.597642, 0.127688, -0.997052, -0.708542)
+
+[node name="piernas-amebaPlayer3" parent="pivot/legs/ameba" instance=ExtResource("20_y5wve")]
+transform = Transform3D(0.589496, 0.111781, 0, -0.109841, 0.579267, 0.111287, 0.0207329, -0.109338, 0.589589, -1.4228, -0.997052, 1.10363)
+
+[node name="piernas-amebaPlayer4" parent="pivot/legs/ameba" instance=ExtResource("20_y5wve")]
+transform = Transform3D(0.591909, 0.0982022, 0, -0.0953421, 0.57467, -0.143751, -0.0235277, 0.141812, 0.582525, -1.59617, -0.997052, -0.78958)
+
+[node name="cilinders" type="Node3D" parent="pivot/legs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.165544)
+visible = false
+
+[node name="piernas-cilindroPlayer" parent="pivot/legs/cilinders" instance=ExtResource("21_1g1ur")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.27937, 0, 0.357224)
+
+[node name="piernas-cilindroPlayer2" parent="pivot/legs/cilinders" instance=ExtResource("21_1g1ur")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.01479, 0, 0.401369)
+
+[node name="cubes" type="Node3D" parent="pivot/legs"]
+visible = false
+
+[node name="piernas-cuadradoPlayer" parent="pivot/legs/cubes" instance=ExtResource("22_pla72")]
+transform = Transform3D(0.0224362, 0, -0.59958, 0, 0.6, 0, 0.59958, 0, 0.0224362, 0.0137253, 0, 0.832952)
+
+[node name="piernas-cuadradoPlayer2" parent="pivot/legs/cubes" instance=ExtResource("22_pla72")]
+transform = Transform3D(0.000753996, 0, -0.6, 0, 0.6, 0, 0.6, 0, 0.000753996, -0.00568199, 0, -0.763839)
+
+[node name="spheres" type="Node3D" parent="pivot/legs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.975523)
+visible = false
+
+[node name="piernas-esferaPlayer" parent="pivot/legs/spheres" instance=ExtResource("23_tdkpf")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.411328, 0, 0.0153701)
+
+[node name="piernas-esferaPlayer2" parent="pivot/legs/spheres" instance=ExtResource("23_tdkpf")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.647879, 0, -1.87322)
+
+[node name="piernas-piramidePlayer" parent="pivot/legs" instance=ExtResource("24_d3gix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545794, 0, 0.0168476)
+visible = false
+
+[node name="amebaEvil" type="Node3D" parent="pivot/legs"]
+
+[node name="piernaizquierda-amebaPlayer" parent="pivot/legs/amebaEvil" instance=ExtResource("25_crpbl")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -1.22838, 0.497152, 0.626448)
+
+[node name="piernaderecha-amebaPlayer" parent="pivot/legs/amebaEvil" instance=ExtResource("26_ed0f6")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -1.25051, 0.575938, -1.14263)
+
 [node name="body_animation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_5bk5e")
@@ -441,61 +495,9 @@ libraries = {
 "": SubResource("AnimationLibrary_ibiwi")
 }
 
-[node name="legs" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-3.76727e-08, 0.507163, -0.86185, 2.21688e-08, 0.86185, 0.507163, 1, 3.73035e-14, -4.37114e-08, -114.738, 72.0073, 0.8651)
+projection = 1
+size = 36.7407
 
-[node name="ameba" type="Node3D" parent="legs"]
-visible = false
-
-[node name="piernas-amebaPlayer" parent="legs/ameba" instance=ExtResource("20_y5wve")]
-transform = Transform3D(0.587233, -0.123118, 0, 0.121715, 0.580541, 0.0903217, -0.0185337, -0.0883998, 0.593163, 0.306767, -0.997052, 0.85936)
-
-[node name="piernas-amebaPlayer2" parent="legs/ameba" instance=ExtResource("20_y5wve")]
-transform = Transform3D(0.593197, -0.0900939, 0, 0.0897399, 0.590866, -0.0531384, 0.00797908, 0.0525359, 0.597642, 0.127688, -0.997052, -0.708542)
-
-[node name="piernas-amebaPlayer3" parent="legs/ameba" instance=ExtResource("20_y5wve")]
-transform = Transform3D(0.589496, 0.111781, 0, -0.109841, 0.579267, 0.111287, 0.0207329, -0.109338, 0.589589, -1.4228, -0.997052, 1.10363)
-
-[node name="piernas-amebaPlayer4" parent="legs/ameba" instance=ExtResource("20_y5wve")]
-transform = Transform3D(0.591909, 0.0982022, 0, -0.0953421, 0.57467, -0.143751, -0.0235277, 0.141812, 0.582525, -1.59617, -0.997052, -0.78958)
-
-[node name="cilinders" type="Node3D" parent="legs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.165544)
-visible = false
-
-[node name="piernas-cilindroPlayer" parent="legs/cilinders" instance=ExtResource("21_1g1ur")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.27937, 0, 0.357224)
-
-[node name="piernas-cilindroPlayer2" parent="legs/cilinders" instance=ExtResource("21_1g1ur")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.01479, 0, 0.401369)
-
-[node name="cubes" type="Node3D" parent="legs"]
-visible = false
-
-[node name="piernas-cuadradoPlayer" parent="legs/cubes" instance=ExtResource("22_pla72")]
-transform = Transform3D(0.0224362, 0, -0.59958, 0, 0.6, 0, 0.59958, 0, 0.0224362, 0.0137253, 0, 0.832952)
-
-[node name="piernas-cuadradoPlayer2" parent="legs/cubes" instance=ExtResource("22_pla72")]
-transform = Transform3D(0.000753996, 0, -0.6, 0, 0.6, 0, 0.6, 0, 0.000753996, -0.00568199, 0, -0.763839)
-
-[node name="spheres" type="Node3D" parent="legs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.975523)
-visible = false
-
-[node name="piernas-esferaPlayer" parent="legs/spheres" instance=ExtResource("23_tdkpf")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.411328, 0, 0.0153701)
-
-[node name="piernas-esferaPlayer2" parent="legs/spheres" instance=ExtResource("23_tdkpf")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.647879, 0, -1.87322)
-
-[node name="piernas-piramidePlayer" parent="legs" instance=ExtResource("24_d3gix")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545794, 0, 0.0168477)
-
-[node name="amebaEvil" type="Node3D" parent="legs"]
-visible = false
-
-[node name="piernaizquierda-amebaPlayer" parent="legs/amebaEvil" instance=ExtResource("25_crpbl")]
-transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -1.22838, 0.497152, 0.626448)
-
-[node name="piernaderecha-amebaPlayer" parent="legs/amebaEvil" instance=ExtResource("26_ed0f6")]
-transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -1.25051, 0.575938, -1.14263)
+[node name="Marker3D" type="Marker3D" parent="."]
