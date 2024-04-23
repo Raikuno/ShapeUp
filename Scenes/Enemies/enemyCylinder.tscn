@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://s46uqryjyf1l"]
+
+[ext_resource type="PackedScene" uid="uid://ci1l2lseswhub" path="res://Scenes/Enemies/enemy.tscn" id="1_irdyx"]
+[ext_resource type="PackedScene" uid="uid://1ntu2hrq8oau" path="res://Resources/Enemies/cilynder/crowned-cylinder.glb" id="2_vinwi"]
+[ext_resource type="PackedScene" uid="uid://bx6tqbkcp104f" path="res://Resources/Enemies/cilynder/old-cylinder.glb" id="3_72jjx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1ufwg"]
+height = 9.8056
+radius = 1.30484
+
+[node name="enemy" instance=ExtResource("1_irdyx")]
+minSpeed = 15
+maxSpeed = 20
+
+[node name="pivot" parent="." index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.51238, 0)
+
+[node name="crowned-cylinder" parent="pivot" index="0" instance=ExtResource("2_vinwi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="old-cylinder" parent="pivot" index="1" instance=ExtResource("3_72jjx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+visible = false
+
+[node name="hitbox" parent="." index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.96643, 1.33168, 0)
+shape = SubResource("CylinderShape3D_1ufwg")

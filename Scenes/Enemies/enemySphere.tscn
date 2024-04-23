@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://smi4cnealt23"]
+
+[ext_resource type="PackedScene" uid="uid://ci1l2lseswhub" path="res://Scenes/Enemies/enemy.tscn" id="1_kglu0"]
+[ext_resource type="PackedScene" uid="uid://xpi3baeuougp" path="res://Resources/Enemies/sphere/kirbyBola.glb" id="2_nemc6"]
+[ext_resource type="PackedScene" uid="uid://cbx48vo3vporp" path="res://Resources/Enemies/sphere/ojosBola.glb" id="3_4jj1i"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wwvae"]
+radius = 1.68042
+
+[node name="enemy" instance=ExtResource("1_kglu0")]
+minSpeed = 20
+maxSpeed = 25
+
+[node name="pivot" parent="." index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.70038, 0)
+
+[node name="kirbyBola" parent="pivot" index="0" instance=ExtResource("2_nemc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.052025, 0, 0.0649188)
+
+[node name="ojosBola" parent="pivot" index="1" instance=ExtResource("3_4jj1i")]
+transform = Transform3D(-0.0668137, 0, -0.997765, 0, 1, 0, 0.997765, 0, -0.0668137, -0.176617, -0.0443358, 0.162194)
+visible = false
+
+[node name="hitbox" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.134071, 1.46396, 0.185796)
+shape = SubResource("SphereShape3D_wwvae")

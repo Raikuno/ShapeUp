@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxjtgcjwx8ca2"]
+
+[ext_resource type="PackedScene" uid="uid://ci1l2lseswhub" path="res://Scenes/Enemies/enemy.tscn" id="1_fufpo"]
+[ext_resource type="PackedScene" uid="uid://cmsdstufn4ur0" path="res://Resources/Enemies/cube/villagerCube.glb" id="2_csxv2"]
+[ext_resource type="PackedScene" uid="uid://ce4g6rii3oalh" path="res://Scenes/Enemies/CubeLyoco.glb" id="3_4pk3e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n66ou"]
+size = Vector3(3.36929, 3.60852, 3.22475)
+
+[node name="enemy" instance=ExtResource("1_fufpo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.472866, 0)
+maxSpeed = 10
+
+[node name="villagerCube" parent="pivot" index="0" instance=ExtResource("2_csxv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11969, 0, -0.139727)
+visible = false
+
+[node name="lyocoCube" parent="pivot" index="1" instance=ExtResource("3_4pk3e")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.054925, -0.213225, -0.136481)
+
+[node name="hitbox" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.366592, 1.76325, -0.328621)
+shape = SubResource("BoxShape3D_n66ou")
