@@ -11,7 +11,11 @@ config_version=5
 [application]
 
 config/name="ShapeUp"
+<<<<<<< HEAD
 run/main_scene="res://Scenes/title_screen.tscn"
+=======
+run/main_scene="res://Scenes/mainPPK.tscn"
+>>>>>>> ramaPPK
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 

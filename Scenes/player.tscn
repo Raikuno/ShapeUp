@@ -63,7 +63,6 @@ visible = false
 
 [node name="cuerpo-amebaPlayer" parent="pivot/body" instance=ExtResource("6_kliej")]
 transform = Transform3D(-0.019555, -3.15893e-08, -0.899788, -0.899413, -0.0259616, 0.0195469, -0.0259555, 0.899625, 0.000564057, -0.452101, 2.06717, 0.130315)
-visible = false
 
 [node name="cuerpo-cilindroPlayer" parent="pivot/body" instance=ExtResource("7_8x5t1")]
 transform = Transform3D(0.0520919, 0, 0.998642, 0, 1, 0, -0.998642, 0, 0.0520919, -0.603795, 1.39849, 0.129496)
