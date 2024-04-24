@@ -86,11 +86,7 @@ func _physics_process(delta):
 	var from = $Camera3D2.project_ray_origin(mouse_pos)
 	var to = from + $Camera3D2.project_ray_normal(mouse_pos) * ray_length
 	var space = get_world_3d().direct_space_state
-	var ray_query = PhysicsRayQueryParameters3D.new()
-	ray_query.from = from
-	ray_query.to = to
-	ray_query.collide_with_areas = true
-	var raycast_result = space.intersect_ray(ray_query)
+	var raycast_result = space.intersect_ray(PhysicsRayQueryParameters3D.create(from, to))
 	
 	if not raycast_result.is_empty():
 		var pos = raycast_result.position
@@ -139,23 +135,24 @@ func rightLogic(delta):
 	pass
 func feetLogic(delta):
 	var vectorDir = Vector3.ZERO
+	var lookTo = Vector3.ZERO
 	if Input.is_action_pressed("right"):
 		vectorDir.z += 1
+		lookTo.x += 1
 	if Input.is_action_pressed("left"):
 		vectorDir.z -= 1
+		lookTo.x -= 1
 	if Input.is_action_pressed("down"):
 		vectorDir.x -= 1
+		lookTo.z += 1
 	if Input.is_action_pressed("up"):
 		vectorDir.x += 1
-<<<<<<< Updated upstream:Scenes/player_bienHecho.gd
-=======
 		lookTo.z -= 1
 	if vectorDir != Vector3.ZERO:
 		vectorDir = vectorDir.normalized()
 		$legs.basis = Basis.looking_at(lookTo)
->>>>>>> Stashed changes:Scenes/Player/MainPlayer/player_bienHecho.gd
 	target_velocity.x = vectorDir.x * speed
 	target_velocity.z = vectorDir.z * speed
 	velocity = target_velocity
 	move_and_slide()
-	pass
+	
