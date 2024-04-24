@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://1gj1nmqqc76k"]
+
+[ext_resource type="Script" path="res://Scenes/Player/BulletsPlayer/bulletsPlayer.gd" id="1_ltc3q"]
+[ext_resource type="PackedScene" uid="uid://dl03c1njwt368" path="res://Resources/BodyParts/Arms/brazo-amebaPlayerMKII.glb" id="2_uqrt2"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_ltc3q")
+
+[node name="brazo-amebaPlayerMKII" parent="." instance=ExtResource("2_uqrt2")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)

@@ -1,6 +1,14 @@
 res://Scenes/main.tscn
 res://Scenes/main.gd
 res://Scenes/player.tscn
+<<<<<<< Updated upstream
 res://Scenes/player_bienHecho.tscn
 res://Scenes/player_bienHecho.gd
 res://Scenes/title_screen.tscn
+=======
+res://Scenes/Player/player_bienHecho.tscn
+res://Scenes/Player/MainPlayer/player_bienHecho.tscn
+res://Scenes/Player/BulletsPlayer/bulletsPlayer.gd
+res://Scenes/Player/BulletsPlayer/bulletsPlayer.tscn
+res://Scenes/Player/MainPlayer/player_bienHecho.gd
+>>>>>>> Stashed changes
