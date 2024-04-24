@@ -15,7 +15,7 @@ albedo_color = Color(0.937255, 0.639216, 0.568627, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_f54qs"]
 size = Vector3(1500, 2, 1500)
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node3D"]
 script = ExtResource("1_iq3yo")
 
 [node name="Ground" type="StaticBody3D" parent="."]
@@ -27,13 +27,22 @@ shape = SubResource("BoxShape3D_0jysc")
 material_override = SubResource("StandardMaterial3D_wt6aa")
 mesh = SubResource("BoxMesh_f54qs")
 
+[node name="tree" parent="Ground/MeshInstance3D" instance=ExtResource("1_32qud")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 168.994, 0.999992, 54.4489)
+
+[node name="tree" parent="Ground/MeshInstance3D/tree" instance=ExtResource("1_32qud")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 168.994, 0.999992, 54.4489)
+
+[node name="tree" parent="Ground/MeshInstance3D/tree/tree" instance=ExtResource("1_32qud")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 168.994, 0.999992, 54.4489)
+
+[node name="tree" parent="Ground/MeshInstance3D/tree/tree/tree" instance=ExtResource("1_32qud")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 28.4817, 0.999992, 79.3949)
+
 [node name="forest" type="Node3D" parent="."]
 
 [node name="tree" parent="forest" instance=ExtResource("1_32qud")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 45.2282, 0.999992, 193.208)
-
-[node name="tree2" parent="forest" instance=ExtResource("1_32qud")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 99.5061, 1, 31.4922)
 
 [node name="tree3" parent="forest" instance=ExtResource("1_32qud")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.9571, 1, -77.7662)
@@ -67,6 +76,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192.549, 1, 390.374)
 
 [node name="tree13" parent="forest" instance=ExtResource("1_32qud")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 204.724, 1, 214.987)
+
+[node name="tree13" parent="forest/tree13" instance=ExtResource("1_32qud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -244.96, 8.88026, -141.059)
 
 [node name="tree14" parent="forest" instance=ExtResource("1_32qud")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.1107, 1, 359.164)
@@ -275,8 +287,9 @@ transform = Transform3D(-0.965926, -0.258819, 9.26352e-09, 0.25, -0.933013, 0.25
 shadow_enabled = true
 
 [node name="player" parent="." instance=ExtResource("5_rw2lt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91934, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 221.196, 2.35973, 4.57447)
 
 [node name="Camera3D2" type="Camera3D" parent="player"]
-transform = Transform3D(0.895828, -0.245682, 0.370314, 0, 0.833288, 0.552839, -0.444401, -0.495249, 0.746483, 6.55213, 14.2008, 18.5203)
-size = 35.8943
+transform = Transform3D(-3.78552e-08, 0.5, -0.866025, 2.18557e-08, 0.866025, 0.5, 1, 0, -4.37114e-08, -35.0671, 20.0365, 0)
+projection = 1
+size = 37.4745

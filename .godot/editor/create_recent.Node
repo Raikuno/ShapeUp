@@ -1,16 +1,13 @@
-<<<<<<< HEAD
+Camera3D
 AnimationPlayer
 AnimationTree
-=======
 Timer
 PathFollow3D
 MeshInstance3D
 Path3D
 CollisionShape3D
->>>>>>> ramaPPK
 Node3D
 CharacterBody3D
 DirectionalLight3D
-Camera3D
 StaticBody3D
 Node

@@ -1,16 +1,13 @@
-res://Scenes/Enemies/enemySphere.tscn
-res://Scenes/final_boss.tscn
-res://Objets/tree.tscn
-res://Objets/rock.tscn
-res://Scenes/player.tscn
-<<<<<<< HEAD
-res://Scenes/player_bienHecho.tscn
-res://Scenes/title_screen.tscn
-res://Scenes/player_bienHecho.gd
-=======
+res://Scenes/main.tscn
 res://Scenes/Enemies/enemy.tscn
-res://Scenes/Enemies/enemyCylinder.tscn
-res://Scenes/Enemies/enemyPyramid.tscn
 res://Scenes/Enemies/enemyCube.tscn
+res://Scenes/Enemies/enemyPyramid.tscn
+res://Scenes/Enemies/enemySphere.tscn
+res://Scenes/Enemies/enemyCylinder.tscn
+res://Scenes/final_boss.tscn
 res://Scenes/mainPPK.tscn
->>>>>>> ramaPPK
+res://Scenes/player.tscn
+res://Scenes/title_screen.tscn
+res://Scenes/player_bienHecho.tscn
+res://Scenes/mainJorge.tscn
+res://Scenes/player_bienHecho.gd
