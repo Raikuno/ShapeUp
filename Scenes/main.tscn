@@ -33,7 +33,7 @@ mesh = SubResource("BoxMesh_f54qs")
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 45.2282, 0.999992, 193.208)
 
 [node name="tree2" parent="forest" instance=ExtResource("1_32qud")]
-transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 99.5061, 1, 31.4922)
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 99.5061, 1, 31.4922)
 
 [node name="tree3" parent="forest" instance=ExtResource("1_32qud")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.9571, 1, -77.7662)
@@ -238,6 +238,9 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 384.373, 1, -100.155)
 [node name="rock14" parent="rocks" instance=ExtResource("2_xg0ka")]
 transform = Transform3D(3.27444, 0, 2.29739, 0, 4, 0, -2.29739, 0, 3.27444, 432.856, 1, 487.956)
 
+[node name="rock15" parent="rocks" instance=ExtResource("2_xg0ka")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -22.2956, 1, -17.3572)
+
 [node name="nubes" type="Node3D" parent="."]
 
 [node name="nube" parent="nubes" instance=ExtResource("3_3i0lf")]
@@ -271,12 +274,14 @@ transform = Transform3D(3, 0, 0, 0, -2.99938, -0.0608903, 0, 0.0608903, -2.99938
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -485.87, 214.159, -243.604)
 
 [node name="sol" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.965926, -0.258819, 9.26352e-09, 0.25, -0.933013, 0.258819, -0.0669873, 0.25, 0.965926, 0, 582, 379)
+transform = Transform3D(-0.965926, -0.258819, -2.338e-08, 0.25, -0.933013, 0.258819, -0.0669873, 0.25, 0.965926, 0, 582, 379)
 shadow_enabled = true
 
 [node name="player" parent="." instance=ExtResource("5_rw2lt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91934, 0)
 
 [node name="Camera3D2" type="Camera3D" parent="player"]
-transform = Transform3D(0.895828, -0.245682, 0.370314, 0, 0.833288, 0.552839, -0.444401, -0.495249, 0.746483, 6.55213, 14.2008, 18.5203)
+transform = Transform3D(-0.0418049, 0.239144, -0.970084, 0.000287482, 0.970936, 0.239341, 0.999126, 0.00972675, -0.0406586, -332.958, 84.6873, -15.4565)
+projection = 1
+fov = 166.117
 size = 35.8943

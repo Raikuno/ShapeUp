@@ -1,13 +1,11 @@
 Camera3D
+Node3D
+Marker3D
+MeshInstance3D
 AnimationPlayer
 AnimationTree
-Timer
-PathFollow3D
-MeshInstance3D
-Path3D
-CollisionShape3D
-Node3D
 CharacterBody3D
 DirectionalLight3D
+CollisionShape3D
 StaticBody3D
 Node

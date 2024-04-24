@@ -86,16 +86,23 @@ func rightLogic(delta):
 	pass
 func feetLogic(delta):
 	var vectorDir = Vector3.ZERO
+	var lookTo = Vector3.ZERO
 	if Input.is_action_pressed("right"):
 		vectorDir.z += 1
+		lookTo.x += 1
 	if Input.is_action_pressed("left"):
 		vectorDir.z -= 1
+		lookTo.x -= 1
 	if Input.is_action_pressed("down"):
 		vectorDir.x -= 1
+		lookTo.z += 1
 	if Input.is_action_pressed("up"):
 		vectorDir.x += 1
+		lookTo.z -= 1
+	if vectorDir != Vector3.ZERO:
+		$legs.basis = Basis.looking_at(lookTo)
 	target_velocity.x = vectorDir.x * speed
 	target_velocity.z = vectorDir.z * speed
 	velocity = target_velocity
 	move_and_slide()
-	pass
+	
