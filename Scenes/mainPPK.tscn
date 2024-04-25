@@ -1,14 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bnv4cf83pndpr"]
+[gd_scene load_steps=11 format=3 uid="uid://bnv4cf83pndpr"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_buo5t"]
 [ext_resource type="PackedScene" uid="uid://0cg5kuus6aon" path="res://Objets/tree.tscn" id="2_8ppjq"]
 [ext_resource type="PackedScene" uid="uid://dcgthd8xx1r5n" path="res://Objets/rock.tscn" id="3_43xk6"]
 [ext_resource type="PackedScene" uid="uid://dakevsqwteftq" path="res://Resources/Obstacles/nube.glb" id="4_euwge"]
-[ext_resource type="PackedScene" uid="uid://bdm0cur8gw70l" path="res://Scenes/player.tscn" id="5_gsxg1"]
-[ext_resource type="PackedScene" uid="uid://dq3c2lf7qy3in" path="res://Scenes/Enemies/enemyPyramid.tscn" id="6_jsay0"]
-[ext_resource type="PackedScene" uid="uid://cxjtgcjwx8ca2" path="res://Scenes/Enemies/enemyCube.tscn" id="7_2dl42"]
-[ext_resource type="PackedScene" uid="uid://s46uqryjyf1l" path="res://Scenes/Enemies/enemyCylinder.tscn" id="8_ug7a6"]
-[ext_resource type="PackedScene" uid="uid://smi4cnealt23" path="res://Scenes/Enemies/enemySphere.tscn" id="9_lfutf"]
+[ext_resource type="PackedScene" path="res://Scenes/player_bienHecho.tscn" id="10_0hgby"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0jysc"]
 size = Vector3(1500, 2, 1500)
@@ -287,34 +283,25 @@ transform = Transform3D(3, 0, 0, 0, -2.99938, -0.0608903, 0, 0.0608903, -2.99938
 [node name="nube10" parent="clouds" instance=ExtResource("4_euwge")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -485.87, 214.159, -243.604)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.983858, 0.0339883, -0.175696, -0.0520787, 0.884923, 0.462817, 0.171208, 0.464496, -0.868868, 206.37, 6.6884, -21.0881)
-
 [node name="sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.965926, -0.258819, 9.26352e-09, 0.25, -0.933013, 0.258819, -0.0669873, 0.25, 0.965926, 0, 582, 379)
 shadow_enabled = true
 
-[node name="player" parent="." instance=ExtResource("5_gsxg1")]
-transform = Transform3D(0.261296, 0, 0.965259, 0, 1, 0, -0.965259, 0, 0.261296, 209.429, 1.43806, -2.3375)
+[node name="player" parent="." instance=ExtResource("10_0hgby")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 32.0538, 1.00001, -25.4506)
+speed = 80
 
 [node name="Path3D" type="Path3D" parent="player"]
-transform = Transform3D(0.261296, 0, -0.965258, 0, 1, 0, 0.965258, 0, 0.261296, 0.244255, 0, 3.45181)
+transform = Transform3D(4.9664e-08, 0, -1, 0, 1, 0, 1, 0, 4.9664e-08, -23.7793, 0.438052, 180.771)
 curve = SubResource("Curve3D_dpegp")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="player/Path3D"]
 transform = Transform3D(0.723893, -0.471344, -0.50379, 1.49011e-08, 0.730232, -0.683195, 0.689904, 0.494566, 0.52861, -116.439, -2, -61.6398)
 
-[node name="pyramidEnemy" parent="." instance=ExtResource("6_jsay0")]
-transform = Transform3D(-0.832815, 0, -0.553552, 0, 1, 0, 0.553552, 0, -0.832815, 218.003, 1, 14.8512)
-
-[node name="cubeEnemy" parent="." instance=ExtResource("7_2dl42")]
-transform = Transform3D(-0.699638, 0, 0.714497, 0, 1, 0, -0.714497, 0, -0.699638, 223.244, 1, 13.0675)
-
-[node name="cylinderEnemy" parent="." instance=ExtResource("8_ug7a6")]
-transform = Transform3D(0.204206, 0, 0.978928, 0, 1, 0, -0.978928, 0, 0.204206, 227.795, 1, -2.11944)
-
-[node name="sphereEnemy" parent="." instance=ExtResource("9_lfutf")]
-transform = Transform3D(-0.951739, 0, 0.306908, 0, 1, 0, -0.306908, 0, -0.951739, 225.514, 1, 8.43939)
+[node name="Camera3D2" type="Camera3D" parent="player"]
+transform = Transform3D(0.975695, 0.0522887, -0.212801, 0, 0.971114, 0.238618, 0.219131, -0.232819, 0.947511, -144.217, 163.587, 642.449)
+projection = 1
+size = 47.9866
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 5.36442e-07, 0, 2, 0, -5.36442e-07, 0, 2, 208.103, -25.0499, 6.45085)

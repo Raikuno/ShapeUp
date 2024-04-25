@@ -1,0 +1,501 @@
+[gd_scene load_steps=34 format=3 uid="uid://cynqbkx6nle6k"]
+
+[ext_resource type="Script" path="res://Scenes/player_bienHecho.gd" id="1_4kplc"]
+[ext_resource type="PackedScene" uid="uid://baj52amprcwev" path="res://Resources/BodyParts/Head/cabeza-amebaPlayer.glb" id="2_h7yxf"]
+[ext_resource type="PackedScene" uid="uid://jyi33vbbk11o" path="res://Resources/BodyParts/Head/cabeza-cilindroPlayer.glb" id="3_pn76c"]
+[ext_resource type="PackedScene" uid="uid://cb6ilapwovi7h" path="res://Resources/BodyParts/Head/cabeza-cuboPlayer.glb" id="4_dv05f"]
+[ext_resource type="PackedScene" uid="uid://boav54b7e613f" path="res://Resources/BodyParts/Head/cabeza-esferaPlayer.glb" id="5_dmqif"]
+[ext_resource type="PackedScene" uid="uid://cyuiva4rtkoxa" path="res://Resources/BodyParts/Head/cabeza-piramidePlayer.glb" id="6_t52sb"]
+[ext_resource type="PackedScene" uid="uid://x7r070ph3x36" path="res://Resources/BodyParts/Head/cabeza-amebaPlayerMK2.glb" id="7_xanm1"]
+[ext_resource type="PackedScene" uid="uid://cmmmc0xkhbufh" path="res://Resources/BodyParts/Body/cuerpo-amebaPlayer.glb" id="8_aesci"]
+[ext_resource type="PackedScene" uid="uid://c71oumdlro7wj" path="res://Resources/BodyParts/Body/cuerpo-cilindroPlayer.glb" id="9_24c2a"]
+[ext_resource type="PackedScene" uid="uid://c4imn3shangj0" path="res://Resources/BodyParts/Body/cuerpo-cuboPlayer.glb" id="10_t7m8v"]
+[ext_resource type="PackedScene" uid="uid://b0bmt26j8lmvk" path="res://Resources/BodyParts/Body/cuerpo-piramidePlayer.glb" id="11_fke4p"]
+[ext_resource type="PackedScene" uid="uid://by73aj3lq4ab6" path="res://Resources/BodyParts/Body/esfera-CuerpoPlayer.glb" id="12_nse5r"]
+[ext_resource type="PackedScene" uid="uid://dvt2u8mpvnwai" path="res://Resources/BodyParts/Body/cuerpo-amebaPlayerMKII.glb" id="13_fx0lj"]
+[ext_resource type="PackedScene" uid="uid://cexay7lte532a" path="res://Resources/BodyParts/Arms/brazo-amebaPlayer.glb" id="14_6tgmt"]
+[ext_resource type="PackedScene" uid="uid://bm1ibomko8glu" path="res://Resources/BodyParts/Arms/brazo-cilindroPlayer.glb" id="15_37dwk"]
+[ext_resource type="PackedScene" uid="uid://cq0j2erpuodbe" path="res://Resources/BodyParts/Arms/brazo-cuboPlayer.glb" id="16_ne5te"]
+[ext_resource type="PackedScene" uid="uid://bheibhfkrbt2" path="res://Resources/BodyParts/Arms/brazo-esferaPlayer.glb" id="17_87h6d"]
+[ext_resource type="PackedScene" uid="uid://bkp58g2kmp5qo" path="res://Resources/BodyParts/Arms/brazo-trianguloPlayer.glb" id="18_hftsq"]
+[ext_resource type="PackedScene" uid="uid://dl03c1njwt368" path="res://Resources/BodyParts/Arms/brazo-amebaPlayerMKII.glb" id="19_hh71a"]
+[ext_resource type="PackedScene" uid="uid://dddhw7tfvtpky" path="res://Resources/BodyParts/Legs/piernas-amebaPlayer.glb" id="20_y5wve"]
+[ext_resource type="PackedScene" uid="uid://xs1cwwkaj1jb" path="res://Resources/BodyParts/Legs/piernas-cilindroPlayer.glb" id="21_1g1ur"]
+[ext_resource type="PackedScene" uid="uid://c8gyxpwu2km3s" path="res://Resources/BodyParts/Legs/piernas-cuadradoPlayer.glb" id="22_pla72"]
+[ext_resource type="PackedScene" uid="uid://b8fll3a5laa56" path="res://Resources/BodyParts/Legs/piernas-esferaPlayer.glb" id="23_tdkpf"]
+[ext_resource type="PackedScene" uid="uid://crkwcgesbomod" path="res://Resources/BodyParts/Legs/piernas-piramidePlayer.glb" id="24_d3gix"]
+[ext_resource type="PackedScene" uid="uid://c6is7r63uk3e7" path="res://Resources/BodyParts/Legs/piernaizquierda-amebaPlayer.glb" id="25_crpbl"]
+[ext_resource type="PackedScene" uid="uid://e60ta7w4fqqq" path="res://Resources/BodyParts/Legs/piernaderecha-amebaPlayer.glb" id="26_ed0f6"]
+[ext_resource type="Animation" uid="uid://rin5lv1hs6xq" path="res://Resources/Animations/Player/feet.res" id="27_oo5fs"]
+
+[sub_resource type="Animation" id="Animation_sm6nt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/body:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot/leftArm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pivot/rightArm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivot/head:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("pivot/body/cuerpo-amebaPlayer:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.452101, 2.06717, 0.130315)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("legs/amebaEvil/piernaizquierda-amebaPlayer:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.22838, 0.497152, 0.626448)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("legs/amebaEvil/piernaizquierda-amebaPlayer:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("legs/amebaEvil/piernaderecha-amebaPlayer:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.25051, 0.575938, -1.14263)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("legs/amebaEvil/piernaderecha-amebaPlayer:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_alg2a"]
+resource_local_to_scene = true
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/body:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.05, 1.05, 1.05), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot/leftArm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.05, 0.05), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pivot/rightArm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.05, -0.05), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivot/head:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0), Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("pivot/body/cuerpo-amebaPlayer:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.452101, 2.06717, 0.130315), Vector3(-0.452, 2.17, 0.13), Vector3(-0.452, 2.067, 0.13)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5bk5e"]
+_data = {
+"RESET": SubResource("Animation_sm6nt"),
+"idle": SubResource("Animation_alg2a")
+}
+
+[sub_resource type="Animation" id="Animation_r4bc2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("legs/amebaEvil/piernaderecha-amebaPlayer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.25051, 0.575938, -1.14263)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("legs/amebaEvil/piernaderecha-amebaPlayer:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("legs/amebaEvil/piernaizquierda-amebaPlayer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.22838, 0.497152, 0.626448)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("legs/amebaEvil/piernaizquierda-amebaPlayer:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2d1ym"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("legs/amebaEvil/piernaderecha-amebaPlayer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.25051, 0.575938, -1.14263)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("legs/amebaEvil/piernaderecha-amebaPlayer:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("legs/amebaEvil/piernaizquierda-amebaPlayer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.22838, 0.497152, 0.626448)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("legs/amebaEvil/piernaizquierda-amebaPlayer:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ibiwi"]
+_data = {
+"RESET": SubResource("Animation_r4bc2"),
+"feet": ExtResource("27_oo5fs"),
+"idle": SubResource("Animation_2d1ym")
+}
+
+[node name="player" type="CharacterBody3D"]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0, 1.30558, 0)
+script = ExtResource("1_4kplc")
+
+[node name="pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -0.596186, 0, -1.30301e-07)
+
+[node name="head" type="Node3D" parent="pivot"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="cabeza-amebaPlayer" parent="pivot/head" instance=ExtResource("2_h7yxf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490313, 4.44571, -0.0315164)
+visible = false
+
+[node name="cabeza-cilindroPlayer" parent="pivot/head" instance=ExtResource("3_pn76c")]
+transform = Transform3D(-0.7, 0, 6.11959e-08, 0, 0.7, 0, -6.11959e-08, 0, -0.7, -0.612043, 4.24681, 0.0227804)
+visible = false
+
+[node name="cabeza-cuboPlayer" parent="pivot/head" instance=ExtResource("4_dv05f")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.620658, 4.07171, 0.023904)
+visible = false
+
+[node name="cabeza-esferaPlayer" parent="pivot/head" instance=ExtResource("5_dmqif")]
+transform = Transform3D(0.0146777, 0, 0.999892, 0, 1, 0, -0.999892, 0, 0.0146777, -0.477019, 4.07648, 0.00974787)
+visible = false
+
+[node name="cabeza-piramidePlayer" parent="pivot/head" instance=ExtResource("6_t52sb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.316294, 3.92227, 0.207573)
+visible = false
+
+[node name="cabeza-amebaPlayerMK2" parent="pivot/head" instance=ExtResource("7_xanm1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.449202, 3.29897, 0.118929)
+
+[node name="body" type="Node3D" parent="pivot"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="cuerpo-amebaPlayer" parent="pivot/body" instance=ExtResource("8_aesci")]
+transform = Transform3D(-0.0196617, -3.17616e-08, -0.904697, -0.90432, -0.0261033, 0.0196536, -0.0260971, 0.904534, 0.000567134, -0.452101, 2.06717, 0.130315)
+visible = false
+
+[node name="cuerpo-cilindroPlayer" parent="pivot/body" instance=ExtResource("9_24c2a")]
+transform = Transform3D(0.0504807, 0, 0.967754, 0, 0.96907, 0, -0.967754, 0, 0.0504807, -0.58512, 1.35523, 0.0520098)
+visible = false
+
+[node name="cuerpo-cuboPlayer" parent="pivot/body" instance=ExtResource("10_t7m8v")]
+transform = Transform3D(0.80774, 0, 1.42109e-14, 0, 0.80774, 0, -1.42109e-14, 0, 0.80774, -0.612681, 2.06319, 0.0462953)
+visible = false
+
+[node name="cuerpo-piramidePlayer" parent="pivot/body" instance=ExtResource("11_fke4p")]
+transform = Transform3D(1, 0, 1.13687e-13, 0, 1, 0, -1.13687e-13, 0, 1, -0.600497, 0.994698, 0.0378986)
+visible = false
+
+[node name="esfera-CuerpoPlayer" parent="pivot/body" instance=ExtResource("12_nse5r")]
+transform = Transform3D(0.0225975, 0, -1.2998, 0, 1.3, 0, 1.2998, 0, 0.0225975, -0.772508, 1.98667, 0.00278633)
+visible = false
+
+[node name="cuerpo-amebaPlayerMKII" parent="pivot/body" instance=ExtResource("13_fx0lj")]
+transform = Transform3D(1.3, 0, 1.42109e-14, 0, 1.3, 0, -1.42109e-14, 0, 1.3, -0.547843, 1.69892, 0.0263429)
+
+[node name="leftArm" type="Node3D" parent="pivot"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="brazo-amebaPlayer" parent="pivot/leftArm" instance=ExtResource("14_6tgmt")]
+transform = Transform3D(0.232791, -0.511618, 0.827076, 0.0507347, 0.855672, 0.515026, -0.971202, -0.0779322, 0.22515, 0.570439, 0.163965, 2.12599)
+visible = false
+
+[node name="brazo-cilindroPlayer" parent="pivot/leftArm" instance=ExtResource("15_37dwk")]
+transform = Transform3D(0.140941, -0.895938, -0.421226, 0.987852, 0.1554, 0, 0.0654585, -0.416109, 0.906956, 0.256152, 2.07765, 2.24476)
+visible = false
+
+[node name="brazo-cuboPlayer" parent="pivot/leftArm" instance=ExtResource("16_ne5te")]
+transform = Transform3D(0.462744, 0, -0.525231, -0.304705, 0.570165, -0.268454, 0.427812, 0.406094, 0.376915, -0.302568, 2.1317, 2.58995)
+visible = false
+
+[node name="brazo-esferaPlayer" parent="pivot/leftArm" instance=ExtResource("17_87h6d")]
+transform = Transform3D(0.821906, 0.569624, 0, -0.529623, 0.764189, -0.368125, -0.209693, 0.302564, 0.929776, -0.992529, 1.73018, 2.30501)
+visible = false
+
+[node name="brazo-trianguloPlayer" parent="pivot/leftArm" instance=ExtResource("18_hftsq")]
+transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134522, 0, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
+visible = false
+
+[node name="brazo-amebaPlayerMKII" parent="pivot/leftArm" instance=ExtResource("19_hh71a")]
+transform = Transform3D(0.126027, 0.444316, -0.653224, 0.663847, 0.299042, 0.331482, 0.42828, -0.594271, -0.321588, -0.378383, 1.91522, 2.18661)
+
+[node name="rightArm" type="Node3D" parent="pivot"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="brazo-amebaPlayer" parent="pivot/rightArm" instance=ExtResource("14_6tgmt")]
+transform = Transform3D(-0.219624, -0.509782, 0.831797, -0.0367256, 0.85633, 0.515121, -0.974893, 0.082585, -0.206793, 0.621129, 0.216805, -1.81436)
+visible = false
+
+[node name="brazo-cilindroPlayer" parent="pivot/rightArm" instance=ExtResource("15_37dwk")]
+transform = Transform3D(0.325216, -0.785179, 0.527, 0.923886, 0.382667, 0, -0.201666, 0.486888, 0.849865, 0.46782, 1.88825, -2.34149)
+visible = false
+
+[node name="brazo-cuboPlayer" parent="pivot/rightArm" instance=ExtResource("16_ne5te")]
+transform = Transform3D(0.67474, 0.133302, 0.130216, 0, 0.489144, -0.500737, -0.186349, 0.482668, 0.471493, -0.420057, 1.91021, -2.30986)
+visible = false
+
+[node name="brazo-esferaPlayer" parent="pivot/rightArm" instance=ExtResource("17_87h6d")]
+transform = Transform3D(0.49982, 0.418864, 0.758112, -0.642306, 0.766448, 0, -0.581053, -0.48694, 0.652125, -0.540076, 2.01696, -1.9455)
+visible = false
+
+[node name="brazo-trianguloPlayer" parent="pivot/rightArm" instance=ExtResource("18_hftsq")]
+transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, 0, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
+visible = false
+
+[node name="brazo-amebaPlayerMKII" parent="pivot/rightArm" instance=ExtResource("19_hh71a")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.680637, 1.92706, -2.12493)
+
+[node name="body_animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5bk5e")
+}
+autoplay = "idle"
+
+[node name="feet_animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ibiwi")
+}
+
+[node name="legs" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+
+[node name="ameba" type="Node3D" parent="legs"]
+visible = false
+
+[node name="piernas-amebaPlayer" parent="legs/ameba" instance=ExtResource("20_y5wve")]
+transform = Transform3D(0.587233, -0.123118, 0, 0.121715, 0.580541, 0.0903217, -0.0185337, -0.0883998, 0.593163, 0.306767, -0.997052, 0.85936)
+
+[node name="piernas-amebaPlayer2" parent="legs/ameba" instance=ExtResource("20_y5wve")]
+transform = Transform3D(0.593197, -0.0900939, 0, 0.0897399, 0.590866, -0.0531384, 0.00797908, 0.0525359, 0.597642, 0.127688, -0.997052, -0.708542)
+
+[node name="piernas-amebaPlayer3" parent="legs/ameba" instance=ExtResource("20_y5wve")]
+transform = Transform3D(0.589496, 0.111781, 0, -0.109841, 0.579267, 0.111287, 0.0207329, -0.109338, 0.589589, -1.4228, -0.997052, 1.10363)
+
+[node name="piernas-amebaPlayer4" parent="legs/ameba" instance=ExtResource("20_y5wve")]
+transform = Transform3D(0.591909, 0.0982022, 0, -0.0953421, 0.57467, -0.143751, -0.0235277, 0.141812, 0.582525, -1.59617, -0.997052, -0.78958)
+
+[node name="cilinders" type="Node3D" parent="legs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.165544)
+visible = false
+
+[node name="piernas-cilindroPlayer" parent="legs/cilinders" instance=ExtResource("21_1g1ur")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.27937, 0, 0.357224)
+
+[node name="piernas-cilindroPlayer2" parent="legs/cilinders" instance=ExtResource("21_1g1ur")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.01479, 0, 0.401369)
+
+[node name="cubes" type="Node3D" parent="legs"]
+visible = false
+
+[node name="piernas-cuadradoPlayer" parent="legs/cubes" instance=ExtResource("22_pla72")]
+transform = Transform3D(0.0224362, 0, -0.59958, 0, 0.6, 0, 0.59958, 0, 0.0224362, 0.0137253, 0, 0.832952)
+
+[node name="piernas-cuadradoPlayer2" parent="legs/cubes" instance=ExtResource("22_pla72")]
+transform = Transform3D(0.000753996, 0, -0.6, 0, 0.6, 0, 0.6, 0, 0.000753996, -0.00568199, 0, -0.763839)
+
+[node name="spheres" type="Node3D" parent="legs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.975523)
+visible = false
+
+[node name="piernas-esferaPlayer" parent="legs/spheres" instance=ExtResource("23_tdkpf")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.411328, 0, 0.0153701)
+
+[node name="piernas-esferaPlayer2" parent="legs/spheres" instance=ExtResource("23_tdkpf")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.647879, 0, -1.87322)
+
+[node name="piernas-piramidePlayer" parent="legs" instance=ExtResource("24_d3gix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545794, 0, 0.0168477)
+visible = false
+
+[node name="amebaEvil" type="Node3D" parent="legs"]
+
+[node name="piernaizquierda-amebaPlayer" parent="legs/amebaEvil" instance=ExtResource("25_crpbl")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -1.22838, 0.497152, 0.626448)
+
+[node name="piernaderecha-amebaPlayer" parent="legs/amebaEvil" instance=ExtResource("26_ed0f6")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -1.25051, 0.575938, -1.14263)
