@@ -1,10 +1,4 @@
-res://Scenes/Enemies/enemySphere.tscn
-res://Scenes/final_boss.tscn
-res://Objets/tree.tscn
-res://Objets/rock.tscn
-res://Scenes/player.tscn
-res://Scenes/Enemies/enemy.tscn
+res://Scenes/Enemies/enemyCube.tscn
 res://Scenes/Enemies/enemyCylinder.tscn
 res://Scenes/Enemies/enemyPyramid.tscn
-res://Scenes/Enemies/enemyCube.tscn
-res://Scenes/mainPPK.tscn
+res://Scenes/Enemies/enemySphere.tscn

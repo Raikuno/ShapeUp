@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq3c2lf7qy3in"]
+[gd_scene load_steps=9 format=3 uid="uid://dq3c2lf7qy3in"]
 
 [ext_resource type="PackedScene" uid="uid://ci1l2lseswhub" path="res://Scenes/Enemies/enemy.tscn" id="1_4cq0g"]
 [ext_resource type="PackedScene" uid="uid://c8dlxadfb0a0v" path="res://Resources/Enemies/pyramid/billPyramid.glb" id="2_23y5q"]
@@ -7,21 +7,142 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_iewpk"]
 size = Vector3(3.01021, 2.57312, 2.75922)
 
+[sub_resource type="Animation" id="Animation_0fny1"]
+resource_name = "Animation1"
+length = 2.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/billPyramid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.733, 0.3, -0.64), Vector3(0.449099, 0.4, -0.800674), Vector3(0.076, 0.3, -0.732), Vector3(-0.113989, 0.4, -0.612302), Vector3(-0.232, 0.3, -0.235), Vector3(0.0668724, 0.4, -0.135311), Vector3(0.431281, 0.3, 0.00571114), Vector3(0.582, 0.4, -0.199), Vector3(0.733, 0.3, -0.64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/billPyramid:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.785398, 0.0872665), Vector3(0, 1.5708, 0), Vector3(0, 2.35619, -0.0872665), Vector3(0, 3.14159, 0), Vector3(0, 3.92699, 0.0872665), Vector3(0, 4.71239, 0), Vector3(0, 5.49779, -0.0872665), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pref4"]
+resource_name = "Animation2"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/sherifPyramid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.229, -0.4, -0.628), Vector3(0.229, -0.2, -0.628), Vector3(0.229, -0.4, -0.628), Vector3(0.229, -0.2, -0.628), Vector3(0.229, -0.4, -0.628)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/sherifPyramid:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 6.06286, 0.233258, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.261799, 0, 0), Vector3(0, 0, 0), Vector3(0.261799, 0, 0), Vector3(2.98023e-08, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ei6im"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/billPyramid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.386005, 0.421841, 0.324695)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/billPyramid:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../pivot/sherifPyramid:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.229, -0.1, -0.846)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../pivot/sherifPyramid:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rd2j7"]
+_data = {
+"Animation1": SubResource("Animation_0fny1"),
+"Animation2": SubResource("Animation_pref4"),
+"RESET": SubResource("Animation_ei6im")
+}
+
 [node name="enemy" instance=ExtResource("1_4cq0g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.294609, 0)
 minSpeed = 10
 maxSpeed = 15
-
-[node name="pivot" parent="." index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.18303, 0)
+Hp = 15
+Damage = 20
 
 [node name="billPyramid" parent="pivot" index="0" instance=ExtResource("2_23y5q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.386005, 0, 0.324695)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.386005, 0.421841, 0.324695)
 
 [node name="sherifPyramid" parent="pivot" index="1" instance=ExtResource("3_3oa5y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0275453, -0.129928, 0.415258)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.229, -0.1, -0.846)
 visible = false
 
 [node name="hitbox" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.145638, 1.00987, 0.831696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0730601, 1.00987, -0.750005)
 shape = SubResource("BoxShape3D_iewpk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_rd2j7")
+}
+autoplay = "Animation1"

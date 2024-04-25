@@ -6,6 +6,8 @@
 script = ExtResource("1_57svf")
 
 [node name="pivot" type="Node3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.970601, 0)
+transform = Transform3D(-2, 0, -5.07036e-06, 0, 2, 0, 5.07036e-06, 0, -2, 0.461145, 0.970601, -1.65704)
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
+
+[node name="Animation" type="Node3D" parent="."]

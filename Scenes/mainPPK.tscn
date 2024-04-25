@@ -288,14 +288,14 @@ transform = Transform3D(3, 0, 0, 0, -2.99938, -0.0608903, 0, 0.0608903, -2.99938
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -485.87, 214.159, -243.604)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.196135, -0.921209, 0.336013, -0.053092, 0.33219, 0.941717, -0.979139, -0.202543, 0.0162451, 255.976, 111.457, -4.62415)
+transform = Transform3D(-0.983858, 0.0339883, -0.175696, -0.0520787, 0.884923, 0.462817, 0.171208, 0.464496, -0.868868, 206.37, 6.6884, -21.0881)
 
 [node name="sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.965926, -0.258819, 9.26352e-09, 0.25, -0.933013, 0.258819, -0.0669873, 0.25, 0.965926, 0, 582, 379)
 shadow_enabled = true
 
 [node name="player" parent="." instance=ExtResource("5_gsxg1")]
-transform = Transform3D(0.261296, 0, 0.965259, 0, 1, 0, -0.965259, 0, 0.261296, 277.25, 1.43806, 44.1137)
+transform = Transform3D(0.261296, 0, 0.965259, 0, 1, 0, -0.965259, 0, 0.261296, 209.429, 1.43806, -2.3375)
 
 [node name="Path3D" type="Path3D" parent="player"]
 transform = Transform3D(0.261296, 0, -0.965258, 0, 1, 0, 0.965258, 0, 0.261296, 0.244255, 0, 3.45181)
