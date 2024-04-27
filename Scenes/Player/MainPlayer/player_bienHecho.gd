@@ -2,7 +2,6 @@ extends CharacterBody3D
 enum {MOVE, STATIC}
 enum {CUBE, PYRAMID, SPHERE, CYLINDER, AMEBA}
 enum {HEAD, BODY, RIGHT, LEFT, FEET}
-
 #Multiplicadores
 #--------------------Tipos de Multiplicadores--------------------------
 @export var lowMultiplier = 0.75
@@ -52,12 +51,12 @@ enum {HEAD, BODY, RIGHT, LEFT, FEET}
 #----------------------------------------------------------------------
 
 #Partes del cuerpo
-@onready var head = AMEBA
-@onready var body = AMEBA
-@onready var right = AMEBA
-@onready var left = AMEBA
-@onready var feet = AMEBA
-@onready var state = STATIC
+var head
+var body
+var right
+var left
+var feet
+var state
 #Animaciones 
 var animation
 var animation_feet
@@ -65,46 +64,31 @@ var new_animation_feet
 var new_animation
 #Velocidad
 var target_velocity = Vector3.ZERO
-@export var speed = 8
+@export var speed = 12
 #Apuntado
 var rayOrigin = Vector3()
 var rayEnd = Vector3()
+#Bullets
+@export var iNeedMoreBulletss: PackedScene
+var biggerWeapons:Node3D
+
 func _ready():
 	changePolygon(AMEBA, HEAD)
-	changePolygon(AMEBA, LEFT)
-	changePolygon(AMEBA, RIGHT)
 	changePolygon(AMEBA, BODY)
+	changePolygon(AMEBA, RIGHT)
+	changePolygon(AMEBA, LEFT)
 	changePolygon(AMEBA, FEET)
+
 func _physics_process(delta):
-	headLogic(delta)
-	bodyLogic(delta)
-	rightLogic(delta)
-	leftLogic(delta)
 	feetLogic(delta)
-	var mouse_pos = get_viewport().get_mouse_position()
-	var ray_length = 2000
-	var from = $Camera3D2.project_ray_origin(mouse_pos)
-	var to = from + $Camera3D2.project_ray_normal(mouse_pos) * ray_length
-	var space = get_world_3d().direct_space_state
-	var raycast_result = space.intersect_ray(PhysicsRayQueryParameters3D.create(from, to))
-	
-	if not raycast_result.is_empty():
-		var pos = raycast_result.position
-		$pivot.look_at(Vector3(pos.x, position.y, pos.z), Vector3.UP)
-	#Coomprobaciones de animaciones
-	if animation != new_animation:
-		animation = new_animation
-		$body_animation.play(animation)
-	if animation_feet != new_animation_feet:
-		animation_feet = new_animation_feet
-		print(animation_feet)
-		$feet_animation.play(animation_feet)
+	aimingLogic(delta)
+	attackLogic(delta)
 	#Comprbaciones de estado
 	if velocity != Vector3.ZERO and state == STATIC:
 		changeState(MOVE)
 	if velocity == Vector3.ZERO and state == MOVE:
 		changeState(STATIC)
-	#No se me ocurre otra etiqueta. Cosas, supongo
+
 func changeState(newState):
 	state = newState
 	match state:
@@ -112,30 +96,90 @@ func changeState(newState):
 			new_animation_feet = "feet"
 		STATIC:
 			new_animation_feet = "idle"
-	print(new_animation_feet)
+
 func changePolygon(newPolygon, type):
 	match type:
 		HEAD:
-			head = newPolygon
+			if head != null:
+				head.hide()
+			match newPolygon:
+				SPHERE:
+					head = $"pivot/head/cabeza-esferaPlayer"
+				CUBE:
+					head = $"pivot/head/cabeza-cuboPlayer"
+				PYRAMID:
+					head = $"pivot/head/cabeza-piramidePlayer"
+				CYLINDER:
+					head = $"pivot/head/cabeza-cilindroPlayer"
+				AMEBA:
+					head = $"pivot/head/cabeza-amebaPlayerMK2"
+			head.show()
 		BODY:
-			body = newPolygon
+			if body != null:
+				body.hide()
+			match newPolygon:
+				SPHERE:
+					body = $"pivot/body/esfera-CuerpoPlayer"
+				CUBE:
+					body = $"pivot/body/cuerpo-cuboPlayer"
+				PYRAMID:
+					body = $"pivot/body/cuerpo-piramidePlayer"
+				CYLINDER:
+					body = $"pivot/body/cuerpo-cilindroPlayer"
+				AMEBA:
+					body = $"pivot/body/cuerpo-amebaPlayerMKII"
+			body.show()
 		FEET:
-			feet = newPolygon
+			if feet != null:
+				feet.show()
+			match newPolygon:
+				SPHERE:
+					feet = $legs/spheres
+				CUBE:
+					feet = $legs/cubes
+				PYRAMID:
+					feet = $"legs/piernas-piramidePlayer"
+				CYLINDER:
+					feet = $legs/cilinders
+				AMEBA:
+					feet = $legs/amebaEvil
+			feet.show()
 		RIGHT:
-			right = newPolygon
+			if right != null:
+				right.hide()
+			match newPolygon:
+				SPHERE:
+					right = $"pivot/rightArm/brazo-esferaPlayer"
+				CUBE:
+					right = $"pivot/rightArm/brazo-cuboPlayer"
+				PYRAMID:
+					right = $"pivot/rightArm/brazo-trianguloPlayer"
+				CYLINDER:
+					right = $"pivot/rightArm/brazo-cilindroPlayer"
+				AMEBA:
+					right = $"pivot/rightArm/brazo-amebaPlayerMKII"
+			right.show()
 		LEFT:
-			left = newPolygon
-func headLogic(delta):
-	pass
-func bodyLogic(delta):
-	pass
-func leftLogic(delta):
-	pass
-func rightLogic(delta):
-	pass
+			if left != null:
+				left.hide()
+			match newPolygon:
+				SPHERE:
+					left = $"pivot/leftArm/brazo-esferaPlayer"
+				CUBE:
+					left = $"pivot/leftArm/brazo-cuboPlayer"
+				PYRAMID:
+					left = $"pivot/leftArm/brazo-trianguloPlayer"
+				CYLINDER:
+					left = $"pivot/leftArm/brazo-cilindroPlayer"
+				AMEBA:
+					left = $"pivot/leftArm/brazo-amebaPlayerMKII"
+			left.show()
 func feetLogic(delta):
 	var vectorDir = Vector3.ZERO
 	var lookTo = Vector3.ZERO
+	#animacion
+	if(state == MOVE):
+		$feet_animation.play("feet")
 	if Input.is_action_pressed("right"):
 		vectorDir.z += 1
 		lookTo.x += 1
@@ -155,4 +199,50 @@ func feetLogic(delta):
 	target_velocity.z = vectorDir.z * speed
 	velocity = target_velocity
 	move_and_slide()
+
+func aimingLogic(delta):
+	var mouse_pos = get_viewport().get_mouse_position()
+	var ray_length = 2000
+	var from = $Camera3D2.project_ray_origin(mouse_pos)
+	var to = from + $Camera3D2.project_ray_normal(mouse_pos) * ray_length
+	var space = get_world_3d().direct_space_state
+	var raycast_result = space.intersect_ray(PhysicsRayQueryParameters3D.create(from, to))
 	
+	if not raycast_result.is_empty():
+		var pos = raycast_result.position
+		$pivot.look_at(Vector3(pos.x, position.y, pos.z), Vector3.UP)
+
+
+func attackLogic(delta):
+	match right:
+		SPHERE:
+			pass
+		CUBE:
+			pass
+		PYRAMID:
+			pass
+		CYLINDER:
+			pass
+		AMEBA:
+			pass
+			
+	match left:
+		SPHERE:
+			pass
+		CUBE:
+			pass
+		PYRAMID:
+			pass
+		CYLINDER:
+			pass
+		AMEBA:
+			pass
+
+func fire():
+	biggerWeapons = iNeedMoreBulletss.instantiate()
+	biggerWeapons.initialize(PYRAMID, $pivot.basis, $"pivot/rightArm/brazo-amebaPlayerMKII".global_position, $"pivot/rightArm/brazo-amebaPlayerMKII".global_rotation)
+	add_sibling(biggerWeapons)
+
+#Función que será llamada cada vez que finalice la animación de recarga. Esta animación y su velocidad determinarán la velocidad de ataque
+func _on_right_arm_player_animation_finished(anim_name):
+	fire()

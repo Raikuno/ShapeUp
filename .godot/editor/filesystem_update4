@@ -1,12 +1,3 @@
-res://Scenes/player_bienHecho.tscn
-res://Scenes/main.tscn
-res://Scenes/player_bienHecho.gd
-res://Scenes/player.tscn
-res://Scenes/Player/player_bienHecho.tscn
 res://Scenes/Player/MainPlayer/player_bienHecho.tscn
-res://Scenes/Player/BulletsPlayer/bulletsPlayer.gd
-res://Scenes/Player/BulletsPlayer/bulletsPlayer.tscn
 res://Scenes/Player/MainPlayer/player_bienHecho.gd
-res://Scenes/main.gd
-res://Scenes/player.gd
-res://Resources/Animations/Player/feet.res
+res://Scenes/Player/BulletsPlayer/bulletsPlayer.tscn
