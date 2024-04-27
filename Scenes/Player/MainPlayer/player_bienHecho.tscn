@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cynqbkx6nle6k"]
+[gd_scene load_steps=39 format=3 uid="uid://cynqbkx6nle6k"]
 
 [ext_resource type="Script" path="res://Scenes/Player/MainPlayer/player_bienHecho.gd" id="1_4kplc"]
 [ext_resource type="PackedScene" uid="uid://baj52amprcwev" path="res://Resources/BodyParts/Head/cabeza-amebaPlayer.glb" id="2_h7yxf"]
@@ -373,8 +373,6 @@ _data = {
 "new_animation": SubResource("Animation_26lcu")
 }
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d7vhf"]
-
 [node name="player" type="CharacterBody3D"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0, 1.30558, 0)
 script = ExtResource("1_4kplc")
@@ -566,9 +564,5 @@ autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_ibiwi")
 }
-
-[node name="playerCollision" type="CollisionShape3D" parent="."]
-transform = Transform3D(2.852, 0, 0, 0, 3, 0, 0, 0, 3, -0.810187, 1.31564, 0.300916)
-shape = SubResource("CapsuleShape3D_d7vhf")
 
 [connection signal="animation_finished" from="rightArmPlayer" to="." method="_on_right_arm_player_animation_finished"]

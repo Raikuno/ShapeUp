@@ -1,3 +1,5 @@
 res://Scenes/Player/MainPlayer/player_bienHecho.tscn
 res://Scenes/Player/MainPlayer/player_bienHecho.gd
 res://Scenes/Player/BulletsPlayer/bulletsPlayer.tscn
+res://Resources/Animations/attacks/ameba.res
+res://Scenes/Player/BulletsPlayer/bulletsPlayer.gd

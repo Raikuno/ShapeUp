@@ -56,6 +56,8 @@ var body
 var right
 var left
 var feet
+var rightWeapon
+var leftWeapon
 var state
 #Animaciones 
 var animation
@@ -75,7 +77,7 @@ var biggerWeapons:Node3D
 func _ready():
 	changePolygon(AMEBA, HEAD)
 	changePolygon(AMEBA, BODY)
-	changePolygon(AMEBA, RIGHT)
+	changePolygon(PYRAMID, RIGHT)
 	changePolygon(AMEBA, LEFT)
 	changePolygon(AMEBA, FEET)
 
@@ -96,6 +98,7 @@ func changeState(newState):
 			new_animation_feet = "feet"
 		STATIC:
 			new_animation_feet = "idle"
+
 
 func changePolygon(newPolygon, type):
 	match type:
@@ -145,6 +148,7 @@ func changePolygon(newPolygon, type):
 					feet = $legs/amebaEvil
 			feet.show()
 		RIGHT:
+			rightWeapon = newPolygon
 			if right != null:
 				right.hide()
 			match newPolygon:
@@ -160,6 +164,7 @@ func changePolygon(newPolygon, type):
 					right = $"pivot/rightArm/brazo-amebaPlayerMKII"
 			right.show()
 		LEFT:
+			leftWeapon = newPolygon
 			if left != null:
 				left.hide()
 			match newPolygon:
@@ -178,8 +183,6 @@ func feetLogic(delta):
 	var vectorDir = Vector3.ZERO
 	var lookTo = Vector3.ZERO
 	#animacion
-	if(state == MOVE):
-		$feet_animation.play("feet")
 	if Input.is_action_pressed("right"):
 		vectorDir.z += 1
 		lookTo.x += 1
@@ -199,7 +202,6 @@ func feetLogic(delta):
 	target_velocity.z = vectorDir.z * speed
 	velocity = target_velocity
 	move_and_slide()
-
 func aimingLogic(delta):
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 2000
@@ -211,22 +213,20 @@ func aimingLogic(delta):
 	if not raycast_result.is_empty():
 		var pos = raycast_result.position
 		$pivot.look_at(Vector3(pos.x, position.y, pos.z), Vector3.UP)
-
-
 func attackLogic(delta):
-	match right:
+	match rightWeapon:
 		SPHERE:
 			pass
 		CUBE:
 			pass
 		PYRAMID:
-			pass
+			$rightArmPlayer.play("pyramidBullet")
 		CYLINDER:
 			pass
 		AMEBA:
 			pass
 			
-	match left:
+	match leftWeapon:
 		SPHERE:
 			pass
 		CUBE:
@@ -238,11 +238,11 @@ func attackLogic(delta):
 		AMEBA:
 			pass
 
-func fire():
+func fire(weapon, part):
 	biggerWeapons = iNeedMoreBulletss.instantiate()
-	biggerWeapons.initialize(PYRAMID, $pivot.basis, $"pivot/rightArm/brazo-amebaPlayerMKII".global_position, $"pivot/rightArm/brazo-amebaPlayerMKII".global_rotation)
+	biggerWeapons.initialize(weapon, $pivot.basis, part.global_position, part.global_rotation)
 	add_sibling(biggerWeapons)
 
 #Función que será llamada cada vez que finalice la animación de recarga. Esta animación y su velocidad determinarán la velocidad de ataque
 func _on_right_arm_player_animation_finished(anim_name):
-	fire()
+	fire(rightWeapon, right)
