@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://0cg5kuus6aon" path="res://Objets/tree.tscn" id="2_3g0oj"]
 [ext_resource type="PackedScene" uid="uid://dcgthd8xx1r5n" path="res://Objets/rock.tscn" id="3_cxj6t"]
 [ext_resource type="PackedScene" uid="uid://dakevsqwteftq" path="res://Resources/Obstacles/nube.glb" id="4_u6rhd"]
-[ext_resource type="PackedScene" uid="uid://cynqbkx6nle6k" path="res://Scenes/player_bienHecho.tscn" id="5_b8h6r"]
+[ext_resource type="PackedScene" uid="uid://cynqbkx6nle6k" path="res://Scenes/Player/MainPlayer/player_bienHecho.tscn" id="5_b8h6r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0jysc"]
 size = Vector3(1500, 2, 1500)
