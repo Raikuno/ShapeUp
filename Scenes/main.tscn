@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://tddngfg7bjal"]
+[gd_scene load_steps=10 format=3 uid="uid://tddngfg7bjal"]
 
 [ext_resource type="PackedScene" uid="uid://0cg5kuus6aon" path="res://Objets/tree.tscn" id="1_32qud"]
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_iq3yo"]
 [ext_resource type="PackedScene" uid="uid://dcgthd8xx1r5n" path="res://Objets/rock.tscn" id="2_xg0ka"]
 [ext_resource type="PackedScene" uid="uid://dakevsqwteftq" path="res://Resources/Obstacles/nube.glb" id="3_3i0lf"]
-[ext_resource type="PackedScene" uid="uid://cynqbkx6nle6k" path="res://Scenes/player_bienHecho.tscn" id="5_rw2lt"]
+[ext_resource type="PackedScene" path="res://Scenes/Player/MainPlayer/player_bienHecho.tscn" id="5_rw2lt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0jysc"]
 size = Vector3(1500, 2, 1500)
@@ -15,10 +15,20 @@ albedo_color = Color(0.937255, 0.639216, 0.568627, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_f54qs"]
 size = Vector3(1500, 2, 1500)
 
-[node name="Node" type="Node"]
+[sub_resource type="Curve3D" id="Curve3D_ljcyo"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -117.866, -2, -59.071, 0, 0, 0, 0, 0, 0, -85.8623, -2, -102.187, 0, 0, 0, 0, 0, 0, -63.6378, -2, -117.299, 0, 0, 0, 0, 0, 0, -36.0793, -2, -128.412, 0, 0, 0, 0, 0, 0, -4.07593, -2, -132.412, 0, 0, 0, 0, 0, 0, 19.8046, -2, -130.791, 0, 0, 0, 0, 0, 0, 38.8586, -2, -126.599, 0, 0, 0, 0, 0, 0, 60.5802, -2, -118.215, 0, 0, 0, 0, 0, 0, 78.4909, -2, -107.545, 0, 0, 0, 0, 0, 0, 93.7341, -2, -93.4449, 0, 0, 0, 0, 0, 0, 109.739, -2, -73.2477, 0, 0, 0, 0, 0, 0, 123.077, -2, -51.9073, 0, 0, 0, 0, 0, 0, 129.695, -2, -31.227, 0, 0, 0, 0, 0, 0, 132.308, -2, -5.74333, 0, 0, 0, 0, 0, 0, 131.328, -2, 17.7801, 0, 0, 0, 0, 0, 0, 126.101, -2, 42.9371, 0, 0, 0, 0, 0, 0, 111.072, -2, 72.9948, 0, 0, 0, 0, 0, 0, 92.1224, -2, 96.1915, 0, 0, 0, 0, 0, 0, 71.2127, -2, 112.854, 0, 0, 0, 0, 0, 0, 53.2434, -2, 122.002, 0, 0, 0, 0, 0, 0, 27.7597, -2, 129.843, 0, 0, 0, 0, 0, 0, 2.92943, -2, 132.13, 0, 0, 0, 0, 0, 0, -19.9406, -2, 130.823, 0, 0, 0, 0, 0, 0, -41.5037, -2, 126.249, 0, 0, 0, 0, 0, 0, -62.7401, -2, 116.448, 0, 0, 0, 0, 0, 0, -80.7094, -2, 105.013, 0, 0, 0, 0, 0, 0, -97.0451, -2, 91.2907, 0, 0, 0, 0, 0, 0, -111.421, -2, 72.9947, 0, 0, 0, 0, 0, 0, -121.549, -2, 52.4117, 0, 0, 0, 0, 0, 0, -128.083, -2, 32.1554, 0, 0, 0, 0, 0, 0, -131.677, -2, 10.2656, 0, 0, 0, 0, 0, 0, -131.35, -2, -12.9311, 0, 0, 0, 0, 0, 0, -128.41, -2, -32.534, 0, 0, 0, 0, 0, 0, -124.816, -2, -46.5827, 0, 0, 0, 0, 0, 0, -117.866, -2, -59.071),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 35
+
+[node name="main" type="Node"]
 script = ExtResource("1_iq3yo")
 
 [node name="Ground" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_0jysc")
@@ -281,7 +291,19 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91934, 0)
 
 [node name="Camera3D2" type="Camera3D" parent="player"]
-transform = Transform3D(-0.0418049, 0.239144, -0.970084, 0.000287482, 0.970936, 0.239341, 0.999126, 0.00972675, -0.0406586, -332.958, 84.6873, -15.4565)
+transform = Transform3D(-0.0418049, 0.239144, -0.970084, 0.000287482, 0.970935, 0.239341, 0.999126, 0.00972676, -0.0406586, -332.958, 84.6873, -15.4565)
 projection = 1
 fov = 166.117
 size = 35.8943
+
+[node name="Path3D" type="Path3D" parent="player"]
+transform = Transform3D(4.9664e-08, 0, -1, 0, 1, 0, 1, 0, 4.9664e-08, 12.6874, 2.10293, 68.202)
+curve = SubResource("Curve3D_ljcyo")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="player/Path3D"]
+transform = Transform3D(0.802965, 0, -0.596016, 0, 1, 0, 0.596017, 0, 0.802965, -117.866, -2, -59.071)
+
+[node name="mobSpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="mobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]

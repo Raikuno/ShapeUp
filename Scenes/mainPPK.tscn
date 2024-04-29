@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://0cg5kuus6aon" path="res://Objets/tree.tscn" id="2_8ppjq"]
 [ext_resource type="PackedScene" uid="uid://dcgthd8xx1r5n" path="res://Objets/rock.tscn" id="3_43xk6"]
 [ext_resource type="PackedScene" uid="uid://dakevsqwteftq" path="res://Resources/Obstacles/nube.glb" id="4_euwge"]
-[ext_resource type="PackedScene" uid="uid://4b00w2upev14" path="res://Scenes/player_bienHecho.tscn" id="10_0hgby"]
+[ext_resource type="PackedScene" path="res://Scenes/Player/MainPlayer/player_bienHecho.tscn" id="5_246fo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0jysc"]
 size = Vector3(1500, 2, 1500)
@@ -15,6 +15,11 @@ albedo_color = Color(0.937255, 0.639216, 0.568627, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_f54qs"]
 size = Vector3(1500, 2, 1500)
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_tyab1"]
+top_radius = 66.337
+bottom_radius = 11.391
+height = 27.742
+
 [sub_resource type="Curve3D" id="Curve3D_dpegp"]
 bake_interval = 0.01
 _data = {
@@ -22,11 +27,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 35
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_tyab1"]
-top_radius = 66.337
-bottom_radius = 11.391
-height = 27.742
 
 [node name="main" type="Node"]
 script = ExtResource("1_buo5t")
@@ -289,22 +289,6 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -485.87, 214.159, -243.
 transform = Transform3D(-0.965926, -0.258819, 9.26352e-09, 0.25, -0.933013, 0.258819, -0.0669873, 0.25, 0.965926, 0, 582, 379)
 shadow_enabled = true
 
-[node name="player" parent="." instance=ExtResource("10_0hgby")]
-transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 32.0538, 1.00001, -25.4506)
-speed = 30
-
-[node name="Path3D" type="Path3D" parent="player"]
-transform = Transform3D(4.9664e-08, 0, -1, 0, 1, 0, 1, 0, 4.9664e-08, -24.2221, 2.10292, 181.141)
-curve = SubResource("Curve3D_dpegp")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="player/Path3D"]
-transform = Transform3D(0.802965, 0, -0.596016, 0, 1, 0, 0.596017, 0, 0.802965, -117.866, -2, -59.071)
-
-[node name="Camera3D2" type="Camera3D" parent="player"]
-transform = Transform3D(0.975695, 0.0522887, -0.212801, 0, 0.971114, 0.238618, 0.219131, -0.232819, 0.947511, -144.217, 163.587, 642.449)
-projection = 1
-size = 47.9866
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 5.36442e-07, 0, 2, 0, -5.36442e-07, 0, 2, 208.103, -25.0499, 6.45085)
 visible = false
@@ -313,5 +297,20 @@ skeleton = NodePath("../player/Path3D")
 
 [node name="mobSpawnTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="player" parent="." instance=ExtResource("5_246fo")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 144.993, 1, 11.4589)
+
+[node name="Path3D" type="Path3D" parent="player"]
+transform = Transform3D(4.9664e-08, 0, -1, 0, 1, 0, 1, 0, 4.9664e-08, 12.6874, 2.10293, 68.202)
+curve = SubResource("Curve3D_dpegp")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="player/Path3D"]
+transform = Transform3D(0.802965, 0, -0.596016, 0, 1, 0, 0.596017, 0, 0.802965, -117.866, -2, -59.071)
+
+[node name="Camera3D2" type="Camera3D" parent="player"]
+transform = Transform3D(0.975695, 0.0522887, -0.212801, 0, 0.971113, 0.238618, 0.219131, -0.232819, 0.947511, -107.307, 163.587, 529.51)
+projection = 1
+size = 47.9866
 
 [connection signal="timeout" from="mobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]

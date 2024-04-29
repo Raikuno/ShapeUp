@@ -1,0 +1,159 @@
+[gd_scene load_steps=14 format=3 uid="uid://1gj1nmqqc76k"]
+
+[ext_resource type="Script" path="res://Scenes/Player/BulletsPlayer/bulletsPlayer.gd" id="1_ltc3q"]
+[ext_resource type="Animation" uid="uid://djhy2ijgkuatc" path="res://Resources/Animations/attacks/ameba.res" id="2_6f4k7"]
+[ext_resource type="PackedScene" uid="uid://bkp58g2kmp5qo" path="res://Resources/BodyParts/Arms/brazo-trianguloPlayer.glb" id="4_5yded"]
+[ext_resource type="PackedScene" uid="uid://cq0j2erpuodbe" path="res://Resources/BodyParts/Arms/brazo-cuboPlayer.glb" id="4_yrhqa"]
+
+[sub_resource type="Animation" id="Animation_3tq7a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("brazoTriangulo/brazo-trianguloPlayer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("brazoCubo/brazo-cuboPlayer:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("brazoCubo/MeshInstance3D:mesh:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_njmiu"]
+resource_name = "cube"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("brazoCubo/brazo-cuboPlayer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 6.28319), Vector3(12.5664, 0, 12.5664)]
+}
+
+[sub_resource type="Animation" id="Animation_40ys2"]
+resource_name = "cubeExplode"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("brazoCubo/MeshInstance3D:mesh:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(10, 10, 10), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vatco"]
+resource_name = "pyramid"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("brazoTriangulo/brazo-trianguloPlayer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wfjkb"]
+_data = {
+"RESET": SubResource("Animation_3tq7a"),
+"ameba": ExtResource("2_6f4k7"),
+"cube": SubResource("Animation_njmiu"),
+"cubeExplode": SubResource("Animation_40ys2"),
+"pyramid": SubResource("Animation_vatco")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i7q30"]
+size = Vector3(10.3643, 1.58014, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ovfgh"]
+size = Vector3(2.06273, 1.59015, 1.92979)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7886i"]
+albedo_color = Color(0, 0, 0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fv1fw"]
+material = SubResource("StandardMaterial3D_7886i")
+
+[node name="Bullets" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.13398)
+script = ExtResource("1_ltc3q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wfjkb")
+}
+autoplay = "pyramid"
+
+[node name="brazoTriangulo" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+visible = false
+
+[node name="brazo-trianguloPlayer" parent="brazoTriangulo" instance=ExtResource("4_5yded")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="brazoTriangulo"]
+transform = Transform3D(-4.37114e-08, 4.37114e-08, -1, -4.37114e-08, 1, 4.37114e-08, 1, 4.37114e-08, -4.37114e-08, 0.0735636, 0.61016, 0)
+shape = SubResource("BoxShape3D_i7q30")
+
+[node name="outOfBounds" type="Timer" parent="."]
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[node name="brazoCubo" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="brazoCubo"]
+transform = Transform3D(0.647739, 0, 0, 0, 1, 0, 0, 0, 0.729247, -0.0421472, 0.00628972, 0.0905615)
+shape = SubResource("BoxShape3D_ovfgh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="brazoCubo"]
+mesh = SubResource("BoxMesh_fv1fw")
+skeleton = NodePath("../brazo-cuboPlayer")
+
+[node name="brazo-cuboPlayer" parent="brazoCubo" instance=ExtResource("4_yrhqa")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[connection signal="timeout" from="outOfBounds" to="." method="_on_outOfBounds_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+[connection signal="body_entered" from="brazoCubo" to="." method="_on_brazo_cubo_body_entered"]
+[connection signal="tree_entered" from="brazoCubo/CollisionShape3D" to="." method="_on_collision_shape_3d_tree_entered"]

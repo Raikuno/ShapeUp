@@ -10,6 +10,7 @@ func _input(event):
 	
 
 func _on_mob_spawn_timer_timeout():
+	print("afefa")
 	#1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 	var enemyRandom = randi_range(1,4)
 	match enemyRandom:
