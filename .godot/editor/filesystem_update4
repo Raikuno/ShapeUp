@@ -10,3 +10,5 @@ res://Resources/Animations/attacks/amebaRight.res
 res://Scenes/Enemies/enemy.gd
 res://Scenes/main.gd
 res://Scenes/main.tscn
+res://Scenes/Player/BulletsPlayer/bulletsPlayer.tscn
+res://Resources/Animations/attacks/ameba.res
