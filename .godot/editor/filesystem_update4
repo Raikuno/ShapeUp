@@ -1,10 +1,7 @@
-res://Scenes/Enemies/enemyCube.tscn
-res://Scenes/Enemies/enemyCylinder.tscn
-res://Scenes/Enemies/enemyPyramid.tscn
-res://Scenes/Enemies/enemySphere.tscn
 res://Scenes/final_boss.tscn
 res://Scenes/player_bienHecho.gd
-res://Scenes/player.tscn
 res://Scenes/Enemies/enemy.tscn
 res://Scenes/mainPPK.tscn
 res://Scenes/mainJorge.tscn
+res://Scenes/player_bienHecho.tscn
+res://Scenes/Enemies/enemy.gd

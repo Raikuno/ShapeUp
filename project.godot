@@ -56,6 +56,13 @@ right={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="player"
+3d_physics/layer_2="enemies"
+3d_physics/layer_3="ground"
+3d_physics/layer_4="objets"
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.662745, 0.654902, 0.65098, 1)

@@ -14,7 +14,6 @@ transform = Transform3D(-2, 0, -5.07036e-06, 0, 2, 0, 5.07036e-06, 0, -2, 0.4611
 
 [node name="Animation" type="Node3D" parent="."]
 
-[node name="Wandering" type="Timer" parent="."]
-wait_time = 10.0
+[node name="Vagando" type="Timer" parent="."]
 
-[connection signal="timeout" from="Wandering" to="." method="_on_vagando_timeout"]
+[connection signal="timeout" from="Vagando" to="." method="_on_vagando_timeout"]
