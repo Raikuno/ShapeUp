@@ -71,14 +71,14 @@ var target_velocity = Vector3.ZERO
 var rayOrigin = Vector3()
 var rayEnd = Vector3()
 #Bullets
-@export var iNeedMoreBulletss: PackedScene
-var biggerWeapons:Node3D
+
+
 
 func _ready():
 	changePolygon(AMEBA, HEAD)
 	changePolygon(AMEBA, BODY)
 	changePolygon(PYRAMID, RIGHT)
-	changePolygon(AMEBA, LEFT)
+	changePolygon(PYRAMID, LEFT)
 	changePolygon(AMEBA, FEET)
 
 func _physics_process(delta):
@@ -218,7 +218,7 @@ func attackLogic(delta):
 		SPHERE:
 			pass
 		CUBE:
-			pass
+			$rightArmPlayer.play("cubeBullet")
 		PYRAMID:
 			$rightArmPlayer.play("pyramidBullet")
 		CYLINDER:
@@ -230,15 +230,17 @@ func attackLogic(delta):
 		SPHERE:
 			pass
 		CUBE:
-			pass
+			$leftArmPlayer.play("cubeBulletLeft")
 		PYRAMID:
-			pass
+			$leftArmPlayer.play("pyramidBulletLeft")
 		CYLINDER:
 			pass
 		AMEBA:
 			pass
 
 func fire(weapon, part):
+	var iNeedMoreBulletss: PackedScene = load("res://Scenes/Player/BulletsPlayer/bulletsPlayer.tscn")
+	var biggerWeapons:Node3D
 	biggerWeapons = iNeedMoreBulletss.instantiate()
 	biggerWeapons.initialize(weapon, $pivot.basis, part.global_position, part.global_rotation)
 	add_sibling(biggerWeapons)
@@ -246,3 +248,5 @@ func fire(weapon, part):
 #Función que será llamada cada vez que finalice la animación de recarga. Esta animación y su velocidad determinarán la velocidad de ataque
 func _on_right_arm_player_animation_finished(anim_name):
 	fire(rightWeapon, right)
+func _on_left_arm_player_animation_finished(anim_name):
+	fire(leftWeapon, left)

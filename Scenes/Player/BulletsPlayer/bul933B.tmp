@@ -1,11 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://1gj1nmqqc76k"]
+[gd_scene load_steps=14 format=3 uid="uid://1gj1nmqqc76k"]
 
 [ext_resource type="Script" path="res://Scenes/Player/BulletsPlayer/bulletsPlayer.gd" id="1_ltc3q"]
 [ext_resource type="Animation" uid="uid://djhy2ijgkuatc" path="res://Resources/Animations/attacks/ameba.res" id="2_6f4k7"]
 [ext_resource type="PackedScene" uid="uid://bkp58g2kmp5qo" path="res://Resources/BodyParts/Arms/brazo-trianguloPlayer.glb" id="4_5yded"]
 [ext_resource type="PackedScene" uid="uid://cq0j2erpuodbe" path="res://Resources/BodyParts/Arms/brazo-cuboPlayer.glb" id="4_yrhqa"]
-[ext_resource type="PackedScene" uid="uid://bheibhfkrbt2" path="res://Resources/BodyParts/Arms/brazo-esferaPlayer.glb" id="5_gbc5e"]
-[ext_resource type="PackedScene" uid="uid://dl03c1njwt368" path="res://Resources/BodyParts/Arms/brazo-amebaPlayerMKII.glb" id="6_r878h"]
 
 [sub_resource type="Animation" id="Animation_3tq7a"]
 length = 0.001
@@ -45,30 +43,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(1, 1, 1)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("brazoCubo/brazo-cuboPlayer:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.7, 0.7, 0.7)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("brazoAmeba/brazo-amebaPlayerMKII:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_njmiu"]
 resource_name = "cube"
@@ -89,7 +63,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_40ys2"]
 resource_name = "cubeExplode"
-length = 0.8
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -97,22 +71,10 @@ tracks/0/path = NodePath("brazoCubo/MeshInstance3D:mesh:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.8),
+"times": PackedFloat32Array(0, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(1, 1, 1), Vector3(10, 10, 10), Vector3(1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("brazoCubo/brazo-cuboPlayer:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.8),
-"transitions": PackedFloat32Array(1, 1.8025, 1),
-"update": 0,
-"values": [Vector3(0.7, 0.7, 0.7), Vector3(2.5, 2.5, 2.5), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_vatco"]
@@ -152,9 +114,6 @@ albedo_color = Color(0, 0, 0, 0)
 [sub_resource type="BoxMesh" id="BoxMesh_fv1fw"]
 material = SubResource("StandardMaterial3D_7886i")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ravoe"]
-size = Vector3(1.8, 1.8, 1.8)
-
 [node name="Bullets" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.13398)
 script = ExtResource("1_ltc3q")
@@ -165,7 +124,7 @@ libraries = {
 }
 autoplay = "pyramid"
 
-[node name="brazoTriangulo" type="Area3D" parent="."]
+[node name="brazoTriangulo" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 visible = false
 
@@ -180,12 +139,11 @@ shape = SubResource("BoxShape3D_i7q30")
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 
 [node name="brazoCubo" type="Area3D" parent="."]
-visible = false
 collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="brazoCubo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0421472, 0.00628972, 0.0905615)
+transform = Transform3D(0.647739, 0, 0, 0, 1, 0, 0, 0, 0.729247, -0.0421472, 0.00628972, 0.0905615)
 shape = SubResource("BoxShape3D_ovfgh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="brazoCubo"]
@@ -195,22 +153,7 @@ skeleton = NodePath("../brazo-cuboPlayer")
 [node name="brazo-cuboPlayer" parent="brazoCubo" instance=ExtResource("4_yrhqa")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 
-[node name="brazoEsfera" type="Area3D" parent="."]
-visible = false
-
-[node name="brazo-esferaPlayer" parent="brazoEsfera" instance=ExtResource("5_gbc5e")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="brazoEsfera"]
-shape = SubResource("BoxShape3D_ravoe")
-
-[node name="brazoAmeba" type="Area3D" parent="."]
-
-[node name="brazo-amebaPlayerMKII" parent="brazoAmeba" instance=ExtResource("6_r878h")]
-visible = false
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="outOfBounds" to="." method="_on_outOfBounds_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
-[connection signal="body_entered" from="brazoCubo" to="." method="cubeCollision"]
+[connection signal="body_entered" from="brazoCubo" to="." method="_on_brazo_cubo_body_entered"]
 [connection signal="tree_entered" from="brazoCubo/CollisionShape3D" to="." method="_on_collision_shape_3d_tree_entered"]
-[connection signal="body_entered" from="brazoEsfera" to="." method="sphereCollision"]

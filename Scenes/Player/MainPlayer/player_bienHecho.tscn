@@ -1,8 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://cynqbkx6nle6k"]
+[gd_scene load_steps=44 format=3 uid="uid://cynqbkx6nle6k"]
 
 [ext_resource type="Script" path="res://Scenes/Player/MainPlayer/player_bienHecho.gd" id="1_4kplc"]
 [ext_resource type="PackedScene" uid="uid://baj52amprcwev" path="res://Resources/BodyParts/Head/cabeza-amebaPlayer.glb" id="2_h7yxf"]
-[ext_resource type="PackedScene" uid="uid://1gj1nmqqc76k" path="res://Scenes/Player/BulletsPlayer/bulletsPlayer.tscn" id="2_rccf2"]
 [ext_resource type="PackedScene" uid="uid://jyi33vbbk11o" path="res://Resources/BodyParts/Head/cabeza-cilindroPlayer.glb" id="3_pn76c"]
 [ext_resource type="PackedScene" uid="uid://cb6ilapwovi7h" path="res://Resources/BodyParts/Head/cabeza-cuboPlayer.glb" id="4_dv05f"]
 [ext_resource type="PackedScene" uid="uid://boav54b7e613f" path="res://Resources/BodyParts/Head/cabeza-esferaPlayer.glb" id="5_dmqif"]
@@ -27,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://crkwcgesbomod" path="res://Resources/BodyParts/Legs/piernas-piramidePlayer.glb" id="24_d3gix"]
 [ext_resource type="PackedScene" uid="uid://c6is7r63uk3e7" path="res://Resources/BodyParts/Legs/piernaizquierda-amebaPlayer.glb" id="25_crpbl"]
 [ext_resource type="PackedScene" uid="uid://e60ta7w4fqqq" path="res://Resources/BodyParts/Legs/piernaderecha-amebaPlayer.glb" id="26_ed0f6"]
+[ext_resource type="Animation" uid="uid://c0vt28mm8d42b" path="res://Resources/Animations/attacks/amebaRight.res" id="27_4ccqc"]
 [ext_resource type="Animation" uid="uid://rin5lv1hs6xq" path="res://Resources/Animations/Player/feet.res" id="27_oo5fs"]
 
 [sub_resource type="Animation" id="Animation_fs4hm"]
@@ -55,6 +55,58 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pivot/rightArm/brazo-cuboPlayer:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.7, 0.7, 0.7)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pivot/rightArm/brazo-amebaPlayerMKII2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.376973, 1.93382, 2.24326)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("pivot/rightArm/brazo-amebaPlayerMKII2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.427232, -2.02827, 1.14755)]
+}
+
+[sub_resource type="Animation" id="Animation_dy02t"]
+resource_name = "cubeBullet"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/rightArm/brazo-cuboPlayer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.7, 0.7, 0.7)]
+}
 
 [sub_resource type="Animation" id="Animation_l4xog"]
 resource_name = "pyramidBullet"
@@ -75,6 +127,8 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rv21m"]
 _data = {
 "RESET": SubResource("Animation_fs4hm"),
+"amebaRight": ExtResource("27_4ccqc"),
+"cubeBullet": SubResource("Animation_dy02t"),
 "pyramidBullet": SubResource("Animation_l4xog")
 }
 
@@ -373,10 +427,75 @@ _data = {
 "new_animation": SubResource("Animation_26lcu")
 }
 
+[sub_resource type="Animation" id="Animation_o020v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/leftArm/brazo-trianguloPlayer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot/leftArm/brazo-cuboPlayer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.7, 0.7, 0.7)]
+}
+
+[sub_resource type="Animation" id="Animation_mhoxh"]
+resource_name = "cubeBulletLeft"
+length = 3.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/leftArm/brazo-cuboPlayer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.7, 0.7, 0.7)]
+}
+
+[sub_resource type="Animation" id="Animation_68141"]
+resource_name = "pyramid"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot/leftArm/brazo-trianguloPlayer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x3l6s"]
+_data = {
+"RESET": SubResource("Animation_o020v"),
+"cubeBulletLeft": SubResource("Animation_mhoxh"),
+"pyramidBulletLeft": SubResource("Animation_68141")
+}
+
 [node name="player" type="CharacterBody3D"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0, 1.30558, 0)
 script = ExtResource("1_4kplc")
-iNeedMoreBulletss = ExtResource("2_rccf2")
 
 [node name="pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -0.596186, 0, -1.30301e-07)
@@ -438,6 +557,10 @@ visible = false
 [node name="rightArm" type="Node3D" parent="pivot"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
+[node name="brazo-amebaPlayerMKII2" parent="pivot/rightArm" instance=ExtResource("19_hh71a")]
+transform = Transform3D(0.126027, 0.444315, -0.653224, 0.663846, 0.299044, 0.331482, 0.428282, -0.59427, -0.321586, -0.376973, 1.93382, 2.24326)
+visible = false
+
 [node name="brazo-amebaPlayer" parent="pivot/rightArm" instance=ExtResource("14_6tgmt")]
 transform = Transform3D(0.232791, -0.511618, 0.827076, 0.0507347, 0.855672, 0.515026, -0.971202, -0.0779322, 0.22515, 0.570439, 0.163965, 2.12599)
 visible = false
@@ -447,7 +570,7 @@ transform = Transform3D(0.140941, -0.895938, -0.421226, 0.987852, 0.1554, 0, 0.0
 visible = false
 
 [node name="brazo-cuboPlayer" parent="pivot/rightArm" instance=ExtResource("16_ne5te")]
-transform = Transform3D(0.462744, 0, -0.525231, -0.304705, 0.570165, -0.268454, 0.427812, 0.406094, 0.376915, -0.302568, 2.1317, 2.58995)
+transform = Transform3D(0.462744, 4.58956e-07, -0.525231, -0.304705, 0.570165, -0.268453, 0.427812, 0.406094, 0.376915, -0.302568, 2.1317, 2.58995)
 visible = false
 
 [node name="brazo-esferaPlayer" parent="pivot/rightArm" instance=ExtResource("17_87h6d")]
@@ -455,11 +578,7 @@ transform = Transform3D(0.821906, 0.569624, 0, -0.529623, 0.764189, -0.368125, -
 visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/rightArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.48476e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
-visible = false
-
-[node name="brazo-amebaPlayerMKII" parent="pivot/rightArm" instance=ExtResource("19_hh71a")]
-transform = Transform3D(0.126027, 0.444316, -0.653224, 0.663847, 0.299042, 0.331482, 0.42828, -0.594271, -0.321588, -0.376973, 1.93382, 2.24326)
+transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.48233e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
 visible = false
 
 [node name="leftArm" type="Node3D" parent="pivot"]
@@ -474,7 +593,7 @@ transform = Transform3D(0.325216, -0.785179, 0.527, 0.923886, 0.382667, 0, -0.20
 visible = false
 
 [node name="brazo-cuboPlayer" parent="pivot/leftArm" instance=ExtResource("16_ne5te")]
-transform = Transform3D(0.67474, 0.133302, 0.130216, 0, 0.489144, -0.500737, -0.186349, 0.482668, 0.471493, -0.420057, 1.91021, -2.30986)
+transform = Transform3D(0.67474, 0.133303, 0.130216, 0, 0.489144, -0.500738, -0.186349, 0.482668, 0.471493, -0.420057, 1.91021, -2.30986)
 visible = false
 
 [node name="brazo-esferaPlayer" parent="pivot/leftArm" instance=ExtResource("17_87h6d")]
@@ -482,7 +601,7 @@ transform = Transform3D(0.49982, 0.418864, 0.758112, -0.642306, 0.766448, 0, -0.
 visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/leftArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, 0, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
+transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.28921e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
 visible = false
 
 [node name="brazo-amebaPlayerMKII" parent="pivot/leftArm" instance=ExtResource("19_hh71a")]
@@ -565,4 +684,10 @@ libraries = {
 "": SubResource("AnimationLibrary_ibiwi")
 }
 
+[node name="leftArmPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x3l6s")
+}
+
 [connection signal="animation_finished" from="rightArmPlayer" to="." method="_on_right_arm_player_animation_finished"]
+[connection signal="animation_finished" from="leftArmPlayer" to="." method="_on_left_arm_player_animation_finished"]

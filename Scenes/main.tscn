@@ -19,6 +19,8 @@ size = Vector3(1500, 2, 1500)
 script = ExtResource("1_iq3yo")
 
 [node name="Ground" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_0jysc")
@@ -281,7 +283,7 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91934, 0)
 
 [node name="Camera3D2" type="Camera3D" parent="player"]
-transform = Transform3D(-0.0418049, 0.239144, -0.970084, 0.000287482, 0.970936, 0.239341, 0.999126, 0.00972675, -0.0406586, -332.958, 84.6873, -15.4565)
+transform = Transform3D(-0.0418049, 0.239144, -0.970084, 0.000287482, 0.970935, 0.239341, 0.999126, 0.00972676, -0.0406586, -332.958, 84.6873, -15.4565)
 projection = 1
 fov = 166.117
 size = 35.8943
