@@ -141,7 +141,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i7q30"]
-size = Vector3(10.3643, 1.58014, 1)
+size = Vector3(1.26333, 1.58014, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ovfgh"]
 size = Vector3(2.06273, 1.59015, 1.92979)
@@ -165,14 +165,16 @@ libraries = {
 }
 autoplay = "pyramid"
 
-[node name="brazoTriangulo" type="Area3D" parent="."]
+[node name="brazoTriangulo" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 visible = false
+collision_layer = 0
+collision_mask = 0
 
 [node name="brazo-trianguloPlayer" parent="brazoTriangulo" instance=ExtResource("4_5yded")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="brazoTriangulo"]
-transform = Transform3D(-4.37114e-08, 4.37114e-08, -1, -4.37114e-08, 1, 4.37114e-08, 1, 4.37114e-08, -4.37114e-08, 0.0735636, 0.61016, 0)
+transform = Transform3D(-4.37114e-08, 4.37114e-08, -1, -4.37114e-08, 1, 4.37114e-08, 1, 4.37114e-08, -4.37114e-08, 0.0735634, 0.362311, 0.0382638)
 shape = SubResource("BoxShape3D_i7q30")
 
 [node name="outOfBounds" type="Timer" parent="."]
@@ -181,8 +183,8 @@ shape = SubResource("BoxShape3D_i7q30")
 
 [node name="brazoCubo" type="Area3D" parent="."]
 visible = false
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="brazoCubo"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0421472, 0.00628972, 0.0905615)
@@ -197,6 +199,8 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 
 [node name="brazoEsfera" type="Area3D" parent="."]
 visible = false
+collision_layer = 2
+collision_mask = 2
 
 [node name="brazo-esferaPlayer" parent="brazoEsfera" instance=ExtResource("5_gbc5e")]
 

@@ -77,8 +77,8 @@ var rayEnd = Vector3()
 func _ready():
 	changePolygon(AMEBA, HEAD)
 	changePolygon(AMEBA, BODY)
-	changePolygon(PYRAMID, RIGHT)
-	changePolygon(PYRAMID, LEFT)
+	changePolygon(CUBE, RIGHT)
+	changePolygon(CUBE, LEFT)
 	changePolygon(AMEBA, FEET)
 
 func _physics_process(delta):
