@@ -28,7 +28,7 @@ _data = {
 }
 point_count = 35
 
-[node name="main" type="Node"]
+[node name="main2" type="Node"]
 script = ExtResource("1_buo5t")
 
 [node name="Ground" type="StaticBody3D" parent="."]
@@ -300,7 +300,7 @@ autostart = true
 
 [node name="player" parent="." instance=ExtResource("5_246fo")]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 144.993, 1, 11.4589)
-speed = 12
+speed = 30
 health = 100
 
 [node name="Path3D" type="Path3D" parent="player"]
@@ -313,6 +313,7 @@ transform = Transform3D(0.802965, 0, -0.596016, 0, 1, 0, 0.596017, 0, 0.802965, 
 [node name="Camera3D2" type="Camera3D" parent="player"]
 transform = Transform3D(0.975695, 0.0522887, -0.212801, 0, 0.971113, 0.238618, 0.219131, -0.232819, 0.947511, -107.307, 163.587, 529.51)
 projection = 1
+current = true
 size = 47.9866
 
 [connection signal="timeout" from="mobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]

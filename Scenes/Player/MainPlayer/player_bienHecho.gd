@@ -66,7 +66,7 @@ var new_animation_feet
 var new_animation
 #Velocidad
 var target_velocity = Vector3.ZERO
-@export var speed = 12
+@export var speed = 30
 #Vida
 @export var health = 100
 #Apuntado
@@ -74,6 +74,11 @@ var rayOrigin = Vector3()
 var rayEnd = Vector3()
 #Bullets
 
+#porro
+var porro1 = false
+var porro2 = false
+
+@onready var invisible = $Invisible
 
 func _ready():
 	changePolygon(AMEBA, HEAD)
@@ -86,7 +91,12 @@ func _ready():
 func onDamageTaken(damageAmount):
 	health -= damageAmount
 	print("Me queda: ", health, " Recibí: ", damageAmount)
-
+	if invisible.is_stopped():
+		invisible.start()
+	
+func _on_invisible_timeout():
+	invisible.stop()
+	
 func _physics_process(delta):
 	feetLogic(delta)
 	aimingLogic(delta)
@@ -96,6 +106,10 @@ func _physics_process(delta):
 		changeState(MOVE)
 	if velocity == Vector3.ZERO and state == MOVE:
 		changeState(STATIC)
+	if invisible.is_stopped():
+		show()
+	else:
+		hide()
 
 func changeState(newState):
 	state = newState
@@ -256,6 +270,9 @@ func _on_right_arm_player_animation_finished(anim_name):
 	fire(rightWeapon, right)
 func _on_left_arm_player_animation_finished(anim_name):
 	fire(leftWeapon, left)
+
+
+
 
 
 

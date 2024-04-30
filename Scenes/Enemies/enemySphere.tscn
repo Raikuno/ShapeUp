@@ -6,7 +6,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4tqh4"]
 height = 5.6742
-radius = 1.70902
+radius = 1.38385
 
 [sub_resource type="Animation" id="Animation_d68u8"]
 resource_name = "Animation1"
@@ -135,6 +135,7 @@ Damage = 6
 
 [node name="kirbyBola" parent="pivot" index="0" instance=ExtResource("2_nemc6")]
 transform = Transform3D(0.202584, 0, -0.979265, 0, 1, 0, 0.979265, 0, 0.202584, 0.182963, 0.251249, -0.835528)
+visible = false
 
 [node name="ojosBola" parent="pivot" index="1" instance=ExtResource("3_4jj1i")]
 transform = Transform3D(-0.999588, 0, -0.0286687, 0, 1, 0, 0.0286687, 0, -0.999588, 0.0940224, 0.165005, -1.04289)

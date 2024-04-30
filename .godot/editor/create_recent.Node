@@ -1,4 +1,5 @@
 Timer
+ColorRect
 Node
 CollisionShape3D
 Area3D
@@ -11,4 +12,3 @@ GPUParticles3D
 Camera3D
 Marker3D
 AnimationTree
-CharacterBody3D
