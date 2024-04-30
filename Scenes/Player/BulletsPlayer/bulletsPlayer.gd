@@ -15,6 +15,9 @@ func callBullet():
 			CUBE:
 				$brazoCubo.show()
 				$AnimationPlayer.play("cube")
+				remove_child($brazoTriangulo)
+				remove_child($brazoEsfera)
+				remove_child($brazoAmeba)
 			PYRAMID:
 				$brazoTriangulo.show()
 				$AnimationPlayer.play("pyramid")
@@ -67,6 +70,7 @@ func cubeCollision(body):
 	collision = false
 func _on_animation_player_animation_finished(anim_name):
 	if(anim_name == "cubeExplode"):
+		$AnimationPlayer.stop()
 		queue_free()
 func sphereLogic(delta):
 		var direction = global_transform.basis.z.normalized()

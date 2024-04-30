@@ -89,7 +89,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_40ys2"]
 resource_name = "cubeExplode"
-length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -97,10 +96,10 @@ tracks/0/path = NodePath("brazoCubo/MeshInstance3D:mesh:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(1, 1, 1), Vector3(10, 10, 10), Vector3(1, 1, 1)]
+"values": [Vector3(1, 1, 1), Vector3(10, 10, 10), Vector3(1, 1, 1), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -109,10 +108,10 @@ tracks/1/path = NodePath("brazoCubo/brazo-cuboPlayer:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.8),
-"transitions": PackedFloat32Array(1, 1.8025, 1),
+"times": PackedFloat32Array(0, 0.3, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1.8025, 1, 1),
 "update": 0,
-"values": [Vector3(0.7, 0.7, 0.7), Vector3(2.5, 2.5, 2.5), Vector3(0, 0, 0)]
+"values": [Vector3(0.7, 0.7, 0.7), Vector3(2.5, 2.5, 2.5), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_vatco"]
@@ -182,7 +181,6 @@ shape = SubResource("BoxShape3D_i7q30")
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 
 [node name="brazoCubo" type="Area3D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
