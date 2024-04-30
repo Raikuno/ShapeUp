@@ -5,7 +5,7 @@ var type
 @onready var collision = true
 @export var fall_acceleration = 75
 @export var jump_impulse = 20
-@onready var cubeHeight = 1
+@onready var cubeHeight = 0.8
 func _ready():
 	pass
 func _process(delta):
@@ -18,6 +18,9 @@ func callBullet():
 			PYRAMID:
 				$brazoTriangulo.show()
 				$AnimationPlayer.play("pyramid")
+				remove_child($brazoCubo)
+				remove_child($brazoEsfera)
+				remove_child($brazoAmeba)
 			SPHERE:
 				$brazoEsfera.show()
 			CYLINDER:
@@ -60,9 +63,8 @@ func cubeLogic(delta):
 		if true:
 			cubeHeight -= 0.1
 func cubeCollision(body):
-	if(body.name == "Ground"):
-		collision = false
-		$AnimationPlayer.play("cubeExplode")
+	$AnimationPlayer.play("cubeExplode")
+	collision = false
 func _on_animation_player_animation_finished(anim_name):
 	if(anim_name == "cubeExplode"):
 		queue_free()
@@ -72,3 +74,6 @@ func sphereLogic(delta):
 		global_transform.origin += displacement
 func sphereCollision(body):
 	basis *=-1
+
+func _on_brazo_triangulo_body_entered(body):
+	print("algo anda mal")
