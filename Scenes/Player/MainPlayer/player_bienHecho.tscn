@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cynqbkx6nle6k"]
+[gd_scene load_steps=45 format=3 uid="uid://bavtwemfemmxy"]
 
 [ext_resource type="Script" path="res://Scenes/Player/MainPlayer/player_bienHecho.gd" id="1_4kplc"]
 [ext_resource type="PackedScene" uid="uid://baj52amprcwev" path="res://Resources/BodyParts/Head/cabeza-amebaPlayer.glb" id="2_h7yxf"]
@@ -493,13 +493,16 @@ _data = {
 "pyramidBulletLeft": SubResource("Animation_68141")
 }
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_de11n"]
-height = 5.77793
-radius = 1.09693
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5gt33"]
+height = 3.7275
+radius = 0.710122
 
 [node name="player" type="CharacterBody3D"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0, 1.30558, 0)
+collision_mask = 8
 script = ExtResource("1_4kplc")
+speed = 50
+health = 100000
 
 [node name="pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -0.596186, 0, -1.30301e-07)
@@ -582,7 +585,7 @@ transform = Transform3D(0.821906, 0.569624, 0, -0.529623, 0.764189, -0.368125, -
 visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/rightArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.3557e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
+transform = Transform3D(-0.108257, 0.797434, -0.593615, -0.990911, -0.134523, 2.54542e-07, -0.0798544, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
 visible = false
 
 [node name="leftArm" type="Node3D" parent="pivot"]
@@ -605,7 +608,7 @@ transform = Transform3D(0.49982, 0.418864, 0.758112, -0.642306, 0.766448, 0, -0.
 visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/leftArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.56263e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
+transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.44542e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
 visible = false
 
 [node name="brazo-amebaPlayerMKII" parent="pivot/leftArm" instance=ExtResource("19_hh71a")]
@@ -694,8 +697,8 @@ libraries = {
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.598705, 1.89347, -1.30851e-07)
-shape = SubResource("CylinderShape3D_de11n")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.574756, 0.449718, 0.526002)
+shape = SubResource("CylinderShape3D_5gt33")
 
 [connection signal="animation_finished" from="rightArmPlayer" to="." method="_on_right_arm_player_animation_finished"]
 [connection signal="animation_finished" from="leftArmPlayer" to="." method="_on_left_arm_player_animation_finished"]

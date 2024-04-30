@@ -29,7 +29,7 @@ enum {HEAD, BODY, RIGHT, LEFT, FEET}
 @onready var legDamage = mediumMultiplier
 @onready var legAtqSpd = highMultiplier
 #-------------------Valores en Figuras---------------------------------
-@onready var sphereHealth = 5
+@onready var sphereHealth = 5 # anotacion de carmelo, distintas dificultades. (FUMAO)
 @onready var sphereSpeed = 15
 @onready var sphereDamage = 5
 @onready var sphereAtqSpd = 15
@@ -67,11 +67,12 @@ var new_animation
 #Velocidad
 var target_velocity = Vector3.ZERO
 @export var speed = 12
+#Vida
+@export var health = 100
 #Apuntado
 var rayOrigin = Vector3()
 var rayEnd = Vector3()
 #Bullets
-
 
 
 func _ready():
@@ -80,6 +81,11 @@ func _ready():
 	changePolygon(CUBE, RIGHT)
 	changePolygon(CUBE, LEFT)
 	changePolygon(AMEBA, FEET)
+	SignalsTrain.hit.connect(onDamageTaken)
+
+func onDamageTaken(damageAmount):
+	health -= damageAmount
+	print("AAAAAAAAAAAAAAAAAAAAme queda: ", health)
 
 func _physics_process(delta):
 	feetLogic(delta)
@@ -250,4 +256,6 @@ func _on_right_arm_player_animation_finished(anim_name):
 	fire(rightWeapon, right)
 func _on_left_arm_player_animation_finished(anim_name):
 	fire(leftWeapon, left)
+
+
 

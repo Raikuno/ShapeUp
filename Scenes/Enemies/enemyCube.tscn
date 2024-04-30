@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxjtgcjwx8ca2"]
+[gd_scene load_steps=10 format=3 uid="uid://cxjtgcjwx8ca2"]
 
 [ext_resource type="PackedScene" uid="uid://ci1l2lseswhub" path="res://Scenes/Enemies/enemy.tscn" id="1_fufpo"]
 [ext_resource type="PackedScene" uid="uid://cmsdstufn4ur0" path="res://Resources/Enemies/cube/villagerCube.glb" id="2_csxv2"]
 [ext_resource type="PackedScene" uid="uid://ce4g6rii3oalh" path="res://Scenes/Enemies/CubeLyoco.glb" id="3_4pk3e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n66ou"]
-size = Vector3(3.36929, 3.60852, 3.22475)
+size = Vector3(3.05281, 7.48898, 2.68171)
 
 [sub_resource type="Animation" id="Animation_7yeb2"]
 resource_name = "Animation1"
@@ -123,6 +123,9 @@ _data = {
 "RESET": SubResource("Animation_47ou8")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_c342o"]
+size = Vector3(3.41493, 3.62695, 3.28738)
+
 [node name="enemy" instance=ExtResource("1_fufpo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.472866, 0)
 maxSpeed = 10
@@ -136,8 +139,8 @@ transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0.235414, -0.213225, -0
 transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, 0.11969, 0, -0.139727)
 visible = false
 
-[node name="hitbox" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20901, 1.76325, -0.730603)
+[node name="hitbox" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0507696, 3.70348, -0.459083)
 shape = SubResource("BoxShape3D_n66ou")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Animation" index="0"]
@@ -145,3 +148,7 @@ libraries = {
 "": SubResource("AnimationLibrary_vaphc")
 }
 autoplay = "Animation1"
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052147, 1.70566, -0.588632)
+shape = SubResource("BoxShape3D_c342o")
