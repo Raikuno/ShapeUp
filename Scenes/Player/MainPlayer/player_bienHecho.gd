@@ -85,7 +85,7 @@ func _ready():
 
 func onDamageTaken(damageAmount):
 	health -= damageAmount
-	print("AAAAAAAAAAAAAAAAAAAAme queda: ", health)
+	print("Me queda: ", health, " Recibí: ", damageAmount)
 
 func _physics_process(delta):
 	feetLogic(delta)

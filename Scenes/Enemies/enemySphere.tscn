@@ -127,7 +127,7 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_wkc21"]
 radius = 1.98597
 
-[node name="enemy" instance=ExtResource("1_kglu0")]
+[node name="enemy2" instance=ExtResource("1_kglu0")]
 minSpeed = 20
 maxSpeed = 25
 Hp = 10

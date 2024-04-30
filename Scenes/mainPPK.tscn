@@ -300,10 +300,6 @@ autostart = true
 
 [node name="player" parent="." instance=ExtResource("5_246fo")]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 144.993, 1, 11.4589)
-lowMultiplier = 0.75
-mediumMultiplier = 1
-highMultiplier = 1.25
-reallyHighMultiplier = 1.5
 speed = 12
 health = 100
 

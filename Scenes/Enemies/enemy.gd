@@ -29,9 +29,6 @@ func _ready():
 
 
 func _physics_process(_delta):
-	if(hitting):
-		if SignalsTrain.has_signal("hit"):
-			SignalsTrain.emit_signal("hit", Damage)
 	var transform = get_transform()
 	transform.origin.y = 1.3
 	set_transform(transform)
@@ -80,9 +77,11 @@ func _on_area_3d_body_entered(body):
 	if(body == player):
 		hitting = true
 
-
-# TE AMO SEÑOR https://www.youtube.com/watch?v=OUkbwOq9mBQ
-
-
 func _on_area_3d_body_exited(body):
 	hitting = false
+
+
+func _on_hitting_timeout():
+	if(hitting):
+		if SignalsTrain.has_signal("hit"):
+			SignalsTrain.emit_signal("hit", Damage)
