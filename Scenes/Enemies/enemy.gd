@@ -39,7 +39,7 @@ func _physics_process(_delta):
 		look_at_from_position(position, wanderingPosition, Vector3.UP)
 	else:
 		look_at_from_position(position, player.global_position, Vector3.UP)
-		# random posibility to change the state to wandering
+		# una probabilidad random de que el enemigo entre en estado wandering
 		if randi_range(1,2000) == 1:
 			wanderingPosition = Vector3(randi_range(x_range.x, x_range.y), position.y,randi_range(z_range.x, z_range.y))
 
@@ -48,16 +48,14 @@ func _physics_process(_delta):
 		
 	# Se mueve palante
 	velocity = Vector3.FORWARD * speed
-	# We then rotate the velocity vector based on the mob's Y rotation
-	# in order to move in the direction the mob is looking.
+
 	velocity = velocity.rotated(Vector3.UP, rotation.y)
 	move_and_slide()
 
 
 	
 func initialize(start_position, player_position):
-	# We position the mob by placing it at start_position
-	# and rotate it towards player_position, so it looks at the player.
+
 	look_at_from_position(start_position, player_position, Vector3.UP)
 	
 	if skinNumber == 2:
@@ -65,8 +63,7 @@ func initialize(start_position, player_position):
 		var skinOld = get_node("pivot").get_child(0)
 		skinOld.hide()
 		skinChange.show()
-	# Rotate this mob randomly within range of -90 and +90 degrees,
-	# We calculate a random speed (integer)
+
 	
 
 func _on_vagando_timeout():

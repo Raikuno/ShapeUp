@@ -300,7 +300,6 @@ autostart = true
 
 [node name="player" parent="." instance=ExtResource("5_246fo")]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 144.993, 1, 11.4589)
-speed = 30
 health = 100
 
 [node name="Path3D" type="Path3D" parent="player"]
