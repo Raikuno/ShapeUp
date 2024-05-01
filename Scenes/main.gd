@@ -10,7 +10,6 @@ func _input(event):
 	
 
 func _on_mob_spawn_timer_timeout():
-	print("afefa")
 	#1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 	var enemyRandom = randi_range(1,4)
 	match enemyRandom:
@@ -23,9 +22,8 @@ func _on_mob_spawn_timer_timeout():
 		4:
 			enemy = load("res://Scenes/Enemies/enemyPyramid.tscn")
 	var enemyObject = enemy.instantiate()
-	
+		
 	var enemySpawnLocation = get_node("player/Path3D/PathFollow3D")
 	enemySpawnLocation.progress_ratio = randf()
-	print(enemySpawnLocation.position.x)
 	enemyObject.initialize(enemySpawnLocation.position + $player.position, $player.position)
 	add_child(enemyObject)

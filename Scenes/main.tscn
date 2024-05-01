@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_iq3yo"]
 [ext_resource type="PackedScene" uid="uid://dcgthd8xx1r5n" path="res://Objets/rock.tscn" id="2_xg0ka"]
 [ext_resource type="PackedScene" uid="uid://dakevsqwteftq" path="res://Resources/Obstacles/nube.glb" id="3_3i0lf"]
-[ext_resource type="PackedScene" uid="uid://cynqbkx6nle6k" path="res://Scenes/Player/MainPlayer/player_bienHecho.tscn" id="5_rw2lt"]
+[ext_resource type="PackedScene" uid="uid://bavtwemfemmxy" path="res://Scenes/Player/MainPlayer/player_bienHecho.tscn" id="5_rw2lt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0jysc"]
 size = Vector3(1500, 2, 1500)
@@ -27,8 +27,8 @@ point_count = 35
 script = ExtResource("1_iq3yo")
 
 [node name="Ground" type="StaticBody3D" parent="."]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 259
+collision_mask = 259
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_0jysc")
@@ -293,6 +293,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91934, 0)
 [node name="Camera3D2" type="Camera3D" parent="player"]
 transform = Transform3D(-0.0418049, 0.239144, -0.970084, 0.000287482, 0.970935, 0.239342, 0.999126, 0.00972677, -0.0406586, -332.958, 84.6873, -15.4565)
 projection = 1
+current = true
 fov = 166.117
 size = 48.5589
 
