@@ -73,7 +73,7 @@ maxSpeed = 20
 Hp = 12
 Damage = 12
 
-[node name="pivot" parent="." index="1"]
+[node name="pivot" parent="." index="0"]
 transform = Transform3D(-2, 0, -5.07036e-06, 0, 2, 0, 5.07036e-06, 0, -2, 0.461145, 0.970601, -1.65704)
 
 [node name="crowned-cylinder" parent="pivot" index="0" instance=ExtResource("2_vinwi")]
@@ -83,7 +83,7 @@ transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, -1, 0,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 visible = false
 
-[node name="hitbox" parent="." index="2"]
+[node name="hitbox" parent="." index="1"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.52323, 2.53386, -1.69935)
 shape = SubResource("BoxShape3D_kn00p")
 
