@@ -14,7 +14,7 @@ size = Vector3(0.5, 0.565527, 0.425098)
 
 [node name="rock" type="StaticBody3D"]
 collision_layer = 8
-collision_mask = 0
+collision_mask = 8
 script = ExtResource("1_1o4i8")
 
 [node name="rock-model" parent="." instance=ExtResource("1_bbmk0")]

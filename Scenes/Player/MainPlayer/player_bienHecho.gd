@@ -114,11 +114,11 @@ var intensity = 0
 @onready var invisible = $Invisible
 
 func _ready():
-	changePolygon(CUBE, HEAD)
-	changePolygon(CUBE, BODY)
-	changePolygon(PYRAMID, RIGHT)
-	changePolygon(AMEBA, LEFT)
-	changePolygon(CUBE, FEET)
+	changePolygon(SPHERE, HEAD)
+	changePolygon(SPHERE, BODY)
+	changePolygon(CUBE, RIGHT)
+	changePolygon(SPHERE, LEFT)
+	changePolygon(SPHERE, FEET)
 	resetStats()
 	SignalsTrain.hit.connect(onDamageTaken)
 
@@ -286,7 +286,7 @@ func feetLogic(delta):
 		lookTo.x -= 1
 	if vectorDir != Vector3.ZERO:
 		vectorDir = vectorDir.normalized()
-		$legs.basis = Basis.looking_at(lookTo)
+		feet["resource"].basis = Basis.looking_at(lookTo)
 	target_velocity.x = vectorDir.x * speed
 	target_velocity.z = vectorDir.z * speed
 	velocity = target_velocity

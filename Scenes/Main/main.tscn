@@ -291,7 +291,7 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91934, 0)
 
 [node name="Path3D" type="Path3D" parent="player"]
-transform = Transform3D(4.9664e-08, 0, -1, 0, 1, 0, 1, 0, 4.9664e-08, 12.6874, 2.10293, 68.202)
+transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, 12.6874, 2.10293, 68.202)
 curve = SubResource("Curve3D_ljcyo")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="player/Path3D"]

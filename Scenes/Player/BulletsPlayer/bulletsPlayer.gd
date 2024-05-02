@@ -92,6 +92,7 @@ func sphereLogic(delta):
 		var displacement : Vector3 = direction * -100 * delta
 		global_transform.origin += displacement
 func sphereCollision(body):
+	print("tehee~")
 	bulletHitting(body)
 	basis *=-1
 
