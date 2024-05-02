@@ -22,10 +22,16 @@ var signalBus
 func _ready():
 	var animation = $Animation/AnimationPlayer
 	speed = randi_range(minSpeed, maxSpeed)
+	SignalsTrain.bulletHit.connect(onDamageTaken)
 	if skinNumber == 2:
 		animation.play("Animation2")
 	
-
+func onDamageTaken(damageAmount, body):
+	if body == self:
+		Hp -= damageAmount
+		if(Hp <= 0):
+			print("AAAAAAAAAAAAAAAAAAA")
+			queue_free()
 
 func _physics_process(_delta):
 	var transform = get_transform()

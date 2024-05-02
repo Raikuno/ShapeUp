@@ -6,6 +6,7 @@ var type
 @onready var collision = true
 @export var fall_acceleration = 75
 @export var jump_impulse = 20
+@export var damage = 50   # cada tipo de brazo va a tener un multiplicador al daño base del jugador, por ejemplo circulo hará un 0.75 del daño base y cuadrado un 1.25
 @onready var cubeHeight = 0.8
 func _ready():
 	pass
@@ -78,8 +79,10 @@ func cubeLogic(delta):
 		global_transform.origin += Vector3(displacement.x, cubeHeight, displacement.z)
 		cubeHeight -= 0.1
 func cubeCollision(body):
+	bulletHitting(body)
 	$AnimationPlayer.play("cubeExplode")
 	collision = false
+
 func _on_animation_player_animation_finished(anim_name):
 	if(anim_name == "cubeExplode"):
 		queue_free()
@@ -88,8 +91,13 @@ func sphereLogic(delta):
 		var displacement : Vector3 = direction * -100 * delta
 		global_transform.origin += displacement
 func sphereCollision(body):
+	bulletHitting(body)
 	basis *=-1
 
+func bulletHitting(body):
+	if SignalsTrain.has_signal("bulletHit"):
+		SignalsTrain.emit_signal("bulletHit", damage, body)
+		
 func amebaLogic(delta):
 	if !onFloor:
 		var direction = global_transform.basis.z.normalized()
@@ -97,6 +105,12 @@ func amebaLogic(delta):
 		global_transform.origin += Vector3(displacement.x, cubeHeight, displacement.z)
 		cubeHeight -= 0.1
 func _on_brazo_ameba_child_entered_tree(node):
+	bulletHitting(node)
 	if(node.name == "Ground"):
 		onFloor = true
 		$outOfBounds.start()
+
+
+func pyramidCollision(body):
+	print("sexo anal")
+	bulletHitting(body)
