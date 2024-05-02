@@ -119,11 +119,11 @@ var intensity = 0
 @onready var invisible = $Invisible
 
 func _ready():
-	changePolygon(SPHERE, HEAD)
-	changePolygon(SPHERE, BODY)
-	changePolygon(SPHERE, RIGHT)
-	changePolygon(SPHERE, LEFT)
-	changePolygon(SPHERE, FEET)
+	changePolygon(AMEBA, HEAD)
+	changePolygon(AMEBA, BODY)
+	changePolygon(AMEBA, RIGHT)
+	changePolygon(AMEBA, LEFT)
+	changePolygon(AMEBA, FEET)
 	resetStats()
 	SignalsTrain.hit.connect(onDamageTaken)
 
@@ -332,7 +332,7 @@ func attackLogic(delta):
 		CYLINDER:
 			pass
 		AMEBA:
-			pass
+			$leftArmPlayer.play("amebaBulletLeft")
 
 func fire(weapon, part):
 	var iNeedMoreBulletss: PackedScene = load("res://Scenes/Player/BulletsPlayer/bulletsPlayer.tscn")

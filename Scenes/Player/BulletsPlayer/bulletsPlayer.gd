@@ -45,7 +45,7 @@ func initialize(newType, direction, newPosition = position, newRotation = rotati
 	if newType == SPHERE:
 		downer = 1.5
 	else:
-		downer = 0
+		downer = 1
 	position = Vector3(newPosition.x, newPosition.y - downer, newPosition.z)
 	rotation = newRotation
 	type = newType
