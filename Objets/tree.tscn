@@ -13,7 +13,7 @@ collision_mask = 0
 script = ExtResource("1_hyts8")
 
 [node name="tree-model" parent="." instance=ExtResource("1_g2eey")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.588087, 0, -1.47249)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.588087, 0, -1.47249)
 
 [node name="tronco" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.612913, 14.8076, -1.44288)
