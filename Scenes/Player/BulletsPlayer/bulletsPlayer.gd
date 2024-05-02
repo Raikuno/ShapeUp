@@ -41,7 +41,7 @@ func callBullet():
 				remove_child($brazoSphere)
 				remove_child($bracoCilindro)
 
-func initialize(newType, direction, newPosition = position, newRotation = rotation):
+func initialize(newType, direction, newDamage, newPosition = position, newRotation = rotation):
 	var downer : float
 	if newType == SPHERE:
 		downer = 1.5
@@ -51,6 +51,7 @@ func initialize(newType, direction, newPosition = position, newRotation = rotati
 	rotation = newRotation
 	type = newType
 	basis = direction
+	damage = newDamage
 	callBullet()
 func _physics_process(delta):
 	match type:
@@ -66,7 +67,7 @@ func _physics_process(delta):
 			amebaLogic(delta)
 func _on_visible_on_screen_notifier_3d_screen_exited():
 	$outOfBounds.start()
-func _on_outOfBounds_timeout():
+func destroy():
 	queue_free()
 func pyramidLogic(delta):
 	var direction = global_transform.basis.z.normalized()
@@ -91,6 +92,7 @@ func sphereLogic(delta):
 		var displacement : Vector3 = direction * -100 * delta
 		global_transform.origin += displacement
 func sphereCollision(body):
+	print("tehee~")
 	bulletHitting(body)
 	basis *=-1
 
@@ -108,9 +110,7 @@ func _on_brazo_ameba_child_entered_tree(node):
 	bulletHitting(node)
 	if(node.name == "Ground"):
 		onFloor = true
-		$outOfBounds.start()
-
+		$amebaDespawn.start()
 
 func pyramidCollision(body):
-	print("sexo anal")
 	bulletHitting(body)
