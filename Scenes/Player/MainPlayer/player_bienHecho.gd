@@ -101,11 +101,6 @@ var new_animation
 var target_velocity = Vector3.ZERO
 #Stats
 #-------------
-var typeHealth
-var typeDamage
-var typeSpeed
-var typeAtqSpd
-#-------------
 var speed = 10 #(left["figureStat"]["speed"]* armSpeed)+(right["figureStat"]["speed"] * armSpeed)+(body["figureStat"]["speed"] * bodySpeed)+(head["figureStat"]["speed"] * headSpeed)+(feet["figureStat"]["speed"] * feetSpeed)
 var health = 10#(left["figureStat"]["health"]* armHealth)+(right["figureStat"]["health"] * armHealth)+(body["figureStat"]["health"] * bodyHealth)+(head["figureStat"]["health"] * headHealth)+(feet["figureStat"]["health"] * feetHealth)
 var damage = 10#(left["figureStat"]["damage"]* armDamage)+(right["figureStat"]["damage"] * armDamage)+(body["figureStat"]["damage"] * bodyDamage)+(head["figureStat"]["damage"] * headDamage)+(feet["figureStat"]["damage"] * feetDamage)
@@ -338,7 +333,7 @@ func fire(weapon, part):
 	var iNeedMoreBulletss: PackedScene = load("res://Scenes/Player/BulletsPlayer/bulletsPlayer.tscn")
 	var biggerWeapons:Node3D
 	biggerWeapons = iNeedMoreBulletss.instantiate()
-	biggerWeapons.initialize(weapon, $pivot.basis, part.global_position, part.global_rotation)
+	biggerWeapons.initialize(weapon, $pivot.basis, damage, part.global_position, part.global_rotation)
 	add_sibling(biggerWeapons)
 
 #Función que será llamada cada vez que finalice la animación de recarga. Esta animación y su velocidad determinarán la velocidad de ataque
