@@ -733,6 +733,7 @@ visible = false
 transform = Transform3D(1.5, 0, 2.62269e-07, 0, 1.5, 0, -2.62269e-07, 0, 1.5, 0, 0, 0)
 
 [node name="ameba" type="Node3D" parent="legs"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 visible = false
 
 [node name="piernas-amebaPlayer" parent="legs/ameba" instance=ExtResource("20_y5wve")]
@@ -748,7 +749,7 @@ transform = Transform3D(0.589496, 0.111781, 0, -0.109841, 0.579267, 0.111287, 0.
 transform = Transform3D(0.591909, 0.0982022, 0, -0.0953421, 0.57467, -0.143751, -0.0235277, 0.141812, 0.582525, -1.59617, -0.997052, -0.78958)
 
 [node name="cilinders" type="Node3D" parent="legs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.165544)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, -0.165544)
 visible = false
 
 [node name="piernas-cilindroPlayer" parent="legs/cilinders" instance=ExtResource("21_1g1ur")]
@@ -758,6 +759,7 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.27937, 0, 0.357224)
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.01479, 0, 0.401369)
 
 [node name="cubes" type="Node3D" parent="legs"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 visible = false
 
 [node name="piernas-cuadradoPlayer" parent="legs/cubes" instance=ExtResource("22_pla72")]
@@ -767,7 +769,7 @@ transform = Transform3D(0.0224362, 0, -0.59958, 0, 0.6, 0, 0.59958, 0, 0.0224362
 transform = Transform3D(0.000753996, 0, -0.6, 0, 0.6, 0, 0.6, 0, 0.000753996, -0.00568199, 0, -0.763839)
 
 [node name="spheres" type="Node3D" parent="legs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.975523)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0.975523)
 visible = false
 
 [node name="piernas-esferaPlayer" parent="legs/spheres" instance=ExtResource("23_tdkpf")]
@@ -777,10 +779,11 @@ transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.411328, 0, 0.0153701
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.647879, 0, -1.87322)
 
 [node name="piernas-piramidePlayer" parent="legs" instance=ExtResource("24_d3gix")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545794, 0, 0.0168477)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.545794, 0, 0.0168477)
 visible = false
 
 [node name="amebaEvil" type="Node3D" parent="legs"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 visible = false
 
 [node name="piernaizquierda-amebaPlayer" parent="legs/amebaEvil" instance=ExtResource("25_crpbl")]

@@ -279,10 +279,10 @@ func feetLogic(delta):
 	#animacion
 	if Input.is_action_pressed("right"):
 		vectorDir.x -= 1
-		lookTo.z += 1
+		lookTo.z -= 1
 	if Input.is_action_pressed("left"):
 		vectorDir.x += 1
-		lookTo.z -= 1
+		lookTo.z += 1
 	if Input.is_action_pressed("down"):
 		vectorDir.z -= 1
 		lookTo.x += 1
