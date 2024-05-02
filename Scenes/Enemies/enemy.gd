@@ -30,9 +30,24 @@ func onDamageTaken(damageAmount, body):
 	if body == self:
 		Hp -= damageAmount
 		if(Hp <= 0):
-			print("AAAAAAAAAAAAAAAAAAA")
-			queue_free()
+			enemyDeath()
 
+func _on_animation_player_animation_finished(anim_name):
+	print("jiji")
+	if skinNumber == 1:
+		if anim_name == "DeathAnimation":
+			queue_free()
+	else:
+		if anim_name == "DeathAnimation2":
+			queue_free()
+	
+
+func enemyDeath():
+	if skinNumber == 1:
+		$Animation.get_child(0).play("DeathAnimation")
+	else:
+		$Animation.get_child(0).play("DeathAnimation2")
+	
 func _physics_process(_delta):
 	var transform = get_transform()
 	transform.origin.y = 1.3
@@ -87,3 +102,6 @@ func _on_hitting_timeout():
 	if(hitting):
 		if SignalsTrain.has_signal("hit"):
 			SignalsTrain.emit_signal("hit", Damage)
+
+
+

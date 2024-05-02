@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://smi4cnealt23"]
+[gd_scene load_steps=12 format=3 uid="uid://smi4cnealt23"]
 
 [ext_resource type="PackedScene" uid="uid://ci1l2lseswhub" path="res://Scenes/Enemies/enemy.tscn" id="1_kglu0"]
 [ext_resource type="PackedScene" uid="uid://xpi3baeuougp" path="res://Resources/Enemies/sphere/kirbyBola.glb" id="2_nemc6"]
@@ -116,11 +116,93 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(0, -3.11292, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../pivot/ojosBola:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.999999, 1, 0.999999)]
+}
+
+[sub_resource type="Animation" id="Animation_73640"]
+resource_name = "DeathAnimation"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/kirbyBola:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.5, 1.5, 1.5), Vector3(0.8, 0.8, 0.8), Vector3(0.4, 0.4, 0.4), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/kirbyBola:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.3668, 0), Vector3(-0.0850749, -1.38516, 0.4249), Vector3(-0.164732, -1.69168, 2.20834), Vector3(0.0901327, -1.75406, -2.68948), Vector3(0.0901327, -1.75406, -2.68948)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../pivot/kirbyBola:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.182963, 0.238058, -0.835528), Vector3(0.182963, 0.345209, -0.835528), Vector3(0.182963, 1.0196, -0.835528), Vector3(0.182963, 0.51047, -0.835528), Vector3(0.182963, 0.51047, -0.835528)]
+}
+
+[sub_resource type="Animation" id="Animation_vxkj7"]
+resource_name = "DeathAnimation2"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/ojosBola:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1.03527, 10.1965),
+"update": 0,
+"values": [Vector3(0.999999, 1, 0.999999), Vector3(0.999999, 1, 0.999999), Vector3(0.8, 0.8, 0.8), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/ojosBola:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 2, 0.203063),
+"update": 0,
+"values": [Vector3(0, -3.11292, 0), Vector3(-0.0269256, -3.12227, 0.422953), Vector3(-0.0279253, -3.83972, 1.57429)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kdnkw"]
 _data = {
 "Animation1": SubResource("Animation_d68u8"),
 "Animation2": SubResource("Animation_1opkw"),
+"DeathAnimation": SubResource("Animation_73640"),
+"DeathAnimation2": SubResource("Animation_vxkj7"),
 "RESET": SubResource("Animation_c2ntc")
 }
 
@@ -132,6 +214,9 @@ minSpeed = 20
 maxSpeed = 25
 Hp = 10
 Damage = 6
+
+[node name="pivot" parent="." index="0"]
+transform = Transform3D(-2, 0, -5.07036e-06, 0, 2, 0, 5.07036e-06, 0, -2, 0.461145, 0.970601, -1.65704)
 
 [node name="kirbyBola" parent="pivot" index="0" instance=ExtResource("2_nemc6")]
 transform = Transform3D(0.202584, 0, -0.979265, 0, 1, 0, 0.979265, 0, 0.202584, 0.182963, 0.251249, -0.835528)
@@ -153,3 +238,5 @@ autoplay = "Animation1"
 [node name="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155976, 1.52416, 0)
 shape = SubResource("SphereShape3D_wkc21")
+
+[connection signal="animation_finished" from="Animation/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
