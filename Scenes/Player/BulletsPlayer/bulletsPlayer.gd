@@ -41,13 +41,17 @@ func callBullet():
 				remove_child($bracoCilindro)
 
 func initialize(newType, direction, newPosition = position, newRotation = rotation):
-	position = newPosition
+	var downer : float
+	if newType == SPHERE:
+		downer = 1.5
+	else:
+		downer = 0
+	position = Vector3(newPosition.x, newPosition.y - downer, newPosition.z)
 	rotation = newRotation
 	type = newType
 	basis = direction
 	callBullet()
 func _physics_process(delta):
-	print(scale)
 	match type:
 		SPHERE:
 			sphereLogic(delta)
@@ -84,12 +88,8 @@ func sphereLogic(delta):
 		var displacement : Vector3 = direction * -100 * delta
 		global_transform.origin += displacement
 func sphereCollision(body):
-	var bounce = 0
-	while bounce == 0 || bounce == 1:
-		bounce = randf_range(-1.8, 1.8)
-	basis.z.x *= bounce
-	basis.z.z *= bounce
-	
+	basis *=-1
+
 func amebaLogic(delta):
 	if !onFloor:
 		var direction = global_transform.basis.z.normalized()

@@ -24,10 +24,10 @@ enum {HEAD, BODY, RIGHT, LEFT, FEET}
 @onready var armDamage = highMultiplier
 @onready var armAtqSpd = reallyHighMultiplier
 #----------------------------------------------------------------------
-@onready var legHealth = lowMultiplier
-@onready var legSpeed = reallyHighMultiplier
-@onready var legDamage = mediumMultiplier
-@onready var legAtqSpd = highMultiplier
+@onready var feetHealth = lowMultiplier
+@onready var feetSpeed = reallyHighMultiplier
+@onready var feetDamage = mediumMultiplier
+@onready var feetAtqSpd = highMultiplier
 #-------------------Valores en Figuras---------------------------------
 # anotacion de carmelo, distintas dificultades. (FUMAO)
 var sphereStat = {
@@ -106,10 +106,10 @@ var typeDamage
 var typeSpeed
 var typeAtqSpd
 #-------------
-var speed = 30
-var health = 5
-var damage
-var atqSpeed
+var speed = 10 #(left["figureStat"]["speed"]* armSpeed)+(right["figureStat"]["speed"] * armSpeed)+(body["figureStat"]["speed"] * bodySpeed)+(head["figureStat"]["speed"] * headSpeed)+(feet["figureStat"]["speed"] * feetSpeed)
+var health = 10#(left["figureStat"]["health"]* armHealth)+(right["figureStat"]["health"] * armHealth)+(body["figureStat"]["health"] * bodyHealth)+(head["figureStat"]["health"] * headHealth)+(feet["figureStat"]["health"] * feetHealth)
+var damage = 10#(left["figureStat"]["damage"]* armDamage)+(right["figureStat"]["damage"] * armDamage)+(body["figureStat"]["damage"] * bodyDamage)+(head["figureStat"]["damage"] * headDamage)+(feet["figureStat"]["damage"] * feetDamage)
+var atqSpeed = 10#(left["figureStat"]["atqspd"]* armAtqSpd)+(right["figureStat"]["atqspd"] * armAtqSpd)+(body["figureStat"]["atqspd"] * bodyAtqSpd)+(head["figureStat"]["atqspd"] * headAtqSpd)+(feet["figureStat"]["atqspd"] * feetAtqSpd)
 #-------------
 #Apuntado
 var rayOrigin = Vector3()
@@ -119,11 +119,12 @@ var intensity = 0
 @onready var invisible = $Invisible
 
 func _ready():
-	changePolygon(AMEBA, HEAD)
-	changePolygon(AMEBA, BODY)
-	changePolygon(AMEBA, RIGHT)
+	changePolygon(SPHERE, HEAD)
+	changePolygon(SPHERE, BODY)
+	changePolygon(SPHERE, RIGHT)
 	changePolygon(SPHERE, LEFT)
-	changePolygon(AMEBA, FEET)
+	changePolygon(SPHERE, FEET)
+	resetStats()
 	SignalsTrain.hit.connect(onDamageTaken)
 
 func onDamageTaken(damageAmount):
@@ -157,7 +158,17 @@ func changeState(newState):
 		STATIC:
 			new_animation_feet = "idle"
 
-
+func resetStats():
+	speed = (left["figureStat"]["speed"]* armSpeed)+(right["figureStat"]["speed"] * armSpeed)+(body["figureStat"]["speed"] * bodySpeed)+(head["figureStat"]["speed"] * headSpeed)+(feet["figureStat"]["speed"] * feetSpeed)
+	health = (left["figureStat"]["health"]* armHealth)+(right["figureStat"]["health"] * armHealth)+(body["figureStat"]["health"] * bodyHealth)+(head["figureStat"]["health"] * headHealth)+(feet["figureStat"]["health"] * feetHealth)
+	damage = (left["figureStat"]["damage"]* armDamage)+(right["figureStat"]["damage"] * armDamage)+(body["figureStat"]["damage"] * bodyDamage)+(head["figureStat"]["damage"] * headDamage)+(feet["figureStat"]["damage"] * feetDamage)
+	atqSpeed = (left["figureStat"]["atqspd"]* armAtqSpd)+(right["figureStat"]["atqspd"] * armAtqSpd)+(body["figureStat"]["atqspd"] * bodyAtqSpd)+(head["figureStat"]["atqspd"] * headAtqSpd)+(feet["figureStat"]["atqspd"] * feetAtqSpd)
+	print("""
+	Velocidad: %s
+	Salud: %s
+	Damage: %s
+	ATQSpeed: %s
+	""" % [speed, health, damage, atqSpeed])
 func changePolygon(newPolygon, type):
 	match type:
 		HEAD:
@@ -166,14 +177,19 @@ func changePolygon(newPolygon, type):
 			match newPolygon:
 				SPHERE:
 					head["resource"] = $"pivot/head/cabeza-esferaPlayer"
+					head["figureStat"] = sphereStat
 				CUBE:
 					head["resource"] = $"pivot/head/cabeza-cuboPlayer"
+					head["figureStat"] = cubeStat
 				PYRAMID:
 					head["resource"] = $"pivot/head/cabeza-piramidePlayer"
+					head["figureStat"] = pyramidStat
 				CYLINDER:
 					head["resource"] = $"pivot/head/cabeza-cilindroPlayer"
+					head["figureStat"] = cylinderStat
 				AMEBA:
 					head["resource"] = $"pivot/head/cabeza-amebaPlayerMK2"
+					head["figureStat"] = amebaStat
 			head["resource"].show()
 		BODY:
 			if body["resource"] != null:
@@ -181,14 +197,19 @@ func changePolygon(newPolygon, type):
 			match newPolygon:
 				SPHERE:
 					body["resource"] = $"pivot/body/esfera-CuerpoPlayer"
+					body["figureStat"] = sphereStat
 				CUBE:
 					body["resource"] = $"pivot/body/cuerpo-cuboPlayer"
+					body["figureStat"] = cubeStat
 				PYRAMID:
 					body["resource"] = $"pivot/body/cuerpo-piramidePlayer"
+					body["figureStat"] = pyramidStat
 				CYLINDER:
 					body["resource"] = $"pivot/body/cuerpo-cilindroPlayer"
+					body["figureStat"] = cylinderStat
 				AMEBA:
 					body["resource"] = $"pivot/body/cuerpo-amebaPlayerMKII"
+					body["figureStat"] = amebaStat
 			body["resource"].show()
 		FEET:
 			if feet["resource"] != null:
@@ -196,14 +217,19 @@ func changePolygon(newPolygon, type):
 			match newPolygon:
 				SPHERE:
 					feet["resource"] = $legs/spheres
+					feet["figureStat"] = sphereStat
 				CUBE:
 					feet["resource"] = $legs/cubes
+					feet["figureStat"] = cubeStat
 				PYRAMID:
 					feet["resource"] = $"legs/piernas-piramidePlayer"
+					feet["figureStat"] = pyramidStat
 				CYLINDER:
 					feet["resource"] = $legs/cilinders
+					feet["figureStat"] = cylinderStat
 				AMEBA:
 					feet["resource"] = $legs/amebaEvil
+					feet["figureStat"] = amebaStat
 			feet["resource"].show()
 		RIGHT:
 			right["figure"] = newPolygon
@@ -212,14 +238,19 @@ func changePolygon(newPolygon, type):
 			match newPolygon:
 				SPHERE:
 					right["resource"] = $"pivot/rightArm/brazo-esferaPlayer"
+					right["figureStat"] = sphereStat
 				CUBE:
 					right["resource"] = $"pivot/rightArm/brazo-cuboPlayer"
+					right["figureStat"] = cubeStat
 				PYRAMID:
 					right["resource"] = $"pivot/rightArm/brazo-trianguloPlayer"
+					right["figureStat"] = pyramidStat
 				CYLINDER:
 					right["resource"] = $"pivot/rightArm/brazo-cilindroPlayer"
+					right["figureStat"] = cylinderStat
 				AMEBA:
 					right["resource"] = $"pivot/rightArm/brazo-amebaPlayerMKII2"
+					right["figureStat"] = amebaStat
 			right["resource"].show()
 		LEFT:
 			left["figure"] = newPolygon
@@ -228,31 +259,36 @@ func changePolygon(newPolygon, type):
 			match newPolygon:
 				SPHERE:
 					left["resource"] = $"pivot/leftArm/brazo-esferaPlayer"
+					left["figureStat"] = sphereStat
 				CUBE:
 					left["resource"] = $"pivot/leftArm/brazo-cuboPlayer"
+					left["figureStat"] = cubeStat
 				PYRAMID:
 					left["resource"] = $"pivot/leftArm/brazo-trianguloPlayer"
+					left["figureStat"] = pyramidStat
 				CYLINDER:
 					left["resource"] = $"pivot/leftArm/brazo-cilindroPlayer"
+					left["figureStat"] = cylinderStat
 				AMEBA:
 					left["resource"] = $"pivot/leftArm/brazo-amebaPlayerMKII"
+					left["figureStat"] = amebaStat
 			left["resource"].show()
 func feetLogic(delta):
 	var vectorDir = Vector3.ZERO
 	var lookTo = Vector3.ZERO
 	#animacion
 	if Input.is_action_pressed("right"):
-		vectorDir.z += 1
-		lookTo.x += 1
-	if Input.is_action_pressed("left"):
-		vectorDir.z -= 1
-		lookTo.x -= 1
-	if Input.is_action_pressed("down"):
 		vectorDir.x -= 1
 		lookTo.z += 1
-	if Input.is_action_pressed("up"):
+	if Input.is_action_pressed("left"):
 		vectorDir.x += 1
 		lookTo.z -= 1
+	if Input.is_action_pressed("down"):
+		vectorDir.z -= 1
+		lookTo.x += 1
+	if Input.is_action_pressed("up"):
+		vectorDir.z += 1
+		lookTo.x -= 1
 	if vectorDir != Vector3.ZERO:
 		vectorDir = vectorDir.normalized()
 		$legs.basis = Basis.looking_at(lookTo)

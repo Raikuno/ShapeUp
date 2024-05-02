@@ -290,19 +290,16 @@ shadow_enabled = true
 [node name="player" parent="." instance=ExtResource("5_rw2lt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91934, 0)
 
-[node name="Camera3D2" type="Camera3D" parent="player"]
-transform = Transform3D(-0.0418049, 0.239144, -0.970084, 0.000287482, 0.970935, 0.239342, 0.999126, 0.00972677, -0.0406586, -332.958, 84.6873, -15.4565)
-projection = 1
-current = true
-fov = 166.117
-size = 48.5589
-
 [node name="Path3D" type="Path3D" parent="player"]
 transform = Transform3D(4.9664e-08, 0, -1, 0, 1, 0, 1, 0, 4.9664e-08, 12.6874, 2.10293, 68.202)
 curve = SubResource("Curve3D_ljcyo")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="player/Path3D"]
 transform = Transform3D(0.802965, 0, -0.596016, 0, 1, 0, 0.596017, 0, 0.802965, -117.866, -2, -59.071)
+
+[node name="Camera3D2" type="Camera3D" parent="player"]
+transform = Transform3D(-1, -1.06581e-14, 8.9407e-08, 6.91462e-08, 0.633934, 0.773387, -5.66782e-08, 0.773387, -0.633934, -1, 35.3397, -38.4059)
+fov = 78.75
 
 [node name="mobSpawnTimer" type="Timer" parent="."]
 autostart = true
