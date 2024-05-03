@@ -91,6 +91,12 @@ var feet= {
 	"resource": null,
 	"figureStat": null
 }
+var generalXp = {
+	"cylinder" = 0,
+	"cube" = 0,
+	"sphere"= 0,
+	"pyramid" = 0
+}
 var state
 #Animaciones 
 var animation
@@ -114,13 +120,31 @@ var intensity = 0
 @onready var invisible = $Invisible
 
 func _ready():
-	changePolygon(SPHERE, HEAD)
-	changePolygon(SPHERE, BODY)
-	changePolygon(CUBE, RIGHT)
-	changePolygon(SPHERE, LEFT)
-	changePolygon(SPHERE, FEET)
+	changePolygon(PYRAMID, HEAD)
+	changePolygon(PYRAMID, BODY)
+	changePolygon(PYRAMID, RIGHT)
+	changePolygon(PYRAMID, LEFT)
+	changePolygon(PYRAMID, FEET)
 	resetStats()
 	SignalsTrain.hit.connect(onDamageTaken)
+	SignalsTrain.expPicked.connect(onExpPicked)
+	
+func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
+	match expType:
+		1:
+			generalXp["cylinder"] += 1
+		2:
+			generalXp["cube"] += 1
+		3:
+			generalXp["sphere"] += 1
+		4:
+			generalXp["pyramid"] += 1
+	print("""
+	CylinderXp: %s
+	CubeXp: %s
+	ShpereXp: %s
+	PyramidXp: %s
+	""" % [generalXp["cylinder"], generalXp["cube"], generalXp["sphere"], generalXp["pyramid"]])
 
 func onDamageTaken(damageAmount):
 	health -= damageAmount

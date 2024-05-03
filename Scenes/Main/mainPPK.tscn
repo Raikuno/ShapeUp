@@ -1,10 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://bnv4cf83pndpr"]
+[gd_scene load_steps=16 format=3 uid="uid://bnv4cf83pndpr"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_buo5t"]
 [ext_resource type="PackedScene" uid="uid://0cg5kuus6aon" path="res://Objets/tree.tscn" id="2_8ppjq"]
 [ext_resource type="PackedScene" uid="uid://dcgthd8xx1r5n" path="res://Objets/rock.tscn" id="3_43xk6"]
 [ext_resource type="PackedScene" uid="uid://dakevsqwteftq" path="res://Resources/Obstacles/nube.glb" id="4_euwge"]
 [ext_resource type="PackedScene" uid="uid://bavtwemfemmxy" path="res://Scenes/Player/MainPlayer/player_bienHecho.tscn" id="5_246fo"]
+[ext_resource type="PackedScene" uid="uid://cow1lld0fkonn" path="res://Scenes/Experience/CubeXP.glb" id="6_lcr7f"]
+[ext_resource type="PackedScene" uid="uid://4m12hcr76fr1" path="res://Scenes/Experience/PyramidXP.glb" id="7_jt2h6"]
+[ext_resource type="PackedScene" uid="uid://dhu1rmy81482n" path="res://Scenes/Experience/CilinderXP.glb" id="8_g4r83"]
+[ext_resource type="PackedScene" uid="uid://bpc14ktsk2mvk" path="res://Scenes/Experience/SphereXP.glb" id="9_gpnds"]
+[ext_resource type="PackedScene" uid="uid://ce4g6rii3oalh" path="res://Scenes/Enemies/CubeLyoco.glb" id="10_s8bbd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0jysc"]
 size = Vector3(1500, 2, 1500)
@@ -300,7 +305,6 @@ autostart = true
 
 [node name="player" parent="." instance=ExtResource("5_246fo")]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 144.993, 1, 11.4589)
-health = 100
 
 [node name="Path3D" type="Path3D" parent="player"]
 transform = Transform3D(4.9664e-08, 0, -1, 0, 1, 0, 1, 0, 4.9664e-08, 12.6874, 2.10293, 68.202)
@@ -314,5 +318,23 @@ transform = Transform3D(0.975695, 0.0522887, -0.212801, 0, 0.971113, 0.238618, 0
 projection = 1
 current = true
 size = 47.9866
+
+[node name="CubeXP" parent="." instance=ExtResource("6_lcr7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.887678, 1.76314, -1.08807)
+
+[node name="PyramidXP" parent="." instance=ExtResource("7_jt2h6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.759081, 1, -0.328087)
+
+[node name="CilinderXP" parent="." instance=ExtResource("8_g4r83")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146664, 1, -0.558957)
+
+[node name="CubeXP2" parent="." instance=ExtResource("6_lcr7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.00238, 1.70889, 0.438516)
+
+[node name="SphereXP" parent="." instance=ExtResource("9_gpnds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67526, 1.12096, 0.204271)
+
+[node name="CubeLyoco" parent="." instance=ExtResource("10_s8bbd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00543, 1, -2.53602)
 
 [connection signal="timeout" from="mobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]

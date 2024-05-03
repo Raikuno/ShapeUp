@@ -239,7 +239,7 @@ scale_max = 1.4
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_rkpb1"]
 
-[node name="enemy" instance=ExtResource("1_irdyx")]
+[node name="enemy3" instance=ExtResource("1_irdyx")]
 minSpeed = 15
 maxSpeed = 20
 Hp = 50

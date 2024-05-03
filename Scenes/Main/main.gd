@@ -25,5 +25,5 @@ func _on_mob_spawn_timer_timeout():
 	
 	var enemySpawnLocation = get_node("player/Path3D/PathFollow3D")
 	enemySpawnLocation.progress_ratio = randf()
-	enemyObject.initialize(enemySpawnLocation.position + $player.position, $player.position)
+	enemyObject.initialize(enemySpawnLocation.position + $player.position, $player.position, enemyRandom)
 	add_child(enemyObject)

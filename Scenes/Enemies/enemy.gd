@@ -10,9 +10,11 @@ var speed
 var hitting = false
 var wandering = false
 var wanderingPosition
+var enemyType #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 var x_range = Vector2(-1500, 1500)  # Rango en el eje X
 var z_range = Vector2(-1500, 1500)  # Rango en el eje Z
 
+var experience : PackedScene
 var signalBus
 @onready var wanderingTimer = $Wandering
 @onready var player = get_node("../player")
@@ -47,6 +49,11 @@ func _on_animation_player_animation_finished(anim_name):
 	
 
 func enemyDeath():
+	var position = global_transform.origin
+	var experience = load("res://Scenes/Experience/experience.tscn")
+	var experienceObject = experience.instantiate()
+	experienceObject.initialize(position, enemyType)
+	add_sibling(experienceObject)
 	if skinNumber == 1:
 		$Animation.get_child(0).play("DeathAnimation")
 	else:
@@ -67,7 +74,6 @@ func _physics_process(_delta):
 		if randi_range(1,2000) == 1:
 			wanderingPosition = Vector3(randi_range(x_range.x, x_range.y), position.y,randi_range(z_range.x, z_range.y))
 
-			print("bicho vagando")
 			wandering = true
 		
 	# Se mueve palante
@@ -78,8 +84,8 @@ func _physics_process(_delta):
 
 
 	
-func initialize(start_position, player_position):
-
+func initialize(start_position, player_position, _enemyType):
+	enemyType = _enemyType
 	look_at_from_position(start_position, player_position, Vector3.UP)
 	
 	if skinNumber == 2:
