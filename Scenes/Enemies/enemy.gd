@@ -24,9 +24,10 @@ func _ready():
 	speed = randi_range(minSpeed, maxSpeed)
 	SignalsTrain.bulletHit.connect(onDamageTaken)
 	
-func onDamageTaken(damageAmount, body):
 	
+func onDamageTaken(damageAmount, body):
 	if body == self:
+		$GPUParticles3D.restart()
 		Hp -= damageAmount
 		if(Hp <= 0):
 			enemyDeath()
