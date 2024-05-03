@@ -262,7 +262,7 @@ scale_max = 1.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_bofoh"]
 
-[node name="enemy" instance=ExtResource("1_fufpo")]
+[node name="enemy2" instance=ExtResource("1_fufpo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.472866, 0)
 maxSpeed = 10
 Hp = 100
