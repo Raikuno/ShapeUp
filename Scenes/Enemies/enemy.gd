@@ -23,17 +23,20 @@ func _ready():
 	var animation = $Animation/AnimationPlayer
 	speed = randi_range(minSpeed, maxSpeed)
 	SignalsTrain.bulletHit.connect(onDamageTaken)
-	if skinNumber == 2:
-		animation.play("Animation2")
 	
 func onDamageTaken(damageAmount, body):
+	
 	if body == self:
 		Hp -= damageAmount
 		if(Hp <= 0):
 			enemyDeath()
 
 func _on_animation_player_animation_finished(anim_name):
-	print("jiji")
+	if anim_name == "DondeCaemosGente":
+		if skinNumber == 1:
+			$Animation.get_child(0).play("Animation1")
+		else:
+			$Animation.get_child(0).play("Animation2")
 	if skinNumber == 1:
 		if anim_name == "DeathAnimation":
 			queue_free()

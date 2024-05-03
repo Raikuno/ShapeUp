@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cxjtgcjwx8ca2"]
+[gd_scene load_steps=13 format=3 uid="uid://cxjtgcjwx8ca2"]
 
 [ext_resource type="PackedScene" uid="uid://ci1l2lseswhub" path="res://Scenes/Enemies/enemy.tscn" id="1_fufpo"]
 [ext_resource type="PackedScene" uid="uid://cmsdstufn4ur0" path="res://Resources/Enemies/cube/villagerCube.glb" id="2_csxv2"]
@@ -63,6 +63,74 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 0.366021, 1, 0.554785, 1, 0.406126, 1, 0.366021, 1),
 "update": 0,
 "values": [Vector3(0, -1.5708, 0), Vector3(0, -1.5708, -0.785398), Vector3(0, -1.5708, -1.5708), Vector3(0, -1.5708, -2.35619), Vector3(0, -1.5708, -3.14159), Vector3(0, -1.5708, -3.92699), Vector3(0, -1.5708, -4.71239), Vector3(0, -1.5708, -5.49779), Vector3(0, -1.5708, -6.28319)]
+}
+
+[sub_resource type="Animation" id="Animation_asfeu"]
+resource_name = "DeathAnimation"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/lyocoCube:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.9, 0.9, 0.9), Vector3(1.4, 1.4, 1.4), Vector3(1.6, 1.6, 1.6), Vector3(0.5, 0.5, 0.5), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/lyocoCube:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.235414, -0.213225, -0.391337), Vector3(0.235414, 0.902606, -0.391337)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../pivot/lyocoCube:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0698133, -0.0168715, -0.0232711), Vector3(0.419287, 2.50843, -0.268699), Vector3(1.43143, 2.62736, -0.271197)]
+}
+
+[sub_resource type="Animation" id="Animation_m4l3u"]
+resource_name = "DeathAnimation2"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/villagerCube:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(-7.88469e-07, -1.5708, -0.81369), Vector3(-1.0725e-06, -1.5708, -1.57261)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/villagerCube:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0.5, 0.5, 0.5), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_47ou8"]
@@ -139,73 +207,33 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector3(1, 1, 1)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../pivot:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.461145, 0.970601, -1.65704)]
+}
 
-[sub_resource type="Animation" id="Animation_asfeu"]
-resource_name = "DeathAnimation"
-length = 0.4
+[sub_resource type="Animation" id="Animation_vyq3h"]
+resource_name = "DondeCaemosGente"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../pivot/lyocoCube:scale")
+tracks/0/path = NodePath("../pivot:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(3.03144, 1.07177),
 "update": 0,
-"values": [Vector3(0.9, 0.9, 0.9), Vector3(1.4, 1.4, 1.4), Vector3(1.6, 1.6, 1.6), Vector3(0.5, 0.5, 0.5), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../pivot/lyocoCube:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.235414, -0.213225, -0.391337), Vector3(0.235414, 0.902606, -0.391337)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../pivot/lyocoCube:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.0698133, -0.0168715, -0.0232711), Vector3(0.419287, 2.50843, -0.268699), Vector3(1.43143, 2.62736, -0.271197)]
-}
-
-[sub_resource type="Animation" id="Animation_m4l3u"]
-resource_name = "DeathAnimation2"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../pivot/villagerCube:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, -1.5708, 0), Vector3(-7.88469e-07, -1.5708, -0.81369), Vector3(-1.0725e-06, -1.5708, -1.57261)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../pivot/villagerCube:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0.5, 0.5, 0.5), Vector3(0, 0, 0)]
+"values": [Vector3(0.461, 50, -1.657), Vector3(0.461145, 0.970601, -1.65704)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vaphc"]
@@ -214,6 +242,7 @@ _data = {
 "Animation2": SubResource("Animation_ix80k"),
 "DeathAnimation": SubResource("Animation_asfeu"),
 "DeathAnimation2": SubResource("Animation_m4l3u"),
+"DondeCaemosGente": SubResource("Animation_vyq3h"),
 "RESET": SubResource("Animation_47ou8")
 }
 
@@ -223,7 +252,7 @@ size = Vector3(3.41493, 3.62695, 3.28738)
 [node name="enemy" instance=ExtResource("1_fufpo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.472866, 0)
 maxSpeed = 10
-Hp = 25
+Hp = 100
 Damage = 20
 
 [node name="lyocoCube" parent="pivot" index="0" instance=ExtResource("3_4pk3e")]
@@ -241,7 +270,7 @@ shape = SubResource("BoxShape3D_n66ou")
 libraries = {
 "": SubResource("AnimationLibrary_vaphc")
 }
-autoplay = "Animation1"
+autoplay = "DondeCaemosGente"
 
 [node name="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052147, 1.70566, -0.588632)

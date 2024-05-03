@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://smi4cnealt23"]
+[gd_scene load_steps=13 format=3 uid="uid://smi4cnealt23"]
 
 [ext_resource type="PackedScene" uid="uid://ci1l2lseswhub" path="res://Scenes/Enemies/enemy.tscn" id="1_kglu0"]
 [ext_resource type="PackedScene" uid="uid://xpi3baeuougp" path="res://Resources/Enemies/sphere/kirbyBola.glb" id="2_nemc6"]
@@ -64,69 +64,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, -3.11292, 0), Vector3(-0.785398, -3.11367, 0), Vector3(-1.5708, -3.11367, 0), Vector3(-2.35619, -3.11367, 0), Vector3(-3.14159, -3.11367, 0), Vector3(-3.92699, -3.11367, 0), Vector3(-4.79966, -3.11367, 0), Vector3(-5.49779, -3.11367, 0), Vector3(-6.28319, -3.11367, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_c2ntc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../pivot/kirbyBola:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.182963, 0.251249, -0.835528)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../pivot/kirbyBola:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -1.3668, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../pivot/kirbyBola:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../pivot/ojosBola:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -3.11292, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../pivot/ojosBola:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.999999, 1, 0.999999)]
 }
 
 [sub_resource type="Animation" id="Animation_73640"]
@@ -197,12 +134,104 @@ tracks/1/keys = {
 "values": [Vector3(0, -3.11292, 0), Vector3(-0.0269256, -3.12227, 0.422953), Vector3(-0.0279253, -3.83972, 1.57429)]
 }
 
+[sub_resource type="Animation" id="Animation_c2ntc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/kirbyBola:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.182963, 0.251249, -0.835528)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/kirbyBola:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.3668, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../pivot/kirbyBola:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../pivot/ojosBola:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.11292, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../pivot/ojosBola:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.999999, 1, 0.999999)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../pivot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.461145, 0.970601, -1.65704)]
+}
+
+[sub_resource type="Animation" id="Animation_rkedj"]
+resource_name = "DondeCaemosGente"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(4, 1),
+"update": 0,
+"values": [Vector3(0.461, 50, -1.657), Vector3(0.461145, 0.970601, -1.65704)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kdnkw"]
 _data = {
 "Animation1": SubResource("Animation_d68u8"),
 "Animation2": SubResource("Animation_1opkw"),
 "DeathAnimation": SubResource("Animation_73640"),
 "DeathAnimation2": SubResource("Animation_vxkj7"),
+"DondeCaemosGente": SubResource("Animation_rkedj"),
 "RESET": SubResource("Animation_c2ntc")
 }
 
@@ -212,17 +241,14 @@ radius = 1.98597
 [node name="enemy2" instance=ExtResource("1_kglu0")]
 minSpeed = 20
 maxSpeed = 25
-Hp = 10
+Hp = 25
 Damage = 6
-
-[node name="pivot" parent="." index="0"]
-transform = Transform3D(-2, 0, -5.07036e-06, 0, 2, 0, 5.07036e-06, 0, -2, 0.461145, 0.970601, -1.65704)
 
 [node name="kirbyBola" parent="pivot" index="0" instance=ExtResource("2_nemc6")]
 transform = Transform3D(0.202584, 0, -0.979265, 0, 1, 0, 0.979265, 0, 0.202584, 0.182963, 0.251249, -0.835528)
 
 [node name="ojosBola" parent="pivot" index="1" instance=ExtResource("3_4jj1i")]
-transform = Transform3D(-0.999588, 0, -0.0286687, 0, 1, 0, 0.0286687, 0, -0.999588, 0.0940224, 0.165005, -1.04289)
+transform = Transform3D(-0.999588, 0, -0.0286686, 0, 1, 0, 0.0286686, 0, -0.999588, 0.0940224, 0.165005, -1.04289)
 visible = false
 
 [node name="hitbox" parent="." index="1"]
@@ -233,7 +259,7 @@ shape = SubResource("CylinderShape3D_4tqh4")
 libraries = {
 "": SubResource("AnimationLibrary_kdnkw")
 }
-autoplay = "Animation1"
+autoplay = "DondeCaemosGente"
 
 [node name="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155976, 1.52416, 0)
