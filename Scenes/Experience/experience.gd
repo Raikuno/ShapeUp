@@ -2,25 +2,29 @@ extends Node3D
 
 var xpType
 
-func initialize(_xpType): #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
+func initialize(positionEnemy,_xpType): #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
+	global_transform.origin = positionEnemy
 	xpType = _xpType
 	match xpType:
 		1:
-			remove_child($SphereXP)
-			remove_child($PyramidXP)
-			remove_child($CubeXP)
+			get_node("Experience/SphereXP").hide()
+			get_node("Experience/PyramidXP").hide()
+			get_node("Experience/CubeXP").hide()
+			#remove_child($Experience/SphereXP)
+			#remove_child($Experience/PyramidXP)
+			#remove_child($Experience/CubeXP)
 		2:
-			remove_child($SphereXP)
-			remove_child($PyramidXP)
-			remove_child($CilinderXP)
+			get_node("Experience/SphereXP").hide()
+			get_node("Experience/PyramidXP").hide()
+			get_node("Experience/CilinderXP").hide()
 		3:
-			remove_child($CubeXP)
-			remove_child($PyramidXP)
-			remove_child($CilinderXP)
+			get_node("Experience/CubeXP").hide()
+			get_node("Experience/PyramidXP").hide()
+			get_node("Experience/CilinderXP").hide()
 		4:
-			remove_child($SphereXP)
-			remove_child($CubeXP)
-			remove_child($CilinderXP)
+			get_node("Experience/SphereXP").hide()
+			get_node("Experience/CubeXP").hide()
+			get_node("Experience/CilinderXP").hide()
 			
 func _on_area_3d_body_entered(body):
 	if SignalsTrain.has_signal("expPicked"):

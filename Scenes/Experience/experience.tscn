@@ -7,26 +7,26 @@
 [ext_resource type="PackedScene" uid="uid://dhu1rmy81482n" path="res://Scenes/Experience/CilinderXP.glb" id="4_gn22v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1s8wy"]
-size = Vector3(0.344299, 0.425903, 0.391602)
+size = Vector3(2.63503, 2.56729, 2.37169)
 
 [sub_resource type="Animation" id="Animation_gsovd"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Experience:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.119892, 0)]
+"values": [Vector3(0, 0.233364, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
+tracks/1/path = NodePath("Experience:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -35,34 +35,58 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Experience:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3, 3, 3)]
+}
 
 [sub_resource type="Animation" id="Animation_q5ohe"]
 resource_name = "experienceAnimation"
-length = 1.6
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Experience:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0.119892, 0), Vector3(0, 0.25, 0), Vector3(0, 0.12, 0), Vector3(0, 0.25, 0), Vector3(0, 0.12, 0)]
+"values": [Vector3(0, 0.233364, 0), Vector3(0, 0.44645, 0), Vector3(0, 0.27884, 0), Vector3(0, 0.466535, 0), Vector3(0, 0.233364, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
+tracks/1/path = NodePath("Experience:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 3.14159, 0), Vector3(0, 4.71239, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Experience:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(3, 3, 3), Vector3(3.5, 3.5, 3.5), Vector3(3, 3, 3)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a3keh"]
@@ -71,30 +95,16 @@ _data = {
 "experienceAnimation": SubResource("Animation_q5ohe")
 }
 
-[node name="Experience" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.119892, 0)
+[node name="ExperienceBase" type="Node3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.119892, 0)
 script = ExtResource("1_vv4l4")
-
-[node name="SphereXP" parent="." instance=ExtResource("1_oavse")]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
-
-[node name="PyramidXP" parent="." instance=ExtResource("2_il8pl")]
-visible = false
-
-[node name="CubeXP" parent="." instance=ExtResource("3_kdmxj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.504597, 0)
-visible = false
-
-[node name="CilinderXP" parent="." instance=ExtResource("4_gn22v")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
-visible = false
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
 collision_layer = 32
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00473022, 0.287048, 0.0288974)
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.00196543, 1.35774, 0.019964)
 shape = SubResource("BoxShape3D_1s8wy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -102,5 +112,19 @@ libraries = {
 "": SubResource("AnimationLibrary_a3keh")
 }
 autoplay = "experienceAnimation"
+
+[node name="Experience" type="Node3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.233364, 0)
+
+[node name="SphereXP" parent="Experience" instance=ExtResource("1_oavse")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+
+[node name="PyramidXP" parent="Experience" instance=ExtResource("2_il8pl")]
+
+[node name="CubeXP" parent="Experience" instance=ExtResource("3_kdmxj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.504597, 0)
+
+[node name="CilinderXP" parent="Experience" instance=ExtResource("4_gn22v")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
