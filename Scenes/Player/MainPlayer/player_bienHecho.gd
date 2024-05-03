@@ -69,27 +69,57 @@ var amebaStat = {
 var head = {
 	"figure" : null,
 	"resource": null,
-	"figureStat": null
+	"figureStat": null,
+		"experience": {
+		"cylinder" = 0,
+		"cube" = 0,
+		"sphere"= 0,
+		"pyramid" = 0
+	}
 }
 var body= {
 	"figure" : null,
 	"resource": null,
-	"figureStat": null
+	"figureStat": null, 
+		"experience": {
+		"cylinder" = 0,
+		"cube" = 0,
+		"sphere"= 0,
+		"pyramid" = 0
+	}
 }
 var right= {
 	"figure" : null,
 	"resource": null,
-	"figureStat": null
+	"figureStat": null,
+		"experience": {
+		"cylinder" = 0,
+		"cube" = 0,
+		"sphere"= 0,
+		"pyramid" = 0
+	}
 }
 var left= {
 	"figure" : null,
 	"resource": null,
-	"figureStat": null
+	"figureStat": null,
+		"experience": {
+		"cylinder" = 0,
+		"cube" = 0,
+		"sphere"= 0,
+		"pyramid" = 0
+	}
 }
 var feet= {
 	"figure" : null,
 	"resource": null,
-	"figureStat": null
+	"figureStat": null,
+	"experience": {
+		"cylinder" = 0,
+		"cube" = 0,
+		"sphere"= 0,
+		"pyramid" = 0
+	}
 }
 var generalXp = {
 	"cylinder" = 0,
@@ -97,6 +127,7 @@ var generalXp = {
 	"sphere"= 0,
 	"pyramid" = 0
 }
+var upgrading = HEAD
 var state
 #Animaciones 
 var animation
@@ -120,11 +151,11 @@ var intensity = 0
 @onready var invisible = $Invisible
 
 func _ready():
-	changePolygon(PYRAMID, HEAD)
-	changePolygon(PYRAMID, BODY)
-	changePolygon(PYRAMID, RIGHT)
+	changePolygon(SPHERE, HEAD)
+	changePolygon(CUBE, BODY)
+	changePolygon(CUBE, RIGHT)
 	changePolygon(PYRAMID, LEFT)
-	changePolygon(PYRAMID, FEET)
+	changePolygon(SPHERE, FEET)
 	resetStats()
 	SignalsTrain.hit.connect(onDamageTaken)
 	SignalsTrain.expPicked.connect(onExpPicked)
@@ -132,19 +163,59 @@ func _ready():
 func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 	match expType:
 		1:
-			generalXp["cylinder"] += 1
+			match upgrading:
+				HEAD:
+					head["experience"]["cylinder"] +=1
+				RIGHT:
+					right["experience"]["cylinder"] +=1
+				LEFT:
+					left["experience"]["cylinder"] +=1
+				BODY:
+					body["experience"]["cylinder"] +=1
+				FEET:
+					feet["experience"]["cylinder"] +=1
 		2:
-			generalXp["cube"] += 1
+			match upgrading:
+				HEAD:
+					head["experience"]["cube"] +=1
+				RIGHT:
+					right["experience"]["cube"] +=1 
+				LEFT:
+					left["experience"]["cube"] +=1
+				BODY:
+					body["experience"]["cube"] +=1
+				FEET:
+					feet["experience"]["cube"] +=1
 		3:
-			generalXp["sphere"] += 1
+			match upgrading:
+				HEAD:
+					head["experience"]["sphere"] +=1
+				RIGHT:
+					right["experience"]["sphere"] +=1
+				LEFT:
+					left["experience"]["sphere"] +=1
+				BODY:
+					body["experience"]["sphere"] +=1
+				FEET:
+					feet["experience"]["sphere"] +=1
 		4:
-			generalXp["pyramid"] += 1
+			match upgrading:
+					HEAD:
+						head["experience"]["pyramid"] +=1
+					RIGHT:
+						right["experience"]["pyramid"] +=1
+					LEFT:
+						left["experience"]["pyramid"] +=1
+					BODY:
+						body["experience"]["pyramid"] +=1
+					FEET:
+						feet["experience"]["pyramid"] +=1
 	print("""
 	CylinderXp: %s
 	CubeXp: %s
 	ShpereXp: %s
 	PyramidXp: %s
-	""" % [generalXp["cylinder"], generalXp["cube"], generalXp["sphere"], generalXp["pyramid"]])
+	""" % [head["experience"]["cylinder"], head["experience"]["cube"], head["experience"]["sphere"], head["experience"]["pyramid"]])
 
 func onDamageTaken(damageAmount):
 	health -= damageAmount
@@ -156,6 +227,8 @@ func _on_invisible_timeout():
 	invisible.stop()
 	
 func _physics_process(delta):
+	if health <= 0:
+		queue_free()
 	feetLogic(delta)
 	aimingLogic(delta)
 	attackLogic(delta)
