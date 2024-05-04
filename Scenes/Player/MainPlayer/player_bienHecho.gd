@@ -131,8 +131,6 @@ var upgrading = HEAD
 var state
 #Animaciones 
 var animation
-var animation_feet
-var new_animation_feet
 var new_animation
 #Velocidad
 var target_velocity = Vector3.ZERO
@@ -155,8 +153,9 @@ func _ready():
 	changePolygon(CUBE, BODY)
 	changePolygon(CUBE, RIGHT)
 	changePolygon(PYRAMID, LEFT)
-	changePolygon(SPHERE, FEET)
+	changePolygon(CUBE, FEET)
 	resetStats()
+	changeState(STATIC)
 	SignalsTrain.hit.connect(onDamageTaken)
 	SignalsTrain.expPicked.connect(onExpPicked)
 	
@@ -246,9 +245,33 @@ func changeState(newState):
 	state = newState
 	match state:
 		MOVE:
-			new_animation_feet = "feet"
+			match feet["figure"]:
+				PYRAMID:
+					animation = "pyramidFeetWalking"
+				SPHERE:
+					animation = "sphereFeetWalking"
+				CUBE:
+					animation = "cubeFeetWalking"
+				CYLINDER:
+					animation = "cylinderFeetWalking"
+				AMEBA:
+					animation = "amebaFeetWalking"
 		STATIC:
-			new_animation_feet = "idle"
+			match feet["figure"]:
+				PYRAMID:
+					animation = "pyramidFeetIdle"
+				SPHERE:
+					animation = "sphereFeetIdle"
+				CUBE:
+					animation = "cubeFeetIdle"
+				CYLINDER:
+					animation = "cylinderFeetIdle"
+				AMEBA:
+					animation = "amebaFeetIdle"
+			#new_animation_feet = "idle"
+			
+			
+	
 
 func resetStats():
 	speed = (left["figureStat"]["speed"]* armSpeed)+(right["figureStat"]["speed"] * armSpeed)+(body["figureStat"]["speed"] * bodySpeed)+(head["figureStat"]["speed"] * headSpeed)+(feet["figureStat"]["speed"] * feetSpeed)
@@ -264,6 +287,7 @@ func resetStats():
 func changePolygon(newPolygon, type):
 	match type:
 		HEAD:
+			head["figure"] = newPolygon
 			if head["resource"] != null:
 				head["resource"].hide()
 			match newPolygon:
@@ -284,6 +308,7 @@ func changePolygon(newPolygon, type):
 					head["figureStat"] = amebaStat
 			head["resource"].show()
 		BODY:
+			body["figure"] = newPolygon
 			if body["resource"] != null:
 				body["resource"].hide()
 			match newPolygon:
@@ -304,6 +329,7 @@ func changePolygon(newPolygon, type):
 					body["figureStat"] = amebaStat
 			body["resource"].show()
 		FEET:
+			feet["figure"] = newPolygon
 			if feet["resource"] != null:
 				feet["resource"].show()
 			match newPolygon:
@@ -314,7 +340,7 @@ func changePolygon(newPolygon, type):
 					feet["resource"] = $legs/cubes
 					feet["figureStat"] = cubeStat
 				PYRAMID:
-					feet["resource"] = $"legs/piernas-piramidePlayer"
+					feet["resource"] = $"legs/pyramid"
 					feet["figureStat"] = pyramidStat
 				CYLINDER:
 					feet["resource"] = $legs/cilinders
@@ -388,6 +414,9 @@ func feetLogic(delta):
 	target_velocity.z = vectorDir.z * speed
 	velocity = target_velocity
 	move_and_slide()
+	if animation !=null:
+		pass
+		$feet_animation.play(animation)
 func aimingLogic(delta):
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 2000
