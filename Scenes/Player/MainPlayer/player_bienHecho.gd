@@ -149,11 +149,11 @@ var intensity = 0
 @onready var invisible = $Invisible
 
 func _ready():
-	changePolygon(SPHERE, HEAD)
-	changePolygon(CUBE, BODY)
-	changePolygon(CUBE, RIGHT)
-	changePolygon(PYRAMID, LEFT)
-	changePolygon(CUBE, FEET)
+	changePolygon(AMEBA, HEAD)
+	changePolygon(AMEBA, BODY)
+	changePolygon(AMEBA, RIGHT)
+	changePolygon(AMEBA, LEFT)
+	changePolygon(AMEBA, FEET)
 	resetStats()
 	changeState(STATIC)
 	SignalsTrain.hit.connect(onDamageTaken)
@@ -227,19 +227,24 @@ func _on_invisible_timeout():
 	
 func _physics_process(delta):
 	if health <= 0:
-		queue_free()
-	feetLogic(delta)
-	aimingLogic(delta)
-	attackLogic(delta)
-	#Comprbaciones de estado
-	if velocity != Vector3.ZERO and state == STATIC:
-		changeState(MOVE)
-	if velocity == Vector3.ZERO and state == MOVE:
-		changeState(STATIC)
-	if invisible.is_stopped():
-		show()
+		$Camera3D2.reparent($main)
+		$feet_animation.stop()
+		$rightArmPlayer.stop()
+		$leftArmPlayer.stop()
+		$body_animation.play("deathToAllWhoOpposeMe")
 	else:
-		hide()
+		feetLogic(delta)
+		aimingLogic(delta)
+		attackLogic(delta)
+		#Comprbaciones de estado
+		if velocity != Vector3.ZERO and state == STATIC:
+			changeState(MOVE)
+		if velocity == Vector3.ZERO and state == MOVE:
+			changeState(STATIC)
+		if invisible.is_stopped():
+			show()
+		else:
+			hide()
 
 func changeState(newState):
 	state = newState
@@ -454,6 +459,7 @@ func attackLogic(delta):
 			pass
 		AMEBA:
 			$leftArmPlayer.play("amebaBulletLeft")
+	$rightArmPlayer.speed_scale = (1 + atqSpeed/80) 
 
 func fire(weapon, part):
 	var iNeedMoreBulletss: PackedScene = load("res://Scenes/Player/BulletsPlayer/bulletsPlayer.tscn")
