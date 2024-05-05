@@ -151,9 +151,9 @@ var intensity = 0
 func _ready():
 	changePolygon(SPHERE, HEAD)
 	changePolygon(SPHERE, BODY)
-	changePolygon(CUBE, RIGHT)
+	changePolygon(SPHERE, RIGHT)
 	changePolygon(SPHERE, LEFT)
-	changePolygon(PYRAMID, FEET)
+	changePolygon(SPHERE, FEET)
 
 	resetStats()
 	changeState(STATIC)

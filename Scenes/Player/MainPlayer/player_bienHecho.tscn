@@ -712,13 +712,14 @@ tracks/1/path = NodePath("legs/pyramid/piernas-piramidePlayer:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(5.02464e-08, -3.222e-09, -0.128072), Vector3(-0.127409, 0, 0), Vector3(0, 0, 0.127409), Vector3(0.127409, 0, 0)]
+"values": [Vector3(5.02464e-08, -3.222e-09, -0.128072), Vector3(-0.127409, 1.5708, 0), Vector3(0, 3.14159, 0.127409), Vector3(0.127409, 4.71239, 0), Vector3(0, 6.28319, -0.127409)]
 }
 
 [sub_resource type="Animation" id="Animation_qh206"]
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -727,10 +728,10 @@ tracks/0/path = NodePath("legs/pyramid/piernas-piramidePlayer:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0.321141)]
+"values": [Vector3(0, 0, 0.321141), Vector3(-0.327197, 1.5708, -0.0270353), Vector3(3.36527e-07, 3.14159, -0.375403), Vector3(0.214676, 4.71239, -0.020944), Vector3(0, 6.28319, 0.321141)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -739,7 +740,7 @@ tracks/1/path = NodePath("legs/pyramid/piernas-piramidePlayer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-0.545794, 0, 0.0168477), Vector3(-0.546, -0.6, 0.017)]
@@ -1046,15 +1047,15 @@ transform = Transform3D(0.140941, -0.895938, -0.421226, 0.987852, 0.1554, 0, 0.0
 visible = false
 
 [node name="brazo-cuboPlayer" parent="pivot/rightArm" instance=ExtResource("16_ne5te")]
-transform = Transform3D(0.462744, 5.21541e-07, -0.525231, -0.304705, 0.570165, -0.268453, 0.427812, 0.406094, 0.376915, 0.256621, 2.1317, 2.58995)
+transform = Transform3D(0.462744, 5.00679e-07, -0.525231, -0.304705, 0.570165, -0.268453, 0.427812, 0.406094, 0.376915, 0.256621, 2.1317, 2.58995)
 visible = false
 
 [node name="brazo-esferaPlayer" parent="pivot/rightArm" instance=ExtResource("17_87h6d")]
-transform = Transform3D(0.821905, 0.569624, 3.75933e-08, -0.529623, 0.764188, -0.368125, -0.209693, 0.302564, 0.929776, 0.585547, 1.73018, 2.30501)
+transform = Transform3D(0.821905, 0.569624, 4.03831e-08, -0.529623, 0.764188, -0.368125, -0.209693, 0.302564, 0.929776, 0.585547, 1.73018, 2.30501)
 visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/rightArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.49654e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
+transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.48383e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
 visible = false
 
 [node name="leftArm" type="Node3D" parent="pivot"]
@@ -1073,11 +1074,11 @@ transform = Transform3D(0.67474, 0.133303, 0.130216, 0, 0.489144, -0.500738, -0.
 visible = false
 
 [node name="brazo-esferaPlayer" parent="pivot/leftArm" instance=ExtResource("17_87h6d")]
-transform = Transform3D(0.49982, 0.418864, 0.758111, -0.642306, 0.766448, 1.35766e-07, -0.581053, -0.48694, 0.652125, -0.0885837, 2.01696, -1.9455)
+transform = Transform3D(0.49982, 0.418864, 0.758112, -0.642306, 0.766448, 1.46222e-07, -0.581053, -0.48694, 0.652125, -0.0885837, 2.01696, -1.9455)
 visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/leftArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.21487e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
+transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.23488e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
 visible = false
 
 [node name="brazo-amebaPlayerMKII" parent="pivot/leftArm" instance=ExtResource("19_hh71a")]
@@ -1143,10 +1144,11 @@ transform = Transform3D(1.5, 0, 5.68434e-14, 0, 1.5, 0, -5.68434e-14, 0, 1.5, -3
 transform = Transform3D(1.5, 0, 5.68434e-14, 0, 1.5, 0, -5.68434e-14, 0, 1.5, 6.55671e-07, 0, -1.66667)
 
 [node name="pyramid" type="Node3D" parent="legs"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 visible = false
 
 [node name="piernas-piramidePlayer" parent="legs/pyramid" instance=ExtResource("24_d3gix")]
-transform = Transform3D(1.48772, 0.191584, -4.833e-09, -0.191584, 1.48772, -7.53696e-08, -4.83297e-09, 7.53698e-08, 1.5, -0.545794, 0, 0.0168477)
+transform = Transform3D(1.48772, 0.191584, -4.833e-09, -0.191584, 1.48772, -7.53696e-08, -4.83297e-09, 7.53699e-08, 1.5, -0.545794, 0, 0.0168477)
 
 [node name="rightArmPlayer" type="AnimationPlayer" parent="."]
 libraries = {

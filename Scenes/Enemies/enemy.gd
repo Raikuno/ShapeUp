@@ -8,6 +8,7 @@ signal hit(damageAmount)
 var skinNumber = randi_range(1,2)
 var speed 
 var hitting = false
+var omaewamoshindeiru = false
 var wandering = false
 var wanderingPosition
 var enemyType #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
@@ -49,15 +50,17 @@ func _on_animation_player_animation_finished(anim_name):
 	
 
 func enemyDeath():
-	var position = global_transform.origin
-	var experience = load("res://Scenes/Experience/experience.tscn")
-	var experienceObject = experience.instantiate()
-	experienceObject.initialize(position, enemyType)
-	add_sibling(experienceObject)
-	if skinNumber == 1:
-		$Animation.get_child(0).play("DeathAnimation")
-	else:
-		$Animation.get_child(0).play("DeathAnimation2")
+	if !omaewamoshindeiru:
+		omaewamoshindeiru = true
+		var position = global_transform.origin
+		var experience = load("res://Scenes/Experience/experience.tscn")
+		var experienceObject = experience.instantiate()
+		experienceObject.initialize(position, enemyType)
+		add_sibling(experienceObject)
+		if skinNumber == 1:
+			$Animation.get_child(0).play("DeathAnimation")
+		else:
+			$Animation.get_child(0).play("DeathAnimation2")
 	
 func _physics_process(_delta):
 	var transform = get_transform()
