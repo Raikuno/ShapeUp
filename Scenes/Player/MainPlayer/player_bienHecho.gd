@@ -149,11 +149,11 @@ var intensity = 0
 @onready var invisible = $Invisible
 
 func _ready():
-	changePolygon(SPHERE, HEAD)
-	changePolygon(SPHERE, BODY)
-	changePolygon(CUBE, RIGHT)
-	changePolygon(SPHERE, LEFT)
-	changePolygon(PYRAMID, FEET)
+	changePolygon(AMEBA, HEAD)
+	changePolygon(AMEBA, BODY)
+	changePolygon(AMEBA, RIGHT)
+	changePolygon(AMEBA, LEFT)
+	changePolygon(AMEBA, FEET)
 	resetStats()
 	changeState(STATIC)
 	SignalsTrain.hit.connect(onDamageTaken)
