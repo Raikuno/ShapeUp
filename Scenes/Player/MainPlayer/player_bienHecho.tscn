@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bavtwemfemmxy"]
+[gd_scene load_steps=57 format=3 uid="uid://bavtwemfemmxy"]
 
 [ext_resource type="Script" path="res://Scenes/Player/MainPlayer/player_bienHecho.gd" id="1_4kplc"]
 [ext_resource type="PackedScene" uid="uid://baj52amprcwev" path="res://Resources/BodyParts/Head/cabeza-amebaPlayer.glb" id="2_h7yxf"]
@@ -303,30 +303,6 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath(".:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.30558, 0)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath(".:rotation")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.5708, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_alg2a"]
 resource_local_to_scene = true
@@ -393,38 +369,9 @@ tracks/4/keys = {
 "values": [Vector3(-0.452101, 2.06717, 0.130315), Vector3(-0.452, 2.17, 0.13), Vector3(-0.452, 2.067, 0.13)]
 }
 
-[sub_resource type="Animation" id="Animation_trea3"]
-resource_name = "deathToAllWhoOpposeMe"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 1.30558, 0), Vector3(0, 1.30558, 0), Vector3(0, 120, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 1.3, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 1.5708, 0), Vector3(0.431114, 1.5708, 7.49386e-08), Vector3(0.431096, 7.85398, 0), Vector3(1.47829, 7.85398, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5bk5e"]
 _data = {
 "RESET": SubResource("Animation_sm6nt"),
-"deathToAllWhoOpposeMe": SubResource("Animation_trea3"),
 "idle": SubResource("Animation_alg2a")
 }
 
@@ -1023,7 +970,7 @@ height = 5.77793
 radius = 1.09693
 
 [node name="player" type="CharacterBody3D"]
-transform = Transform3D(-1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 1.30558, 0)
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0, 1.30558, 0)
 script = ExtResource("1_4kplc")
 
 [node name="pivot" type="Node3D" parent="."]
@@ -1037,19 +984,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.491524, 4.51571, 0.238714)
 visible = false
 
 [node name="cabeza-cilindroPlayer" parent="pivot/head" instance=ExtResource("3_pn76c")]
-transform = Transform3D(-0.7, 0, 6.11957e-08, 0, 0.7, 0, -6.11957e-08, 0, -0.7, -0.0348858, 3.50465, 0.0227806)
+transform = Transform3D(-0.7, 0, 6.11958e-08, 0, 0.7, 0, -6.11958e-08, 0, -0.7, -0.0348858, 4.17132, 0.0227806)
 visible = false
 
 [node name="cabeza-cuboPlayer" parent="pivot/head" instance=ExtResource("4_dv05f")]
-transform = Transform3D(0.8, 0, 8.52651e-14, 0, 0.8, 0, -8.52651e-14, 0, 0.8, -0.0260751, 4.0217, -0.037073)
+transform = Transform3D(0.8, 0, 8.52651e-14, 0, 0.8, 0, -8.52651e-14, 0, 0.8, -0.0260751, 4.35794, 0.0239043)
 visible = false
 
 [node name="cabeza-esferaPlayer" parent="pivot/head" instance=ExtResource("5_dmqif")]
-transform = Transform3D(0.0146777, 0, 0.999892, 0, 1, 0, -0.999892, 0, 0.0146777, -0.011865, 3.71908, 0.00974807)
+transform = Transform3D(0.0146777, 0, 0.999892, 0, 1, 0, -0.999892, 0, 0.0146777, -0.011865, 4.38575, 0.00974807)
 visible = false
 
 [node name="cabeza-piramidePlayer" parent="pivot/head" instance=ExtResource("6_t52sb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.085308, 3.66737, 0.193989)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0853079, 3.90379, 0.193989)
 visible = false
 
 [node name="cabeza-amebaPlayerMK2" parent="pivot/head" instance=ExtResource("7_xanm1")]
@@ -1068,7 +1015,7 @@ transform = Transform3D(0.0504807, 0, 0.967754, 0, 0.96907, 0, -0.967754, 0, 0.0
 visible = false
 
 [node name="cuerpo-cuboPlayer" parent="pivot/body" instance=ExtResource("10_t7m8v")]
-transform = Transform3D(0.80774, 0, 5.68434e-14, 0, 0.80774, 0, -5.68434e-14, 0, 0.80774, -0.043986, 2.06319, 0.0186772)
+transform = Transform3D(0.80774, 0, 5.68434e-14, 0, 0.80774, 0, -5.68434e-14, 0, 0.80774, -0.043986, 2.06319, 0.106417)
 visible = false
 
 [node name="cuerpo-piramidePlayer" parent="pivot/body" instance=ExtResource("11_fke4p")]
@@ -1167,7 +1114,6 @@ transform = Transform3D(1.3, 0, -2.273e-07, 0, 1.3, 0, 2.273e-07, 0, 1.3, -0.833
 transform = Transform3D(1.3, 0, -4.546e-07, 0, 1.3, 0, 4.546e-07, 0, 1.3, 0.833333, -0.833333, 3.27836e-07)
 
 [node name="cubes" type="Node3D" parent="legs"]
-visible = false
 
 [node name="piernas-cuadradoPlayer" parent="legs/cubes" instance=ExtResource("22_pla72")]
 transform = Transform3D(0.0373936, 0, -0.999301, 0, 1, 0, 0.999301, 0, 0.0373936, 9.39796e-07, 0, -2.38889)
@@ -1189,10 +1135,10 @@ transform = Transform3D(1, 0, -1.7053e-13, 0, 1, 0, 1.7053e-13, 0, 1, -7.2135e-0
 visible = false
 
 [node name="piernaizquierda-amebaPlayer" parent="legs/amebaEvil" instance=ExtResource("25_crpbl")]
-transform = Transform3D(2, 0, 7.57912e-14, 0, 2, 0, -7.57912e-14, 0, 2, -3.27836e-07, 0, 0.833333)
+transform = Transform3D(1.5, 0, 5.68434e-14, 0, 1.5, 0, -5.68434e-14, 0, 1.5, -3.27836e-07, 0, 0.833333)
 
 [node name="piernaderecha-amebaPlayer" parent="legs/amebaEvil" instance=ExtResource("26_ed0f6")]
-transform = Transform3D(2, 0, 7.57912e-14, 0, 2, 0, -7.57912e-14, 0, 2, 6.55671e-07, 0, -1.66667)
+transform = Transform3D(1.5, 0, 5.68434e-14, 0, 1.5, 0, -5.68434e-14, 0, 1.5, 6.55671e-07, 0, -1.66667)
 
 [node name="pyramid" type="Node3D" parent="legs"]
 visible = false
