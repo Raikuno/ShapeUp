@@ -1123,6 +1123,7 @@ transform = Transform3D(0.0373976, 0, -0.999301, 0, 1, 0, 0.999301, 0, 0.0373976
 transform = Transform3D(0.0012563, 0, -0.999999, 0, 1, 0, 0.999999, 0, 0.0012563, -9.39796e-07, 0, 2.38889)
 
 [node name="spheres" type="Node3D" parent="legs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.69283e-08, 0, 0.144707)
 visible = false
 
 [node name="piernas-esferaPlayer" parent="legs/spheres" instance=ExtResource("23_tdkpf")]
