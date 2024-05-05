@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://1gj1nmqqc76k"]
+[gd_scene load_steps=21 format=3 uid="uid://1gj1nmqqc76k"]
 
 [ext_resource type="Script" path="res://Scenes/Player/BulletsPlayer/bulletsPlayer.gd" id="1_ltc3q"]
 [ext_resource type="Animation" uid="uid://djhy2ijgkuatc" path="res://Resources/Animations/attacks/ameba.res" id="2_6f4k7"]
@@ -143,7 +143,11 @@ size = Vector3(1.8, 1.8, 1.8)
 [sub_resource type="BoxShape3D" id="BoxShape3D_nxxhr"]
 size = Vector3(1.7, 1.7, 1.7)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a2ap"]
+albedo_color = Color(0.219608, 0.513726, 0, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_ste0a"]
+material = SubResource("StandardMaterial3D_8a2ap")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_glmqf"]
 
@@ -208,7 +212,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0516163, -0.0257491, 0)
 shape = SubResource("BoxShape3D_nxxhr")
 
 [node name="bracoCilindro" type="Area3D" parent="."]
-visible = false
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="bracoCilindro"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)

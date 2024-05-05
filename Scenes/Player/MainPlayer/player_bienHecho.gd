@@ -154,7 +154,10 @@ func _ready():
 	changePolygon(SPHERE, RIGHT)
 	changePolygon(SPHERE, LEFT)
 	changePolygon(SPHERE, FEET)
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 	resetStats()
 	changeState(STATIC)
 	SignalsTrain.hit.connect(onDamageTaken)
@@ -285,6 +288,7 @@ func resetStats():
 	Damage: %s
 	ATQSpeed: %s
 	""" % [speed, health, damage, atqSpeed])
+	$rightArmPlayer.speed_scale = (1 + atqSpeed/80) 
 func changePolygon(newPolygon, type):
 	match type:
 		HEAD:
