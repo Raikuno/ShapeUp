@@ -110,6 +110,13 @@ func _on_brazo_ameba_child_entered_tree(node):
 	if(node.name == "Ground"):
 		onFloor = true
 		$amebaDespawn.start()
-
+func cilinderLogic(delta):
+		var direction = global_transform.basis.z.normalized()
+		var displacement : Vector3 = direction * -100 * delta
+		global_transform.origin += displacement
 func pyramidCollision(body):
 	bulletHitting(body)
+
+
+func _on_braco_cilindro_body_entered(body):
+	pass # Replace with function body.

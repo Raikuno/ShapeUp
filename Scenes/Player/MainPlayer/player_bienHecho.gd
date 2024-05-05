@@ -151,9 +151,15 @@ var intensity = 0
 func _ready():
 	changePolygon(SPHERE, HEAD)
 	changePolygon(SPHERE, BODY)
+<<<<<<< Updated upstream
 	changePolygon(CUBE, RIGHT)
 	changePolygon(SPHERE, LEFT)
 	changePolygon(PYRAMID, FEET)
+=======
+	changePolygon(SPHERE, RIGHT)
+	changePolygon(SPHERE, LEFT)
+	changePolygon(SPHERE, FEET)
+>>>>>>> Stashed changes
 	resetStats()
 	changeState(STATIC)
 	SignalsTrain.hit.connect(onDamageTaken)
@@ -458,8 +464,20 @@ func attackLogic(delta):
 func fire(weapon, part):
 	var iNeedMoreBulletss: PackedScene = load("res://Scenes/Player/BulletsPlayer/bulletsPlayer.tscn")
 	var biggerWeapons:Node3D
+	var variableDamage
+	match weapon:
+		SPHERE:
+			variableDamage = 0.65
+		AMEBA:
+			variableDamage = 0.5
+		PYRAMID:
+			variableDamage = 1
+		CUBE:
+			variableDamage = 0.8
+		CYLINDER:
+			variableDamage = 0.9
 	biggerWeapons = iNeedMoreBulletss.instantiate()
-	biggerWeapons.initialize(weapon, $pivot.basis, damage, part.global_position, part.global_rotation)
+	biggerWeapons.initialize(weapon, $pivot.basis, damage * variableDamage, part.global_position, part.global_rotation)
 	add_sibling(biggerWeapons)
 
 #Función que será llamada cada vez que finalice la animación de recarga. Esta animación y su velocidad determinarán la velocidad de ataque
