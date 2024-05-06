@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://1gj1nmqqc76k"]
+[gd_scene load_steps=23 format=3 uid="uid://1gj1nmqqc76k"]
 
 [ext_resource type="Script" path="res://Scenes/Player/BulletsPlayer/bulletsPlayer.gd" id="1_ltc3q"]
 [ext_resource type="Animation" uid="uid://djhy2ijgkuatc" path="res://Resources/Animations/attacks/ameba.res" id="2_6f4k7"]
@@ -82,6 +82,30 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector3(1, 1, 1)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("bracoCilindro/MeshInstance3D:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5708)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("bracoCilindro/CollisionShape3D:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5708)]
+}
 
 [sub_resource type="Animation" id="Animation_njmiu"]
 resource_name = "cube"
@@ -98,6 +122,51 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 6.28319), Vector3(12.5664, 0, 12.5664)]
+}
+
+[sub_resource type="Animation" id="Animation_3au4q"]
+resource_name = "cylinderBullet"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bracoCilindro/MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5708), Vector3(0, 6.28319, 1.5708)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bracoCilindro/CollisionShape3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5708), Vector3(0, 6.28319, 1.5708)]
+}
+
+[sub_resource type="Animation" id="Animation_sxnnt"]
+resource_name = "cylinderPreBullet"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bracoCilindro/MeshInstance3D:mesh:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 2.0]
 }
 
 [sub_resource type="Animation" id="Animation_vatco"]
@@ -122,6 +191,8 @@ _data = {
 "ameba": ExtResource("2_6f4k7"),
 "cube": SubResource("Animation_njmiu"),
 "cubeExplode": ExtResource("3_wdhnl"),
+"cylinderBullet": SubResource("Animation_3au4q"),
+"cylinderPreBullet": SubResource("Animation_sxnnt"),
 "pyramid": SubResource("Animation_vatco")
 }
 
@@ -148,8 +219,11 @@ albedo_color = Color(0.219608, 0.513726, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ste0a"]
 material = SubResource("StandardMaterial3D_8a2ap")
+height = 5.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_glmqf"]
+height = 5.0
+radius = 1.0
 
 [node name="Bullets" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.13398)
@@ -204,6 +278,8 @@ shape = SubResource("BoxShape3D_ravoe")
 
 [node name="brazoAmeba" type="Area3D" parent="."]
 visible = false
+collision_layer = 10
+collision_mask = 10
 
 [node name="brazo-amebaPlayerMKII" parent="brazoAmeba" instance=ExtResource("6_r878h")]
 
@@ -213,17 +289,23 @@ shape = SubResource("BoxShape3D_nxxhr")
 
 [node name="bracoCilindro" type="Area3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+visible = false
+collision_layer = 2
+collision_mask = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="bracoCilindro"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_ste0a")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bracoCilindro"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_glmqf")
 
 [node name="amebaDespawn" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="cylinderDespawn" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="brazoTriangulo" to="." method="pyramidCollision"]
@@ -232,6 +314,7 @@ wait_time = 0.5
 [connection signal="body_entered" from="brazoCubo" to="." method="cubeCollision"]
 [connection signal="tree_entered" from="brazoCubo/CollisionShape3D" to="." method="_on_collision_shape_3d_tree_entered"]
 [connection signal="body_entered" from="brazoEsfera" to="." method="sphereCollision"]
-[connection signal="body_entered" from="brazoAmeba" to="." method="_on_brazo_ameba_child_entered_tree"]
+[connection signal="body_entered" from="brazoAmeba" to="." method="_on_brazo_ameba_body_entered"]
 [connection signal="body_entered" from="bracoCilindro" to="." method="_on_braco_cilindro_body_entered"]
 [connection signal="timeout" from="amebaDespawn" to="." method="destroy"]
+[connection signal="timeout" from="cylinderDespawn" to="." method="destroy"]

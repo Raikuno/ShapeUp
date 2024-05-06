@@ -149,11 +149,19 @@ var intensity = 0
 @onready var invisible = $Invisible
 
 func _ready():
+<<<<<<< Updated upstream
 	changePolygon(CUBE, HEAD)
 	changePolygon(CUBE, BODY)
 	changePolygon(CUBE, RIGHT)
 	changePolygon(CUBE, LEFT)
 	changePolygon(CUBE, FEET)
+=======
+	changePolygon(PYRAMID, HEAD)
+	changePolygon(PYRAMID, BODY)
+	changePolygon(CYLINDER, RIGHT)
+	changePolygon(PYRAMID, LEFT)
+	changePolygon(PYRAMID, FEET)
+>>>>>>> Stashed changes
 	resetStats()
 	changeState(STATIC)
 	SignalsTrain.hit.connect(onDamageTaken)
@@ -440,7 +448,7 @@ func attackLogic(delta):
 		PYRAMID:
 			$rightArmPlayer.play("pyramidBullet")
 		CYLINDER:
-			pass
+			$rightArmPlayer.play("cylinderRight")
 		AMEBA:
 			$rightArmPlayer.play("AmebaRight")
 			

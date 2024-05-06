@@ -8,6 +8,7 @@ var type
 @export var jump_impulse = 20
 @export var damage = 50   # cada tipo de brazo va a tener un multiplicador al daño base del jugador, por ejemplo circulo hará un 0.75 del daño base y cuadrado un 1.25
 @onready var cubeHeight = 0.8
+var getFixedBoy = false
 func _ready():
 	pass
 func _process(delta):
@@ -33,7 +34,14 @@ func callBullet():
 				remove_child($brazoAmeba)
 				remove_child($bracoCilindro)
 			CYLINDER:
-				pass
+				getFixedBoy = true
+				$bracoCilindro.show()
+				remove_child($bracoAmeba)
+				remove_child($brazoCubo)
+				remove_child($brazoTriangulo)
+				remove_child($brazoSphere)
+				remove_child($brazoAmeba/CollisionShape3D)
+				
 			AMEBA:
 				$brazoAmeba.show()
 				remove_child($brazoCubo)
@@ -58,7 +66,7 @@ func _physics_process(delta):
 		SPHERE:
 			sphereLogic(delta)
 		CYLINDER:
-			pass
+			cylinderLogic(delta)
 		CUBE:
 			cubeLogic(delta)
 		PYRAMID:
@@ -105,22 +113,32 @@ func amebaLogic(delta):
 		var displacement : Vector3 = direction * -70 * delta
 		global_transform.origin += Vector3(displacement.x, cubeHeight, displacement.z)
 		cubeHeight -= 0.1
-func _on_brazo_ameba_child_entered_tree(node):
-	bulletHitting(node)
-	if(node.name == "Ground"):
-		onFloor = true
-		$amebaDespawn.start()
-func cilinderLogic(delta):
+
+func cylinderLogic(delta):
 	if !onFloor:
 		var direction = global_transform.basis.z.normalized()
-		var displacement : Vector3 = direction * -70 * delta
-		global_transform.origin += Vector3(0, cubeHeight, 0)
+		var displacement : Vector3 = direction * -20 * delta
+		global_transform.origin += Vector3(displacement.x, cubeHeight, displacement.y)
 		cubeHeight -= 0.1
+	else:
+		$AnimationPlayer.play("cylinderBullet")
+		var direction = global_transform.basis.z.normalized()
+		var displacement : Vector3 = direction * 5 * delta
+		global_transform.origin += displacement
 func pyramidCollision(body):
 	bulletHitting(body)
 
 func _on_braco_cilindro_body_entered(body):
 	bulletHitting(body)
 	if(body.name == "Ground"):
+		print("jajaja")
 		onFloor = true
+		$cylinderDespawn.start()
+
+
+func _on_brazo_ameba_body_entered(body):
+	bulletHitting(body)
+	if(body.name == "Ground"&&!getFixedBoy):
+		onFloor = true
+		print("fuck")
 		$amebaDespawn.start()
