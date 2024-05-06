@@ -149,19 +149,11 @@ var intensity = 0
 @onready var invisible = $Invisible
 
 func _ready():
-<<<<<<< Updated upstream
 	changePolygon(CUBE, HEAD)
 	changePolygon(CUBE, BODY)
-	changePolygon(CUBE, RIGHT)
+	changePolygon(CYLINDER, RIGHT)
 	changePolygon(CUBE, LEFT)
 	changePolygon(CUBE, FEET)
-=======
-	changePolygon(PYRAMID, HEAD)
-	changePolygon(PYRAMID, BODY)
-	changePolygon(CYLINDER, RIGHT)
-	changePolygon(PYRAMID, LEFT)
-	changePolygon(PYRAMID, FEET)
->>>>>>> Stashed changes
 	resetStats()
 	changeState(STATIC)
 	SignalsTrain.hit.connect(onDamageTaken)
@@ -478,7 +470,7 @@ func fire(weapon, part):
 		CUBE:
 			variableDamage = 0.8
 		CYLINDER:
-			variableDamage = 0.9
+			variableDamage = 0.2
 	biggerWeapons = iNeedMoreBulletss.instantiate()
 	biggerWeapons.initialize(weapon, $pivot.basis, damage * variableDamage, part.global_position, part.global_rotation)
 	add_sibling(biggerWeapons)
