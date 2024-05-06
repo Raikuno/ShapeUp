@@ -117,13 +117,13 @@ func amebaLogic(delta):
 func cylinderLogic(delta):
 	if !onFloor:
 		var direction = global_transform.basis.z.normalized()
-		var displacement : Vector3 = direction * -20 * delta
+		var displacement : Vector3 = direction * -30 * delta
 		global_transform.origin += Vector3(displacement.x, cubeHeight, displacement.y)
 		cubeHeight -= 0.1
 	else:
 		$AnimationPlayer.play("cylinderBullet")
 		var direction = global_transform.basis.z.normalized()
-		var displacement : Vector3 = direction * 5 * delta
+		var displacement : Vector3 = direction * 20 * delta
 		global_transform.origin += displacement
 func pyramidCollision(body):
 	bulletHitting(body)

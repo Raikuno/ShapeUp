@@ -152,7 +152,7 @@ func _ready():
 	changePolygon(CUBE, HEAD)
 	changePolygon(CUBE, BODY)
 	changePolygon(CYLINDER, RIGHT)
-	changePolygon(CUBE, LEFT)
+	changePolygon(CYLINDER, LEFT)
 	changePolygon(CUBE, FEET)
 	resetStats()
 	changeState(STATIC)
@@ -452,7 +452,7 @@ func attackLogic(delta):
 		PYRAMID:
 			$leftArmPlayer.play("pyramidBulletLeft")
 		CYLINDER:
-			pass
+			$leftArmPlayer.play("cylinderBulletLeft")
 		AMEBA:
 			$leftArmPlayer.play("amebaBulletLeft")
 
@@ -470,7 +470,7 @@ func fire(weapon, part):
 		CUBE:
 			variableDamage = 0.8
 		CYLINDER:
-			variableDamage = 0.2
+			variableDamage = 0.4
 	biggerWeapons = iNeedMoreBulletss.instantiate()
 	biggerWeapons.initialize(weapon, $pivot.basis, damage * variableDamage, part.global_position, part.global_rotation)
 	add_sibling(biggerWeapons)
