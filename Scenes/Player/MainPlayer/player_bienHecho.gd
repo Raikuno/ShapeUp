@@ -149,12 +149,11 @@ var intensity = 0
 @onready var invisible = $Invisible
 
 func _ready():
-	changePolygon(SPHERE, HEAD)
-	changePolygon(SPHERE, BODY)
+	changePolygon(CUBE, HEAD)
+	changePolygon(CUBE, BODY)
 	changePolygon(CUBE, RIGHT)
-	changePolygon(PYRAMID, LEFT)
-	changePolygon(PYRAMID, FEET)
-
+	changePolygon(CUBE, LEFT)
+	changePolygon(CUBE, FEET)
 	resetStats()
 	changeState(STATIC)
 	SignalsTrain.hit.connect(onDamageTaken)
@@ -285,6 +284,7 @@ func resetStats():
 	Damage: %s
 	ATQSpeed: %s
 	""" % [speed, health, damage, atqSpeed])
+	$rightArmPlayer.speed_scale = (1 + atqSpeed/80) 
 func changePolygon(newPolygon, type):
 	match type:
 		HEAD:

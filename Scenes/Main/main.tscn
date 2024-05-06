@@ -304,4 +304,66 @@ fov = 78.75
 [node name="mobSpawnTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="Menu" type="Control" parent="."]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Name" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 11.05
+anchor_top = 1.15
+anchor_right = 18.65
+anchor_bottom = 4.55
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 8.0
+offset_bottom = -24.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0431373, 0.0588235, 0.176471, 1)
+theme_override_font_sizes/font_size = 64
+text = "SHAPE UP"
+metadata/_edit_use_anchors_ = true
+
+[node name="Pause" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 11.125
+anchor_top = 3.7
+anchor_right = 18.725
+anchor_bottom = 7.1
+offset_left = 5.0
+offset_top = 24.0
+offset_right = 5.0
+offset_bottom = -24.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0431373, 0.0588235, 0.176471, 1)
+theme_override_font_sizes/font_size = 48
+text = "PAUSE"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Start" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 288.0
+offset_right = 754.0
+offset_bottom = 363.0
+theme_override_font_sizes/font_size = 48
+text = "Resume"
+
+[node name="Exit" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 397.0
+offset_right = 754.0
+offset_bottom = 472.0
+theme_override_font_sizes/font_size = 48
+text = "Exit to Menu"
+
 [connection signal="timeout" from="mobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]
+[connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/Exit" to="." method="_on_exit_pressed"]

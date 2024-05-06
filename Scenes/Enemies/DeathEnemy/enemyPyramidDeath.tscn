@@ -1,0 +1,316 @@
+[gd_scene load_steps=17 format=3 uid="uid://cw3j2b2mtttny"]
+
+[ext_resource type="PackedScene" uid="uid://ci1l2lseswhub" path="res://Scenes/Enemies/enemy.tscn" id="1_86r2f"]
+[ext_resource type="PackedScene" uid="uid://c8dlxadfb0a0v" path="res://Resources/Enemies/pyramid/billPyramid.glb" id="2_c4des"]
+[ext_resource type="Script" path="res://Scenes/Enemies/DeathEnemy/enemyDeath.gd" id="2_iifn1"]
+[ext_resource type="PackedScene" uid="uid://cfmslmn67qw8d" path="res://Resources/Enemies/pyramid/sherifPyramid.glb" id="3_sgmtq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iewpk"]
+size = Vector3(2.66917, 6.95551, 2.24114)
+
+[sub_resource type="Animation" id="Animation_0fny1"]
+resource_name = "Animation1"
+length = 2.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/billPyramid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.733, 0.3, -0.64), Vector3(0.449099, 0.4, -0.800674), Vector3(0.076, 0.3, -0.732), Vector3(-0.113989, 0.4, -0.612302), Vector3(-0.232, 0.3, -0.235), Vector3(0.0668724, 0.4, -0.135311), Vector3(0.431281, 0.3, 0.00571114), Vector3(0.582, 0.4, -0.199), Vector3(0.733, 0.3, -0.64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/billPyramid:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.785398, 0.0872665), Vector3(0, 1.5708, 0), Vector3(0, 2.35619, -0.0872665), Vector3(0, 3.14159, 0), Vector3(0, 3.92699, 0.0872665), Vector3(0, 4.71239, 0), Vector3(0, 5.49779, -0.0872665), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pref4"]
+resource_name = "Animation2"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/sherifPyramid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.229, -0.4, -0.628), Vector3(0.229, -0.2, -0.628), Vector3(0.229, -0.4, -0.628), Vector3(0.229, -0.2, -0.628), Vector3(0.229, -0.4, -0.628)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/sherifPyramid:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 6.06286, 0.233258, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.261799, 0, 0), Vector3(0, 0, 0), Vector3(0.261799, 0, 0), Vector3(2.98023e-08, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hhme5"]
+resource_name = "DeathAnimation"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/billPyramid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.733, 0.3, -0.64), Vector3(0.0373604, 1.03951, -0.939766), Vector3(-0.217694, 1.03951, -0.291575), Vector3(0.297038, 1.03951, -0.246269)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/billPyramid:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.57539, 0), Vector3(0, 3.12637, 0), Vector3(0, -1.57877, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../pivot/billPyramid:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dc2i8"]
+resource_name = "DeathAnimation2"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/sherifPyramid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.229, -0.1, -0.846), Vector3(0.229, 0.195649, -0.846), Vector3(0.228998, 0.195649, -0.126373), Vector3(0.228998, 0.195649, -0.126373), Vector3(0.228998, 0.195649, -0.126373)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/sherifPyramid:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.664953, 6.86364e-07, -1.98776e-06), Vector3(-1.35443, 3.14158, -3.14158), Vector3(-1.35443, 3.14158, -3.14158), Vector3(-1.35443, 3.14158, -3.14158)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../pivot/sherifPyramid:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_25g4k"]
+resource_name = "DondeCaemosGente"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(4.43828, 1),
+"update": 0,
+"values": [Vector3(0.461, 50, -1.657), Vector3(0.461145, 0.970601, -1.65704)]
+}
+
+[sub_resource type="Animation" id="Animation_ei6im"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/billPyramid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.386005, 0.421841, 0.324695)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/billPyramid:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../pivot/sherifPyramid:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.229, -0.1, -0.846)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../pivot/sherifPyramid:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../pivot/billPyramid:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../pivot/sherifPyramid:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../pivot:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.461145, 0.970601, -1.65704)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rd2j7"]
+_data = {
+"Animation1": SubResource("Animation_0fny1"),
+"Animation2": SubResource("Animation_pref4"),
+"DeathAnimation": SubResource("Animation_hhme5"),
+"DeathAnimation2": SubResource("Animation_dc2i8"),
+"DondeCaemosGente": SubResource("Animation_25g4k"),
+"RESET": SubResource("Animation_ei6im")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cgeuy"]
+size = Vector3(3.06561, 2.87744, 2.62598)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6fsb"]
+albedo_color = Color(0.643137, 0.796078, 0.156863, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_llnj2"]
+emission_shape_scale = Vector3(3, 1, 3)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, -10, 0)
+scale_min = 0.25
+scale_max = 1.4
+
+[sub_resource type="PrismMesh" id="PrismMesh_dalnk"]
+
+[node name="enemy3" instance=ExtResource("1_86r2f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.294609, 0)
+script = ExtResource("2_iifn1")
+
+[node name="billPyramid" parent="pivot" index="0" instance=ExtResource("2_c4des")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.386005, 0.421841, 0.324695)
+
+[node name="sherifPyramid" parent="pivot" index="1" instance=ExtResource("3_sgmtq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.229, -0.1, -0.846)
+visible = false
+
+[node name="hitbox" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0974612, 3.20106, -0.722013)
+shape = SubResource("BoxShape3D_iewpk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_rd2j7")
+}
+autoplay = "DondeCaemosGente"
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.113556, 0.938721, -0.812988)
+shape = SubResource("BoxShape3D_cgeuy")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.18791, -0.789227)
+material_override = SubResource("StandardMaterial3D_f6fsb")
+emitting = false
+amount = 15
+amount_ratio = 0.9279
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.3
+randomness = 0.96
+process_material = SubResource("ParticleProcessMaterial_llnj2")
+draw_pass_1 = SubResource("PrismMesh_dalnk")
+
+[connection signal="animation_finished" from="Animation/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

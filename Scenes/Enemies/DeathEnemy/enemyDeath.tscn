@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://car6tog1jw30w"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/DeathEnemy/enemyDeath.gd" id="1_yco20"]
+
+[node name="enemyDeath" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 11
+script = ExtResource("1_yco20")
+
+[node name="pivot" type="Node3D" parent="."]
+transform = Transform3D(-2, 0, -5.07036e-06, 0, 2, 0, 5.07036e-06, 0, -2, 0.461145, 0.970601, -1.65704)
+
+[node name="Animation" type="Node3D" parent="."]

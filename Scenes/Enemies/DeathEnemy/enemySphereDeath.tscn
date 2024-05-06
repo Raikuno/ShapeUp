@@ -1,0 +1,292 @@
+[gd_scene load_steps=17 format=3 uid="uid://bpvsvu3pxajh2"]
+
+[ext_resource type="PackedScene" uid="uid://ci1l2lseswhub" path="res://Scenes/Enemies/enemy.tscn" id="1_25iyu"]
+[ext_resource type="PackedScene" uid="uid://xpi3baeuougp" path="res://Resources/Enemies/sphere/kirbyBola.glb" id="2_56358"]
+[ext_resource type="Script" path="res://Scenes/Enemies/DeathEnemy/enemyDeath.gd" id="2_ngpnp"]
+[ext_resource type="PackedScene" uid="uid://cbx48vo3vporp" path="res://Resources/Enemies/sphere/ojosBola.glb" id="3_rbjxj"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4tqh4"]
+height = 5.6742
+radius = 1.38385
+
+[sub_resource type="Animation" id="Animation_d68u8"]
+resource_name = "Animation1"
+length = 2.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/kirbyBola:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.7, 1.8, 1.9, 2.1, 2.3),
+"transitions": PackedFloat32Array(1, 1, 0.366021, 1, 1, 0.450625, 1),
+"update": 0,
+"values": [Vector3(0.182963, 0.251249, -0.835528), Vector3(0.182963, 0.251249, -0.835528), Vector3(0.183, 0.9, -0.836), Vector3(0.183, 1.1, -0.836), Vector3(0.183, 0.89627, -0.836), Vector3(0.183, 0.7, -0.836), Vector3(0.183, 0.251, -0.836)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/kirbyBola:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 0.870551, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.3668, 0), Vector3(0, -1.36659, -0.785398), Vector3(0, -1.36659, -1.5708), Vector3(0, -1.36659, -2.35619), Vector3(0, -1.36659, -3.14159), Vector3(0, -1.36659, -3.92699), Vector3(0, -1.36659, -4.71239), Vector3(0, -1.36659, -5.49779), Vector3(0, -1.36659, -6.28319), Vector3(0, -1.36659, -7.15585), Vector3(0, -1.36659, -7.85398), Vector3(0, -1.36659, -8.55211), Vector3(0, -1.36659, -9.42478), Vector3(0, -1.36659, -10.472), Vector3(0, -1.36659, -12.5664)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../pivot/kirbyBola:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.7, 1.8, 2.1, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(1.2, 1.2, 1.2), Vector3(1.08, 1.08, 1.08), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1opkw"]
+resource_name = "Animation2"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/ojosBola:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.11292, 0), Vector3(-0.785398, -3.11367, 0), Vector3(-1.5708, -3.11367, 0), Vector3(-2.35619, -3.11367, 0), Vector3(-3.14159, -3.11367, 0), Vector3(-3.92699, -3.11367, 0), Vector3(-4.79966, -3.11367, 0), Vector3(-5.49779, -3.11367, 0), Vector3(-6.28319, -3.11367, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_73640"]
+resource_name = "DeathAnimation"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/kirbyBola:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.5, 1.5, 1.5), Vector3(0.8, 0.8, 0.8), Vector3(0.4, 0.4, 0.4), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/kirbyBola:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.3668, 0), Vector3(-0.0850749, -1.38516, 0.4249), Vector3(-0.164732, -1.69168, 2.20834), Vector3(0.0901327, -1.75406, -2.68948), Vector3(0.0901327, -1.75406, -2.68948)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../pivot/kirbyBola:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.182963, 0.238058, -0.835528), Vector3(0.182963, 0.345209, -0.835528), Vector3(0.182963, 1.0196, -0.835528), Vector3(0.182963, 0.51047, -0.835528), Vector3(0.182963, 0.51047, -0.835528)]
+}
+
+[sub_resource type="Animation" id="Animation_vxkj7"]
+resource_name = "DeathAnimation2"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/ojosBola:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1.03527, 10.1965),
+"update": 0,
+"values": [Vector3(0.999999, 1, 0.999999), Vector3(0.999999, 1, 0.999999), Vector3(0.8, 0.8, 0.8), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/ojosBola:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 2, 0.203063),
+"update": 0,
+"values": [Vector3(0, -3.11292, 0), Vector3(-0.0269256, -3.12227, 0.422953), Vector3(-0.0279253, -3.83972, 1.57429)]
+}
+
+[sub_resource type="Animation" id="Animation_rkedj"]
+resource_name = "DondeCaemosGente"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(4, 1),
+"update": 0,
+"values": [Vector3(0.461, 50, -1.657), Vector3(0.461145, 0.970601, -1.65704)]
+}
+
+[sub_resource type="Animation" id="Animation_c2ntc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/kirbyBola:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.182963, 0.251249, -0.835528)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/kirbyBola:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.3668, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../pivot/kirbyBola:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../pivot/ojosBola:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.11292, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../pivot/ojosBola:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.999999, 1, 0.999999)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../pivot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.461145, 0.970601, -1.65704)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kdnkw"]
+_data = {
+"Animation1": SubResource("Animation_d68u8"),
+"Animation2": SubResource("Animation_1opkw"),
+"DeathAnimation": SubResource("Animation_73640"),
+"DeathAnimation2": SubResource("Animation_vxkj7"),
+"DondeCaemosGente": SubResource("Animation_rkedj"),
+"RESET": SubResource("Animation_c2ntc")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wkc21"]
+radius = 1.98597
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vibm8"]
+albedo_color = Color(0.301961, 0.498039, 0.792157, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_er5rb"]
+emission_shape_scale = Vector3(3, 1, 3)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, -10, 0)
+scale_min = 0.25
+scale_max = 1.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_6nhp3"]
+
+[node name="enemy2" instance=ExtResource("1_25iyu")]
+script = ExtResource("2_ngpnp")
+
+[node name="kirbyBola" parent="pivot" index="0" instance=ExtResource("2_56358")]
+transform = Transform3D(0.202584, 0, -0.979265, 0, 1, 0, 0.979265, 0, 0.202584, 0.182963, 0.251249, -0.835528)
+
+[node name="ojosBola" parent="pivot" index="1" instance=ExtResource("3_rbjxj")]
+transform = Transform3D(-0.999588, 0, -0.0286686, 0, 1, 0, 0.0286686, 0, -0.999588, 0.0940224, 0.165005, -1.04289)
+visible = false
+
+[node name="hitbox" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0982927, 2.95942, -0.00572374)
+shape = SubResource("CylinderShape3D_4tqh4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_kdnkw")
+}
+autoplay = "DondeCaemosGente"
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155976, 1.52416, 0)
+shape = SubResource("SphereShape3D_wkc21")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.27979, 0)
+material_override = SubResource("StandardMaterial3D_vibm8")
+emitting = false
+amount = 15
+amount_ratio = 0.9279
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.3
+randomness = 0.96
+process_material = SubResource("ParticleProcessMaterial_er5rb")
+draw_pass_1 = SubResource("SphereMesh_6nhp3")
+
+[connection signal="animation_finished" from="Animation/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

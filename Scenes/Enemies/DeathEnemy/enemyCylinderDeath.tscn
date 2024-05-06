@@ -1,0 +1,284 @@
+[gd_scene load_steps=17 format=3 uid="uid://be4s3h3pynmx5"]
+
+[ext_resource type="PackedScene" uid="uid://ci1l2lseswhub" path="res://Scenes/Enemies/enemy.tscn" id="1_bor8r"]
+[ext_resource type="PackedScene" uid="uid://1ntu2hrq8oau" path="res://Resources/Enemies/cilynder/crowned-cylinder.glb" id="2_vqmif"]
+[ext_resource type="Script" path="res://Scenes/Enemies/DeathEnemy/enemyDeath.gd" id="2_wpcvm"]
+[ext_resource type="PackedScene" uid="uid://bx6tqbkcp104f" path="res://Resources/Enemies/cilynder/old-cylinder.glb" id="3_hy0yf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kn00p"]
+size = Vector3(4.47076, 10.3745, 1.6134)
+
+[sub_resource type="Animation" id="Animation_722uf"]
+resource_name = "Animation1"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0), Vector3(1.5708, -3.14159, 0), Vector3(3.14159, -3.14159, 0), Vector3(4.71239, -3.14159, 0), Vector3(6.28319, -3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d37aw"]
+resource_name = "Animation2"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0), Vector3(1.5708, -3.14159, 0), Vector3(3.14159, -3.14159, 0), Vector3(4.71239, -3.14159, 0), Vector3(6.28319, -3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vtrtv"]
+resource_name = "DeathAnimation"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/crowned-cylinder:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/crowned-cylinder:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0.543146), Vector3(1.44556e-13, 3.14159, -0.42874), Vector3(-1.1933e-16, 3.14159, 0.0162142)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../pivot/crowned-cylinder:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1, 0, 1.19209e-07), Vector3(-1, 1.44535, 4.76837e-07), Vector3(-1, 1.44535, 5.96046e-07), Vector3(-1, 1.44535, 7.15256e-07)]
+}
+
+[sub_resource type="Animation" id="Animation_y7xis"]
+resource_name = "DeathAnimation2"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot/old-cylinder:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.8, 0.8, 0.8), Vector3(0.5, 0.5, 0.5), Vector3(0.3, 0.3, 0.3), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/old-cylinder:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1, 0, 5.96046e-08), Vector3(-1, 3.13885, 2.38419e-07), Vector3(-1, 4.51233, 3.57628e-07), Vector3(-1, 6.05491, 4.76837e-07), Vector3(-1, 6.05491, 4.76837e-07)]
+}
+
+[sub_resource type="Animation" id="Animation_1ycm8"]
+resource_name = "DondeCaemosGente"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(3.73213, 1),
+"update": 0,
+"values": [Vector3(0.461, 50, -1.657), Vector3(0.461145, 0.970601, -1.65704)]
+}
+
+[sub_resource type="Animation" id="Animation_2axd2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../pivot/crowned-cylinder:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../pivot/crowned-cylinder:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../pivot/crowned-cylinder:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1, 0, 1.19209e-07)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../pivot/old-cylinder:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../pivot/old-cylinder:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1, 0, 5.96046e-08)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../pivot:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.461145, 0.970601, -1.65704)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rkku8"]
+_data = {
+"Animation1": SubResource("Animation_722uf"),
+"Animation2": SubResource("Animation_d37aw"),
+"DeathAnimation": SubResource("Animation_vtrtv"),
+"DeathAnimation2": SubResource("Animation_y7xis"),
+"DondeCaemosGente": SubResource("Animation_1ycm8"),
+"RESET": SubResource("Animation_2axd2")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_myvgg"]
+height = 10.7663
+radius = 1.22895
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvbvm"]
+albedo_color = Color(0.282353, 0.831373, 0.282353, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2j5wq"]
+emission_shape_scale = Vector3(3, 1, 3)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, -5, 0)
+scale_min = 0.25
+scale_max = 1.4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rkpb1"]
+
+[node name="enemy2" instance=ExtResource("1_bor8r")]
+script = ExtResource("2_wpcvm")
+
+[node name="pivot" parent="." index="0"]
+transform = Transform3D(-2, 0, -5.07036e-06, 0, 2, 0, 5.07036e-06, 0, -2, 0.461145, 0.970601, -1.65704)
+
+[node name="crowned-cylinder" parent="pivot" index="0" instance=ExtResource("2_vqmif")]
+transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, -1, 0, 1.19209e-07)
+
+[node name="old-cylinder" parent="pivot" index="1" instance=ExtResource("3_hy0yf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5.96046e-08)
+visible = false
+
+[node name="hitbox" parent="." index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.52323, 2.53386, -1.69935)
+shape = SubResource("BoxShape3D_kn00p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_rkku8")
+}
+autoplay = "DondeCaemosGente"
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.38809, 1.11364, -1.7372)
+shape = SubResource("CylinderShape3D_myvgg")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35806, 2.9087, -1.91929)
+material_override = SubResource("StandardMaterial3D_hvbvm")
+emitting = false
+amount = 15
+amount_ratio = 0.9279
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.3
+randomness = 0.96
+visibility_aabb = AABB(-6, -4, -4, 12, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_2j5wq")
+draw_pass_1 = SubResource("CylinderMesh_rkpb1")
+
+[connection signal="animation_finished" from="Animation/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
