@@ -149,10 +149,10 @@ var intensity = 0
 @onready var invisible = $Invisible
 
 func _ready():
-	changePolygon(PYRAMID, HEAD)
+	changePolygon(SPHERE, HEAD)
 	changePolygon(PYRAMID, BODY)
-	changePolygon(PYRAMID, RIGHT)
-	changePolygon(PYRAMID, LEFT)
+	changePolygon(CUBE, RIGHT)
+	changePolygon(SPHERE, LEFT)
 	changePolygon(PYRAMID, FEET)
 	resetStats()
 	changeState(STATIC)
