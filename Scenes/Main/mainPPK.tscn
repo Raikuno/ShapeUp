@@ -152,6 +152,7 @@ skeleton = NodePath("")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.907858, -0.0328451, 0.417989, -4.36067e-09, 0.996927, 0.0783373, -0.419278, 0.0711192, -0.905068, -33.5354, 5.25895, 6.48333)
+current = true
 
 [node name="player" parent="." instance=ExtResource("10_4hobi")]
 transform = Transform3D(0.948279, 0, 0.317437, 0, 1, 0, -0.317437, 0, 0.948279, -50.7665, 1.50488, 17.1224)
