@@ -1167,11 +1167,11 @@ transform = Transform3D(0.462744, 5.00679e-07, -0.525231, -0.304705, 0.570165, -
 visible = false
 
 [node name="brazo-esferaPlayer" parent="pivot/rightArm" instance=ExtResource("17_87h6d")]
-transform = Transform3D(0.821905, 0.569624, 4.48745e-08, -0.529623, 0.764188, -0.368125, -0.209693, 0.302564, 0.929776, 0.585547, 1.73018, 2.30501)
+transform = Transform3D(0.821905, 0.569624, 3.82067e-08, -0.529623, 0.764188, -0.368125, -0.209693, 0.302564, 0.929776, 0.585547, 1.73018, 2.30501)
 visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/rightArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.4814e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
+transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.45598e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
 visible = false
 
 [node name="brazo-cilindroPlayer" type="MeshInstance3D" parent="pivot/rightArm"]
@@ -1191,11 +1191,11 @@ transform = Transform3D(0.67474, 0.133303, 0.130216, 0, 0.489144, -0.500738, -0.
 visible = false
 
 [node name="brazo-esferaPlayer" parent="pivot/leftArm" instance=ExtResource("17_87h6d")]
-transform = Transform3D(0.49982, 0.418864, 0.758111, -0.642306, 0.766448, 1.3448e-07, -0.581053, -0.48694, 0.652125, -0.0885837, 2.01696, -1.9455)
+transform = Transform3D(0.49982, 0.418864, 0.758111, -0.642306, 0.766448, 1.3818e-07, -0.581053, -0.48694, 0.652125, -0.0885837, 2.01696, -1.9455)
 visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/leftArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.21772e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
+transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.25774e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
 visible = false
 
 [node name="brazo-amebaPlayerMKII" parent="pivot/leftArm" instance=ExtResource("19_hh71a")]
@@ -1203,7 +1203,7 @@ transform = Transform3D(0.8, 0, 5.68434e-14, 0, 0.8, 0, -5.68434e-14, 0, 0.8, -0
 visible = false
 
 [node name="brazo-cilindroPlayer" type="MeshInstance3D" parent="pivot/leftArm"]
-transform = Transform3D(-0.258822, -0.965925, -1.48944e-08, 0.965925, -0.258822, 1.13134e-07, -1.13134e-07, 1.48946e-08, 1, 6.82818e-07, 1.67452, -1.5621)
+transform = Transform3D(-0.258822, -0.965925, -1.48945e-08, 0.965925, -0.258822, 1.13134e-07, -1.13134e-07, 1.48946e-08, 1, 6.82818e-07, 1.67452, -1.5621)
 visible = false
 mesh = SubResource("CylinderMesh_hvon2")
 
@@ -1302,35 +1302,48 @@ wait_time = 0.334
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 82.0
-offset_right = 162.0
-offset_bottom = 132.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.0
+offset_top = 51.0
+offset_right = 77.0
+offset_bottom = 101.0
+grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
 text = "KILLS : 0"
 
 [node name="Label2" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 22.0
-offset_top = 149.0
-offset_right = 62.0
-offset_bottom = 326.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 177.0
+grow_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 
 [node name="VIDA" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 18.0
-offset_right = 146.0
-offset_bottom = 85.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -53.0
+offset_top = -10.0
+offset_right = 73.0
+offset_bottom = 57.0
+grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 48
 text = "Vida: "

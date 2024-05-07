@@ -78,7 +78,6 @@ func _physics_process(_delta):
 		# una probabilidad random de que el enemigo entre en estado wandering
 		if randi_range(1,2000) == 1:
 			wanderingPosition = Vector3(randi_range(x_range.x, x_range.y), position.y,randi_range(z_range.x, z_range.y))
-
 			wandering = true
 		
 	# Se mueve palante
