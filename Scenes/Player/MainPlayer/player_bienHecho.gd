@@ -152,10 +152,10 @@ var intensity = 0
 
 func _ready():
 	changePolygon(SPHERE, HEAD)
-	changePolygon(CUBE, BODY)
-	changePolygon(CUBE, RIGHT)
+	changePolygon(SPHERE, BODY)
+	changePolygon(SPHERE, RIGHT)
 	changePolygon(SPHERE, LEFT)
-	changePolygon(PYRAMID, FEET)
+	changePolygon(SPHERE, FEET)
 	resetStats()
 	changeState(STATIC)
 	SignalsTrain.hit.connect(onDamageTaken)
