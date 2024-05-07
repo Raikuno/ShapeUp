@@ -147,10 +147,12 @@ var rayEnd = Vector3()
 #Bullets
 var intensity = 0
 @onready var invisible = $Invisible
+#kills uwu
+@onready var kills = 0
 
 func _ready():
 	changePolygon(SPHERE, HEAD)
-	changePolygon(PYRAMID, BODY)
+	changePolygon(CUBE, BODY)
 	changePolygon(CUBE, RIGHT)
 	changePolygon(SPHERE, LEFT)
 	changePolygon(PYRAMID, FEET)
@@ -158,7 +160,12 @@ func _ready():
 	changeState(STATIC)
 	SignalsTrain.hit.connect(onDamageTaken)
 	SignalsTrain.expPicked.connect(onExpPicked)
+	SignalsTrain.sumarKills.connect(onSumarKill)
 	
+func onSumarKill():
+	kills += 1
+	print("kills: ", kills)
+	$Control/Label.text = "Kills: %s" % kills
 func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 	match expType:
 		1:
@@ -209,6 +216,12 @@ func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamid
 						body["experience"]["pyramid"] +=1
 					FEET:
 						feet["experience"]["pyramid"] +=1
+	$Control/Label2.text = """
+	CylinderXp: %s
+	CubeXp: %s
+	ShpereXp: %s
+	PyramidXp: %s
+	""" % [head["experience"]["cylinder"], head["experience"]["cube"], head["experience"]["sphere"], head["experience"]["pyramid"]]
 	print("""
 	CylinderXp: %s
 	CubeXp: %s
@@ -217,17 +230,19 @@ func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamid
 	""" % [head["experience"]["cylinder"], head["experience"]["cube"], head["experience"]["sphere"], head["experience"]["pyramid"]])
 
 func onDamageTaken(damageAmount):
+	
 	health -= damageAmount
 	print("Me queda: ", health, " Recibí: ", damageAmount)
+	$Control/VIDA.text = "Vida: %s" % health
 	if invisible.is_stopped():
 		invisible.start()
+	if health <= 0:
+		queue_free()
 	
 func _on_invisible_timeout():
 	invisible.stop()
 	
 func _physics_process(delta):
-	if health <= 0:
-		queue_free()
 	feetLogic(delta)
 	aimingLogic(delta)
 	attackLogic(delta)
@@ -284,6 +299,7 @@ func resetStats():
 	Damage: %s
 	ATQSpeed: %s
 	""" % [speed, health, damage, atqSpeed])
+	$Control/VIDA.text = "Vida: %s" % health
 	$rightArmPlayer.speed_scale = (1 + atqSpeed/80) 
 func changePolygon(newPolygon, type):
 	match type:

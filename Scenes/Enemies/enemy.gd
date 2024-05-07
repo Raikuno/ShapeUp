@@ -51,6 +51,8 @@ func _on_animation_player_animation_finished(anim_name):
 
 func enemyDeath():
 	if !omaewamoshindeiru:
+		if SignalsTrain.has_signal("sumarKills"):
+			SignalsTrain.emit_signal("sumarKills")
 		omaewamoshindeiru = true
 		var position = global_transform.origin
 		var experience = load("res://Scenes/Experience/experience.tscn")
