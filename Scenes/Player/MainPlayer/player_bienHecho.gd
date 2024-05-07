@@ -440,7 +440,7 @@ func attackLogic(delta):
 		PYRAMID:
 			$rightArmPlayer.play("pyramidBullet")
 		CYLINDER:
-			pass
+			$rightArmPlayer.play("cylinderRight")
 		AMEBA:
 			$rightArmPlayer.play("AmebaRight")
 			
@@ -452,7 +452,7 @@ func attackLogic(delta):
 		PYRAMID:
 			$leftArmPlayer.play("pyramidBulletLeft")
 		CYLINDER:
-			pass
+			$leftArmPlayer.play("cylinderBulletLeft")
 		AMEBA:
 			$leftArmPlayer.play("amebaBulletLeft")
 
@@ -470,7 +470,7 @@ func fire(weapon, part):
 		CUBE:
 			variableDamage = 0.8
 		CYLINDER:
-			variableDamage = 0.9
+			variableDamage = 0.4
 	biggerWeapons = iNeedMoreBulletss.instantiate()
 	biggerWeapons.initialize(weapon, $pivot.basis, damage * variableDamage, part.global_position, part.global_rotation)
 	add_sibling(biggerWeapons)
