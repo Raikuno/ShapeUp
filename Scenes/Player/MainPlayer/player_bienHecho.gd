@@ -152,10 +152,10 @@ var intensity = 0
 var manualAim = true
 func _ready():
 	changePolygon(SPHERE, HEAD)
-	changePolygon(SPHERE, BODY)
-	changePolygon(CYLINDER, RIGHT)
-	changePolygon(AMEBA, LEFT)
-	changePolygon(SPHERE, FEET)
+	changePolygon(CUBE, BODY)
+	changePolygon(CUBE, RIGHT)
+	changePolygon(SPHERE, LEFT)
+	changePolygon(PYRAMID, FEET)
 	resetStats()
 	changeState(STATIC)
 	SignalsTrain.hit.connect(onDamageTaken)
@@ -216,12 +216,12 @@ func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamid
 						body["experience"]["pyramid"] +=1
 					FEET:
 						feet["experience"]["pyramid"] +=1
-	$Control/Label2.text = """
-	CylinderXp: %s
-	CubeXp: %s
-	ShpereXp: %s
-	PyramidXp: %s
-	""" % [head["experience"]["cylinder"], head["experience"]["cube"], head["experience"]["sphere"], head["experience"]["pyramid"]]
+						
+	$Control/XPBars/CylinderXPBar.value = head["experience"]["cylinder"]
+	$Control/XPBars/SphereXPBar.value = head["experience"]["sphere"]
+	$Control/XPBars/CubeXPBar.value = head["experience"]["cube"]
+	$Control/XPBars/PyramidXPBar.value = head["experience"]["pyramid"]
+	
 	print("""
 	CylinderXp: %s
 	CubeXp: %s
