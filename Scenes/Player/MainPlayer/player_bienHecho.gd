@@ -507,7 +507,7 @@ func fire(weapon, part, direction):
 		CUBE:
 			variableDamage = 0.8
 		CYLINDER:
-			variableDamage = 0.4
+			variableDamage = 0.3
 	biggerWeapons = iNeedMoreBulletss.instantiate()
 	biggerWeapons.initialize(weapon, $pivot.basis, damage * variableDamage, part.global_position, part.global_rotation)
 	add_sibling(biggerWeapons)
