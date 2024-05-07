@@ -237,14 +237,13 @@ func onDamageTaken(damageAmount):
 	if invisible.is_stopped():
 		invisible.start()
 	if health <= 0:
-		queue_free()
+		hide()
 	
 func _on_invisible_timeout():
 	invisible.stop()
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("debug"):
-		print("sasd")
 		selectPart()
 	feetLogic(delta)
 	aimingLogic(delta)
@@ -256,14 +255,36 @@ func _physics_process(delta):
 		changeState(MOVE)
 	if velocity == Vector3.ZERO and state == MOVE:
 		changeState(STATIC)
-	if invisible.is_stopped():
-		show()
+	if invisible.is_stopped() && health > 0:
+			show()
 	else:
 		hide()
 		
 func selectPart():
 	var menuScene: PackedScene = load("res://Scenes/Player/PartSelect/PartSelect.tscn")
 	var menuNode: Control = menuScene.instantiate()
+	var part = randfn(0,4)
+	var map
+	var type
+	match part:
+		0:
+			map = head
+			type = HEAD
+		1:
+			type = BODY
+			map = body
+		2:
+			type = LEFT
+			map = left
+		3:
+			type = RIGHT
+			map = right
+		4:
+			type = FEET
+			map = feet
+	map = head
+	menuNode.initialize(map["resource"], map["figure"], null)
+	
 	add_sibling(menuNode)
 func changeState(newState):
 	state = newState
@@ -295,7 +316,7 @@ func changeState(newState):
 			#new_animation_feet = "idle"
 			
 			
-	
+
 
 func resetStats():
 	speed = (left["figureStat"]["speed"]* armSpeed)+(right["figureStat"]["speed"] * armSpeed)+(body["figureStat"]["speed"] * bodySpeed)+(head["figureStat"]["speed"] * headSpeed)+(feet["figureStat"]["speed"] * feetSpeed)
@@ -442,7 +463,6 @@ func feetLogic(delta):
 	velocity = target_velocity
 	move_and_slide()
 	if animation !=null:
-		pass
 		$feet_animation.play(animation)
 func aimingLogic(delta):
 	if manualAim:
