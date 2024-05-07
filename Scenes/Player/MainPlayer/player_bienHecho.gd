@@ -149,12 +149,12 @@ var intensity = 0
 @onready var invisible = $Invisible
 #kills uwu
 @onready var kills = 0
-
+var manualAim = true
 func _ready():
 	changePolygon(SPHERE, HEAD)
 	changePolygon(SPHERE, BODY)
-	changePolygon(SPHERE, RIGHT)
-	changePolygon(SPHERE, LEFT)
+	changePolygon(CYLINDER, RIGHT)
+	changePolygon(CUBE, LEFT)
 	changePolygon(SPHERE, FEET)
 	resetStats()
 	changeState(STATIC)
@@ -246,6 +246,8 @@ func _physics_process(delta):
 	feetLogic(delta)
 	aimingLogic(delta)
 	attackLogic(delta)
+	if Input.is_action_pressed("autoAim"):
+		manualAim = !manualAim
 	#Comprbaciones de estado
 	if velocity != Vector3.ZERO and state == STATIC:
 		changeState(MOVE)
@@ -301,6 +303,7 @@ func resetStats():
 	""" % [speed, health, damage, atqSpeed])
 	$Control/VIDA.text = "Vida: %s" % health
 	$rightArmPlayer.speed_scale = (1 + atqSpeed/80) 
+	$leftArmPlayer.speed_scale = (1 + atqSpeed/80) 
 func changePolygon(newPolygon, type):
 	match type:
 		HEAD:
@@ -435,6 +438,13 @@ func feetLogic(delta):
 		pass
 		$feet_animation.play(animation)
 func aimingLogic(delta):
+	if manualAim:
+		manualAiming(delta)
+	else:
+		autoAiming(delta)
+func manualAiming(delta):
+	if rotation.y != 0:
+		rotation.y = 0
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 2000
 	var from = $Camera3D2.project_ray_origin(mouse_pos)
@@ -444,9 +454,9 @@ func aimingLogic(delta):
 	
 	if not raycast_result.is_empty():
 		var pos = raycast_result.position
-		intensity = abs(position) - abs(pos)
-		#print(intensity)
 		$pivot.look_at(Vector3(pos.x, position.y, pos.z), Vector3.UP)
+func autoAiming(delta):
+	$pivot.rotation.y += 0.02
 func attackLogic(delta):
 	match right["figure"]:
 		SPHERE:
@@ -472,10 +482,14 @@ func attackLogic(delta):
 		AMEBA:
 			$leftArmPlayer.play("amebaBulletLeft")
 
-func fire(weapon, part):
-	var iNeedMoreBulletss: PackedScene = load("res://Scenes/Player/BulletsPlayer/bulletsPlayer.tscn")
+func fire(weapon, part, direction):
+	var iNeedMoreBulletss: PackedScene
 	var biggerWeapons:Node3D
 	var variableDamage
+	if direction=="right":
+		iNeedMoreBulletss = load("res://Scenes/Player/BulletsPlayer/bulletsPlayer.tscn")
+	elif direction=="left":
+		iNeedMoreBulletss = load("res://Scenes/Player/BulletsPlayer/bulletsPlayerLeft.tscn")
 	match weapon:
 		SPHERE:
 			variableDamage = 0.65
@@ -493,6 +507,6 @@ func fire(weapon, part):
 
 #Función que será llamada cada vez que finalice la animación de recarga. Esta animación y su velocidad determinarán la velocidad de ataque
 func _on_right_arm_player_animation_finished(anim_name):
-	fire(right["figure"], right["resource"])
+	fire(right["figure"], right["resource"], "right")
 func _on_left_arm_player_animation_finished(anim_name):
-	fire(left["figure"], left["resource"])
+	fire(left["figure"], left["resource"], "left")

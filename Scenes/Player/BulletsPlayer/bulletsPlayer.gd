@@ -101,7 +101,8 @@ func sphereLogic(delta):
 		global_transform.origin += displacement
 func sphereCollision(body):
 	bulletHitting(body)
-	basis *=-1
+	if !getFixedBoy:
+		basis *=-1
 
 func bulletHitting(body):
 	if SignalsTrain.has_signal("bulletHit"):
@@ -117,14 +118,15 @@ func amebaLogic(delta):
 func cylinderLogic(delta):
 	if !onFloor:
 		var direction = global_transform.basis.z.normalized()
-		var displacement : Vector3 = direction * -60 * delta
-		global_transform.origin += Vector3(displacement.x, cubeHeight, displacement.y)
+		var displacement : Vector3 = direction * -70 * delta
+		global_transform.origin += Vector3(displacement.x, cubeHeight, displacement.z)
 		cubeHeight -= 0.1
 	else:
 		$AnimationPlayer.play("cylinderBullet")
 		var direction = global_transform.basis.z.normalized()
-		var displacement : Vector3 = direction * 20 * delta
+		var displacement : Vector3 = direction * -20 * delta
 		global_transform.origin += displacement
+
 func pyramidCollision(body):
 	bulletHitting(body)
 
