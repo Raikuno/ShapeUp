@@ -133,7 +133,6 @@ func pyramidCollision(body):
 func _on_braco_cilindro_body_entered(body):
 	bulletHitting(body)
 	if(body.name == "Ground"):
-		print("jajaja")
 		onFloor = true
 		$cylinderDespawn.start()
 
@@ -142,5 +141,4 @@ func _on_brazo_ameba_body_entered(body):
 	bulletHitting(body)
 	if(body.name == "Ground"&&!getFixedBoy):
 		onFloor = true
-		print("fuck")
 		$amebaDespawn.start()

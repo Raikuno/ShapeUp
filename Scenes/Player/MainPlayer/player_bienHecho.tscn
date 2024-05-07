@@ -1176,6 +1176,7 @@ visible = false
 
 [node name="brazo-cilindroPlayer" type="MeshInstance3D" parent="pivot/rightArm"]
 transform = Transform3D(-0.258819, -0.965926, -5.50248e-07, 0.965926, -0.258819, 4.2222e-07, -5.50248e-07, -4.2222e-07, 1, -6.6382e-07, 1.77499, 1.51864)
+visible = false
 mesh = SubResource("CylinderMesh_21wkb")
 
 [node name="leftArm" type="Node3D" parent="pivot"]

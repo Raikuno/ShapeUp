@@ -154,7 +154,7 @@ func _ready():
 	changePolygon(SPHERE, HEAD)
 	changePolygon(SPHERE, BODY)
 	changePolygon(CYLINDER, RIGHT)
-	changePolygon(CUBE, LEFT)
+	changePolygon(AMEBA, LEFT)
 	changePolygon(SPHERE, FEET)
 	resetStats()
 	changeState(STATIC)
@@ -243,6 +243,9 @@ func _on_invisible_timeout():
 	invisible.stop()
 	
 func _physics_process(delta):
+	if Input.is_action_just_pressed("debug"):
+		print("sasd")
+		selectPart()
 	feetLogic(delta)
 	aimingLogic(delta)
 	attackLogic(delta)
@@ -257,7 +260,11 @@ func _physics_process(delta):
 		show()
 	else:
 		hide()
-
+		
+func selectPart():
+	var menuScene: PackedScene = load("res://Scenes/Player/PartSelect/PartSelect.tscn")
+	var menuNode: Control = menuScene.instantiate()
+	add_sibling(menuNode)
 func changeState(newState):
 	state = newState
 	match state:
