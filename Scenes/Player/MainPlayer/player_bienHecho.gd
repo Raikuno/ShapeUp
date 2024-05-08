@@ -38,6 +38,17 @@ enum {HEAD, BODY, RIGHT, LEFT, FEET}
 @onready var sphereLevel = $Control/XPBars/SphereLevel
 @onready var cubeLevel = $Control/XPBars/CubeLevel
 @onready var pyramidLevel = $Control/XPBars/PyramidLevel
+#-------------------Barras de vida---------------------------------
+@onready var healthBarCylinder = $Control/HealthBars/Cylinder/HealthBarCylinder
+@onready var healthBarRectangleCylinder = $Control/HealthBars/Cylinder/HealthBarRectangleCylinder
+@onready var healthBarSphere = $Control/HealthBars/Sphere/HealthBarSphere
+@onready var healthBarRectangleSphere = $Control/HealthBars/Sphere/HealthBarRectangleSphere
+@onready var healthBarCube = $Control/HealthBars/Cube/HealthBarCube
+@onready var healthBarRectangleCube = $Control/HealthBars/Cube/HealthBarRectangleCube
+@onready var healthBarPyramid = $Control/HealthBars/Pyramid/HealthBarPyramid
+@onready var healthBarRectanglePyramid = $Control/HealthBars/Pyramid/HealthBarRectanglePyramid
+var healthBarFigureInUse
+var healthBarRectangleInUse
 var xPNeededPerLevel = {
 	"nivel1" : 5,   # 5
 	"nivel2" : 15,  # 10
@@ -172,7 +183,7 @@ var manualAim = true
 func _ready():
 	changePolygon(SPHERE, HEAD)
 	changePolygon(CUBE, BODY)
-	changePolygon(CUBE, RIGHT)
+	changePolygon(PYRAMID, RIGHT)
 	changePolygon(SPHERE, LEFT)
 	changePolygon(PYRAMID, FEET)
 	resetStats()
@@ -253,13 +264,13 @@ func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamid
 func onDamageTaken(damageAmount):
 	healthRemaining -= damageAmount
 	print("Me queda: ", healthRemaining, " Recibí: ", damageAmount)
+	
 	for i in damageAmount:
-		if $Control/HealthBars/HealthBarRectangle.value >  0:
-			$Control/HealthBars/HealthBarRectangle.value -= 1
-			print($Control/HealthBars/HealthBarRectangle.value)
+		if healthBarRectangleInUse.value >  0:
+			healthBarRectangleInUse.value -= 1
+			print(healthBarRectangleInUse.value)
 		else:
-			print("semen de mono")
-			$Control/HealthBars/HealthBarSphere.value -= 1
+			healthBarFigureInUse.value -= 1
 		if invisible.is_stopped():
 			invisible.start()
 		if healthRemaining <= 0:
@@ -355,17 +366,34 @@ func resetStats():
 	Damage: %s
 	ATQSpeed: %s
 	""" % [speed, health, damage, atqSpeed])
-	setHealthBars()
 	$rightArmPlayer.speed_scale = (1 + atqSpeed/80) 
 	$leftArmPlayer.speed_scale = (1 + atqSpeed/80) 
+	match body["figure"]:
+				SPHERE:
+					setHealthBars(healthBarSphere,healthBarRectangleSphere)
+				CUBE:
+					setHealthBars(healthBarCube,healthBarRectangleCube)
+				PYRAMID:
+					setHealthBars(healthBarPyramid,healthBarRectanglePyramid)
+				CYLINDER:
+					setHealthBars(healthBarCylinder,healthBarRectangleCylinder)
+				AMEBA:
+					setHealthBars(healthBarSphere,healthBarRectangleSphere)
 	
 	#Este método es para setear las barras de vida, usará el cuerpo para saber que sprite poner
-func setHealthBars():
+func setHealthBars(figure,rectangle):
 	healthRemaining = health
-	$Control/HealthBars/HealthBarSphere.set_max(health / 2)
-	$Control/HealthBars/HealthBarRectangle.set_max(health / 2)
-	$Control/HealthBars/HealthBarSphere.value = health / 2
-	$Control/HealthBars/HealthBarRectangle.value = health / 2
+	#Seteamos cada barra con la mitad de la vida máxima
+	figure.set_max(health / 2)
+	rectangle.set_max(health / 2)
+	#Llenamos la barra de jugosa vida
+	figure.value = health / 2
+	rectangle.value = health / 2
+	figure.show()
+	rectangle.show()
+	# Esto es para ahorrarnos 20 putas lineas al recibir daño
+	healthBarFigureInUse = figure
+	healthBarRectangleInUse = rectangle
 	
 func changePolygon(newPolygon, type):
 	match type:
