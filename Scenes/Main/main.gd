@@ -18,29 +18,30 @@ func _ready():
 func _on_mob_spawn_timer_timeout():
 	#1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 	var enemyRandom = randi_range(1,4)
-	match enemyRandom:
-		1:
-			enemy = load("res://Scenes/Enemies/enemyCylinder.tscn")
-		2:
-			enemy = load("res://Scenes/Enemies/enemyCube.tscn")
-		3:
-			enemy = load("res://Scenes/Enemies/enemySphere.tscn")
-		4:
-			enemy = load("res://Scenes/Enemies/enemyPyramid.tscn")
-	var enemyObject = enemy.instantiate()
-	
-	var enemySpawnLocation = get_node("player/Path3D/PathFollow3D")
-	enemySpawnLocation.progress_ratio = randf()
-	enemyObject.initialize(enemySpawnLocation.position + $player.position, $player.position, enemyRandom)
-	add_child(enemyObject)
+	spawnMob(enemyRandom, 1, 1)
 
+
+func spawnMob(enemyRandom,amount, statsMultiplier):
+	for i in amount + timeMinute:
+		match enemyRandom:
+			1:
+				enemy = load("res://Scenes/Enemies/enemyCylinder.tscn")
+			2:
+				enemy = load("res://Scenes/Enemies/enemyCube.tscn")
+			3:
+				enemy = load("res://Scenes/Enemies/enemySphere.tscn")
+			4:
+				enemy = load("res://Scenes/Enemies/enemyPyramid.tscn")
+		var enemyObject = enemy.instantiate()
+		var enemySpawnLocation = get_node("player/Path3D/PathFollow3D")
+		enemySpawnLocation.progress_ratio = randf()
+		enemyObject.initialize(enemySpawnLocation.position + $player.position, $player.position, enemyRandom, statsMultiplier + timeMinute)
+		add_child(enemyObject)
 
 func _on_exit_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file(MENU)
 	
-
-
 func _on_start_pressed():
 	$Menu.hide()
 	get_tree().paused = false
@@ -48,15 +49,21 @@ func _on_start_pressed():
 
 func _on_timer_timeout():
 	timeSecond += 1
+	
 	if timeSecond == 60:
 		timeSecond = 0
 		timeMinute += 1
+		$Eventos.start()
 	if timeSecond < 10 && timeMinute < 10: # Perdón, me dió flojera
-		$Time/Label.text =  "0%s:0%s" %  [timeMinute ,timeSecond]
+		$Time/Time.text =  "0%s:0%s" %  [timeMinute ,timeSecond]
 	elif timeSecond < 10:
-		$Time/Label.text =  "%s:0%s" %  [timeMinute ,timeSecond]
+		$Time/Time.text =  "%s:0%s" %  [timeMinute ,timeSecond]
 	elif timeMinute < 10:
-		$Time/Label.text =  "0%s:%s" %  [timeMinute ,timeSecond]
+		$Time/Time.text =  "0%s:%s" %  [timeMinute ,timeSecond]
 	else:
-		$Time/Label.text =  "%s:%s" %  [timeMinute ,timeSecond]
+		$Time/Time.text =  "%s:%s" %  [timeMinute ,timeSecond]
 
+func _on_eventos_timeout():
+	var enemyRandom = randi_range(1,4)
+	print("SPAWN DE: ",enemyRandom)
+	spawnMob(enemyRandom, 10, 2)

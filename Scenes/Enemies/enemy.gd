@@ -26,6 +26,7 @@ func _ready():
 	var animation = $Animation/AnimationPlayer
 	speed = randi_range(minSpeed, maxSpeed)
 	SignalsTrain.bulletHit.connect(onDamageTaken)
+	print(Hp)
 	
 	
 func onDamageTaken(damageAmount, body):
@@ -86,12 +87,17 @@ func _physics_process(_delta):
 	velocity = velocity.rotated(Vector3.UP, rotation.y)
 	move_and_slide()
 
-
+func multiplyStats(statsMultiplier):
+	minSpeed = minSpeed + (0.1 * minSpeed * statsMultiplier)
+	maxSpeed = maxSpeed + (0.1 * maxSpeed * statsMultiplier)
+	Hp = Hp + (0.5 * Hp * statsMultiplier)
+	Damage = Damage + (0.5 * Damage * statsMultiplier)
 	
-func initialize(start_position, player_position, _enemyType):
+	
+func initialize(start_position, player_position, _enemyType, statsMultiplier):
 	enemyType = _enemyType
 	look_at_from_position(start_position, player_position, Vector3.UP)
-	
+	multiplyStats(statsMultiplier)
 	if skinNumber == 2:
 		var skinChange = get_node("pivot").get_child(1)
 		var skinOld = get_node("pivot").get_child(0)
