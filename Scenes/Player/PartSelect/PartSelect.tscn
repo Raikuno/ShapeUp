@@ -1,8 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv2qac5bxr24o"]
+[gd_scene load_steps=2 format=3 uid="uid://cv2qac5bxr24o"]
 
 [ext_resource type="Script" path="res://Scenes/Player/PartSelect/PartSelect.gd" id="1_tyn61"]
-
-[sub_resource type="Texture2DRD" id="Texture2DRD_vafbi"]
 
 [node name="PartSelect" type="Control"]
 process_mode = 3
@@ -13,18 +11,67 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tyn61")
+metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="part2" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -137.5
-offset_top = -134.0
-offset_right = 137.5
-offset_bottom = 134.0
+offset_left = -31.5
+offset_top = -15.5
+offset_right = 31.5
+offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("Texture2DRD_vafbi")
+text = "Parte 2"
+
+[node name="part3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Parte 3"
+
+[node name="part1Container" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="part1Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="SubViewport" type="SubViewport" parent="part1Container/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(200, 200)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="part1Container/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.19863, -0.494401)
+fov = 65.9648
+
+[node name="Marker3D" type="Marker3D" parent="part1Container/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.41236, -3.13043)
+
+[node name="part1" type="Button" parent="part1Container"]
+layout_mode = 2
+text = "Parte 1"
+
+[connection signal="pressed" from="part2" to="." method="part2Selected"]
+[connection signal="pressed" from="part3" to="." method="part3Selected"]
+[connection signal="pressed" from="part1Container/part1" to="." method="part1Selected"]
