@@ -156,6 +156,7 @@ var target_velocity = Vector3.ZERO
 #-------------
 var speed = 10 #(left["figureStat"]["speed"]* armSpeed)+(right["figureStat"]["speed"] * armSpeed)+(body["figureStat"]["speed"] * bodySpeed)+(head["figureStat"]["speed"] * headSpeed)+(feet["figureStat"]["speed"] * feetSpeed)
 var health = 10#(left["figureStat"]["health"]* armHealth)+(right["figureStat"]["health"] * armHealth)+(body["figureStat"]["health"] * bodyHealth)+(head["figureStat"]["health"] * headHealth)+(feet["figureStat"]["health"] * feetHealth)
+var healthRemaining
 var damage = 10#(left["figureStat"]["damage"]* armDamage)+(right["figureStat"]["damage"] * armDamage)+(body["figureStat"]["damage"] * bodyDamage)+(head["figureStat"]["damage"] * headDamage)+(feet["figureStat"]["damage"] * feetDamage)
 var atqSpeed = 10#(left["figureStat"]["atqspd"]* armAtqSpd)+(right["figureStat"]["atqspd"] * armAtqSpd)+(body["figureStat"]["atqspd"] * bodyAtqSpd)+(head["figureStat"]["atqspd"] * headAtqSpd)+(feet["figureStat"]["atqspd"] * feetAtqSpd)
 #-------------
@@ -183,7 +184,7 @@ func _ready():
 func onSumarKill():
 	kills += 1
 	print("kills: ", kills)
-	$Control/Label.text = "Kills: %s" % kills
+	$Control/Kills.text = "Kills: %s" % kills
 func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 	match expType:
 		1:
@@ -248,15 +249,21 @@ func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamid
 	""" % [head["experience"]["cylinder"], head["experience"]["cube"], head["experience"]["sphere"], head["experience"]["pyramid"]])
 
 
-
+	#Este método es para recibir damages
 func onDamageTaken(damageAmount):
-	health -= damageAmount
-	print("Me queda: ", health, " Recibí: ", damageAmount)
-	$Control/VIDA.text = "Vida: %s" % health
-	if invisible.is_stopped():
-		invisible.start()
-	if health <= 0:
-		hide()
+	healthRemaining -= damageAmount
+	print("Me queda: ", healthRemaining, " Recibí: ", damageAmount)
+	for i in damageAmount:
+		if $Control/HealthBars/HealthBarRectangle.value >  0:
+			$Control/HealthBars/HealthBarRectangle.value -= 1
+			print($Control/HealthBars/HealthBarRectangle.value)
+		else:
+			print("semen de mono")
+			$Control/HealthBars/HealthBarSphere.value -= 1
+		if invisible.is_stopped():
+			invisible.start()
+		if healthRemaining <= 0:
+			hide()
 	
 func _on_invisible_timeout():
 	invisible.stop()
@@ -348,9 +355,18 @@ func resetStats():
 	Damage: %s
 	ATQSpeed: %s
 	""" % [speed, health, damage, atqSpeed])
-	$Control/VIDA.text = "Vida: %s" % health
+	setHealthBars()
 	$rightArmPlayer.speed_scale = (1 + atqSpeed/80) 
 	$leftArmPlayer.speed_scale = (1 + atqSpeed/80) 
+	
+	#Este método es para setear las barras de vida, usará el cuerpo para saber que sprite poner
+func setHealthBars():
+	healthRemaining = health
+	$Control/HealthBars/HealthBarSphere.set_max(health / 2)
+	$Control/HealthBars/HealthBarRectangle.set_max(health / 2)
+	$Control/HealthBars/HealthBarSphere.value = health / 2
+	$Control/HealthBars/HealthBarRectangle.value = health / 2
+	
 func changePolygon(newPolygon, type):
 	match type:
 		HEAD:
