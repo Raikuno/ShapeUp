@@ -54,7 +54,7 @@ var xPNeededPerLevel = {
 	"nivel2" : 15,  # 10
 	"nivel3" : 35,  # 20
 	"nivel4" : 75,  # 40
-	"nivel5": 155    #80
+	"nivel5": 155   # 80
 }
 
 
@@ -99,45 +99,49 @@ var head = {
 	"figure" : null,
 	"resource": null,
 	"figureStat": null,
-		"experience": {
-			"cylinder" = 0,
-			"cube" = 0,
-			"sphere"= 0,
-			"pyramid" = 0
-	}
+	"experience": {
+		"cylinder" = 0,
+		"cube" = 0,
+		"sphere"= 0,
+		"pyramid" = 0
+	},
+	"identity" : HEAD
 }
 var body= {
 	"figure" : null,
 	"resource": null,
 	"figureStat": null, 
-		"experience": {
+	"experience": {
 		"cylinder" = 0,
 		"cube" = 0,
 		"sphere"= 0,
 		"pyramid" = 0
-	}
+	},
+	"identity" : BODY
 }
 var right= {
 	"figure" : null,
 	"resource": null,
 	"figureStat": null,
-		"experience": {
+	"experience": {
 		"cylinder" = 0,
 		"cube" = 0,
 		"sphere"= 0,
 		"pyramid" = 0
-	}
+	},
+	"identity" : RIGHT
 }
 var left= {
 	"figure" : null,
 	"resource": null,
 	"figureStat": null,
-		"experience": {
+	"experience": {
 		"cylinder" = 0,
 		"cube" = 0,
 		"sphere"= 0,
 		"pyramid" = 0
-	}
+	},
+	"identity" : LEFT
 }
 var feet= {
 	"figure" : null,
@@ -148,7 +152,8 @@ var feet= {
 		"cube" = 0,
 		"sphere"= 0,
 		"pyramid" = 0
-	}
+	},
+	"identity" : FEET
 }
 var generalXp = {
 	"cylinder" = 0,
@@ -182,7 +187,7 @@ var intensity = 0
 var manualAim = true
 func _ready():
 	changePolygon(SPHERE, HEAD)
-	changePolygon(CUBE, BODY)
+	changePolygon(CYLINDER, BODY)
 	changePolygon(PYRAMID, RIGHT)
 	changePolygon(SPHERE, LEFT)
 	changePolygon(PYRAMID, FEET)
@@ -191,7 +196,10 @@ func _ready():
 	SignalsTrain.hit.connect(onDamageTaken)
 	SignalsTrain.expPicked.connect(onExpPicked)
 	SignalsTrain.sumarKills.connect(onSumarKill)
-	
+	SignalsTrain.sendPart.connect(setUpgrade)
+func setUpgrade(part):
+	upgrading = part["identity"]
+	print(upgrading)
 func onSumarKill():
 	kills += 1
 	print("kills: ", kills)
@@ -300,27 +308,14 @@ func _physics_process(delta):
 func selectPart():
 	var menuScene: PackedScene = load("res://Scenes/Player/PartSelect/PartSelect.tscn")
 	var menuNode: Control = menuScene.instantiate()
-	var part = randfn(0,4)
 	var map
-	var type
-	match part:
-		0:
-			map = head
-			type = HEAD
-		1:
-			type = BODY
-			map = body
-		2:
-			type = LEFT
-			map = left
-		3:
-			type = RIGHT
-			map = right
-		4:
-			type = FEET
-			map = feet
-	map = head
-	menuNode.initialize(map["resource"], map["figure"], null)
+	var parts = [head, left, right, body, feet]
+	var result: Array
+	while result.size() < 3:
+		var toAdd = parts[randi_range(0, parts.size() - 1)]
+		result.append(toAdd)
+		parts.erase(toAdd)
+	menuNode.initialize(result)
 	
 	add_sibling(menuNode)
 func changeState(newState):
