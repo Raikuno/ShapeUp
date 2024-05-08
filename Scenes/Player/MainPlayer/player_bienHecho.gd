@@ -29,6 +29,24 @@ enum {HEAD, BODY, RIGHT, LEFT, FEET}
 @onready var feetDamage = mediumMultiplier
 @onready var feetAtqSpd = highMultiplier
 #-------------------Valores en Figuras---------------------------------
+#-------------------Barras y Niveles---------------------------------
+@onready var cylinderXPBar = $Control/XPBars/CylinderXPBar
+@onready var sphereXPBar = $Control/XPBars/SphereXPBar
+@onready var cubeXPBar = $Control/XPBars/CubeXPBar
+@onready var pyramidXPBar = $Control/XPBars/PyramidXPBar
+@onready var cylinderLevel = $Control/XPBars/CylinderLevel
+@onready var sphereLevel = $Control/XPBars/SphereLevel
+@onready var cubeLevel = $Control/XPBars/CubeLevel
+@onready var pyramidLevel = $Control/XPBars/PyramidLevel
+var xPNeededPerLevel = {
+	"nivel1" : 5,   # 5
+	"nivel2" : 15,  # 10
+	"nivel3" : 35,  # 20
+	"nivel4" : 75,  # 40
+	"nivel5": 155    #80
+}
+
+
 # anotacion de carmelo, distintas dificultades. (FUMAO)
 var sphereStat = {
 	"health" : 5,
@@ -71,10 +89,10 @@ var head = {
 	"resource": null,
 	"figureStat": null,
 		"experience": {
-		"cylinder" = 0,
-		"cube" = 0,
-		"sphere"= 0,
-		"pyramid" = 0
+			"cylinder" = 0,
+			"cube" = 0,
+			"sphere"= 0,
+			"pyramid" = 0
 	}
 }
 var body= {
@@ -217,10 +235,10 @@ func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamid
 					FEET:
 						feet["experience"]["pyramid"] +=1
 						
-	$Control/XPBars/CylinderXPBar.value = head["experience"]["cylinder"]
-	$Control/XPBars/SphereXPBar.value = head["experience"]["sphere"]
-	$Control/XPBars/CubeXPBar.value = head["experience"]["cube"]
-	$Control/XPBars/PyramidXPBar.value = head["experience"]["pyramid"]
+	cylinderXPBar.value = head["experience"]["cylinder"]
+	sphereXPBar.value = head["experience"]["sphere"]
+	cubeXPBar.value = head["experience"]["cube"]
+	pyramidXPBar.value = head["experience"]["pyramid"]
 	
 	print("""
 	CylinderXp: %s
@@ -229,8 +247,9 @@ func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamid
 	PyramidXp: %s
 	""" % [head["experience"]["cylinder"], head["experience"]["cube"], head["experience"]["sphere"], head["experience"]["pyramid"]])
 
+
+
 func onDamageTaken(damageAmount):
-	
 	health -= damageAmount
 	print("Me queda: ", health, " Recibí: ", damageAmount)
 	$Control/VIDA.text = "Vida: %s" % health
@@ -537,3 +556,43 @@ func _on_right_arm_player_animation_finished(anim_name):
 	fire(right["figure"], right["resource"], "right")
 func _on_left_arm_player_animation_finished(anim_name):
 	fire(left["figure"], left["resource"], "left")
+
+
+func onLevelUp(xPBar, levelLabel, value):
+	if value == xPNeededPerLevel["nivel1"]:
+		levelLabel.text = "1"
+		changeXPBarSize(xPBar,xPNeededPerLevel["nivel2"])
+	elif value == xPNeededPerLevel["nivel2"]:
+		levelLabel.text = "2"
+		changeXPBarSize(xPBar,xPNeededPerLevel["nivel3"])
+	elif value == xPNeededPerLevel["nivel3"]:
+		levelLabel.text = "3"
+		changeXPBarSize(xPBar,xPNeededPerLevel["nivel4"])
+	elif value == xPNeededPerLevel["nivel4"]:
+		levelLabel.text = "4"
+		changeXPBarSize(xPBar,xPNeededPerLevel["nivel5"])
+	elif value == xPNeededPerLevel["nivel5"]:
+		levelLabel.text = "5"
+		changeXPBarSize(xPBar,500)
+
+func changeXPBarSize(xPBar, newSize):
+	xPBar.set_min(xPBar.max_value)
+	xPBar.set_max(newSize)
+
+func _on_cylinder_xp_bar_value_changed(value):
+	if value == cylinderXPBar.max_value:
+		onLevelUp(cylinderXPBar, cylinderLevel , value)
+		
+func _on_pyramid_xp_bar_value_changed(value):
+	if value == pyramidXPBar.max_value:
+		onLevelUp(pyramidXPBar, pyramidLevel , value)
+
+
+func _on_cube_xp_bar_value_changed(value):
+	if value == cubeXPBar.max_value:
+		onLevelUp(cubeXPBar, cubeLevel , value)
+
+
+func _on_sphere_xp_bar_value_changed(value):
+	if value == sphereXPBar.max_value:
+		onLevelUp(sphereXPBar, sphereLevel , value)
