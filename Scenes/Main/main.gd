@@ -4,6 +4,13 @@ var timeSecond = 0
 var timeMinute = 0
 var enemy : PackedScene
 const MENU = "res://Scenes/Main/mainPPK.tscn"
+@onready var messageLabel = $Time/Messages
+
+var randomMessage = [
+	"Los enemigos están flexeando sus putísimos musculos 
+ 	joder sí como me pone que los enemigos hagan pectorales", 
+	"sexo",
+	"oh si follame"]
 
 func _input(event):
 	if Input.is_action_just_pressed("pause"):
@@ -18,7 +25,7 @@ func _ready():
 func _on_mob_spawn_timer_timeout():
 	#1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 	var enemyRandom = randi_range(1,4)
-	spawnMob(enemyRandom, 1, 1)
+	spawnMob(enemyRandom, 1, 0)
 
 
 func spawnMob(enemyRandom,amount, statsMultiplier):
@@ -49,10 +56,10 @@ func _on_start_pressed():
 
 func _on_timer_timeout():
 	timeSecond += 1
-	
 	if timeSecond == 60:
 		timeSecond = 0
 		timeMinute += 1
+		showMessage(0)
 		$Eventos.start()
 	if timeSecond < 10 && timeMinute < 10: # Perdón, me dió flojera
 		$Time/Time.text =  "0%s:0%s" %  [timeMinute ,timeSecond]
@@ -63,7 +70,28 @@ func _on_timer_timeout():
 	else:
 		$Time/Time.text =  "%s:%s" %  [timeMinute ,timeSecond]
 
+func showMessage(messageType): # 0 negro, 1 cilindro, 2 cubo, 3 esfera , 4 peakamide
+	$Time/Messages.show()
+	match messageType:
+		0: #crashea
+			messageLabel.font_color(Color(0,0,0,255))
+		1:
+			messageLabel.font_color(Color(0,205,0,255))
+		2:
+			messageLabel.font_color(Color(205,0,0,255))
+		3:
+			messageLabel.font_color(Color(0,0,205,255))
+		4:
+			messageLabel.font_color(Color(167,163,73,255))
+	messageLabel.text = randomMessage[randomMessage.size() -1]
+	
+	$MessageTime.start()
+	Label
 func _on_eventos_timeout():
 	var enemyRandom = randi_range(1,4)
-	print("SPAWN DE: ",enemyRandom)
-	spawnMob(enemyRandom, 10, 2)
+	showMessage(enemyRandom)
+	spawnMob(enemyRandom, 10, 1)
+
+
+func _on_message_time_timeout():
+	$Time/Messages.hide()

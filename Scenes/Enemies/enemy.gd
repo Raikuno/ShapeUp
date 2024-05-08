@@ -26,7 +26,6 @@ func _ready():
 	var animation = $Animation/AnimationPlayer
 	speed = randi_range(minSpeed, maxSpeed)
 	SignalsTrain.bulletHit.connect(onDamageTaken)
-	print(Hp)
 	
 	
 func onDamageTaken(damageAmount, body):

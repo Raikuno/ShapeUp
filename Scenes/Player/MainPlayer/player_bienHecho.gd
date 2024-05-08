@@ -187,7 +187,7 @@ var intensity = 0
 var manualAim = true
 func _ready():
 	changePolygon(SPHERE, HEAD)
-	changePolygon(CYLINDER, BODY)
+	changePolygon(SPHERE, BODY)
 	changePolygon(PYRAMID, RIGHT)
 	changePolygon(SPHERE, LEFT)
 	changePolygon(PYRAMID, FEET)

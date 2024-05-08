@@ -797,10 +797,8 @@ offset_left = -257.0
 offset_top = 89.0
 offset_right = 308.0
 offset_bottom = 150.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.654902, 0.639216, 0.278431, 1)
 theme_override_font_sizes/font_size = 20
-text = "Los enemigos están flexeando sus putísimos musculos 
-joder sí como me pone que los enemigos hagan pectorales"
 horizontal_alignment = 1
 
 [node name="mobSpawnTimer" type="Timer" parent="."]
@@ -811,9 +809,15 @@ autostart = true
 
 [node name="Eventos" type="Timer" parent="."]
 wait_time = 20.0
+autostart = true
+
+[node name="MessageTime" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 
 [connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Exit" to="." method="_on_exit_pressed"]
 [connection signal="timeout" from="mobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Eventos" to="." method="_on_eventos_timeout"]
+[connection signal="timeout" from="MessageTime" to="." method="_on_message_time_timeout"]
