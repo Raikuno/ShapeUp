@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://tddngfg7bjal"]
+[gd_scene load_steps=16 format=3 uid="uid://tddngfg7bjal"]
 
 [ext_resource type="PackedScene" uid="uid://0cg5kuus6aon" path="res://Objets/tree.tscn" id="1_32qud"]
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_iq3yo"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dakevsqwteftq" path="res://Resources/Obstacles/nube.glb" id="3_3i0lf"]
 [ext_resource type="PackedScene" uid="uid://epp8ep3svpij" path="res://Objets/fence.tscn" id="5_gdm2e"]
 [ext_resource type="PackedScene" uid="uid://bavtwemfemmxy" path="res://Scenes/Player/MainPlayer/player_bienHecho.tscn" id="5_rw2lt"]
+[ext_resource type="Script" path="res://Scenes/Main/FakeViewTest.gd" id="7_sg5be"]
+[ext_resource type="PackedScene" uid="uid://bdm0cur8gw70l" path="res://Scenes/Player/player.tscn" id="8_vffkx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0jysc"]
 size = Vector3(1800, 2, 1800)
@@ -30,6 +32,9 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 35
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fcei3"]
+viewport_path = NodePath("SubViewport")
 
 [node name="main" type="Node"]
 script = ExtResource("1_iq3yo")
@@ -677,6 +682,12 @@ mesh = SubResource("CylinderMesh_28cft")
 transform = Transform3D(-0.965926, -0.258819, -2.338e-08, 0.25, -0.933013, 0.258819, -0.0669873, 0.25, 0.965926, 0, 582, 379)
 shadow_enabled = true
 
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="Camera3D2" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(-1, -5.68434e-14, 8.9407e-08, 6.91462e-08, 0.633934, 0.773387, -5.66782e-08, 0.773387, -0.633934, -1, 37.259, -38.4059)
+fov = 78.75
+
 [node name="player" parent="." instance=ExtResource("5_rw2lt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91934, 0)
 
@@ -687,10 +698,36 @@ curve = SubResource("Curve3D_ljcyo")
 [node name="PathFollow3D" type="PathFollow3D" parent="player/Path3D"]
 transform = Transform3D(0.802965, 0, -0.596016, 0, 1, 0, 0.596017, 0, 0.802965, -117.866, -2, -59.071)
 
-[node name="Camera3D2" type="Camera3D" parent="player"]
-transform = Transform3D(-1, -1.06581e-14, 8.9407e-08, 6.91462e-08, 0.633934, 0.773387, -5.66782e-08, 0.773387, -0.633934, -1, 35.3397, -38.4059)
+[node name="FakeViewTest" type="Node3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -37.9423, 0)
+script = ExtResource("7_sg5be")
+
+[node name="player" parent="player/FakeViewTest" instance=ExtResource("8_vffkx")]
+transform = Transform3D(-1.31134e-08, -0.264, -3.36852e-16, 0.3, -1.15398e-08, 2.25124e-23, -4.1839e-23, -3.33067e-16, 0.267, 2.23495, 0.417, -3.85533)
+
+[node name="Camera3D" type="Camera3D" parent="player/FakeViewTest"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 1.94213, 0)
+projection = 1
 current = true
-fov = 78.75
+fov = 107.426
+size = 5.18407
+
+[node name="Sprite3D" type="Sprite3D" parent="player/FakeViewTest"]
+transform = Transform3D(-5.36225e-08, -1.02172, -4.37114e-08, 0, -4.46608e-08, 1, -1.22674, 4.46608e-08, 1.91069e-15, 0, 0, 0)
+texture = SubResource("ViewportTexture_fcei3")
+
+[node name="Ground" type="StaticBody3D" parent="player/FakeViewTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.05119, 0)
+visible = false
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player/FakeViewTest/Ground"]
+shape = SubResource("BoxShape3D_0jysc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="player/FakeViewTest/Ground"]
+material_override = SubResource("StandardMaterial3D_wt6aa")
+mesh = SubResource("BoxMesh_f54qs")
 
 [node name="Menu" type="Control" parent="."]
 process_mode = 2

@@ -532,8 +532,8 @@ func manualAiming(delta):
 		rotation.y = 0
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 2000
-	var from = $Camera3D2.project_ray_origin(mouse_pos)
-	var to = from + $Camera3D2.project_ray_normal(mouse_pos) * ray_length
+	var from = $FakeViewTest/Camera3D.project_ray_origin(mouse_pos)
+	var to = from + $FakeViewTest/Camera3D.project_ray_normal(mouse_pos) * ray_length
 	var space = get_world_3d().direct_space_state
 	var raycast_result = space.intersect_ray(PhysicsRayQueryParameters3D.create(from, to))
 	
