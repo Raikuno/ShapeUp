@@ -186,9 +186,9 @@ var intensity = 0
 @onready var kills = 0
 var manualAim = true
 func _ready():
-	changePolygon(SPHERE, HEAD)
-	changePolygon(SPHERE, BODY)
-	changePolygon(PYRAMID, RIGHT)
+	changePolygon(PYRAMID, HEAD)
+	changePolygon(CUBE, BODY)
+	changePolygon(CYLINDER, RIGHT)
 	changePolygon(SPHERE, LEFT)
 	changePolygon(PYRAMID, FEET)
 	resetStats()
@@ -202,7 +202,6 @@ func setUpgrade(part):
 	print(upgrading)
 func onSumarKill():
 	kills += 1
-	print("kills: ", kills)
 	$Control/Kills.text = "Kills: %s" % kills
 func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 	match expType:

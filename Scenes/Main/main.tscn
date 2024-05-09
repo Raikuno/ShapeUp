@@ -799,6 +799,7 @@ offset_right = 308.0
 offset_bottom = 150.0
 theme_override_colors/font_color = Color(0.654902, 0.639216, 0.278431, 1)
 theme_override_font_sizes/font_size = 20
+text = "JVDANKLGSLFJLKASJGKLSSJNEKLG"
 horizontal_alignment = 1
 
 [node name="mobSpawnTimer" type="Timer" parent="."]
@@ -809,7 +810,6 @@ autostart = true
 
 [node name="Eventos" type="Timer" parent="."]
 wait_time = 20.0
-autostart = true
 
 [node name="MessageTime" type="Timer" parent="."]
 wait_time = 5.0

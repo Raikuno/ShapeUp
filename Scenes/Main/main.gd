@@ -9,8 +9,19 @@ const MENU = "res://Scenes/Main/mainPPK.tscn"
 var randomMessage = [
 	"Los enemigos están flexeando sus putísimos musculos 
  	joder sí como me pone que los enemigos hagan pectorales", 
-	"sexo",
-	"oh si follame"]
+	"Los enemigos están flexeando sus musculos ",
+	"Los enemigos se preparan para correr una maratón",
+	"Los cubos están afilando sus bordes",
+	"Las esferas están puliendose",
+	"Los cilindros aprendieron a no cagarse encima",
+	"Las pirámides están haciendo teorías cospiranoicas",
+	"Los enemigos están haciendo mewing",
+	"Supercalifragilisticoespialodoso...
+	los enemigos te intentan distraer...",
+	"Los enemigos están farmeando para subir a nv 100",
+	"Los enemigos tocan los tambores de la liberación"]
+var randomEventMessage = [
+	"¡¡Se aproxima una horda!!"]
 
 func _input(event):
 	if Input.is_action_just_pressed("pause"):
@@ -73,17 +84,20 @@ func _on_timer_timeout():
 func showMessage(messageType): # 0 negro, 1 cilindro, 2 cubo, 3 esfera , 4 peakamide
 	$Time/Messages.show()
 	match messageType:
-		0: #crashea
-			messageLabel.font_color(Color(0,0,0,255))
+		0:
+			messageLabel.add_theme_color_override("font_color", Color.BLACK)
 		1:
-			messageLabel.font_color(Color(0,205,0,255))
+			messageLabel.add_theme_color_override("font_color", Color.GREEN) 
 		2:
-			messageLabel.font_color(Color(205,0,0,255))
+			messageLabel.add_theme_color_override("font_color", Color.RED) 
 		3:
-			messageLabel.font_color(Color(0,0,205,255))
+			messageLabel.add_theme_color_override("font_color", Color.BLUE)
 		4:
-			messageLabel.font_color(Color(167,163,73,255))
-	messageLabel.text = randomMessage[randomMessage.size() -1]
+			messageLabel.add_theme_color_override("font_color", Color.YELLOW)
+	if messageType != 0:
+		messageLabel.text = randomEventMessage[randi_range(0,randomEventMessage.size() -1)]
+	else:
+		messageLabel.text = randomMessage[randi_range(0,randomMessage.size() -1)]
 	
 	$MessageTime.start()
 	Label
