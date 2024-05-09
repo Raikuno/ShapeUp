@@ -275,7 +275,6 @@ func onDamageTaken(damageAmount):
 	for i in damageAmount:
 		if healthBarRectangleInUse.value >  0:
 			healthBarRectangleInUse.value -= 1
-			print(healthBarRectangleInUse.value)
 		else:
 			healthBarFigureInUse.value -= 1
 		if invisible.is_stopped():
