@@ -38,6 +38,7 @@ enum {HEAD, BODY, RIGHT, LEFT, FEET}
 @onready var sphereLevel = $Control/XPBars/SphereLevel
 @onready var cubeLevel = $Control/XPBars/CubeLevel
 @onready var pyramidLevel = $Control/XPBars/PyramidLevel
+@onready var theBar = $Control/XPBars/TheBar
 #-------------------Barras de vida---------------------------------
 @onready var healthBarCylinder = $Control/HealthBars/Cylinder/HealthBarCylinder
 @onready var healthBarRectangleCylinder = $Control/HealthBars/Cylinder/HealthBarRectangleCylinder
@@ -258,6 +259,7 @@ func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamid
 	sphereXPBar.value = head["experience"]["sphere"]
 	cubeXPBar.value = head["experience"]["cube"]
 	pyramidXPBar.value = head["experience"]["pyramid"]
+	theBar.value = theBar.value + 1
 	
 	print("""
 	CylinderXp: %s
