@@ -162,7 +162,7 @@ var generalXp = {
 	"sphere"= 0,
 	"pyramid" = 0
 }
-var upgrading = HEAD
+var upgrading
 var state
 #Animaciones 
 var animation
@@ -199,75 +199,35 @@ func _ready():
 	SignalsTrain.sumarKills.connect(onSumarKill)
 	SignalsTrain.sendPart.connect(setUpgrade)
 func setUpgrade(part):
-	upgrading = part["identity"]
-	print(upgrading)
+	upgrading = part
+	setValueOnBar()
 func onSumarKill():
 	kills += 1
 	$Control/Kills.text = "💀%s" % kills
 func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
-	match expType:
+	match expType:#Esto hay que oprimizarlo, las direcciones de memoria SON una cosa
 		1:
-			match upgrading:
-				HEAD:
-					head["experience"]["cylinder"] +=1
-				RIGHT:
-					right["experience"]["cylinder"] +=1
-				LEFT:
-					left["experience"]["cylinder"] +=1
-				BODY:
-					body["experience"]["cylinder"] +=1
-				FEET:
-					feet["experience"]["cylinder"] +=1
+			upgrading["experience"]["cylinder"] +=1
 		2:
-			match upgrading:
-				HEAD:
-					head["experience"]["cube"] +=1
-				RIGHT:
-					right["experience"]["cube"] +=1 
-				LEFT:
-					left["experience"]["cube"] +=1
-				BODY:
-					body["experience"]["cube"] +=1
-				FEET:
-					feet["experience"]["cube"] +=1
+			upgrading["experience"]["cube"] +=1
 		3:
-			match upgrading:
-				HEAD:
-					head["experience"]["sphere"] +=1
-				RIGHT:
-					right["experience"]["sphere"] +=1
-				LEFT:
-					left["experience"]["sphere"] +=1
-				BODY:
-					body["experience"]["sphere"] +=1
-				FEET:
-					feet["experience"]["sphere"] +=1
+			upgrading["experience"]["sphere"] +=1
 		4:
-			match upgrading:
-					HEAD:
-						head["experience"]["pyramid"] +=1
-					RIGHT:
-						right["experience"]["pyramid"] +=1
-					LEFT:
-						left["experience"]["pyramid"] +=1
-					BODY:
-						body["experience"]["pyramid"] +=1
-					FEET:
-						feet["experience"]["pyramid"] +=1
-						
-	cylinderXPBar.value = head["experience"]["cylinder"]
-	sphereXPBar.value = head["experience"]["sphere"]
-	cubeXPBar.value = head["experience"]["cube"]
-	pyramidXPBar.value = head["experience"]["pyramid"]
+			upgrading["experience"]["pyramid"] +=1
 	theBar.value = theBar.value + 1
-	
+	setValueOnBar()
 	print("""
 	CylinderXp: %s
 	CubeXp: %s
 	ShpereXp: %s
 	PyramidXp: %s
-	""" % [head["experience"]["cylinder"], head["experience"]["cube"], head["experience"]["sphere"], head["experience"]["pyramid"]])
-
+	""" % [upgrading["experience"]["cylinder"], upgrading["experience"]["cube"], upgrading["experience"]["sphere"], upgrading["experience"]["pyramid"]])
+func setValueOnBar():
+	cylinderXPBar.value = upgrading["experience"]["cylinder"]
+	sphereXPBar.value = upgrading["experience"]["sphere"]
+	cubeXPBar.value = upgrading["experience"]["cube"]
+	pyramidXPBar.value = upgrading["experience"]["pyramid"]
+	
 
 	#Este método es para recibir damages
 func onDamageTaken(damageAmount):
@@ -288,7 +248,7 @@ func _on_invisible_timeout():
 	invisible.stop()
 	
 func _physics_process(delta):
-	if Input.is_action_just_pressed("debug"):
+	if Input.is_action_just_pressed("debug")||upgrading == null:
 		selectPart()
 	feetLogic(delta)
 	aimingLogic(delta)

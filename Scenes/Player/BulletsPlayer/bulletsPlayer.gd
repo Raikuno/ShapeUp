@@ -7,7 +7,8 @@ var type
 @export var fall_acceleration = 75
 @export var jump_impulse = 20
 @export var damage = 50   # cada tipo de brazo va a tener un multiplicador al daño base del jugador, por ejemplo circulo hará un 0.75 del daño base y cuadrado un 1.25
-@onready var cubeHeight = 0.8
+@onready var cubeHeight = 0.7
+@onready var amebaHeight = 0.5
 var getFixedBoy = false
 func _ready():
 	pass
@@ -112,8 +113,8 @@ func amebaLogic(delta):
 	if !onFloor:
 		var direction = global_transform.basis.z.normalized()
 		var displacement : Vector3 = direction * -70 * delta
-		global_transform.origin += Vector3(displacement.x, cubeHeight, displacement.z)
-		cubeHeight -= 0.1
+		global_transform.origin += Vector3(displacement.x, amebaHeight, displacement.z)
+		amebaHeight -= 0.1
 
 func cylinderLogic(delta):
 	if !onFloor:
