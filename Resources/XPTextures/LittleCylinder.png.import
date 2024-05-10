@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhaopy08hu38a"
-path="res://.godot/imported/TextureBar.png-3bc65283081f5ba131d7a2329604b9b7.ctex"
+uid="uid://cibbuivgb87ad"
+path="res://.godot/imported/LittleCylinder.png-e03b939eecb877f67b0f029fd1c7a3f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/TextureBar.png"
-dest_files=["res://.godot/imported/TextureBar.png-3bc65283081f5ba131d7a2329604b9b7.ctex"]
+source_file="res://Resources/XPTextures/LittleCylinder.png"
+dest_files=["res://.godot/imported/LittleCylinder.png-e03b939eecb877f67b0f029fd1c7a3f1.ctex"]
 
 [params]
 

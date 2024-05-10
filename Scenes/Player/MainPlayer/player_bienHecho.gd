@@ -38,7 +38,7 @@ enum {HEAD, BODY, RIGHT, LEFT, FEET}
 @onready var sphereLevel = $Control/XPBars/SphereLevel
 @onready var cubeLevel = $Control/XPBars/CubeLevel
 @onready var pyramidLevel = $Control/XPBars/PyramidLevel
-@onready var theBar = $Control/XPBars/TheBar
+@onready var theBar = $Control/TheBar
 #-------------------Barras de vida---------------------------------
 @onready var healthBarCylinder = $Control/HealthBars/Cylinder/HealthBarCylinder
 @onready var healthBarRectangleCylinder = $Control/HealthBars/Cylinder/HealthBarRectangleCylinder
@@ -187,11 +187,11 @@ var intensity = 0
 @onready var kills = 0
 var manualAim = true
 func _ready():
-	changePolygon(PYRAMID, HEAD)
-	changePolygon(CUBE, BODY)
-	changePolygon(CYLINDER, RIGHT)
-	changePolygon(SPHERE, LEFT)
-	changePolygon(PYRAMID, FEET)
+	changePolygon(AMEBA, HEAD)
+	changePolygon(AMEBA, BODY)
+	changePolygon(AMEBA, RIGHT)
+	changePolygon(AMEBA, LEFT)
+	changePolygon(AMEBA, FEET)
 	resetStats()
 	changeState(STATIC)
 	SignalsTrain.hit.connect(onDamageTaken)
@@ -203,7 +203,7 @@ func setUpgrade(part):
 	print(upgrading)
 func onSumarKill():
 	kills += 1
-	$Control/Kills.text = "Kills: %s" % kills
+	$Control/Kills.text = "💀%s" % kills
 func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 	match expType:
 		1:
@@ -300,8 +300,8 @@ func _physics_process(delta):
 		changeState(MOVE)
 	if velocity == Vector3.ZERO and state == MOVE:
 		changeState(STATIC)
-	if invisible.is_stopped() && health > 0:
-			show()
+	if invisible.is_stopped() && healthRemaining > 0:
+		show()
 	else:
 		hide()
 		

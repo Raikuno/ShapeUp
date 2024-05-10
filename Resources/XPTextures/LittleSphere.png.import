@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2c1ggnulseki"
-path="res://.godot/imported/SphereTextureBar.png-d37f70ca779e83c2333d9bbdfbc72d57.ctex"
+uid="uid://cy6sitgkewdqr"
+path="res://.godot/imported/LittleSphere.png-5cf0756de6abb1fdfd5001ae5956e372.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/SphereTextureBar.png"
-dest_files=["res://.godot/imported/SphereTextureBar.png-d37f70ca779e83c2333d9bbdfbc72d57.ctex"]
+source_file="res://Resources/XPTextures/LittleSphere.png"
+dest_files=["res://.godot/imported/LittleSphere.png-5cf0756de6abb1fdfd5001ae5956e372.ctex"]
 
 [params]
 

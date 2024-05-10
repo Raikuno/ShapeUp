@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blmfc4drjq0d0"
-path="res://.godot/imported/TheBar.png-f81a556d4ee1e4b97e20e8ed5a02e070.ctex"
+uid="uid://cabvf732hhswe"
+path="res://.godot/imported/LittleCube.png-2ad44f33fa79d3266ab56fc14b17423e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/TheBar.png"
-dest_files=["res://.godot/imported/TheBar.png-f81a556d4ee1e4b97e20e8ed5a02e070.ctex"]
+source_file="res://Resources/XPTextures/LittleCube.png"
+dest_files=["res://.godot/imported/LittleCube.png-2ad44f33fa79d3266ab56fc14b17423e.ctex"]
 
 [params]
 

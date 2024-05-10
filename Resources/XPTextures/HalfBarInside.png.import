@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://w1du4m1gclcr"
-path="res://.godot/imported/PyramidTextureBar.png-c9b39723234c19e79daa8cd9a623edf2.ctex"
+uid="uid://dpjlmmhdamkxv"
+path="res://.godot/imported/HalfBarInside.png-60c161ebc16bc3c45e5caf9c632674fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/PyramidTextureBar.png"
-dest_files=["res://.godot/imported/PyramidTextureBar.png-c9b39723234c19e79daa8cd9a623edf2.ctex"]
+source_file="res://Resources/XPTextures/HalfBarInside.png"
+dest_files=["res://.godot/imported/HalfBarInside.png-60c161ebc16bc3c45e5caf9c632674fa.ctex"]
 
 [params]
 

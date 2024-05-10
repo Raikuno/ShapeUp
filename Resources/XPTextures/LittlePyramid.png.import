@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvgrqsm3gc1en"
-path="res://.godot/imported/CubeTextureBar.png-75283edd97f7b0acc25d9419bb55b977.ctex"
+uid="uid://boaqmsfpdgbsh"
+path="res://.godot/imported/LittlePyramid.png-9ceca4708694f8085779cfd21f678d86.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/CubeTextureBar.png"
-dest_files=["res://.godot/imported/CubeTextureBar.png-75283edd97f7b0acc25d9419bb55b977.ctex"]
+source_file="res://Resources/XPTextures/LittlePyramid.png"
+dest_files=["res://.godot/imported/LittlePyramid.png-9ceca4708694f8085779cfd21f678d86.ctex"]
 
 [params]
 
