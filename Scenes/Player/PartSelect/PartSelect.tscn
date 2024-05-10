@@ -559,7 +559,11 @@ offset_top = 55.0
 offset_right = -2.0
 offset_bottom = 124.0
 grow_horizontal = 2
+<<<<<<< Updated upstream
 text = "Select a BODY PART to SHAPE UP!!"
+=======
+text = "Select a SHAPE to UP!!"
+>>>>>>> Stashed changes
 label_settings = SubResource("LabelSettings_k86uq")
 horizontal_alignment = 1
 
@@ -570,5 +574,10 @@ libraries = {
 autoplay = "partSelectionAnimations"
 
 [connection signal="pressed" from="part1Container/button" to="." method="part1Selected"]
+<<<<<<< Updated upstream
 [connection signal="pressed" from="part2Container/button" to="." method="part1Selected"]
 [connection signal="pressed" from="part3Container/button" to="." method="part1Selected"]
+=======
+[connection signal="pressed" from="part2Container/button" to="." method="part2Selected"]
+[connection signal="pressed" from="part3Container/button" to="." method="part3Selected"]
+>>>>>>> Stashed changes
