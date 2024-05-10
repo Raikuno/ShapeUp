@@ -1,5 +1,6 @@
 extends Control
 enum {HEAD, BODY, RIGHT, LEFT, FEET}
+enum {CUBE, PYRAMID, SPHERE, CYLINDER, AMEBA}
 var part1
 var part2
 var part3
@@ -13,25 +14,46 @@ func _process(delta):
 
 func initialize(newParts): #node, figure, part
 	part1 = newParts[0]
-	var node : Node3D
-	node = newParts[0]["resource"].duplicate()
-	node.position = Vector3(0,0,0)
-	node.scale = Vector3(1,1,1)
-	node.rotation = Vector3(0,0,0)
-	$part1Container/SubViewportContainer/SubViewport/Marker3D.add_child(node)
-	match newParts[0]["identity"]:
-		HEAD:
-			$part1Container/part1.text = "Head"
-		RIGHT:
-			$part1Container/part1.text = "Right Arm"
-		LEFT:
-			$part1Container/part1.text = "Left Arm"
-		FEET:
-			$part1Container/part1.text = "Legs"
-		BODY:
-			$part1Container/part1.text = "Body"
 	part2 = newParts[1]
 	part3 = newParts[2]
+	setValues("part1Container", part1)
+	setValues("part2Container", part2)
+	setValues("part3Container", part3)
+func setValues(part, newParts):
+	var text = get_node(NodePath(part + "/button"))
+	var bodyPart:Node3D
+	var pathToNode : String = part
+	match newParts["identity"]:
+		HEAD:
+			text.text = "Head"
+			pathToNode = pathToNode + "/SubViewportContainer/SubViewport/headPosition"
+		RIGHT:
+			text.text = "Right Arm"
+			pathToNode = pathToNode + "/SubViewportContainer/SubViewport/armsPosition"
+		LEFT:
+			text.text = "Left Arm"
+			pathToNode = pathToNode + "/SubViewportContainer/SubViewport/armsPosition"
+		FEET:
+			text.text = "Legs"
+			pathToNode = pathToNode + "/SubViewportContainer/SubViewport/legsPosition"
+		BODY:
+			text.text = "Body"
+			pathToNode = pathToNode + "/SubViewportContainer/SubViewport/bodyPosition"
+	
+	match newParts["figure"]:
+		CUBE:
+			pathToNode = pathToNode + "/cubo"
+		PYRAMID:
+			pathToNode = pathToNode + "/piramide"
+		CYLINDER:
+			pathToNode = pathToNode + "/esfera"
+		SPHERE:
+			pathToNode = pathToNode + "/cilindro"
+		AMEBA:
+			pathToNode = pathToNode + "/triangulo"
+	bodyPart = get_node(pathToNode)
+	print(pathToNode)
+	bodyPart.show()
 
 func part1Selected():
 	get_tree().paused = false
