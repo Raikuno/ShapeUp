@@ -39,6 +39,10 @@ enum {HEAD, BODY, RIGHT, LEFT, FEET}
 @onready var cubeLevel = $Control/XPBars/CubeLevel
 @onready var pyramidLevel = $Control/XPBars/PyramidLevel
 @onready var theBar = $Control/TheBar
+@onready var theBarCylinder = $Control/CylinderTheBar
+@onready var theBarSphere = $Control/SphereTheBar
+@onready var theBarCube = $Control/CubeTheBar
+@onready var theBarPyramid = $Control/PyramidTheBar
 #-------------------Barras de vida---------------------------------
 @onready var healthBarCylinder = $Control/HealthBars/Cylinder/HealthBarCylinder
 @onready var healthBarRectangleCylinder = $Control/HealthBars/Cylinder/HealthBarRectangleCylinder
@@ -101,6 +105,7 @@ var head = {
 	"resource": null,
 	"figureStat": null,
 	"experience": {
+		"part" = 0,
 		"cylinder" = 0,
 		"cube" = 0,
 		"sphere"= 0,
@@ -113,6 +118,7 @@ var body= {
 	"resource": null,
 	"figureStat": null, 
 	"experience": {
+		"part" = 0,
 		"cylinder" = 0,
 		"cube" = 0,
 		"sphere"= 0,
@@ -125,6 +131,7 @@ var right= {
 	"resource": null,
 	"figureStat": null,
 	"experience": {
+		"part" = 0,
 		"cylinder" = 0,
 		"cube" = 0,
 		"sphere"= 0,
@@ -137,6 +144,7 @@ var left= {
 	"resource": null,
 	"figureStat": null,
 	"experience": {
+		"part" = 0,
 		"cylinder" = 0,
 		"cube" = 0,
 		"sphere"= 0,
@@ -149,6 +157,7 @@ var feet= {
 	"resource": null,
 	"figureStat": null,
 	"experience": {
+		"part" = 0,
 		"cylinder" = 0,
 		"cube" = 0,
 		"sphere"= 0,
@@ -188,9 +197,9 @@ var intensity = 0
 var manualAim = true
 func _ready():
 	changePolygon(AMEBA, HEAD)
-	changePolygon(AMEBA, BODY)
-	changePolygon(AMEBA, RIGHT)
-	changePolygon(AMEBA, LEFT)
+	changePolygon(PYRAMID, BODY)
+	changePolygon(PYRAMID, RIGHT)
+	changePolygon(PYRAMID, LEFT)
 	changePolygon(AMEBA, FEET)
 	resetStats()
 	changeState(STATIC)
@@ -201,6 +210,43 @@ func _ready():
 func setUpgrade(part):
 	upgrading = part
 	setValueOnBar()
+	var xPNeeded = howManyxPNeededForTheBar()
+	changeTheBarSize(theBar,xPNeeded * 2) 
+	changeTheBarSize(theBarSphere,xPNeeded) 
+	changeTheBarSize(theBarCylinder,xPNeeded) 
+	changeTheBarSize(theBarCube,xPNeeded) 
+	changeTheBarSize(theBarPyramid,xPNeeded) 
+	upgrading["experience"]["part"] += 1
+	$Control/XPBars/PartLevel.text = "%s: %s" % [jodemeMasSiPuedesJorge(upgrading["identity"]), upgrading["experience"]["part"]]
+
+func jodemeMasSiPuedesJorge(figure):
+	match figure:
+		0:
+			return "la cabesa"
+		1:
+			return "la pisha"
+		2:
+			return "braso las paja"
+		3:
+			return "braso malo"
+		4:
+			return "mmm, patas"
+
+func howManyxPNeededForTheBar():
+	match upgrading["experience"]["part"]:
+		0:  ##preguntar a jorge si sabe coger un indice específico de un puto mapa
+			return xPNeededPerLevel["nivel1"]
+		1:
+			return xPNeededPerLevel["nivel2"]
+		2:
+			return xPNeededPerLevel["nivel3"]
+		3:
+			return xPNeededPerLevel["nivel4"]
+		4:
+			return xPNeededPerLevel["nivel5"]
+		5:
+			return 666
+	return 500
 func onSumarKill():
 	kills += 1
 	$Control/Kills.text = "💀%s" % kills
@@ -208,12 +254,16 @@ func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamid
 	match expType:#Esto hay que oprimizarlo, las direcciones de memoria SON una cosa
 		1:
 			upgrading["experience"]["cylinder"] +=1
+			theBarCylinder.value = theBarCylinder.value + 1
 		2:
 			upgrading["experience"]["cube"] +=1
+			theBarCube.value = theBarCube.value + 1
 		3:
 			upgrading["experience"]["sphere"] +=1
+			theBarSphere.value = theBarSphere.value + 1
 		4:
 			upgrading["experience"]["pyramid"] +=1
+			theBarPyramid.value = theBarPyramid.value + 1
 	theBar.value = theBar.value + 1
 	setValueOnBar()
 	print("""
@@ -223,12 +273,31 @@ func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamid
 	PyramidXp: %s
 	""" % [upgrading["experience"]["cylinder"], upgrading["experience"]["cube"], upgrading["experience"]["sphere"], upgrading["experience"]["pyramid"]])
 
-func setValueOnBar():
+func setValueOnBar(): #no tiene ningun sentido, mañana hablamos
+	print("value ",cylinderXPBar.value)
+	print("upgrading ",upgrading["experience"]["cylinder"])
 	cylinderXPBar.value = upgrading["experience"]["cylinder"]
 	sphereXPBar.value = upgrading["experience"]["sphere"]
 	cubeXPBar.value = upgrading["experience"]["cube"]
 	pyramidXPBar.value = upgrading["experience"]["pyramid"]
-	
+	print("///",cylinderXPBar.value)
+
+func setLevelUnderBars(levelLabel,value):
+	print(levelLabel, "///",value)
+	if value < xPNeededPerLevel["nivel1"]:
+		levelLabel.text = "0"
+	elif value >= xPNeededPerLevel["nivel1"] && value < xPNeededPerLevel["nivel2"]:
+		levelLabel.text = "1"
+	elif value >= xPNeededPerLevel["nivel2"] && value < xPNeededPerLevel["nivel3"]:
+		levelLabel.text = "2"
+	elif value >= xPNeededPerLevel["nivel3"]&& value  < xPNeededPerLevel["nivel4"]:
+		levelLabel.text = "3"
+	elif value >= xPNeededPerLevel["nivel4"] && value < xPNeededPerLevel["nivel5"]:
+		levelLabel.text = "4"
+	elif value >= xPNeededPerLevel["nivel5"]&& value  < xPNeededPerLevel["nivel5"]: #lim
+		levelLabel.text = "5"
+	else:
+		return "0"
 	#Este método es para recibir damages
 func onDamageTaken(damageAmount):
 	healthRemaining -= damageAmount
@@ -248,7 +317,7 @@ func _on_invisible_timeout():
 	invisible.stop()
 	
 func _physics_process(delta):
-	if Input.is_action_just_pressed("debug")||upgrading == null:
+	if Input.is_action_just_pressed("debug")||upgrading == null: #Poner esto a null explota, prefiero llamarlo desde el método correspondiente
 		selectPart()
 	feetLogic(delta)
 	aimingLogic(delta)
@@ -307,8 +376,6 @@ func changeState(newState):
 					animation = "amebaFeetIdle"
 			#new_animation_feet = "idle"
 			
-			
-
 
 func resetStats():
 	speed = (left["figureStat"]["speed"]* armSpeed)+(right["figureStat"]["speed"] * armSpeed)+(body["figureStat"]["speed"] * bodySpeed)+(head["figureStat"]["speed"] * headSpeed)+(feet["figureStat"]["speed"] * feetSpeed)
@@ -558,27 +625,37 @@ func _on_left_arm_player_animation_finished(anim_name):
 
 
 func onLevelUp(xPBar, levelLabel, value):
-	if value == xPNeededPerLevel["nivel1"]:
+	print("la barra ", xPBar, "con el label", levelLabel, "tiene ", value)
+	if value < xPNeededPerLevel["nivel1"]:
+		levelLabel.text = "0"
+	elif value >= xPNeededPerLevel["nivel1"] && value < xPNeededPerLevel["nivel2"]:
 		levelLabel.text = "1"
 		changeXPBarSize(xPBar,xPNeededPerLevel["nivel2"])
-	elif value == xPNeededPerLevel["nivel2"]:
+	elif value >= xPNeededPerLevel["nivel2"] && value < xPNeededPerLevel["nivel3"]:
 		levelLabel.text = "2"
 		changeXPBarSize(xPBar,xPNeededPerLevel["nivel3"])
-	elif value == xPNeededPerLevel["nivel3"]:
+	elif value >= xPNeededPerLevel["nivel3"]&& value  < xPNeededPerLevel["nivel4"]:
 		levelLabel.text = "3"
 		changeXPBarSize(xPBar,xPNeededPerLevel["nivel4"])
-	elif value == xPNeededPerLevel["nivel4"]:
+	elif value >= xPNeededPerLevel["nivel4"] && value < xPNeededPerLevel["nivel5"]:
 		levelLabel.text = "4"
 		changeXPBarSize(xPBar,xPNeededPerLevel["nivel5"])
-	elif value == xPNeededPerLevel["nivel5"]:
+	elif value >= xPNeededPerLevel["nivel5"]&& value  < xPNeededPerLevel["nivel5"]: #lim
 		levelLabel.text = "5"
 		changeXPBarSize(xPBar,500)
+	else:
+		levelLabel.text = "god"
 
 func changeXPBarSize(xPBar, newSize):
 	xPBar.set_min(xPBar.max_value)
 	xPBar.set_max(newSize)
-
+	
+func changeTheBarSize(xPBar, newSize):
+	xPBar.set_max(newSize)
+	xPBar.value = 0
+	
 func _on_cylinder_xp_bar_value_changed(value):
+	print("llamaron ",cylinderXPBar.max_value)
 	if value == cylinderXPBar.max_value:
 		onLevelUp(cylinderXPBar, cylinderLevel , value)
 		
@@ -595,3 +672,34 @@ func _on_cube_xp_bar_value_changed(value):
 func _on_sphere_xp_bar_value_changed(value):
 	if value == sphereXPBar.max_value:
 		onLevelUp(sphereXPBar, sphereLevel , value)
+
+
+func _on_the_bar_value_changed(value):
+	if value == theBar.max_value:
+		changePolygon(AMEBA, upgrading["identity"])
+		resetStats()
+		selectPart()
+
+func _on_sphere_the_bar_value_changed(value):
+	if value == theBarSphere.max_value:
+		changePolygon(SPHERE, upgrading["identity"])
+		resetStats()
+		selectPart()
+
+func _on_cube_the_bar_value_changed(value):
+	if value == theBarCube.max_value:
+		changePolygon(CUBE, upgrading["identity"])
+		resetStats()
+		selectPart()
+		
+func _on_pyramid_the_bar_value_changed(value):
+	if value == theBarPyramid.max_value:
+		changePolygon(PYRAMID, upgrading["identity"])
+		resetStats()
+		selectPart()
+		
+func _on_cylinder_the_bar_value_changed(value):
+	if value == theBarCylinder.max_value:
+		changePolygon(CYLINDER, upgrading["identity"])
+		resetStats()
+		selectPart()

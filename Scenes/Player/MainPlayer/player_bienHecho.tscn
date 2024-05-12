@@ -1187,15 +1187,15 @@ transform = Transform3D(0.232791, -0.511618, 0.827076, 0.0507347, 0.855672, 0.51
 visible = false
 
 [node name="brazo-cuboPlayer" parent="pivot/rightArm" instance=ExtResource("16_ne5te")]
-transform = Transform3D(0.462744, 5.00679e-07, -0.525231, -0.304705, 0.570165, -0.268453, 0.427812, 0.406094, 0.376915, 0.256621, 2.1317, 2.58995)
+transform = Transform3D(0.462744, 5.21541e-07, -0.525231, -0.304705, 0.570165, -0.268453, 0.427812, 0.406094, 0.376915, 0.256621, 2.1317, 2.58995)
 visible = false
 
 [node name="brazo-esferaPlayer" parent="pivot/rightArm" instance=ExtResource("17_87h6d")]
-transform = Transform3D(0.821905, 0.569624, 3.83453e-08, -0.529623, 0.764188, -0.368125, -0.209693, 0.302564, 0.929776, 0.585547, 1.73018, 2.30501)
+transform = Transform3D(0.821905, 0.569624, 4.11351e-08, -0.529623, 0.764188, -0.368125, -0.209693, 0.302564, 0.929776, 0.585547, 1.73018, 2.30501)
 visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/rightArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.43159e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
+transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.49271e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
 visible = false
 
 [node name="brazo-cilindroPlayer" type="MeshInstance3D" parent="pivot/rightArm"]
@@ -1215,11 +1215,11 @@ transform = Transform3D(0.67474, 0.133303, 0.130216, 0, 0.489144, -0.500738, -0.
 visible = false
 
 [node name="brazo-esferaPlayer" parent="pivot/leftArm" instance=ExtResource("17_87h6d")]
-transform = Transform3D(0.49982, 0.418864, 0.758111, -0.642306, 0.766448, 1.25636e-07, -0.581053, -0.48694, 0.652125, -0.0885837, 2.01696, -1.9455)
+transform = Transform3D(0.49982, 0.418864, 0.758112, -0.642306, 0.766448, 1.36092e-07, -0.581053, -0.48694, 0.652125, -0.0885837, 2.01696, -1.9455)
 visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/leftArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.26527e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
+transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.28528e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
 visible = false
 
 [node name="brazo-amebaPlayerMKII" parent="pivot/leftArm" instance=ExtResource("19_hh71a")]
@@ -1342,26 +1342,91 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 32.0
-offset_top = -305.0
-offset_right = 771.0
-offset_bottom = 1701.0
+offset_left = 22.0
+offset_top = -11.0
+offset_right = 761.0
+offset_bottom = 1995.0
 grow_vertical = 2
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.15, 0.15)
+max_value = 1.0
 fill_mode = 3
 texture_under = ExtResource("32_6p3ru")
 texture_progress = ExtResource("33_0hatf")
 texture_progress_offset = Vector2(14, 118)
+
+[node name="SphereTheBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 75.0
+offset_top = 139.0
+offset_right = 260.0
+offset_bottom = 1030.0
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+max_value = 5.0
+fill_mode = 3
+texture_under = ExtResource("27_nl4ke")
+texture_progress = ExtResource("29_0142a")
+
+[node name="CubeTheBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = 139.0
+offset_right = 285.0
+offset_bottom = 1149.0
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+max_value = 5.0
+fill_mode = 3
+texture_under = ExtResource("27_nl4ke")
+texture_progress = ExtResource("31_uk77d")
+
+[node name="PyramidTheBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 125.0
+offset_top = 139.0
+offset_right = 310.0
+offset_bottom = 1030.0
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+max_value = 5.0
+fill_mode = 3
+texture_under = ExtResource("27_nl4ke")
+texture_progress = ExtResource("31_jtmlg")
+
+[node name="CylinderTheBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = 139.0
+offset_right = 235.0
+offset_bottom = 1030.0
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+max_value = 5.0
+fill_mode = 3
+texture_under = ExtResource("27_nl4ke")
+texture_progress = ExtResource("28_u5pl4")
 
 [node name="Kills" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -120.0
-offset_top = 220.0
-offset_right = 23.0
-offset_bottom = 270.0
+offset_left = -1102.0
+offset_top = 187.0
+offset_right = -959.0
+offset_bottom = 237.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
@@ -1389,7 +1454,7 @@ offset_right = 35.0
 offset_bottom = 665.0
 grow_horizontal = 0
 scale = Vector2(0.15, 0.15)
-max_value = 10.0
+max_value = 5.0
 fill_mode = 3
 texture_under = ExtResource("27_nl4ke")
 texture_progress = ExtResource("28_u5pl4")
@@ -1421,7 +1486,7 @@ offset_right = 115.0
 offset_bottom = 1025.0
 grow_horizontal = 0
 scale = Vector2(0.15, 0.15)
-max_value = 10.0
+max_value = 5.0
 fill_mode = 3
 texture_under = ExtResource("27_nl4ke")
 texture_progress = ExtResource("31_uk77d")
@@ -1486,6 +1551,18 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "0"
 
+[node name="PartLevel" type="Label" parent="Control/XPBars"]
+layout_mode = 0
+offset_left = -943.4
+offset_top = 537.9
+offset_right = -903.4
+offset_bottom = 581.9
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "0"
+
 [node name="HealthBars" type="Control" parent="Control"]
 layout_mode = 1
 anchors_preset = 0
@@ -1544,7 +1621,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HealthBarSphere" type="TextureProgressBar" parent="Control/HealthBars/Sphere"]
-visible = false
 texture_filter = 2
 layout_mode = 1
 anchors_preset = 3
@@ -1552,10 +1628,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 760.0
-offset_top = 146.667
-offset_right = 1824.0
-offset_bottom = 1152.67
+offset_left = 93.3333
+offset_top = 80.0003
+offset_right = 1157.33
+offset_bottom = 1086.0
 grow_horizontal = 0
 grow_vertical = 0
 max_value = 50.0
@@ -1566,17 +1642,16 @@ radial_initial_angle = 90.0
 radial_fill_degrees = 270.0
 
 [node name="HealthBarRectangleSphere" type="TextureProgressBar" parent="Control/HealthBars/Sphere"]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1260.0
-offset_top = 146.667
-offset_right = 2766.0
-offset_bottom = 284.667
+offset_left = 593.333
+offset_top = 80.0
+offset_right = 2099.33
+offset_bottom = 218.0
 grow_horizontal = 0
 grow_vertical = 0
 max_value = 50.0
@@ -1715,6 +1790,50 @@ offset_right = 73.9997
 offset_bottom = 221.0
 texture = ExtResource("50_rhiec")
 
+[node name="LittleFiguresXPTheBar" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1002.0
+offset_top = 500.0
+offset_right = -962.0
+offset_bottom = 540.0
+grow_horizontal = 0
+scale = Vector2(0.12, 0.12)
+
+[node name="LittleCylinder" type="TextureRect" parent="Control/LittleFiguresXPTheBar"]
+layout_mode = 0
+offset_left = -825.0
+offset_top = -491.667
+offset_right = -701.0
+offset_bottom = -370.667
+texture = ExtResource("47_8mhva")
+
+[node name="LittleSphere" type="TextureRect" parent="Control/LittleFiguresXPTheBar"]
+layout_mode = 0
+offset_left = -616.667
+offset_top = -491.667
+offset_right = -492.667
+offset_bottom = -370.667
+texture = ExtResource("48_cn3pt")
+
+[node name="LittleCube" type="TextureRect" parent="Control/LittleFiguresXPTheBar"]
+layout_mode = 0
+offset_left = -416.667
+offset_top = -500.0
+offset_right = -292.667
+offset_bottom = -379.0
+texture = ExtResource("49_nq5l5")
+
+[node name="LittlePyramid" type="TextureRect" parent="Control/LittleFiguresXPTheBar"]
+layout_mode = 0
+offset_left = -208.333
+offset_top = -491.667
+offset_right = -84.3334
+offset_bottom = -370.667
+texture = ExtResource("50_rhiec")
+
 [node name="LittleFiguresHealth" type="Control" parent="Control"]
 layout_mode = 1
 anchors_preset = 0
@@ -1732,11 +1851,13 @@ offset_bottom = 796.0
 texture = ExtResource("47_8mhva")
 
 [node name="LittleSphere" type="TextureRect" parent="Control/LittleFiguresHealth"]
+visible = false
 layout_mode = 0
-offset_left = 1100.0
-offset_top = 518.75
-offset_right = 1350.0
-offset_bottom = 768.75
+offset_left = 1162.5
+offset_top = 1868.75
+offset_right = 1412.5
+offset_bottom = 2118.75
+scale = Vector2(5, 5)
 texture = ExtResource("48_cn3pt")
 
 [node name="LittleCube" type="TextureRect" parent="Control/LittleFiguresHealth"]
@@ -1761,6 +1882,11 @@ texture = ExtResource("50_rhiec")
 [connection signal="animation_finished" from="rightArmPlayer" to="." method="_on_right_arm_player_animation_finished"]
 [connection signal="animation_finished" from="leftArmPlayer" to="." method="_on_left_arm_player_animation_finished"]
 [connection signal="timeout" from="Invisible" to="." method="_on_invisible_timeout"]
+[connection signal="value_changed" from="Control/TheBar" to="." method="_on_the_bar_value_changed"]
+[connection signal="value_changed" from="Control/SphereTheBar" to="." method="_on_sphere_the_bar_value_changed"]
+[connection signal="value_changed" from="Control/CubeTheBar" to="." method="_on_cube_the_bar_value_changed"]
+[connection signal="value_changed" from="Control/PyramidTheBar" to="." method="_on_pyramid_the_bar_value_changed"]
+[connection signal="value_changed" from="Control/CylinderTheBar" to="." method="_on_cylinder_the_bar_value_changed"]
 [connection signal="value_changed" from="Control/XPBars/CylinderXPBar" to="." method="_on_cylinder_xp_bar_value_changed"]
 [connection signal="value_changed" from="Control/XPBars/SphereXPBar" to="." method="_on_sphere_xp_bar_value_changed"]
 [connection signal="value_changed" from="Control/XPBars/CubeXPBar" to="." method="_on_cube_xp_bar_value_changed"]
