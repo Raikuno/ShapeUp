@@ -52,7 +52,6 @@ func setValues(part, newParts):
 		AMEBA:
 			pathToNode = pathToNode + "/ameba"
 	bodyPart = get_node(pathToNode)
-	print(pathToNode)
 	bodyPart.show()
 
 func part1Selected():
