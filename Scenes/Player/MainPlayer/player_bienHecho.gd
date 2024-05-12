@@ -222,13 +222,13 @@ func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamid
 	ShpereXp: %s
 	PyramidXp: %s
 	""" % [upgrading["experience"]["cylinder"], upgrading["experience"]["cube"], upgrading["experience"]["sphere"], upgrading["experience"]["pyramid"]])
+
 func setValueOnBar():
 	cylinderXPBar.value = upgrading["experience"]["cylinder"]
 	sphereXPBar.value = upgrading["experience"]["sphere"]
 	cubeXPBar.value = upgrading["experience"]["cube"]
 	pyramidXPBar.value = upgrading["experience"]["pyramid"]
 	
-
 	#Este método es para recibir damages
 func onDamageTaken(damageAmount):
 	healthRemaining -= damageAmount
