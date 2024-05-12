@@ -1196,7 +1196,9 @@ visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/rightArm" instance=ExtResource("18_hftsq")]
 transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.49271e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
+
 visible = false
+
 
 [node name="brazo-cilindroPlayer" type="MeshInstance3D" parent="pivot/rightArm"]
 transform = Transform3D(-0.258819, -0.965926, -5.50248e-07, 0.965926, -0.258819, 4.2222e-07, -5.50248e-07, -4.2222e-07, 1, -6.6382e-07, 1.77499, 1.51864)
@@ -1842,7 +1844,6 @@ offset_bottom = 40.0
 scale = Vector2(0.16, 0.16)
 
 [node name="LittleCylinder" type="TextureRect" parent="Control/LittleFiguresHealth"]
-visible = false
 layout_mode = 0
 offset_left = 1156.25
 offset_top = 675.0

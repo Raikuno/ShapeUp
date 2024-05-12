@@ -46,9 +46,9 @@ func setValues(part, newParts):
 		PYRAMID:
 			pathToNode = pathToNode + "/piramide"
 		CYLINDER:
-			pathToNode = pathToNode + "/esfera"
-		SPHERE:
 			pathToNode = pathToNode + "/cilindro"
+		SPHERE:
+			pathToNode = pathToNode + "/esfera"
 		AMEBA:
 			pathToNode = pathToNode + "/ameba"
 	bodyPart = get_node(pathToNode)

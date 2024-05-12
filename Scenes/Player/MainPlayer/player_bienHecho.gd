@@ -2,6 +2,8 @@ extends CharacterBody3D
 enum {MOVE, STATIC}
 enum {CUBE, PYRAMID, SPHERE, CYLINDER, AMEBA}
 enum {HEAD, BODY, RIGHT, LEFT, FEET}
+
+var bulletDirection
 #Multiplicadores
 #--------------------Tipos de Multiplicadores--------------------------
 @export var lowMultiplier = 0.75
@@ -196,11 +198,13 @@ var intensity = 0
 @onready var kills = 0
 var manualAim = true
 func _ready():
+<<<<<<< HEAD
 	changePolygon(AMEBA, HEAD)
 	changePolygon(PYRAMID, BODY)
 	changePolygon(PYRAMID, RIGHT)
 	changePolygon(PYRAMID, LEFT)
 	changePolygon(AMEBA, FEET)
+
 	resetStats()
 	changeState(STATIC)
 	SignalsTrain.hit.connect(onDamageTaken)
@@ -566,6 +570,9 @@ func manualAiming(delta):
 	
 	if not raycast_result.is_empty():
 		var pos = raycast_result.position
+		bulletDirection = pos
+		right["resource"].look_at(Vector3(pos.x, right["resource"].position.y, pos.z), Vector3.UP)
+		left["resource"].look_at(Vector3(pos.x, left["resource"].position.y, pos.z), Vector3.UP)
 		$pivot.look_at(Vector3(pos.x, position.y, pos.z), Vector3.UP)
 func autoAiming(delta):
 	$pivot.rotation.y += 0.02
@@ -614,7 +621,7 @@ func fire(weapon, part, direction):
 		CYLINDER:
 			variableDamage = 0.3
 	biggerWeapons = iNeedMoreBulletss.instantiate()
-	biggerWeapons.initialize(weapon, $pivot.basis, damage * variableDamage, part.global_position, part.global_rotation)
+	biggerWeapons.initialize(weapon, $pivot.basis, damage * variableDamage, bulletDirection, part.global_position, part.global_rotation)
 	add_sibling(biggerWeapons)
 
 #Función que será llamada cada vez que finalice la animación de recarga. Esta animación y su velocidad determinarán la velocidad de ataque
