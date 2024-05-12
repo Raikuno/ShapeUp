@@ -15,42 +15,42 @@ func _ready():
 func _process(delta):
 	pass
 func callBullet():
-		match type:
-			CUBE:
-				$brazoCubo.show()
-				remove_child($brazoTriangulo)
-				remove_child($brazoEsfera)
-				remove_child($brazoAmeba)
-				remove_child($bracoCilindro)
-			PYRAMID:
-				$brazoTriangulo.show()
-				remove_child($brazoCubo)
-				remove_child($brazoEsfera)
-				remove_child($brazoAmeba)
-				remove_child($bracoCilindro)
-			SPHERE:
-				$brazoEsfera.show()
-				remove_child($brazoCubo)
-				remove_child($brazoTriangulo)
-				remove_child($brazoAmeba)
-				remove_child($bracoCilindro)
-			CYLINDER:
-				getFixedBoy = true
-				$bracoCilindro.show()
-				remove_child($bracoAmeba)
-				remove_child($brazoCubo)
-				remove_child($brazoTriangulo)
-				remove_child($brazoSphere)
-				remove_child($brazoAmeba/CollisionShape3D)
-				
-			AMEBA:
-				$brazoAmeba.show()
-				remove_child($brazoCubo)
-				remove_child($brazoTriangulo)
-				remove_child($brazoSphere)
-				remove_child($bracoCilindro)
+	match type:
+		CUBE:
+			$brazoCubo.show()
+			remove_child($brazoTriangulo)
+			remove_child($brazoEsfera)
+			remove_child($brazoAmeba)
+			remove_child($bracoCilindro)
+		PYRAMID:
+			$brazoTriangulo.show()
+			remove_child($brazoCubo)
+			remove_child($brazoEsfera)
+			remove_child($brazoAmeba)
+			remove_child($bracoCilindro)
+		SPHERE:
+			$brazoEsfera.show()
+			remove_child($brazoCubo)
+			remove_child($brazoTriangulo)
+			remove_child($brazoAmeba)
+			remove_child($bracoCilindro)
+		CYLINDER:
+			getFixedBoy = true
+			$bracoCilindro.show()
+			remove_child($bracoAmeba)
+			remove_child($brazoCubo)
+			remove_child($brazoTriangulo)
+			remove_child($brazoSphere)
+			remove_child($brazoAmeba/CollisionShape3D)
+			
+		AMEBA:
+			$brazoAmeba.show()
+			remove_child($brazoCubo)
+			remove_child($brazoTriangulo)
+			remove_child($brazoSphere)
+			remove_child($bracoCilindro)
 
-func initialize(newType, direction, newDamage, newPosition = position, newRotation = rotation):
+func initialize(newType, direction, newDamage, bulletDirection, newPosition = position, newRotation = rotation):
 	var downer : float
 	if newType == SPHERE:
 		downer = 1.5
@@ -61,6 +61,7 @@ func initialize(newType, direction, newDamage, newPosition = position, newRotati
 	type = newType
 	basis = direction
 	damage = newDamage
+	basis.looking_at(bulletDirection)
 	callBullet()
 func _physics_process(delta):
 	match type:
