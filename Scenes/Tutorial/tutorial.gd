@@ -8,28 +8,29 @@ var canPressTheButton = false
 @onready var effectsTimer = $effects
 @onready var tryYourselfTimer = $tryYourself
 var explanationTexts = [
-	"Bienvenido a Shape Up! (haz click en next para continuar)", 
+	"Bienvenido a Shape Up! 
+	(haz click en next para continuar)", 
 	"Shape up es un juego en el que tendrás que sobrevivir
-	 a oleadas de enemigos el máximo tiempo posible", 
+	a oleadas de enemigos el máximo tiempo posible", 
 	"Para ello tendrás que acabar con tus enemigos y 
 	obtener sus puntos de experiencia, los cuales te permitirán 
 	hacerte más fuerte y por tanto, sobrevivir más tiempo.",
 	"Observemos los elementos del juego!", 
 	"Este eres tú, tendrás que moverte y 
 	apuntar a los enemigos para derrotarlos",
-	"Esta es tu barra de vida, si los enemigos te golpean bajará
-	, si llega a cero será game over.",
+	"Esta es tu barra de vida, si los enemigos te golpean bajará,
+	si llega a cero será game over.",
 	"Este es el contador de kills,
 	aquí se registrarán los enemigos que derrotes.",
 	"Este es el tiempo de juego, 
 	¡intenta conseguir el máximo posible antes de perder!",
 	"El tiempo de juego y las kills que obtengas al terminar el juego
-	 será tu puntuación final,
-	 ¡intenta llegar a la cima de la clasificación mundial!",
-	"Ahora veamos el movimiento, con WASD o las flechas direccionales podrás moverte
-	, usa el ratón para que el personaje mire en esa dirección,
-	 verás que ataca automaticamente.",
-	"¡Ahí tenemos al primer enemigo, Apunta para acabar con él!",
+	será tu puntuación final, 
+	¡intenta llegar a la cima de la clasificación mundial!", #9
+	"Ahora veamos el movimiento, con WASD o las flechas direccionales podrás moverte,
+	usa el ratón para que el personaje mire en esa dirección,
+	verás que ataca automaticamente.",
+	"¡Apareció un enemigo!,buscaló, apunta bien y con él!",
 	"Esto es un punto de experiencia, hay 4 tipos de enemigos
 	caracterizados por una forma y un color concreto,
 	concreto, esto es la experiencia del 'cubo', intenta cogerla ",
@@ -38,7 +39,7 @@ var explanationTexts = [
 	"El jugador se compone de 5 partes del cuerpo: 
 	cabeza, cuerpo, brazo izquierdo, brazo derecho y piernas.",
 	"Cada parte del cuerpo puede subir de nivel de manera independiente del resto.
-	 Al inicio del juego y cada vez que subamos un nivel nos aparecerá un menú 
+	Al inicio del juego y cada vez que subamos un nivel nos aparecerá un menú 
 	mostrando 3 partes aleatorias, ¡elige la que te apetezca!",
 	"Bien! ahora estás mejorando tu 'nombre de la parte', 
 	¡cojamos algo de experiencia!",
@@ -63,7 +64,7 @@ var explanationTexts = [
 	pero si eres muy avaricioso te mantendrás en estado ameba y caerás con facilidad.",
 	"Cada figura tiene sus fortalezas y debilidades, 
 	intenta encontrar tu forma favorita de jugar
-	 y no te olvides de lo más importante, pasarlo bien :D.",
+	y no te olvides de lo más importante, pasarlo bien :D.",
 	"Fin del tutorial, mucha suerte ^^"]
 	
 var positionTexts = [
@@ -71,14 +72,14 @@ var positionTexts = [
 	Vector2(-374,-232),
 	Vector2(-374,-232),
 	Vector2(-374,-232),
-	Vector2(-385,92), #
-	Vector2(-535,-110),
+	Vector2(-385,92), #4
+	Vector2(-436,-110),
 	Vector2(-557,-57),
-	Vector2(),
-	Vector2(),
-	Vector2(),
-	Vector2(),
-	Vector2(),
+	Vector2(-374,-232),
+	Vector2(-374,-232),
+	Vector2(-510,-232), #9
+	Vector2(-374,-232),
+	Vector2(-374,-232), 
 	Vector2(),
 	Vector2(),
 	Vector2(),
@@ -213,7 +214,21 @@ func _on_next_pressed():
 				circle.show()
 				reallyLittlecircle.hide()
 				circle.position = Vector2(-3990,-4784)
-
-
+			10:
+				circle.hide()
+				get_tree().paused = false
+				tryYourselfTimer.start()
+				$Control/Next.hide()
+				explanationText.hide()
+			11:
+				get_tree().paused = false
+				tryYourselfTimer.start()
+				$Control/Next.hide()
+				explanationText.hide()
+			
 func _on_try_yourself_timeout():
+	get_tree().paused = true
 	canPressTheButton = true
+	explanationText.show()
+	$Control/Next.show()
+	tryYourselfTimer.stop()

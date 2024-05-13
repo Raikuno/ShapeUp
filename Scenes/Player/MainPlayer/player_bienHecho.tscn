@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://bbcouqq5lnoq6" path="res://Resources/XPTextures/HalfBarInsideSphereFill.png" id="29_0142a"]
 [ext_resource type="Texture2D" uid="uid://curdkpy33tt2g" path="res://Resources/XPTextures/HalfBarInsidePyramidFill.png" id="31_jtmlg"]
 [ext_resource type="Texture2D" uid="uid://c5o0n78xi8gpd" path="res://Resources/XPTextures/HalfBarInsideCubeFill.png" id="31_uk77d"]
-[ext_resource type="Texture2D" uid="uid://blmfc4drjq0d0" path="res://Resources/XPTextures/TheBar.png" id="32_6p3ru"]
+[ext_resource type="Texture2D" uid="uid://blmfc4drjq0d0" path="res://Resources/TheBar.png" id="32_6p3ru"]
 [ext_resource type="Texture2D" uid="uid://cyw7qqi1mbdmp" path="res://Resources/HealthBars/HealthBarCircle.png" id="32_5042o"]
 [ext_resource type="Texture2D" uid="uid://cqvyugnxs00qu" path="res://Resources/HealthBars/HealthBarCylinder.png" id="32_u211k"]
 [ext_resource type="Texture2D" uid="uid://cjcrdm5p5aoww" path="res://Resources/XPTextures/TheBarInside.png" id="33_0hatf"]
@@ -1187,23 +1187,15 @@ transform = Transform3D(0.232791, -0.511618, 0.827076, 0.0507347, 0.855672, 0.51
 visible = false
 
 [node name="brazo-cuboPlayer" parent="pivot/rightArm" instance=ExtResource("16_ne5te")]
-transform = Transform3D(0.462744, 5.00679e-07, -0.525231, -0.304705, 0.570165, -0.268453, 0.427812, 0.406094, 0.376915, 0.256621, 2.1317, 2.58995)
+transform = Transform3D(0.462744, 5.21541e-07, -0.525231, -0.304705, 0.570165, -0.268453, 0.427812, 0.406094, 0.376915, 0.256621, 2.1317, 2.58995)
 visible = false
 
 [node name="brazo-esferaPlayer" parent="pivot/rightArm" instance=ExtResource("17_87h6d")]
-<<<<<<< HEAD
-transform = Transform3D(0.821905, 0.569624, 3.72571e-08, -0.529623, 0.764188, -0.368125, -0.209693, 0.302564, 0.929776, 0.585547, 1.73018, 2.30501)
+transform = Transform3D(0.821905, 0.569624, 4.00469e-08, -0.529623, 0.764188, -0.368125, -0.209693, 0.302564, 0.929776, 0.585547, 1.73018, 2.30501)
 visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/rightArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.48832e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
-=======
-transform = Transform3D(0.821905, 0.569624, 4.34501e-08, -0.529623, 0.764188, -0.368125, -0.209693, 0.302564, 0.929776, 0.585547, 1.73018, 2.30501)
-visible = false
-
-[node name="brazo-trianguloPlayer" parent="pivot/rightArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.46243e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
->>>>>>> 89db3f8ab668c92d639fc1d6693fcc3ee5e2d597
+transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.43552e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
 visible = false
 
 [node name="brazo-cilindroPlayer" type="MeshInstance3D" parent="pivot/rightArm"]
@@ -1223,19 +1215,11 @@ transform = Transform3D(0.67474, 0.133303, 0.130216, 0, 0.489144, -0.500738, -0.
 visible = false
 
 [node name="brazo-esferaPlayer" parent="pivot/leftArm" instance=ExtResource("17_87h6d")]
-<<<<<<< HEAD
-transform = Transform3D(0.49982, 0.418864, 0.758111, -0.642306, 0.766448, 1.36735e-07, -0.581053, -0.48694, 0.652125, -0.0885837, 2.01696, -1.9455)
+transform = Transform3D(0.49982, 0.418864, 0.758111, -0.642306, 0.766448, 1.28049e-07, -0.581053, -0.48694, 0.652125, -0.0885837, 2.01696, -1.9455)
 visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/leftArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.20809e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
-=======
-transform = Transform3D(0.49982, 0.418864, 0.758111, -0.642306, 0.766448, 1.3915e-07, -0.581053, -0.48694, 0.652125, -0.0885837, 2.01696, -1.9455)
-visible = false
-
-[node name="brazo-trianguloPlayer" parent="pivot/leftArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.29098e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
->>>>>>> 89db3f8ab668c92d639fc1d6693fcc3ee5e2d597
+transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.20707e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
 visible = false
 
 [node name="brazo-amebaPlayerMKII" parent="pivot/leftArm" instance=ExtResource("19_hh71a")]

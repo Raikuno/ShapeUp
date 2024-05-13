@@ -199,9 +199,9 @@ var intensity = 0
 var manualAim = true
 func _ready():
 	changePolygon(AMEBA, HEAD)
-	changePolygon(PYRAMID, BODY)
-	changePolygon(PYRAMID, RIGHT)
-	changePolygon(PYRAMID, LEFT)
+	changePolygon(AMEBA, BODY)
+	changePolygon(AMEBA, RIGHT)
+	changePolygon(AMEBA, LEFT)
 	changePolygon(AMEBA, FEET)
 
 	resetStats()
@@ -210,6 +210,7 @@ func _ready():
 	SignalsTrain.expPicked.connect(onExpPicked)
 	SignalsTrain.sumarKills.connect(onSumarKill)
 	SignalsTrain.sendPart.connect(setUpgrade)
+	
 func setUpgrade(part):
 	upgrading = part
 	setValueOnBar()
@@ -320,7 +321,7 @@ func _on_invisible_timeout():
 	invisible.stop()
 	
 func _physics_process(delta):
-	if Input.is_action_just_pressed("debug")||upgrading == null: #Poner esto a null explota, prefiero llamarlo desde el método correspondiente
+	if Input.is_action_just_pressed("debug"): #Poner esto a null explota, prefiero llamarlo desde el método correspondiente
 		selectPart()
 	feetLogic(delta)
 	aimingLogic(delta)
@@ -336,6 +337,12 @@ func _physics_process(delta):
 		show()
 	else:
 		hide()
+		
+func initializePartSelection():
+	selectPart()
+
+func initializePlayerTutorial():
+	setUpgrade(head)
 		
 func selectPart():
 	var menuScene: PackedScene = load("res://Scenes/Player/PartSelect/PartSelect.tscn")

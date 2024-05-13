@@ -28,10 +28,10 @@ func _input(event):
 		get_tree().paused = true
 		$Menu.show()
 
-		
 
 func _ready():
 	$Menu.hide()
+	$player.initializePartSelection()	
 
 func _on_mob_spawn_timer_timeout():
 	#1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
