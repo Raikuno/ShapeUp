@@ -198,7 +198,6 @@ var intensity = 0
 @onready var kills = 0
 var manualAim = true
 func _ready():
-<<<<<<< HEAD
 	changePolygon(AMEBA, HEAD)
 	changePolygon(PYRAMID, BODY)
 	changePolygon(PYRAMID, RIGHT)

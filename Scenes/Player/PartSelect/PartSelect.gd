@@ -5,10 +5,13 @@ var part1
 var part2
 var part3
 func _ready():
+	FirebaseLite.initializeFirebase(["Authentication", "Firestore"])
+	FirebaseLite.Authentication.initializeAuth(1)
 	get_tree().paused = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	FirebaseLite.Firestore.write("score/score", {"data/data" : "Dictionary"})
 	pass
 
 
@@ -59,7 +62,8 @@ func part1Selected():
 	SignalsTrain.emit_signal("sendPart", part1)
 	queue_free()
 
-
+func manager(msg):
+	pass
 
 func part2Selected():
 	get_tree().paused = false

@@ -1,5 +1,4 @@
 extends CharacterBody3D
-
 func _ready():
 	# 0 = amebaGOD / 1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide / 5 = amebaEvil
 	var head = randi_range(0,5)
