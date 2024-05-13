@@ -2,6 +2,7 @@ extends Node
 var arrayVectores = [Vector3(-27.768,1.2,35.369), Vector3(-34.71,1.2,44.158),Vector3(-72.145,1,53.832),Vector3(-45.474,1,40.171)]
 var enemyDeath : PackedScene
 const MAIN = "res://Scenes/Main/main.tscn"
+const TUTORIAL = "res://Scenes/Tutorial/tutorial.tscn"
 
 func _ready():
 	for vector3 in arrayVectores:
@@ -31,3 +32,7 @@ func _on_start_pressed():
 
 func _on_exit_pressed():
 	get_tree().quit()
+
+
+func _on_tutorial_pressed():
+	get_tree().change_scene_to_file(TUTORIAL)
