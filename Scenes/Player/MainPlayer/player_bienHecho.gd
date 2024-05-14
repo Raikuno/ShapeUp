@@ -58,11 +58,12 @@ var bulletDirection
 var healthBarFigureInUse
 var healthBarRectangleInUse
 var xPNeededPerLevel = {
-	"nivel1" : 5,   # 5
-	"nivel2" : 15,  # 10
-	"nivel3" : 35,  # 20
-	"nivel4" : 75,  # 40
-	"nivel5": 155   # 80
+	0 : 5,   # 5
+	1 : 10,  # 10
+	2 : 20,  # 20
+	3 : 40,  # 40
+	4 : 80 ,  # 155
+	5 : 100   # 255, lo que mide un byte guapísimo
 }
 
 
@@ -108,11 +109,19 @@ var head = {
 	"resource": null,
 	"figureStat": null,
 	"experience": {
+		"cylinder" = 0,
+		"cube" = 0,
+		"sphere"= 0,
+		"pyramid" = 0
+		
+	},
+	"level": {
 		"part" = 0,
 		"cylinder" = 0,
 		"cube" = 0,
 		"sphere"= 0,
 		"pyramid" = 0
+		
 	},
 	"identity" : HEAD
 }
@@ -121,11 +130,19 @@ var body= {
 	"resource": null,
 	"figureStat": null, 
 	"experience": {
+		"cylinder" = 0,
+		"cube" = 0,
+		"sphere"= 0,
+		"pyramid" = 0
+		
+	},
+	"level": {
 		"part" = 0,
 		"cylinder" = 0,
 		"cube" = 0,
 		"sphere"= 0,
 		"pyramid" = 0
+		
 	},
 	"identity" : BODY
 }
@@ -134,11 +151,19 @@ var right= {
 	"resource": null,
 	"figureStat": null,
 	"experience": {
+		"cylinder" = 0,
+		"cube" = 0,
+		"sphere"= 0,
+		"pyramid" = 0
+		
+	},
+	"level": {
 		"part" = 0,
 		"cylinder" = 0,
 		"cube" = 0,
 		"sphere"= 0,
 		"pyramid" = 0
+		
 	},
 	"identity" : RIGHT
 }
@@ -146,12 +171,20 @@ var left= {
 	"figure" : null,
 	"resource": null,
 	"figureStat": null,
-	"experience": {
+		"experience": {
+		"cylinder" = 0,
+		"cube" = 0,
+		"sphere"= 0,
+		"pyramid" = 0
+		
+	},
+	"level": {
 		"part" = 0,
 		"cylinder" = 0,
 		"cube" = 0,
 		"sphere"= 0,
 		"pyramid" = 0
+		
 	},
 	"identity" : LEFT
 }
@@ -160,11 +193,19 @@ var feet= {
 	"resource": null,
 	"figureStat": null,
 	"experience": {
+		"cylinder" = 0,
+		"cube" = 0,
+		"sphere"= 0,
+		"pyramid" = 0
+		
+	},
+	"level": {
 		"part" = 0,
 		"cylinder" = 0,
 		"cube" = 0,
 		"sphere"= 0,
 		"pyramid" = 0
+		
 	},
 	"identity" : FEET
 }
@@ -199,11 +240,11 @@ var intensity = 0
 @onready var kills = 0
 var manualAim = true
 func _ready():
-	changePolygon(AMEBA, HEAD)
-	changePolygon(AMEBA, BODY)
-	changePolygon(AMEBA, RIGHT)
-	changePolygon(AMEBA, LEFT)
-	changePolygon(AMEBA, FEET)
+	changePolygon(CUBE, HEAD)
+	changePolygon(CUBE, BODY)
+	changePolygon(CUBE, RIGHT)
+	changePolygon(CUBE, LEFT)
+	changePolygon(SPHERE, FEET)
 	healthBarFigureInUse = healthBarSphere
 	healthBarRectangleInUse = healthBarRectangleSphere
 	resetStats()
@@ -216,30 +257,30 @@ func _ready():
 func setUpgrade(part):
 	upgrading = part
 	setValueOnBar()
-	var xPNeeded = howManyxPNeededForTheBar()
+	var xPNeeded = xPNeededPerLevel[upgrading["level"]["part"]]
 	changeTheBarSize(theBar,xPNeeded * 2) 
 	changeTheBarSize(theBarSphere,xPNeeded) 
 	changeTheBarSize(theBarCylinder,xPNeeded) 
 	changeTheBarSize(theBarCube,xPNeeded) 
 	changeTheBarSize(theBarPyramid,xPNeeded) 
-	upgrading["experience"]["part"] += 1
-	$Control/XPBars/PartLevel.text = "%s: %s" % [jodemeMasSiPuedesJorge(upgrading["identity"]), upgrading["experience"]["part"]]
+	upgrading["level"]["part"] += 1
+	$Control/XPBars/PartLevel.text = "%s: %s" % [whatPart(upgrading["identity"]), upgrading["level"]["part"]]
 
-func jodemeMasSiPuedesJorge(figure):
+func whatPart(figure):
 	match figure:
 		0:
-			return "la cabesa"
+			return "Cabeza "
 		1:
-			return "la pisha"
+			return "Cuerpo "
 		2:
-			return "braso las paja"
+			return "Brazo Derecho "
 		3:
-			return "braso malo"
+			return "Brazo Izquierdo "
 		4:
-			return "mmm, patas"
+			return "Piernas "
 
 func howManyxPNeededForTheBar():
-	match upgrading["experience"]["part"]:
+	match upgrading["level"]["part"]:
 		0:  ##preguntar a jorge si sabe coger un indice específico de un puto mapa
 			return xPNeededPerLevel["nivel1"]
 		1:
@@ -280,16 +321,12 @@ func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamid
 	""" % [upgrading["experience"]["cylinder"], upgrading["experience"]["cube"], upgrading["experience"]["sphere"], upgrading["experience"]["pyramid"]])
 
 func setValueOnBar(): #no tiene ningun sentido, mañana hablamos
-	print("value ",cylinderXPBar.value)
-	print("upgrading ",upgrading["experience"]["cylinder"])
 	cylinderXPBar.value = upgrading["experience"]["cylinder"]
 	sphereXPBar.value = upgrading["experience"]["sphere"]
 	cubeXPBar.value = upgrading["experience"]["cube"]
 	pyramidXPBar.value = upgrading["experience"]["pyramid"]
-	print("///",cylinderXPBar.value)
 
 func setLevelUnderBars(levelLabel,value):
-	print(levelLabel, "///",value)
 	if value < xPNeededPerLevel["nivel1"]:
 		levelLabel.text = "0"
 	elif value >= xPNeededPerLevel["nivel1"] && value < xPNeededPerLevel["nivel2"]:
@@ -642,27 +679,11 @@ func _on_left_arm_player_animation_finished(anim_name):
 	fire(left["figure"], left["resource"], "left")
 
 
-func onLevelUp(xPBar, levelLabel, value):
-	print("la barra ", xPBar, "con el label", levelLabel, "tiene ", value)
-	if value < xPNeededPerLevel["nivel1"]:
-		levelLabel.text = "0"
-	elif value >= xPNeededPerLevel["nivel1"] && value < xPNeededPerLevel["nivel2"]:
-		levelLabel.text = "1"
-		changeXPBarSize(xPBar,xPNeededPerLevel["nivel2"])
-	elif value >= xPNeededPerLevel["nivel2"] && value < xPNeededPerLevel["nivel3"]:
-		levelLabel.text = "2"
-		changeXPBarSize(xPBar,xPNeededPerLevel["nivel3"])
-	elif value >= xPNeededPerLevel["nivel3"]&& value  < xPNeededPerLevel["nivel4"]:
-		levelLabel.text = "3"
-		changeXPBarSize(xPBar,xPNeededPerLevel["nivel4"])
-	elif value >= xPNeededPerLevel["nivel4"] && value < xPNeededPerLevel["nivel5"]:
-		levelLabel.text = "4"
-		changeXPBarSize(xPBar,xPNeededPerLevel["nivel5"])
-	elif value >= xPNeededPerLevel["nivel5"]&& value  < xPNeededPerLevel["nivel5"]: #lim
-		levelLabel.text = "5"
-		changeXPBarSize(xPBar,500)
-	else:
-		levelLabel.text = "god"
+func onLevelUp(xPBar, levelLabel, value, upgradingPart):
+	print(upgradingPart)
+	upgradingPart += 1
+	levelLabel.text = "%s" % upgradingPart
+	changeXPBarSize(xPBar,xPNeededPerLevel[upgrading["level"]["part"] + 1])
 
 func changeXPBarSize(xPBar, newSize):
 	xPBar.set_min(xPBar.max_value)
@@ -675,21 +696,22 @@ func changeTheBarSize(xPBar, newSize):
 func _on_cylinder_xp_bar_value_changed(value):
 	print("llamaron ",cylinderXPBar.max_value)
 	if value == cylinderXPBar.max_value:
-		onLevelUp(cylinderXPBar, cylinderLevel , value)
+		onLevelUp(cylinderXPBar, cylinderLevel , value, upgrading["level"]["cylinder"])
 		
 func _on_pyramid_xp_bar_value_changed(value):
 	if value == pyramidXPBar.max_value:
-		onLevelUp(pyramidXPBar, pyramidLevel , value)
+		onLevelUp(pyramidXPBar, pyramidLevel , value, upgrading["level"]["pyramid"])
 
 
 func _on_cube_xp_bar_value_changed(value):
 	if value == cubeXPBar.max_value:
-		onLevelUp(cubeXPBar, cubeLevel , value)
+		onLevelUp(cubeXPBar, cubeLevel , value, upgrading["level"]["cube"])
 
 
 func _on_sphere_xp_bar_value_changed(value):
 	if value == sphereXPBar.max_value:
-		onLevelUp(sphereXPBar, sphereLevel , value)
+		onLevelUp(sphereXPBar, sphereLevel , value, upgrading["level"]["sphere"])
+
 
 
 func _on_the_bar_value_changed(value):
@@ -698,26 +720,26 @@ func _on_the_bar_value_changed(value):
 		resetStats()
 		selectPart()
 
-func _on_sphere_the_bar_value_changed(value):
-	if value == theBarSphere.max_value:
+func _on_sphere_the_bar_value_changed(value): #Priorizamos la barra de ameba, si salen ambas a la vez solo dejamos pasar ameba
+	if value == theBarSphere.max_value && value !=  theBar.max_value:
 		changePolygon(SPHERE, upgrading["identity"])
 		resetStats()
 		selectPart()
 
 func _on_cube_the_bar_value_changed(value):
-	if value == theBarCube.max_value:
+	if value == theBarCube.max_value && value !=  theBar.max_value:
 		changePolygon(CUBE, upgrading["identity"])
 		resetStats()
 		selectPart()
 		
 func _on_pyramid_the_bar_value_changed(value):
-	if value == theBarPyramid.max_value:
+	if value == theBarPyramid.max_value && value !=  theBar.max_value:
 		changePolygon(PYRAMID, upgrading["identity"])
 		resetStats()
 		selectPart()
 		
 func _on_cylinder_the_bar_value_changed(value):
-	if value == theBarCylinder.max_value:
+	if value == theBarCylinder.max_value && value !=  theBar.max_value:
 		changePolygon(CYLINDER, upgrading["identity"])
 		resetStats()
 		selectPart()
