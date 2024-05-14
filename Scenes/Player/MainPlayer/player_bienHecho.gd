@@ -200,8 +200,8 @@ var manualAim = true
 func _ready():
 	changePolygon(AMEBA, HEAD)
 	changePolygon(AMEBA, BODY)
-	changePolygon(AMEBA, RIGHT)
-	changePolygon(AMEBA, LEFT)
+	changePolygon(CYLINDER, RIGHT)
+	changePolygon(CUBE, LEFT)
 	changePolygon(AMEBA, FEET)
 
 	resetStats()
@@ -627,7 +627,7 @@ func fire(weapon, part, direction):
 		CYLINDER:
 			variableDamage = 0.3
 	biggerWeapons = iNeedMoreBulletss.instantiate()
-	biggerWeapons.initialize(weapon, $pivot.basis, damage * variableDamage, bulletDirection, part.global_position, part.global_rotation)
+	biggerWeapons.initialize(weapon, damage * variableDamage, bulletDirection, part.global_position, part.global_rotation)
 	add_sibling(biggerWeapons)
 
 #Función que será llamada cada vez que finalice la animación de recarga. Esta animación y su velocidad determinarán la velocidad de ataque

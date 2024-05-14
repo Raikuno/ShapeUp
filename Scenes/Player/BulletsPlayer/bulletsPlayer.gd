@@ -7,36 +7,37 @@ var type
 @export var fall_acceleration = 75
 @export var jump_impulse = 20
 @export var damage = 50   # cada tipo de brazo va a tener un multiplicador al daño base del jugador, por ejemplo circulo hará un 0.75 del daño base y cuadrado un 1.25
-@onready var cubeHeight = 0.7
-@onready var amebaHeight = 0.5
-var getFixedBoy = false
+@onready var height = -4
 func _ready():
 	pass
 func _process(delta):
 	pass
-func callBullet():
+func callBullet(newScale):
 	match type:
 		CUBE:
 			$brazoCubo.show()
+			$"brazoCubo/brazo-cuboPlayer".scale = newScale
 			remove_child($brazoTriangulo)
 			remove_child($brazoEsfera)
 			remove_child($brazoAmeba)
 			remove_child($bracoCilindro)
 		PYRAMID:
 			$brazoTriangulo.show()
+			$brazoTriangulo.scale = newScale
 			remove_child($brazoCubo)
 			remove_child($brazoEsfera)
 			remove_child($brazoAmeba)
 			remove_child($bracoCilindro)
 		SPHERE:
 			$brazoEsfera.show()
+			$"brazoEsfera/brazo-esferaPlayer".scale = newScale
 			remove_child($brazoCubo)
 			remove_child($brazoTriangulo)
 			remove_child($brazoAmeba)
 			remove_child($bracoCilindro)
 		CYLINDER:
-			getFixedBoy = true
 			$bracoCilindro.show()
+			$bracoCilindro/MeshInstance3D.scale = newScale
 			remove_child($bracoAmeba)
 			remove_child($brazoCubo)
 			remove_child($brazoTriangulo)
@@ -45,24 +46,26 @@ func callBullet():
 			
 		AMEBA:
 			$brazoAmeba.show()
+			$brazoAmeba.scale = newScale
 			remove_child($brazoCubo)
 			remove_child($brazoTriangulo)
 			remove_child($brazoSphere)
 			remove_child($bracoCilindro)
 
-func initialize(newType, direction, newDamage, bulletDirection, newPosition = position, newRotation = rotation):
+func initialize(newType, newDamage, bulletDirection, newPosition = position, newRotation = rotation, newScale = scale):
 	var downer : float
 	if newType == SPHERE:
 		downer = 1.5
 	else:
 		downer = 1
+	newPosition
 	position = Vector3(newPosition.x, newPosition.y - downer, newPosition.z)
 	rotation = newRotation
+	scale = newScale
 	type = newType
-	basis = direction
 	damage = newDamage
-	basis.looking_at(bulletDirection)
-	callBullet()
+	look_at(Vector3(bulletDirection.x, position.y, bulletDirection.z), Vector3.UP)
+	callBullet(newScale)
 func _physics_process(delta):
 	match type:
 		SPHERE:
@@ -82,13 +85,12 @@ func destroy():
 func pyramidLogic(delta):
 	var direction = global_transform.basis.z.normalized()
 	var displacement : Vector3 = direction * -50 * delta
-	global_transform.origin += displacement
+	global_transform.origin += Vector3(displacement.x, 0, displacement.z)
 func cubeLogic(delta):
 	if(collision):
 		var direction = global_transform.basis.z.normalized()
 		var displacement : Vector3 = direction * -70 * delta
-		global_transform.origin += Vector3(displacement.x, cubeHeight, displacement.z)
-		cubeHeight -= 0.1
+		global_transform.origin += Vector3(displacement.x, displacement.y + (height * delta), displacement.z)
 func cubeCollision(body):
 	bulletHitting(body)
 	$AnimationPlayer.play("cubeExplode")
@@ -100,10 +102,10 @@ func _on_animation_player_animation_finished(anim_name):
 func sphereLogic(delta):
 		var direction = global_transform.basis.z.normalized()
 		var displacement : Vector3 = direction * -100 * delta
-		global_transform.origin += displacement
+		global_transform.origin += Vector3(displacement.x, 0, displacement.z)
 func sphereCollision(body):
-	bulletHitting(body)
-	if !getFixedBoy:
+	if $brazoEsfera.visible:
+		bulletHitting(body)
 		basis *=-1
 
 func bulletHitting(body):
@@ -114,33 +116,33 @@ func amebaLogic(delta):
 	if !onFloor:
 		var direction = global_transform.basis.z.normalized()
 		var displacement : Vector3 = direction * -70 * delta
-		global_transform.origin += Vector3(displacement.x, amebaHeight, displacement.z)
-		amebaHeight -= 0.1
+		global_transform.origin += Vector3(displacement.x, displacement.y + (height * delta), displacement.z)
 
 func cylinderLogic(delta):
 	if !onFloor:
 		var direction = global_transform.basis.z.normalized()
 		var displacement : Vector3 = direction * -70 * delta
-		global_transform.origin += Vector3(displacement.x, cubeHeight, displacement.z)
-		cubeHeight -= 0.1
+		global_transform.origin += Vector3(displacement.x, displacement.y + (height * delta), displacement.z)
 	else:
 		$AnimationPlayer.play("cylinderBullet")
 		var direction = global_transform.basis.z.normalized()
 		var displacement : Vector3 = direction * -20 * delta
-		global_transform.origin += displacement
+		global_transform.origin += Vector3(displacement.x, 0, displacement.z)
 
 func pyramidCollision(body):
-	bulletHitting(body)
+	if $brazoTriangulo.visible:
+		bulletHitting(body)
 
 func _on_braco_cilindro_body_entered(body):
-	bulletHitting(body)
-	if(body.name == "Ground"):
-		onFloor = true
-		$cylinderDespawn.start()
-
+	if $bracoCilindro.visible:
+		bulletHitting(body)
+		if(body.name == "Ground"||body.name == "rock"||body.name=="tree"):
+			onFloor = true
+			$cylinderDespawn.start()
 
 func _on_brazo_ameba_body_entered(body):
-	bulletHitting(body)
-	if(body.name == "Ground"&&!getFixedBoy):
-		onFloor = true
-		$amebaDespawn.start()
+	if $brazoAmeba.visible:
+		bulletHitting(body)
+		if(body.name == "Ground"||body.name == "rock"||body.name=="tree"):
+			onFloor = true
+			$amebaDespawn.start()
