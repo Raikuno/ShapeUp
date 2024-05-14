@@ -34,10 +34,10 @@ placeholder_text = "a"
 
 [node name="LittleCircle" type="TextureRect" parent="Control"]
 layout_mode = 0
-offset_left = -3990.0
-offset_top = -4784.0
-offset_right = -1984.0
-offset_bottom = -2778.0
+offset_left = -4067.0
+offset_top = -4627.0
+offset_right = -2061.0
+offset_bottom = -2621.0
 scale = Vector2(4, 4)
 texture = ExtResource("3_xkl86")
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2c1ggnulseki"
-path="res://.godot/imported/SphereTextureBar.png-d37f70ca779e83c2333d9bbdfbc72d57.ctex"
+uid="uid://cq0hx6u1n30ch"
+path="res://.godot/imported/HealthBarPyramid.png-5109326d1df5be9dff1011c063227933.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/SphereTextureBar.png"
-dest_files=["res://.godot/imported/SphereTextureBar.png-d37f70ca779e83c2333d9bbdfbc72d57.ctex"]
+source_file="res://Resources/XPTextures/HealthBarPyramid.png"
+dest_files=["res://.godot/imported/HealthBarPyramid.png-5109326d1df5be9dff1011c063227933.ctex"]
 
 [params]
 

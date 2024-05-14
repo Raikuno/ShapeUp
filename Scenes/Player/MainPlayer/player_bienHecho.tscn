@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://bavtwemfemmxy"]
+[gd_scene load_steps=87 format=3 uid="uid://bavtwemfemmxy"]
 
 [ext_resource type="Script" path="res://Scenes/Player/MainPlayer/player_bienHecho.gd" id="1_4kplc"]
 [ext_resource type="PackedScene" uid="uid://baj52amprcwev" path="res://Resources/BodyParts/Head/cabeza-amebaPlayer.glb" id="2_h7yxf"]
@@ -25,16 +25,16 @@
 [ext_resource type="PackedScene" uid="uid://crkwcgesbomod" path="res://Resources/BodyParts/Legs/piernas-piramidePlayer.glb" id="24_d3gix"]
 [ext_resource type="PackedScene" uid="uid://c6is7r63uk3e7" path="res://Resources/BodyParts/Legs/piernaizquierda-amebaPlayer.glb" id="25_crpbl"]
 [ext_resource type="PackedScene" uid="uid://e60ta7w4fqqq" path="res://Resources/BodyParts/Legs/piernaderecha-amebaPlayer.glb" id="26_ed0f6"]
+[ext_resource type="Texture2D" uid="uid://blmfc4drjq0d0" path="res://Resources/XPTextures/TheBar.png" id="27_i4w4b"]
 [ext_resource type="Texture2D" uid="uid://dpjlmmhdamkxv" path="res://Resources/XPTextures/HalfBarInside.png" id="27_nl4ke"]
 [ext_resource type="Animation" uid="uid://rin5lv1hs6xq" path="res://Resources/Animations/Player/feet.res" id="27_oo5fs"]
 [ext_resource type="Texture2D" uid="uid://d1s46qrtdf4f6" path="res://Resources/XPTextures/HalfBarInsideCylinderFill.png" id="28_u5pl4"]
 [ext_resource type="Texture2D" uid="uid://bbcouqq5lnoq6" path="res://Resources/XPTextures/HalfBarInsideSphereFill.png" id="29_0142a"]
 [ext_resource type="Texture2D" uid="uid://curdkpy33tt2g" path="res://Resources/XPTextures/HalfBarInsidePyramidFill.png" id="31_jtmlg"]
 [ext_resource type="Texture2D" uid="uid://c5o0n78xi8gpd" path="res://Resources/XPTextures/HalfBarInsideCubeFill.png" id="31_uk77d"]
-[ext_resource type="Texture2D" uid="uid://blmfc4drjq0d0" path="res://Resources/XPTextures/TheBar.png" id="32_6p3ru"]
 [ext_resource type="Texture2D" uid="uid://cyw7qqi1mbdmp" path="res://Resources/HealthBars/HealthBarCircle.png" id="32_5042o"]
 [ext_resource type="Texture2D" uid="uid://cqvyugnxs00qu" path="res://Resources/HealthBars/HealthBarCylinder.png" id="32_u211k"]
-[ext_resource type="Texture2D" uid="uid://cjcrdm5p5aoww" path="res://Resources/XPTextures/TheBarInside.png" id="33_0hatf"]
+[ext_resource type="Texture2D" uid="uid://5aqqmlkhx7gc" path="res://Resources/XPTextures/TheBarInside.png" id="33_0hatf"]
 [ext_resource type="Texture2D" uid="uid://qrlmpo2a6xc6" path="res://Resources/HealthBars/HealthBarCircleFill.png" id="33_47m05"]
 [ext_resource type="Texture2D" uid="uid://cajwljf8priim" path="res://Resources/HealthBars/HealthBarCylinderFill.png" id="33_os1bq"]
 [ext_resource type="Texture2D" uid="uid://31ggg6rekivm" path="res://Resources/HealthBars/HealthBarRectangle.png" id="34_g4mjm"]
@@ -43,10 +43,11 @@
 [ext_resource type="Texture2D" uid="uid://cw7tpimx31ltw" path="res://Resources/HealthBars/HealthBarCube.png" id="39_6xbke"]
 [ext_resource type="Texture2D" uid="uid://douo2bga0hykd" path="res://Resources/HealthBars/HealthBarCubeFill.png" id="40_4f3fc"]
 [ext_resource type="Texture2D" uid="uid://d01l8g4ljtsvg" path="res://Resources/HealthBars/HealthBarRectangleCubeFill.png" id="41_tcjj0"]
-[ext_resource type="Texture2D" uid="uid://bi0un40gt0a16" path="res://Resources/HealthBars/HealthBarPyramid.png" id="42_uuf1a"]
-[ext_resource type="Texture2D" uid="uid://usgd6gfbr558" path="res://Resources/HealthBars/HealthBarPyramidFill.png" id="43_5npc7"]
-[ext_resource type="Texture2D" uid="uid://c5eo4sbofty75" path="res://Resources/HealthBars/HealthBarRectanglePyramidFill.png" id="44_1cwbo"]
+[ext_resource type="Texture2D" uid="uid://cq0hx6u1n30ch" path="res://Resources/XPTextures/HealthBarPyramid.png" id="44_2xlqd"]
+[ext_resource type="Texture2D" uid="uid://dv8a2eydlv1fg" path="res://Resources/XPTextures/HealthBarPyramidFill.png" id="45_25gb7"]
+[ext_resource type="Texture2D" uid="uid://5yl1dirw6cig" path="res://Resources/XPTextures/HealthBarRectanglePyramid.png" id="45_w62fd"]
 [ext_resource type="Texture2D" uid="uid://cibbuivgb87ad" path="res://Resources/XPTextures/LittleCylinder.png" id="47_8mhva"]
+[ext_resource type="Texture2D" uid="uid://bjlj0rtuomcxi" path="res://Resources/XPTextures/HealthBarRectanglePyramidFill.png" id="47_kipfi"]
 [ext_resource type="Texture2D" uid="uid://cy6sitgkewdqr" path="res://Resources/XPTextures/LittleSphere.png" id="48_cn3pt"]
 [ext_resource type="Texture2D" uid="uid://cabvf732hhswe" path="res://Resources/XPTextures/LittleCube.png" id="49_nq5l5"]
 [ext_resource type="Texture2D" uid="uid://boaqmsfpdgbsh" path="res://Resources/XPTextures/LittlePyramid.png" id="50_rhiec"]
@@ -1187,15 +1188,15 @@ transform = Transform3D(0.232791, -0.511618, 0.827076, 0.0507347, 0.855672, 0.51
 visible = false
 
 [node name="brazo-cuboPlayer" parent="pivot/rightArm" instance=ExtResource("16_ne5te")]
-transform = Transform3D(0.462744, 5.00679e-07, -0.525231, -0.304705, 0.570165, -0.268453, 0.427812, 0.406094, 0.376915, 0.256621, 2.1317, 2.58995)
+transform = Transform3D(0.462744, 5.21541e-07, -0.525231, -0.304705, 0.570165, -0.268453, 0.427812, 0.406094, 0.376915, 0.256621, 2.1317, 2.58995)
 visible = false
 
 [node name="brazo-esferaPlayer" parent="pivot/rightArm" instance=ExtResource("17_87h6d")]
-transform = Transform3D(0.821905, 0.569624, 4.28367e-08, -0.529623, 0.764188, -0.368125, -0.209693, 0.302564, 0.929776, 0.585547, 1.73018, 2.30501)
+transform = Transform3D(0.821905, 0.569624, 4.45383e-08, -0.529623, 0.764188, -0.368125, -0.209693, 0.302564, 0.929776, 0.585547, 1.73018, 2.30501)
 visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/rightArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.49664e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
+transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.43309e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
 visible = false
 
 [node name="brazo-cilindroPlayer" type="MeshInstance3D" parent="pivot/rightArm"]
@@ -1215,11 +1216,11 @@ transform = Transform3D(0.67474, 0.133303, 0.130216, 0, 0.489144, -0.500738, -0.
 visible = false
 
 [node name="brazo-esferaPlayer" parent="pivot/leftArm" instance=ExtResource("17_87h6d")]
-transform = Transform3D(0.49982, 0.418864, 0.758112, -0.642306, 0.766448, 1.38505e-07, -0.581053, -0.48694, 0.652125, -0.0885837, 2.01696, -1.9455)
+transform = Transform3D(0.49982, 0.418864, 0.758111, -0.642306, 0.766448, 1.39149e-07, -0.581053, -0.48694, 0.652125, -0.0885837, 2.01696, -1.9455)
 visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/leftArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.22708e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
+transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.32713e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
 visible = false
 
 [node name="brazo-amebaPlayerMKII" parent="pivot/leftArm" instance=ExtResource("19_hh71a")]
@@ -1350,19 +1351,19 @@ grow_vertical = 2
 scale = Vector2(0.15, 0.15)
 max_value = 1.0
 fill_mode = 3
-texture_under = ExtResource("32_6p3ru")
+texture_under = ExtResource("27_i4w4b")
 texture_progress = ExtResource("33_0hatf")
-texture_progress_offset = Vector2(14, 118)
+texture_progress_offset = Vector2(14, 120)
 
 [node name="SphereTheBar" type="TextureProgressBar" parent="Control"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 75.0
-offset_top = 139.0
-offset_right = 260.0
-offset_bottom = 1030.0
+offset_left = 77.0
+offset_top = 138.0
+offset_right = 262.0
+offset_bottom = 1029.0
 grow_vertical = 2
 scale = Vector2(0.15, 0.15)
 max_value = 5.0
@@ -1375,10 +1376,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 100.0
-offset_top = 139.0
-offset_right = 285.0
-offset_bottom = 1149.0
+offset_left = 102.0
+offset_top = 138.0
+offset_right = 287.0
+offset_bottom = 1031.0
 grow_vertical = 2
 scale = Vector2(0.15, 0.15)
 max_value = 5.0
@@ -1391,10 +1392,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 125.0
-offset_top = 139.0
-offset_right = 310.0
-offset_bottom = 1030.0
+offset_left = 127.0
+offset_top = 138.0
+offset_right = 312.0
+offset_bottom = 1029.0
 grow_vertical = 2
 scale = Vector2(0.15, 0.15)
 max_value = 5.0
@@ -1407,10 +1408,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 50.0
-offset_top = 139.0
-offset_right = 235.0
-offset_bottom = 1030.0
+offset_left = 52.0
+offset_top = 138.0
+offset_right = 237.0
+offset_bottom = 1029.0
 grow_vertical = 2
 scale = Vector2(0.15, 0.15)
 max_value = 5.0
@@ -1553,10 +1554,10 @@ text = "0"
 
 [node name="PartLevel" type="Label" parent="Control/XPBars"]
 layout_mode = 0
-offset_left = -943.4
-offset_top = 537.9
-offset_right = -903.4
-offset_bottom = 581.9
+offset_left = -930.4
+offset_top = 536.9
+offset_right = -890.4
+offset_bottom = 580.9
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -1584,10 +1585,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1040.0
-offset_top = 146.667
-offset_right = 2104.0
-offset_bottom = 1152.67
+offset_left = 380.0
+offset_top = 86.6667
+offset_right = 1444.0
+offset_bottom = 1092.67
 grow_horizontal = 0
 grow_vertical = 0
 max_value = 50.0
@@ -1605,10 +1606,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1250.0
-offset_top = 146.667
-offset_right = 2756.0
-offset_bottom = 284.667
+offset_left = 590.0
+offset_top = 86.6667
+offset_right = 2096.0
+offset_bottom = 224.667
 grow_horizontal = 0
 grow_vertical = 0
 max_value = 50.0
@@ -1621,6 +1622,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HealthBarSphere" type="TextureProgressBar" parent="Control/HealthBars/Sphere"]
+visible = false
 texture_filter = 2
 layout_mode = 1
 anchors_preset = 3
@@ -1642,6 +1644,7 @@ radial_initial_angle = 90.0
 radial_fill_degrees = 270.0
 
 [node name="HealthBarRectangleSphere" type="TextureProgressBar" parent="Control/HealthBars/Sphere"]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -1672,10 +1675,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 760.0
-offset_top = 146.667
-offset_right = 1824.0
-offset_bottom = 1152.67
+offset_left = 106.667
+offset_top = 73.3333
+offset_right = 1170.67
+offset_bottom = 1079.34
 grow_horizontal = 0
 grow_vertical = 0
 max_value = 50.0
@@ -1693,10 +1696,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1230.0
-offset_top = 146.667
-offset_right = 2736.0
-offset_bottom = 284.667
+offset_left = 576.667
+offset_top = 73.3333
+offset_right = 2082.67
+offset_bottom = 211.333
 grow_horizontal = 0
 grow_vertical = 0
 max_value = 50.0
@@ -1717,36 +1720,39 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 760.0
-offset_top = 146.667
-offset_right = 1824.0
-offset_bottom = 1152.67
+offset_left = 120.0
+offset_top = 80.0
+offset_right = 1183.99
+offset_bottom = 1086.01
 grow_horizontal = 0
 grow_vertical = 0
 max_value = 50.0
+value = 50.0
 fill_mode = 4
-texture_under = ExtResource("42_uuf1a")
-texture_progress = ExtResource("43_5npc7")
+texture_under = ExtResource("44_2xlqd")
+texture_progress = ExtResource("45_25gb7")
 radial_initial_angle = 90.0
-radial_fill_degrees = 270.0
+radial_fill_degrees = 285.0
 
 [node name="HealthBarRectanglePyramid" type="TextureProgressBar" parent="Control/HealthBars/Pyramid"]
 visible = false
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1260.0
-offset_top = 146.667
-offset_right = 2766.0
-offset_bottom = 284.667
+offset_left = 593.333
+offset_top = 80.0
+offset_right = 2099.33
+offset_bottom = 218.0
 grow_horizontal = 0
 grow_vertical = 0
 max_value = 50.0
-texture_under = ExtResource("34_g4mjm")
-texture_progress = ExtResource("44_1cwbo")
+value = 50.0
+texture_under = ExtResource("45_w62fd")
+texture_progress = ExtResource("47_kipfi")
 
 [node name="LittleFiguresXP" type="Control" parent="Control"]
 layout_mode = 1
@@ -1804,34 +1810,34 @@ scale = Vector2(0.12, 0.12)
 
 [node name="LittleCylinder" type="TextureRect" parent="Control/LittleFiguresXPTheBar"]
 layout_mode = 0
-offset_left = -825.0
-offset_top = -491.667
-offset_right = -701.0
-offset_bottom = -370.667
+offset_left = -808.333
+offset_top = -500.0
+offset_right = -684.333
+offset_bottom = -379.0
 texture = ExtResource("47_8mhva")
 
 [node name="LittleSphere" type="TextureRect" parent="Control/LittleFiguresXPTheBar"]
 layout_mode = 0
-offset_left = -616.667
-offset_top = -491.667
-offset_right = -492.667
-offset_bottom = -370.667
+offset_left = -600.0
+offset_top = -500.0
+offset_right = -476.0
+offset_bottom = -379.0
 texture = ExtResource("48_cn3pt")
 
 [node name="LittleCube" type="TextureRect" parent="Control/LittleFiguresXPTheBar"]
 layout_mode = 0
-offset_left = -416.667
-offset_top = -500.0
-offset_right = -292.667
-offset_bottom = -379.0
+offset_left = -400.0
+offset_top = -508.333
+offset_right = -276.0
+offset_bottom = -387.333
 texture = ExtResource("49_nq5l5")
 
 [node name="LittlePyramid" type="TextureRect" parent="Control/LittleFiguresXPTheBar"]
 layout_mode = 0
-offset_left = -208.333
-offset_top = -491.667
-offset_right = -84.3334
-offset_bottom = -370.667
+offset_left = -191.666
+offset_top = -500.0
+offset_right = -67.6667
+offset_bottom = -379.0
 texture = ExtResource("50_rhiec")
 
 [node name="LittleFiguresHealth" type="Control" parent="Control"]

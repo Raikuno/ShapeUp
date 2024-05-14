@@ -36,7 +36,7 @@ func _ready():
 func _on_mob_spawn_timer_timeout():
 	#1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 	var enemyRandom = randi_range(1,4)
-	spawnMob(enemyRandom, 1, 0)
+	spawnMob(enemyRandom, 1, -0.5)
 
 
 func spawnMob(enemyRandom,amount, statsMultiplier):

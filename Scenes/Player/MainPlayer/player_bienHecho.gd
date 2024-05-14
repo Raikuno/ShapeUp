@@ -46,6 +46,7 @@ var bulletDirection
 @onready var theBarCube = $Control/CubeTheBar
 @onready var theBarPyramid = $Control/PyramidTheBar
 #-------------------Barras de vida---------------------------------
+
 @onready var healthBarCylinder = $Control/HealthBars/Cylinder/HealthBarCylinder
 @onready var healthBarRectangleCylinder = $Control/HealthBars/Cylinder/HealthBarRectangleCylinder
 @onready var healthBarSphere = $Control/HealthBars/Sphere/HealthBarSphere
@@ -200,10 +201,11 @@ var manualAim = true
 func _ready():
 	changePolygon(AMEBA, HEAD)
 	changePolygon(AMEBA, BODY)
-	changePolygon(CYLINDER, RIGHT)
-	changePolygon(CUBE, LEFT)
+	changePolygon(AMEBA, RIGHT)
+	changePolygon(AMEBA, LEFT)
 	changePolygon(AMEBA, FEET)
-
+	healthBarFigureInUse = healthBarSphere
+	healthBarRectangleInUse = healthBarRectangleSphere
 	resetStats()
 	changeState(STATIC)
 	SignalsTrain.hit.connect(onDamageTaken)
@@ -400,6 +402,8 @@ func resetStats():
 	""" % [speed, health, damage, atqSpeed])
 	$rightArmPlayer.speed_scale = (1 + atqSpeed/80) 
 	$leftArmPlayer.speed_scale = (1 + atqSpeed/80) 
+	healthBarFigureInUse.hide()
+	healthBarRectangleInUse.hide()
 	match body["figure"]:
 				SPHERE:
 					setHealthBars(healthBarSphere,healthBarRectangleSphere)
@@ -414,6 +418,7 @@ func resetStats():
 	
 	#Este método es para setear las barras de vida, usará el cuerpo para saber que sprite poner
 func setHealthBars(figure,rectangle):
+	
 	healthRemaining = health
 	#Seteamos cada barra con la mitad de la vida máxima
 	figure.set_max(health / 2)
@@ -421,11 +426,11 @@ func setHealthBars(figure,rectangle):
 	#Llenamos la barra de jugosa vida
 	figure.value = health / 2
 	rectangle.value = health / 2
-	figure.show()
-	rectangle.show()
 	# Esto es para ahorrarnos 20 putas lineas al recibir daño
 	healthBarFigureInUse = figure
 	healthBarRectangleInUse = rectangle
+	healthBarFigureInUse.show()
+	healthBarRectangleInUse.show()
 	
 func changePolygon(newPolygon, type):
 	match type:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsi2gf7vjuxh5"
-path="res://.godot/imported/CylinderTextureBar.png-3db6690fa14712ae327dbad1bebe1c8d.ctex"
+uid="uid://bjlj0rtuomcxi"
+path="res://.godot/imported/HealthBarRectanglePyramidFill.png-0a00a1177563f2885ee7461c704985fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/CylinderTextureBar.png"
-dest_files=["res://.godot/imported/CylinderTextureBar.png-3db6690fa14712ae327dbad1bebe1c8d.ctex"]
+source_file="res://Resources/XPTextures/HealthBarRectanglePyramidFill.png"
+dest_files=["res://.godot/imported/HealthBarRectanglePyramidFill.png-0a00a1177563f2885ee7461c704985fc.ctex"]
 
 [params]
 

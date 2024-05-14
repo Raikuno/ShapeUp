@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvgrqsm3gc1en"
-path="res://.godot/imported/CubeTextureBar.png-75283edd97f7b0acc25d9419bb55b977.ctex"
+uid="uid://5yl1dirw6cig"
+path="res://.godot/imported/HealthBarRectanglePyramid.png-d14ec3dc7595d3d560b397cc5c7513fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/CubeTextureBar.png"
-dest_files=["res://.godot/imported/CubeTextureBar.png-75283edd97f7b0acc25d9419bb55b977.ctex"]
+source_file="res://Resources/XPTextures/HealthBarRectanglePyramid.png"
+dest_files=["res://.godot/imported/HealthBarRectanglePyramid.png-d14ec3dc7595d3d560b397cc5c7513fc.ctex"]
 
 [params]
 
