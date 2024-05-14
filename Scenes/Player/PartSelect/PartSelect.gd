@@ -11,7 +11,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	FirebaseLite.Firestore.write("score/score", {"data/data" : "Dictionary"})
+	#FirebaseLite.Firestore.write("score/score", {"data/data" : "Dictionary"})
 	pass
 
 

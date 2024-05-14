@@ -43,9 +43,11 @@ func _on_animation_player_animation_finished(anim_name):
 			$Animation.get_child(0).play("Animation2")
 	if skinNumber == 1:
 		if anim_name == "DeathAnimation":
+			Score.kills +=1
 			queue_free()
 	else:
 		if anim_name == "DeathAnimation2":
+			Score.kills +=1
 			queue_free()
 	
 

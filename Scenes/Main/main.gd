@@ -74,12 +74,16 @@ func _on_timer_timeout():
 		$Eventos.start()
 	if timeSecond < 10 && timeMinute < 10: # Perdón, me dió flojera
 		$Time/Time.text =  "0%s:0%s" %  [timeMinute ,timeSecond]
+		Score.time = "0%s:0%s" %  [timeMinute ,timeSecond]
 	elif timeSecond < 10:
 		$Time/Time.text =  "%s:0%s" %  [timeMinute ,timeSecond]
+		Score.time = "%s:0%s" %  [timeMinute ,timeSecond]
 	elif timeMinute < 10:
 		$Time/Time.text =  "0%s:%s" %  [timeMinute ,timeSecond]
+		Score.time = "0%s:%s" %  [timeMinute ,timeSecond]
 	else:
 		$Time/Time.text =  "%s:%s" %  [timeMinute ,timeSecond]
+		Score.time = "%s:%s" %  [timeMinute ,timeSecond]
 
 func showMessage(messageType): # 0 negro, 1 cilindro, 2 cubo, 3 esfera , 4 peakamide
 	$Time/Messages.show()
@@ -106,6 +110,9 @@ func _on_eventos_timeout():
 	showMessage(enemyRandom)
 	spawnMob(enemyRandom, 10, 1)
 
-
+func _physics_process(delta):
+	if $player.healthRemaining <= 0:
+		Score.setScore()
+		get_tree().change_scene_to_file("res://Scenes/ScoreBoard/ScoreBoard.tscn")
 func _on_message_time_timeout():
 	$Time/Messages.hide()

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 SignalsTrain="*res://Scenes/SignalsTrain.gd"
 FirebaseLite="*res://addons/godot_firebase_lite/firebase.tscn"
 firebase="*res://addons/godot_firebase_lite/firebase.gd"
+Score="*res://Scenes/ScoreBoard/Score.gd"
 
 [display]
 
