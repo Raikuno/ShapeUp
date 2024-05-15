@@ -21,6 +21,7 @@ SignalsTrain="*res://Scenes/SignalsTrain.gd"
 FirebaseLite="*res://addons/godot_firebase_lite/firebase.tscn"
 firebase="*res://addons/godot_firebase_lite/firebase.gd"
 Score="*res://Scenes/ScoreBoard/Score.gd"
+RoomManager="*res://Scenes/RoomManager.gd"
 
 [display]
 

@@ -1,56 +1,61 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcgfcieon2vc2"]
+[gd_scene load_steps=6 format=3 uid="uid://bcgfcieon2vc2"]
 
 [ext_resource type="PackedScene" uid="uid://byj11x50wvowy" path="res://Scenes/ScoreBoard/player_preview.tscn" id="1_pygpm"]
 [ext_resource type="Script" path="res://Scenes/ScoreBoard/ScoreBoard.gd" id="1_whwhf"]
+[ext_resource type="Texture2D" uid="uid://cm5qbx14xy0qh" path="res://Resources/Sprites and others/backgroundII.png" id="2_aqn7y"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_w3lqg"]
 size = Vector2(50, 12)
 
 [sub_resource type="LabelSettings" id="LabelSettings_m38ha"]
 font_size = 30
+font_color = Color(0, 0, 0, 1)
 
-[node name="ScoreBoard" type="Control"]
-layout_mode = 3
+[node name="ScoreBoard" type="Node"]
+script = ExtResource("1_whwhf")
+
+[node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_whwhf")
+texture = ExtResource("2_aqn7y")
+stretch_mode = 1
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="TextureRect"]
 layout_mode = 2
 offset_left = 66.0
 offset_top = 45.0
 offset_right = 578.0
 offset_bottom = 557.0
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="TextureRect/SubViewportContainer"]
 handle_input_locally = false
 render_target_update_mode = 4
 
-[node name="player" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_pygpm")]
+[node name="playerPreview" parent="TextureRect/SubViewportContainer/SubViewport" instance=ExtResource("1_pygpm")]
 transform = Transform3D(-0.2, 0, -3.01992e-08, 0, 0.2, 0, 3.01992e-08, 0, -0.2, 0, -0.684953, 1.37786)
-script = null
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+[node name="Camera3D" type="Camera3D" parent="TextureRect/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.43704)
 fov = 23.3397
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TextureRect/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2.27209)
 mesh = SubResource("PlaneMesh_w3lqg")
 
-[node name="Kills" type="Label" parent="."]
+[node name="Kills" type="Label" parent="TextureRect"]
 layout_mode = 0
-offset_left = 602.0
-offset_top = 140.0
-offset_right = 970.0
-offset_bottom = 209.0
+offset_left = 603.0
+offset_top = 119.0
+offset_right = 971.0
+offset_bottom = 188.0
 text = "Figures Executed: "
 label_settings = SubResource("LabelSettings_m38ha")
+metadata/_edit_use_anchors_ = true
 
-[node name="Score" type="Label" parent="."]
+[node name="Score" type="Label" parent="TextureRect"]
 layout_mode = 0
 offset_left = 714.0
 offset_top = 209.0
@@ -58,8 +63,9 @@ offset_right = 1082.0
 offset_bottom = 278.0
 text = "Score:"
 label_settings = SubResource("LabelSettings_m38ha")
+metadata/_edit_use_anchors_ = true
 
-[node name="Time" type="Label" parent="."]
+[node name="Time" type="Label" parent="TextureRect"]
 layout_mode = 0
 offset_left = 603.0
 offset_top = 50.0
@@ -67,8 +73,9 @@ offset_right = 971.0
 offset_bottom = 119.0
 text = "Time Survived: "
 label_settings = SubResource("LabelSettings_m38ha")
+metadata/_edit_use_anchors_ = true
 
-[node name="Name" type="Label" parent="."]
+[node name="Name" type="Label" parent="TextureRect"]
 layout_mode = 0
 offset_left = 72.0
 offset_top = 570.0
@@ -76,10 +83,40 @@ offset_right = 175.0
 offset_bottom = 639.0
 text = "Name:"
 label_settings = SubResource("LabelSettings_m38ha")
+metadata/_edit_use_anchors_ = true
 
-[node name="NameInput" type="LineEdit" parent="."]
+[node name="NameInput" type="LineEdit" parent="TextureRect"]
 layout_mode = 0
 offset_left = 184.0
 offset_top = 573.0
 offset_right = 579.0
 offset_bottom = 616.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Back" type="Button" parent="TextureRect"]
+layout_mode = 0
+offset_left = 918.0
+offset_top = 557.0
+offset_right = 1096.0
+offset_bottom = 624.0
+text = "Go to Menu"
+metadata/_edit_use_anchors_ = true
+
+[node name="Upload" type="Button" parent="TextureRect"]
+layout_mode = 0
+offset_left = 679.0
+offset_top = 557.0
+offset_right = 857.0
+offset_bottom = 624.0
+text = "Upload Score"
+metadata/_edit_use_anchors_ = true
+
+[node name="Container" type="Container" parent="TextureRect"]
+layout_mode = 0
+offset_left = 634.0
+offset_top = 274.0
+offset_right = 1120.0
+offset_bottom = 548.0
+
+[connection signal="pressed" from="TextureRect/Back" to="." method="back"]
+[connection signal="pressed" from="TextureRect/Upload" to="." method="upload"]
