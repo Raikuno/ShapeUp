@@ -240,11 +240,11 @@ var intensity = 0
 @onready var kills = 0
 var manualAim = true
 func _ready():
-	changePolygon(CUBE, HEAD)
-	changePolygon(CUBE, BODY)
-	changePolygon(CUBE, RIGHT)
-	changePolygon(CUBE, LEFT)
-	changePolygon(SPHERE, FEET)
+	changePolygon(AMEBA, HEAD)
+	changePolygon(AMEBA, BODY)
+	changePolygon(AMEBA, RIGHT)
+	changePolygon(AMEBA, LEFT)
+	changePolygon(AMEBA, FEET)
 	healthBarFigureInUse = healthBarSphere
 	healthBarRectangleInUse = healthBarRectangleSphere
 	resetStats()
