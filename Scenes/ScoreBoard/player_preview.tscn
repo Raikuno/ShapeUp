@@ -222,7 +222,7 @@ _data = {
 "idle": SubResource("Animation_alg2a")
 }
 
-[node name="player" type="CharacterBody3D"]
+[node name="playerPreview" type="CharacterBody3D"]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0, 1.30558, 0)
 collision_mask = 137
 script = ExtResource("1_p1xub")
@@ -243,6 +243,7 @@ visible = false
 
 [node name="cabeza-cuboPlayer" parent="pivot/head" instance=ExtResource("4_lhcv8")]
 transform = Transform3D(0.8, 0, 8.52651e-14, 0, 0.8, 0, -8.52651e-14, 0, 0.8, -0.0260751, 4.35794, 0.0239043)
+visible = false
 
 [node name="cabeza-esferaPlayer" parent="pivot/head" instance=ExtResource("5_i7xkv")]
 transform = Transform3D(0.0146777, 0, 0.999892, 0, 1, 0, -0.999892, 0, 0.0146777, -0.011865, 4.38575, 0.00974807)
@@ -269,6 +270,7 @@ visible = false
 
 [node name="cuerpo-cuboPlayer" parent="pivot/body" instance=ExtResource("10_8pppr")]
 transform = Transform3D(0.80774, 0, 5.68434e-14, 0, 0.80774, 0, -5.68434e-14, 0, 0.80774, -0.043986, 2.06319, 0.106417)
+visible = false
 
 [node name="cuerpo-piramidePlayer" parent="pivot/body" instance=ExtResource("11_wq6u2")]
 transform = Transform3D(1, 0, 1.7053e-13, 0, 1, 0, -1.7053e-13, 0, 1, 0.0648935, 0.994698, 0.0378989)
@@ -295,6 +297,7 @@ visible = false
 
 [node name="brazo-cuboPlayer" parent="pivot/rightArm" instance=ExtResource("16_he1j8")]
 transform = Transform3D(0.462744, 5.00679e-07, -0.525231, -0.304705, 0.570165, -0.268453, 0.427812, 0.406094, 0.376915, 0.256621, 2.1317, 2.58995)
+visible = false
 
 [node name="brazo-esferaPlayer" parent="pivot/rightArm" instance=ExtResource("17_ypvdv")]
 transform = Transform3D(0.821905, 0.569624, 4.28367e-08, -0.529623, 0.764188, -0.368125, -0.209693, 0.302564, 0.929776, 0.585547, 1.73018, 2.30501)
@@ -322,6 +325,7 @@ visible = false
 
 [node name="brazo-esferaPlayer" parent="pivot/leftArm" instance=ExtResource("17_ypvdv")]
 transform = Transform3D(0.49982, 0.418864, 0.758111, -0.642306, 0.766448, 1.31749e-07, -0.581053, -0.48694, 0.652125, -0.0885837, 2.01696, -1.9455)
+visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/leftArm" instance=ExtResource("18_yinf2")]
 transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.24709e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
@@ -337,10 +341,11 @@ visible = false
 mesh = SubResource("CylinderMesh_hvon2")
 
 [node name="legs" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -0.437759, 0, -9.56754e-08)
 
 [node name="ameba" type="Node3D" parent="legs"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+visible = false
 
 [node name="piernas-amebaPlayer" parent="legs/ameba" instance=ExtResource("19_fn8c3")]
 transform = Transform3D(0.587233, -0.123118, 0, 0.121715, 0.580541, 0.0903217, -0.0185337, -0.0883998, 0.593163, 0.306767, -0.997052, 0.85936)
@@ -405,3 +410,5 @@ libraries = {
 "": SubResource("AnimationLibrary_5bk5e")
 }
 autoplay = "idle"
+
+[connection signal="ready" from="." to="." method="_on_ready"]
