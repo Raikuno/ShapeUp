@@ -9,3 +9,5 @@ signal expPicked(xpType)
 signal sumarKills
 
 signal sendPart(part)
+
+signal clubPenguinIsKill

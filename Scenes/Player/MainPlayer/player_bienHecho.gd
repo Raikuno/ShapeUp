@@ -239,6 +239,7 @@ var intensity = 0
 #kills uwu
 @onready var kills = 0
 var manualAim = true
+var alive = true #Te lo juro que esto hace falta, no quieres saber lo que pasa si lo quitas
 func _ready():
 	changePolygon(AMEBA, HEAD)
 	changePolygon(AMEBA, BODY)
@@ -353,9 +354,16 @@ func onDamageTaken(damageAmount):
 			healthBarFigureInUse.value -= 1
 		if invisible.is_stopped():
 			invisible.start()
-		if healthRemaining <= 0:
-			hide()
-	
+		if healthRemaining <= 0 and alive:
+			gameOver() #Esto lo puse como funcion porque en un futuro esto irá después de la animación de muerte
+
+func gameOver():
+	alive = false
+	hide()
+	Score.kills = kills
+	Score.saveCharacter(head["figure"], body["figure"], right["figure"], left["figure"], feet["figure"])
+	SignalsTrain.emit_signal("clubPenguinIsKill")
+
 func _on_invisible_timeout():
 	invisible.stop()
 	
