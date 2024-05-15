@@ -28,11 +28,14 @@ func _input(event):
 
 
 func _on_start_pressed():
-	get_tree().change_scene_to_file(MAIN)
+	var needsReset = get_tree().get_nodes_in_group("needsReset")
+	queue_free()
+	RoomManager.changeRoom(MAIN)
 
 func _on_exit_pressed():
 	get_tree().quit()
 
 
 func _on_tutorial_pressed():
-	get_tree().change_scene_to_file(TUTORIAL)
+	queue_free()
+	RoomManager.changeRoom(TUTORIAL)
