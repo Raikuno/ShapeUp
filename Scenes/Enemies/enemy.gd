@@ -9,6 +9,7 @@ var skinNumber = randi_range(1,2)
 var speed 
 var hitting = false
 var omaewamoshindeiru = false
+var wanderingValue = 0
 var wandering = false
 var wanderingPosition
 var enemyType #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
@@ -26,7 +27,19 @@ func _ready():
 	var animation = $Animation/AnimationPlayer
 	speed = randi_range(minSpeed, maxSpeed)
 	SignalsTrain.bulletHit.connect(onDamageTaken)
+	getWanderingValue()
 	
+
+func getWanderingValue():
+	match enemyType:
+		1:
+			wanderingValue = 1500
+		2:
+			wanderingValue = 5000
+		3:
+			wanderingValue = 500
+		4:
+			wanderingValue = 3500
 	
 func onDamageTaken(damageAmount, body):
 	if body == self:
@@ -78,7 +91,7 @@ func _physics_process(_delta):
 	else:
 		look_at_from_position(position, player.global_position, Vector3.UP)
 		# una probabilidad random de que el enemigo entre en estado wandering
-		if randi_range(1,2000) == 1:
+		if randi_range(1,wanderingValue) == 1:
 			wanderingPosition = Vector3(randi_range(x_range.x, x_range.y), position.y,randi_range(z_range.x, z_range.y))
 			wandering = true
 		
@@ -94,7 +107,7 @@ func multiplyStats(statsMultiplier):
 	Hp = Hp + (0.5 * Hp * statsMultiplier)
 	Damage = Damage + (0.5 * Damage * statsMultiplier)
 	
-	
+
 func initialize(start_position, player_position, _enemyType, statsMultiplier):
 	enemyType = _enemyType
 	look_at_from_position(start_position, player_position, Vector3.UP)
@@ -104,8 +117,6 @@ func initialize(start_position, player_position, _enemyType, statsMultiplier):
 		var skinOld = get_node("pivot").get_child(0)
 		skinOld.hide()
 		skinChange.show()
-
-	
 
 func _on_vagando_timeout():
 	wandering = false
@@ -125,4 +136,9 @@ func _on_hitting_timeout():
 			SignalsTrain.emit_signal("hit", Damage)
 
 
-
+func _on_expire_time_timeout():
+	if !$VisibleOnScreenNotifier3D.is_on_screen():
+		print("AYUDAAAAAAAAAAAAAAA, ME ESTÁN MATANDO")
+		queue_free()
+	else:
+		print("joya")

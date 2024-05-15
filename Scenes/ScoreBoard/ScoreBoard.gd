@@ -17,7 +17,8 @@ func _process(delta):
 	pass
 
 
-func upload():
+func upload(): #jorge si lees esto que sepas que te odio
+	# Para evitar la repetición de nombres concatenas el nombre del player más un numero random de uno a 10000 por ejemplo ~~ PPK15824 ~~
 	if scores != null:
 		var slot : String
 		slot = "Player" + str(len(scores[1]))

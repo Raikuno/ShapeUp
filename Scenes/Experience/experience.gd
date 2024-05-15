@@ -2,6 +2,9 @@ extends Node3D
 
 var xpType
 
+func _ready():
+	SignalsTrain.xPDespawn.connect(_onDespawn)
+	
 func initialize(positionEnemy,_xpType): #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 	global_transform.origin = positionEnemy
 	xpType = _xpType
@@ -26,6 +29,12 @@ func initialize(positionEnemy,_xpType): #1 = cilindro / 2 = cubo / 3 = esfera / 
 			get_node("Experience/CubeXP").hide()
 			get_node("Experience/CilinderXP").hide()
 			
+			
+func _onDespawn():
+	if randi_range(1,10) > 4 : # 60%
+		print("me voy jefe")
+		queue_free()
+	
 func _on_area_3d_body_entered(body):
 	if SignalsTrain.has_signal("expPicked"):
 		SignalsTrain.emit_signal("expPicked", xpType)

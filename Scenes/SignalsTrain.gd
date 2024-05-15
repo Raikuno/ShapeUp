@@ -8,6 +8,8 @@ signal expPicked(xpType)
 
 signal sumarKills
 
+signal xPDespawn
+
 signal sendPart(part)
 
 signal clubPenguinIsKill
