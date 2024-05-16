@@ -14,7 +14,7 @@ func _input(event):
 
 func _ready():
 	$Menu.hide()
-
+	$player.initializePlayerTutorial()
 #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 
 

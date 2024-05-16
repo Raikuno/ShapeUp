@@ -32,7 +32,6 @@ func initialize(positionEnemy,_xpType): #1 = cilindro / 2 = cubo / 3 = esfera / 
 			
 func _onDespawn():
 	if randi_range(1,10) > 4 : # 60%
-		print("me voy jefe")
 		queue_free()
 	
 func _on_area_3d_body_entered(body):

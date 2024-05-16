@@ -382,6 +382,7 @@ func initializePartSelection():
 	selectPart()
 
 func initializePlayerTutorial():
+	print("head")
 	setUpgrade(head)
 		
 func selectPart():
