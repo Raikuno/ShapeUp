@@ -3,7 +3,7 @@ var arrayVectores = [Vector3(-27.768,1.2,35.369), Vector3(-34.71,1.2,44.158),Vec
 var enemyDeath : PackedScene
 const MAIN = "res://Scenes/Main/main.tscn"
 const TUTORIAL = "res://Scenes/Tutorial/tutorial.tscn"
-
+const SCOREBOARD = "res://Scenes/ScoreBoard/ScoreList.tscn"
 func _ready():
 	for vector3 in arrayVectores:
 		var enemyRandom = randi_range(1,4) #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
@@ -39,3 +39,8 @@ func _on_exit_pressed():
 func _on_tutorial_pressed():
 	queue_free()
 	RoomManager.changeRoom(TUTORIAL)
+
+
+func scoreboard():
+	RoomManager.changeRoom(SCOREBOARD)
+	queue_free()

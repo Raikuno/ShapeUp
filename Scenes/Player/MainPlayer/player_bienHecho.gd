@@ -238,8 +238,9 @@ var intensity = 0
 @onready var invisible = $Invisible
 #kills uwu
 @onready var kills = 0
-var manualAim = true
+#Variables que sostienen todo el peso del codigo sobre sus hombros
 var alive = true #Te lo juro que esto hace falta, no quieres saber lo que pasa si lo quitas
+@onready var shapingUp = false
 func _ready():
 	changePolygon(AMEBA, HEAD)
 	changePolygon(AMEBA, BODY)
@@ -266,7 +267,8 @@ func setUpgrade(part):
 	changeTheBarSize(theBarPyramid,xPNeeded) 
 	upgrading["level"]["part"] += 1
 	$Control/XPBars/PartLevel.text = "%s: %s" % [whatPart(upgrading["identity"]), upgrading["level"]["part"]]
-
+	resetStats()
+	shapingUp = false
 func whatPart(figure):
 	match figure:
 		0:
@@ -366,8 +368,6 @@ func _physics_process(delta):
 	feetLogic(delta)
 	aimingLogic(delta)
 	attackLogic(delta)
-	if Input.is_action_pressed("autoAim"):
-		manualAim = !manualAim
 	#Comprbaciones de estado
 	if velocity != Vector3.ZERO and state == STATIC:
 		changeState(MOVE)
@@ -385,18 +385,19 @@ func initializePlayerTutorial():
 	setUpgrade(head)
 		
 func selectPart():
-	var menuScene: PackedScene = load("res://Scenes/Player/PartSelect/PartSelect.tscn")
-	var menuNode: Control = menuScene.instantiate()
-	var map
-	var parts = [head, left, right, body, feet]
-	var result: Array
-	while result.size() < 3:
-		var toAdd = parts[randi_range(0, parts.size() - 1)]
-		result.append(toAdd)
-		parts.erase(toAdd)
-	menuNode.initialize(result)
-	
-	add_sibling(menuNode)
+	if !shapingUp:
+		shapingUp = true
+		var menuScene: PackedScene = load("res://Scenes/Player/PartSelect/PartSelect.tscn")
+		var menuNode: Control = menuScene.instantiate()
+		var map
+		var parts = [head, left, right, body, feet]
+		var result: Array
+		while result.size() < 3:
+			var toAdd = parts[randi_range(0, parts.size() - 1)]
+			result.append(toAdd)
+			parts.erase(toAdd)
+		menuNode.initialize(result)
+		add_sibling(menuNode)
 func changeState(newState):
 	state = newState
 	match state:
@@ -426,12 +427,36 @@ func changeState(newState):
 					animation = "amebaFeetIdle"
 			#new_animation_feet = "idle"
 			
-
+func getLevel(map):
+	var result
+	match map["figure"]:
+		CUBE:
+			result = map["level"]["cube"]
+		CYLINDER:
+			result = map["level"]["cylinder"]
+		PYRAMID:
+			result = map["level"]["pyramid"]
+		SPHERE:
+			result = map["level"]["sphere"]
+		AMEBA:
+			result = map["level"]["part"]
+	return result
 func resetStats():
-	speed = (left["figureStat"]["speed"]* armSpeed)+(right["figureStat"]["speed"] * armSpeed)+(body["figureStat"]["speed"] * bodySpeed)+(head["figureStat"]["speed"] * headSpeed)+(feet["figureStat"]["speed"] * feetSpeed)
-	health = (left["figureStat"]["health"]* armHealth)+(right["figureStat"]["health"] * armHealth)+(body["figureStat"]["health"] * bodyHealth)+(head["figureStat"]["health"] * headHealth)+(feet["figureStat"]["health"] * feetHealth)
-	damage = (left["figureStat"]["damage"]* armDamage)+(right["figureStat"]["damage"] * armDamage)+(body["figureStat"]["damage"] * bodyDamage)+(head["figureStat"]["damage"] * headDamage)+(feet["figureStat"]["damage"] * feetDamage)
-	atqSpeed = (left["figureStat"]["atqspd"]* armAtqSpd)+(right["figureStat"]["atqspd"] * armAtqSpd)+(body["figureStat"]["atqspd"] * bodyAtqSpd)+(head["figureStat"]["atqspd"] * headAtqSpd)+(feet["figureStat"]["atqspd"] * feetAtqSpd)
+	var balanceValue = 0.2
+	var headLevel = getLevel(head)
+	var rightLevel = getLevel(right)
+	var leftLevel = getLevel(left)
+	var feetLevel = getLevel(feet)
+	var bodyLevel = getLevel(body)
+	print("Cabesa: " + str(headLevel))
+	print("Pisha: " + str(bodyLevel))
+	print("Deresha: " + str(rightLevel))
+	print("Isquierda: " + str(leftLevel))
+	print("pieses: " + str(feetLevel))
+	speed = (left["figureStat"]["speed"]* armSpeed + (left["figureStat"]["speed"]* armSpeed * leftLevel * balanceValue)) + (right["figureStat"]["speed"] * armSpeed + (right["figureStat"]["speed"] * armSpeed * rightLevel * balanceValue)) + (body["figureStat"]["speed"] * bodySpeed + (body["figureStat"]["speed"] * bodySpeed * bodyLevel * balanceValue)) + (head["figureStat"]["speed"] * headSpeed+ (head["figureStat"]["speed"] * headSpeed * headLevel * balanceValue)) + (feet["figureStat"]["speed"] * feetSpeed + (feet["figureStat"]["speed"] * feetSpeed * feetLevel * balanceValue))
+	health = (left["figureStat"]["health"]* armHealth + (left["figureStat"]["health"]* armHealth * leftLevel * balanceValue))+(right["figureStat"]["health"] * armHealth + (right["figureStat"]["health"] * armHealth * rightLevel * balanceValue)) + (body["figureStat"]["health"] * bodyHealth + (body["figureStat"]["health"] * bodyHealth * bodyLevel * balanceValue)) + (head["figureStat"]["health"] * headHealth + (head["figureStat"]["health"] * headHealth * headLevel * balanceValue)) + (feet["figureStat"]["health"] * feetHealth + (feet["figureStat"]["health"] * feetHealth * feetLevel * balanceValue))
+	damage = (left["figureStat"]["damage"]* armDamage + (left["figureStat"]["damage"]* armDamage * leftLevel * balanceValue))+(right["figureStat"]["damage"] * armDamage + (right["figureStat"]["damage"] * armDamage * rightLevel * balanceValue)) + (body["figureStat"]["damage"] * bodyDamage + (body["figureStat"]["damage"] * bodyDamage * bodyLevel * balanceValue)) + (head["figureStat"]["damage"] * headDamage + (head["figureStat"]["damage"] * headDamage * headLevel * balanceValue)) + (feet["figureStat"]["damage"] * feetDamage+ (feet["figureStat"]["damage"] * feetDamage * feetLevel * balanceValue))
+	atqSpeed = (left["figureStat"]["atqspd"]* armAtqSpd + (left["figureStat"]["atqspd"]* armAtqSpd * leftLevel * balanceValue))+(right["figureStat"]["atqspd"] * armAtqSpd+(right["figureStat"]["atqspd"] * armAtqSpd * rightLevel * balanceValue)) + (body["figureStat"]["atqspd"] * bodyAtqSpd+ (body["figureStat"]["atqspd"] * bodyAtqSpd * bodyLevel * balanceValue)) + (head["figureStat"]["atqspd"] * headAtqSpd+ (head["figureStat"]["atqspd"] * headAtqSpd * headLevel * balanceValue)) + (feet["figureStat"]["atqspd"] * feetAtqSpd + (feet["figureStat"]["atqspd"] * feetAtqSpd * feetLevel * balanceValue))
 	print("""
 	Velocidad: %s
 	Salud: %s
@@ -457,7 +482,6 @@ func resetStats():
 		SignalsTrain.emit_signal("xPDespawn")
 	#Este método es para setear las barras de vida, usará el cuerpo para saber que sprite poner
 func setHealthBars(figure,rectangle):
-	
 	healthRemaining = health
 	#Seteamos cada barra con la mitad de la vida máxima
 	figure.set_max(health / 2)
@@ -604,11 +628,6 @@ func feetLogic(delta):
 	if animation !=null:
 		$feet_animation.play(animation)
 func aimingLogic(delta):
-	if manualAim:
-		manualAiming(delta)
-	else:
-		autoAiming(delta)
-func manualAiming(delta):
 	if rotation.y != 0:
 		rotation.y = 0
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -624,8 +643,6 @@ func manualAiming(delta):
 		right["resource"].look_at(Vector3(pos.x, right["resource"].position.y, pos.z), Vector3.UP)
 		left["resource"].look_at(Vector3(pos.x, left["resource"].position.y, pos.z), Vector3.UP)
 		$pivot.look_at(Vector3(pos.x, position.y, pos.z), Vector3.UP)
-func autoAiming(delta):
-	$pivot.rotation.y += 0.02
 func attackLogic(delta):
 	match right["figure"]:
 		SPHERE:
