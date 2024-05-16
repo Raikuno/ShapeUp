@@ -276,9 +276,9 @@ scale_max = 1.4
 
 [node name="enemy3" instance=ExtResource("1_4cq0g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.294609, 0)
-minSpeed = 10
-maxSpeed = 15
-Hp = 75
+minSpeed = 9
+maxSpeed = 11
+Hp = 60
 Damage = 19
 
 [node name="billPyramid" parent="pivot" index="0" instance=ExtResource("2_23y5q")]

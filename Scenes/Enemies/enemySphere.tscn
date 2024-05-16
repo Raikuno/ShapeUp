@@ -252,10 +252,9 @@ scale_max = 1.4
 [sub_resource type="SphereMesh" id="SphereMesh_6nhp3"]
 
 [node name="enemy2" instance=ExtResource("1_kglu0")]
-minSpeed = 20
-maxSpeed = 25
-Hp = 25
-Damage = 6
+minSpeed = 16
+maxSpeed = 18
+Hp = 22
 
 [node name="kirbyBola" parent="pivot" index="0" instance=ExtResource("2_nemc6")]
 transform = Transform3D(0.202584, 0, -0.979265, 0, 1, 0, 0.979265, 0, 0.202584, 0.182963, 0.251249, -0.835528)

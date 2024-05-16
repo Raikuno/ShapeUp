@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://ntqk7xfejn0i"]
 
 [ext_resource type="PackedScene" uid="uid://0cg5kuus6aon" path="res://Objets/tree.tscn" id="1_36ljc"]
-[ext_resource type="Script" path="res://Scenes/Main/mainTutorial.gd" id="1_354yy"]
+[ext_resource type="Script" path="res://Scenes/Tutorial/mainTutorial.gd" id="1_354yy"]
 [ext_resource type="PackedScene" uid="uid://dcgthd8xx1r5n" path="res://Objets/rock.tscn" id="2_pycpw"]
 [ext_resource type="PackedScene" uid="uid://dakevsqwteftq" path="res://Resources/Obstacles/nube.glb" id="3_6vdqn"]
 [ext_resource type="PackedScene" uid="uid://epp8ep3svpij" path="res://Objets/fence.tscn" id="4_cldna"]

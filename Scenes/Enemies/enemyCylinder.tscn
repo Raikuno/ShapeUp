@@ -240,11 +240,10 @@ scale_max = 1.4
 [sub_resource type="CylinderMesh" id="CylinderMesh_rkpb1"]
 
 [node name="enemy2" instance=ExtResource("1_irdyx")]
-
-minSpeed = 15
-maxSpeed = 20
-Hp = 50
-Damage = 12
+minSpeed = 13
+maxSpeed = 15
+Hp = 40
+Damage = 11
 
 [node name="pivot" parent="." index="0"]
 transform = Transform3D(-2, 0, -5.07036e-06, 0, 2, 0, 5.07036e-06, 0, -2, 0.461145, 0.970601, -1.65704)

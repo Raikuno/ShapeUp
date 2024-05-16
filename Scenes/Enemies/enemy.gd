@@ -138,7 +138,4 @@ func _on_hitting_timeout():
 
 func _on_expire_time_timeout():
 	if !$VisibleOnScreenNotifier3D.is_on_screen():
-		print("AYUDAAAAAAAAAAAAAAA, ME ESTÁN MATANDO")
 		queue_free()
-	else:
-		print("joya")
