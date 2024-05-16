@@ -36,7 +36,7 @@ func changeVisibility(character):
 		CYLINDER:
 			$"pivot/leftArm/brazo-cilindroPlayer".show()
 		AMEBA:
-			$"pivot/leftArm/brazo-amebaPlayerMKII".show()
+			$"pivot/leftArm/brazo-amebaPlayerMKII2".show()
 	match character["right"]:
 		CUBE:
 			$"pivot/rightArm/brazo-cuboPlayer".show()
@@ -47,7 +47,7 @@ func changeVisibility(character):
 		CYLINDER:
 			$"pivot/rightArm/brazo-cilindroPlayer".show()
 		AMEBA:
-			$"pivot/rightArm/brazo-amebaPlayerMKII".show()
+			$"pivot/rightArm/brazo-amebaPlayerMKII2".show()
 	match character["feet"]:
 		CUBE:
 			$legs/cubes.show()
@@ -95,7 +95,7 @@ func changeVisibilityString(character):
 		"CYLINDER":
 			$"pivot/leftArm/brazo-cilindroPlayer".show()
 		"AMEBA":
-			$"pivot/leftArm/brazo-amebaPlayerMKII".show()
+			$"pivot/leftArm/brazo-amebaPlayerMKII2".show()
 	match character["right"]:
 		"CUBE":
 			$"pivot/rightArm/brazo-cuboPlayer".show()
@@ -106,7 +106,7 @@ func changeVisibilityString(character):
 		"CYLINDER":
 			$"pivot/rightArm/brazo-cilindroPlayer".show()
 		"AMEBA":
-			$"pivot/rightArm/brazo-amebaPlayerMKII".show()
+			$"pivot/rightArm/brazo-amebaPlayerMKII2".show()
 	match character["feet"]:
 		"CUBE":
 			$legs/cubes.show()
@@ -118,3 +118,14 @@ func changeVisibilityString(character):
 			$legs/cilinders.show()
 		"AMEBA":
 			$legs/amebaEvil.show()
+func resetVisibility():
+	for i in $pivot/head.get_children():
+		i.hide()
+	for i in $pivot/body.get_children():
+		i.hide()
+	for i in $pivot/rightArm.get_children():
+		i.hide()
+	for i in $pivot/leftArm.get_children():
+		i.hide()
+	for i in $legs.get_children():
+		i.hide()

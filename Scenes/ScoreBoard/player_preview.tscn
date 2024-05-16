@@ -287,10 +287,6 @@ visible = false
 [node name="rightArm" type="Node3D" parent="pivot"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="brazo-amebaPlayerMKII2" parent="pivot/rightArm" instance=ExtResource("14_0qacq")]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.501805, 1.93382, 2.24326)
-visible = false
-
 [node name="brazo-amebaPlayer" parent="pivot/rightArm" instance=ExtResource("15_vr0fp")]
 transform = Transform3D(0.232791, -0.511618, 0.827076, 0.0507347, 0.855672, 0.515026, -0.971202, -0.0779322, 0.22515, 0.570439, 0.163965, 2.12599)
 visible = false
@@ -312,6 +308,10 @@ transform = Transform3D(-0.258819, -0.965926, -5.50248e-07, 0.965926, -0.258819,
 visible = false
 mesh = SubResource("CylinderMesh_21wkb")
 
+[node name="brazo-amebaPlayerMKII2" parent="pivot/rightArm" instance=ExtResource("14_0qacq")]
+transform = Transform3D(0.126027, 0.444315, -0.653224, 0.663846, 0.299044, 0.331483, 0.428282, -0.59427, -0.321587, 0.501805, 1.93382, 2.24326)
+visible = false
+
 [node name="leftArm" type="Node3D" parent="pivot"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
@@ -331,7 +331,7 @@ visible = false
 transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.24709e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
 visible = false
 
-[node name="brazo-amebaPlayerMKII" parent="pivot/leftArm" instance=ExtResource("14_0qacq")]
+[node name="brazo-amebaPlayerMKII2" parent="pivot/leftArm" instance=ExtResource("14_0qacq")]
 transform = Transform3D(0.8, 0, 5.68434e-14, 0, 0.8, 0, -5.68434e-14, 0, 0.8, -0.112614, 1.92706, -2.12493)
 visible = false
 

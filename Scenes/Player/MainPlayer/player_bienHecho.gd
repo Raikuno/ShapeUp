@@ -244,9 +244,9 @@ var alive = true #Te lo juro que esto hace falta, no quieres saber lo que pasa s
 func _ready():
 	changePolygon(AMEBA, HEAD)
 	changePolygon(AMEBA, BODY)
-	changePolygon(CUBE, RIGHT)
-	changePolygon(CUBE, LEFT)
-	changePolygon(SPHERE, FEET)
+	changePolygon(AMEBA, RIGHT)
+	changePolygon(AMEBA, LEFT)
+	changePolygon(AMEBA, FEET)
 	healthBarFigureInUse = healthBarSphere
 	healthBarRectangleInUse = healthBarRectangleSphere
 	resetStats()
@@ -542,7 +542,7 @@ func changePolygon(newPolygon, type):
 		FEET:
 			feet["figure"] = newPolygon
 			if feet["resource"] != null:
-				feet["resource"].show()
+				feet["resource"].hide()
 			match newPolygon:
 				SPHERE:
 					feet["resource"] = $legs/spheres

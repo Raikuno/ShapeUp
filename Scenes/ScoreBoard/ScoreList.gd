@@ -11,6 +11,9 @@ func _ready():
 	FirebaseLite.initializeFirebase(["Authentication", "Realtime Database"])
 	FirebaseLite.Authentication.initializeAuth(1)
 	scores = (await FirebaseLite.RealtimeDatabase.read("/scores/"))[1]
+	if scores == null:
+		scores = {}
+	print(scores)
 	sortedScores = Score.orderScores(scores)
 	giveListValue()
 
@@ -23,6 +26,7 @@ func giveListValue():
 func setInfo():
 	$TextureRect/Score.text = "Score: " + str(playerScore)
 	$TextureRect/Name.text = "Name: " + playerName
+	$TextureRect/SubViewportContainer/SubViewport/playerPreview.resetVisibility()
 	$TextureRect/SubViewportContainer/SubViewport/playerPreview.changeVisibilityString(playerCharacter)
 	pass
 
