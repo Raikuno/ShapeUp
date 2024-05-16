@@ -1,31 +1,42 @@
 extends Node
 const MAINMENU = "res://Scenes/Main/mainPPK.tscn"
 var scores
-# Called when the node enters the scene tree for the first time.
+var asignedID
+var sortedScores
+var placement = 1
 func _ready():
+	asignedID = Score.generateID()
 	FirebaseLite.initializeFirebase(["Authentication", "Realtime Database"])
 	FirebaseLite.Authentication.initializeAuth(1)
 	scores = await FirebaseLite.RealtimeDatabase.read("/scores/")
+	sortedScores = Score.orderScores(scores[1])
 	$TextureRect/Kills.text = "Figures executed: " + str(Score.kills)
 	$TextureRect/Time.text = "Time Survived: " + str(Score.time)
 	$TextureRect/Score.text = "Total Score: " + str(Score.score)
-	$TextureRect/SubViewportContainer/SubViewport/playerPreview.changeVisibility()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-func upload(): #jorge si lees esto que sepas que te odio
-	# Para evitar la repetición de nombres concatenas el nombre del player más un numero random de uno a 10000 por ejemplo ~~ PPK15824 ~~
-	if scores != null:
-		var slot : String
-		slot = "Player" + str(len(scores[1]))
-		if !$TextureRect/NameInput.text == "":
-			FirebaseLite.RealtimeDatabase.write("scores/" + slot, {"name" : $TextureRect/NameInput.text, "score": Score.score, "character":Score.character})
+	$TextureRect/SubViewportContainer/SubViewport/playerPreview.changeVisibility(Score.character)
+	calculatePosition()
+	$TextureRect/Placement.text = $TextureRect/Placement.text.replace("X", str(placement))
+	$TextureRect/Placement.show()
+func calculatePosition():
+	for entry in sortedScores:
+		if Score.score < entry["score"]:
+			placement += 1
 		else:
-			$ConfirmationDialog.show()
+			break
+
+func upload():
+	#NECESITAMOS VER LO QUE PASA SI NO HAY CONEXION. EN TEORIA a SERÁ UN ERROR Y HABRÁ QUE CONTROLARLO
+	if scores != null:
+		var a
+		var sortedScores = Score.orderScores(scores[1])
+		if !$TextureRect/NameInput.text == "":
+			a = await FirebaseLite.RealtimeDatabase.write("scores/" + asignedID, {"name" : $TextureRect/NameInput.text, "score": Score.score, "character":Score.character})
+			print(a)
+			$notification.title = "Done!"
+			$notification.dialog_text = "Your score have been uploaded successfully!"
+			$notification.show()
+		else:
+			$warning.show()
 
 func back():
 	Score.reset()

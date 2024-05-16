@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcgfcieon2vc2"]
+[gd_scene load_steps=7 format=3 uid="uid://bcgfcieon2vc2"]
 
 [ext_resource type="PackedScene" uid="uid://byj11x50wvowy" path="res://Scenes/ScoreBoard/player_preview.tscn" id="1_pygpm"]
 [ext_resource type="Script" path="res://Scenes/ScoreBoard/ScoreBoard.gd" id="1_whwhf"]
@@ -9,6 +9,10 @@ size = Vector2(50, 12)
 
 [sub_resource type="LabelSettings" id="LabelSettings_m38ha"]
 font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ji6nb"]
+font_size = 40
 font_color = Color(0, 0, 0, 1)
 
 [node name="ScoreBoard" type="Node"]
@@ -108,20 +112,28 @@ offset_left = 679.0
 offset_top = 557.0
 offset_right = 857.0
 offset_bottom = 624.0
-text = "Save"
+text = "Upload Score"
 metadata/_edit_use_anchors_ = true
 
-[node name="Container" type="Container" parent="TextureRect"]
+[node name="Placement" type="Label" parent="TextureRect"]
+visible = false
 layout_mode = 0
-offset_left = 634.0
-offset_top = 274.0
-offset_right = 1120.0
-offset_bottom = 548.0
+offset_left = 631.0
+offset_top = 314.0
+offset_right = 1111.0
+offset_bottom = 511.0
+text = "You are the Xth
+best player in the world!"
+label_settings = SubResource("LabelSettings_ji6nb")
 
-[node name="ConfirmationDialog" type="AcceptDialog" parent="."]
-title = "Espera puto subnormal!"
+[node name="warning" type="AcceptDialog" parent="."]
+title = "Wait!"
 initial_position = 4
 dialog_text = "You cant submit your score without a name!"
+
+[node name="notification" type="AcceptDialog" parent="."]
+title = ""
+initial_position = 4
 
 [connection signal="pressed" from="TextureRect/Back" to="." method="back"]
 [connection signal="pressed" from="TextureRect/Upload" to="." method="upload"]

@@ -2,8 +2,9 @@ extends CharacterBody3D
 
 enum {CUBE, PYRAMID, SPHERE, CYLINDER, AMEBA}
 
-func changeVisibility():
-	match Score.character["head"]:
+func changeVisibility(character):
+	print("abejas")
+	match character["head"]:
 		CUBE:
 			$"pivot/head/cabeza-cuboPlayer".show()
 		PYRAMID:
@@ -13,8 +14,8 @@ func changeVisibility():
 		CYLINDER:
 			$"pivot/head/cabeza-cilindroPlayer".show()
 		AMEBA:
-			$"pivot/head/cabeza-amebaPlayer".show()
-	match Score.character["body"]:
+			$"pivot/head/cabeza-amebaPlayerMK2".show()
+	match character["body"]:
 		CUBE:
 			$"pivot/body/cuerpo-cuboPlayer".show()
 		PYRAMID:
@@ -25,18 +26,18 @@ func changeVisibility():
 			$"pivot/body/cuerpo-cilindroPlayer".show()
 		AMEBA:
 			$"pivot/body/cuerpo-amebaPlayerMKII".show()
-	match Score.character["left"]:
-		CUBE:
+	match character["left"]:
+		CUBE || 0:
 			$"pivot/leftArm/brazo-cuboPlayer".show()
-		PYRAMID:
+		PYRAMID || 1:
 			$"pivot/leftArm/brazo-trianguloPlayer".show()
-		SPHERE:
+		SPHERE || 2:
 			$"pivot/leftArm/brazo-esferaPlayer".show()
-		CYLINDER:
+		CYLINDER || 3:
 			$"pivot/leftArm/brazo-cilindroPlayer".show()
-		AMEBA:
+		AMEBA || 4:
 			$"pivot/leftArm/brazo-amebaPlayerMKII".show()
-	match Score.character["right"]:
+	match character["right"]:
 		CUBE:
 			$"pivot/rightArm/brazo-cuboPlayer".show()
 		PYRAMID:
@@ -46,8 +47,8 @@ func changeVisibility():
 		CYLINDER:
 			$"pivot/rightArm/brazo-cilindroPlayer".show()
 		AMEBA:
-			$"pivot/rightArm/brazo-amebaPlayerMKII2".show()
-	match Score.character["feet"]:
+			$"pivot/rightArm/brazo-amebaPlayerMKII".show()
+	match character["feet"]:
 		CUBE:
 			$legs/cubes.show()
 		PYRAMID:
@@ -58,4 +59,4 @@ func changeVisibility():
 			$legs/cilinders.show()
 		AMEBA:
 			$legs/amebaEvil.show()
-	print(Score.character)
+	print(character)
