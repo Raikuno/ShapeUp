@@ -7,9 +7,10 @@ var canPressTheButton = false
 @onready var reallyLittlecircle = $Control/ReallyLittleCircle
 @onready var effectsTimer = $effects
 @onready var tryYourselfTimer = $tryYourself
+const MENU = "res://Scenes/Main/mainPPK.tscn"
 var explanationTexts = [
 	"Bienvenido a Shape Up! 
-	(haz click en next para continuar)", 
+	(haz click en continuar)", 
 	"Shape up es un juego en el que tendrás que sobrevivir
 	a oleadas de enemigos el máximo tiempo posible", 
 	"Para ello tendrás que acabar con tus enemigos y 
@@ -19,21 +20,21 @@ var explanationTexts = [
 	"Este eres tú, tendrás que moverte y 
 	apuntar a los enemigos para derrotarlos",
 	"Esta es tu barra de vida, si los enemigos te golpean bajará,
-	si llega a cero será game over.",
-	"Este es el contador de kills,
+	si llega a cero acabará la partida.",
+	"Este es el contador de bajas,
 	aquí se registrarán los enemigos que derrotes.",
 	"Este es el tiempo de juego, 
 	¡intenta conseguir el máximo posible antes de perder!",
-	"El tiempo de juego y las kills que obtengas al terminar el juego
+	"El tiempo de juego y las bajas que obtengas al terminar el juego
 	será tu puntuación final, 
 	¡intenta llegar a la cima de la clasificación mundial!", #9
 	"Ahora veamos el movimiento, con WASD o las flechas direccionales podrás moverte,
 	usa el ratón para que el personaje mire en esa dirección,
 	verás que ataca automaticamente.",
-	"¡Apareció un enemigo!,buscaló, apunta bien y con él!",
-	"Esto es un punto de experiencia, hay 4 tipos de enemigos
+	"¡Apareció un enemigo! Apunta bien y acaba con él!",
+	"Los enemigos sueltan experiencia, hay 4 tipos de enemigos
 	caracterizados por una forma y un color concreto,
-	concreto, esto es la experiencia del 'cubo', intenta cogerla ",
+	este enemigo soltó la experiencia del 'cubo', intenta cogerla ",
 	"Bien hecho! conseguiste un punto de experiencia, 
 	¡veamos para que sirve!",
 	"El jugador se compone de 5 partes del cuerpo: 
@@ -77,7 +78,7 @@ var positionTexts = [
 	Vector2(-557,-57),
 	Vector2(-374,-232),
 	Vector2(-374,-232),
-	Vector2(-510,-232), #9
+	Vector2(-490,-232), #9
 	Vector2(-374,-232),
 	Vector2(-374,-232), 
 	Vector2(),
@@ -90,6 +91,7 @@ var positionTexts = [
 	Vector2(),
 	]	
 func _ready():
+	SignalsTrain.isTutorialEnemy.connect(onTutorialEnemyDeath)
 	get_tree().paused = true
 	circle.position = Vector2(-5126, -4028)
 	reallyLittlecircle.position = Vector2(-1826, -1674)
@@ -100,7 +102,7 @@ func _ready():
 	explanationText.text = explanationTexts[explanationNumber]
 	explanationText.position = positionTexts[explanationNumber]
 
-
+	
 func _on_efectos_timeout():
 	match explanationNumber:
 		0: 
@@ -222,7 +224,6 @@ func _on_next_pressed():
 				explanationText.hide()
 			11:
 				get_tree().paused = false
-				tryYourselfTimer.start()
 				$Control/Next.hide()
 				explanationText.hide()
 			
@@ -232,3 +233,11 @@ func _on_try_yourself_timeout():
 	explanationText.show()
 	$Control/Next.show()
 	tryYourselfTimer.stop()
+
+func onTutorialEnemyDeath():
+	tryYourselfTimer.start(1)
+
+
+func _on_salir_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_file(MENU)

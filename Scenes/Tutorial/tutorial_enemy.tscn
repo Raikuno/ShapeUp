@@ -1,7 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://43clnkr54s8e"]
+[gd_scene load_steps=13 format=3 uid="uid://43clnkr54s8e"]
 
-[ext_resource type="Script" path="res://tutorial_enemy.gd" id="1_7r02d"]
+[ext_resource type="Script" path="res://Scenes/Tutorial/tutorial_enemy.gd" id="1_7r02d"]
 [ext_resource type="PackedScene" uid="uid://ce4g6rii3oalh" path="res://Scenes/Enemies/CubeLyoco.glb" id="1_7va7q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jwcat"]
+size = Vector3(3.41493, 3.62695, 3.28738)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_upfv5"]
 size = Vector3(3.05281, 7.48898, 2.68171)
@@ -200,7 +203,11 @@ scale_max = 1.4
 [sub_resource type="BoxMesh" id="BoxMesh_rb6eq"]
 
 [node name="tutorialEnemy" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_7r02d")
+Hp = 35
+Damage = 1
 
 [node name="pivot" type="Node3D" parent="."]
 transform = Transform3D(-2, 0, -5.07036e-06, 0, 2, 0, 5.07036e-06, 0, -2, 0.461145, 0.970601, -1.65704)
@@ -212,6 +219,8 @@ transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0.235414, -0.213225, -0
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052147, 1.70566, -0.588632)
+shape = SubResource("BoxShape3D_jwcat")
 
 [node name="Hitting" type="Timer" parent="."]
 wait_time = 0.3
@@ -241,3 +250,8 @@ explosiveness = 0.3
 randomness = 0.96
 process_material = SubResource("ParticleProcessMaterial_iolee")
 draw_pass_1 = SubResource("BoxMesh_rb6eq")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="Hitting" to="." method="_on_hitting_timeout"]
+[connection signal="animation_finished" from="Animation/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

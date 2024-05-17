@@ -104,8 +104,8 @@ func _physics_process(_delta):
 func multiplyStats(statsMultiplier):
 	minSpeed = minSpeed + (0.1 * minSpeed * statsMultiplier)
 	maxSpeed = maxSpeed + (0.1 * maxSpeed * statsMultiplier)
-	Hp = Hp + (0.5 * Hp * statsMultiplier)
-	Damage = Damage + (0.5 * Damage * statsMultiplier)
+	Hp = Hp + (0.3 * Hp * statsMultiplier)
+	Damage = Damage + (0.2 * Damage * statsMultiplier)
 	
 
 func initialize(start_position, player_position, _enemyType, statsMultiplier):

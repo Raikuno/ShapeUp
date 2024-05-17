@@ -13,3 +13,5 @@ signal xPDespawn
 signal sendPart(part)
 
 signal clubPenguinIsKill
+
+signal isTutorialEnemy

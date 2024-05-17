@@ -7,6 +7,7 @@ signal hit(damageAmount)
 @export var Damage = 5
 var speed 
 var hitting = false
+var golpes = 0
 var omaewamoshindeiru = false
 var enemyType #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 var x_range = Vector2(-1500, 1500)  # Rango en el eje X
@@ -21,10 +22,9 @@ var signalBus
 # HAY UN PROBLEMA CON LA PERCEPCIÓN DE LA VELOCIDAD, SI HACEMOS QUE EL PERSONAJE PUEDA ESCALAR EN VELOCIDAD INFINITAMENTE Y LOS ENEMIGOS NO ESCALAN NUNCA EN VELOCIDAD EL JUGADOR PODRÍA LITERALMENTE ESQUIVAR INFINITAMENTE A LOS ENEMIGOS Y ROMPER EL JUEGO
 func _ready():
 	var animation = $Animation/AnimationPlayer
+	
 	speed = randi_range(minSpeed, maxSpeed)
 	SignalsTrain.bulletHit.connect(onDamageTaken)
-
-	
 
 	
 func onDamageTaken(damageAmount, body):
@@ -47,6 +47,8 @@ func enemyDeath():
 	if !omaewamoshindeiru:
 		if SignalsTrain.has_signal("sumarKills"):
 			SignalsTrain.emit_signal("sumarKills")
+		if SignalsTrain.has_signal("isTutorialEnemy"):
+			SignalsTrain.emit_signal("isTutorialEnemy")
 		omaewamoshindeiru = true
 		var position = global_transform.origin
 		var experience = load("res://Scenes/Experience/experience.tscn")
@@ -59,14 +61,10 @@ func _physics_process(_delta):
 	var transform = get_transform()
 	transform.origin.y = 1.3
 	set_transform(transform)
-	#in wondering state the enemy move to random directions
 
 	look_at_from_position(position, player.global_position, Vector3.UP)
-		# una probabilidad random de que el enemigo entre en estado wandering
-		
-	# Se mueve palante
+		# Se mueve palante
 	velocity = Vector3.FORWARD * speed
-
 	velocity = velocity.rotated(Vector3.UP, rotation.y)
 	move_and_slide()
 
@@ -91,7 +89,8 @@ func _on_area_3d_body_exited(body):
 
 
 func _on_hitting_timeout():
-	if(hitting):
+	if(hitting && golpes <= 27):
+		golpes += 1
 		if SignalsTrain.has_signal("hit"):
 			SignalsTrain.emit_signal("hit", Damage)
 

@@ -3,13 +3,6 @@ extends Node
 var timeSecond = 0
 var timeMinute = 0
 var enemy : PackedScene
-const MENU = "res://Scenes/Main/mainPPK.tscn"
-
-
-func _input(event):
-	if Input.is_action_just_pressed("pause"):
-		get_tree().paused = true
-		$Menu.show()
 
 
 func _ready():
@@ -19,29 +12,12 @@ func _ready():
 
 
 func spawnMob(enemyRandom,amount, statsMultiplier):
-	for i in amount + timeMinute:
-		match enemyRandom:
-			1:
-				enemy = load("res://Scenes/Enemies/enemyCylinder.tscn")
-			2:
-				enemy = load("res://Scenes/Enemies/enemyCube.tscn")
-			3:
-				enemy = load("res://Scenes/Enemies/enemySphere.tscn")
-			4:
-				enemy = load("res://Scenes/Enemies/enemyPyramid.tscn")
+
+		enemy = load("res://Scenes/Tutorial/tutorial_enemy.tscn")
 		var enemyObject = enemy.instantiate()
-		var enemySpawnLocation = get_node("player/Path3D/PathFollow3D")
-		enemySpawnLocation.progress_ratio = randf()
-		enemyObject.initialize(enemySpawnLocation.position + $player.position, $player.position, enemyRandom, statsMultiplier + timeMinute)
+		enemyObject.initialize(Vector3(0,0,25) + $player.position, $player.position, enemyRandom, statsMultiplier)
 		add_child(enemyObject)
 
-func _on_exit_pressed():
-	get_tree().paused = false
-	get_tree().change_scene_to_file(MENU)
-	
-func _on_start_pressed():
-	$Menu.hide()
-	get_tree().paused = false
 
 
 func _on_timer_timeout():
@@ -59,7 +35,5 @@ func _on_timer_timeout():
 		$Time/Time.text =  "%s:%s" %  [timeMinute ,timeSecond]
 
 
-
-
 func _on_try_yourself_timeout():
-	spawnMob(4,1,-1.8)
+	spawnMob(2,1,0)

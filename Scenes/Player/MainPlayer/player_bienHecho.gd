@@ -458,6 +458,7 @@ func resetStats():
 	health = (left["figureStat"]["health"]* armHealth + (left["figureStat"]["health"]* armHealth * leftLevel * balanceValue))+(right["figureStat"]["health"] * armHealth + (right["figureStat"]["health"] * armHealth * rightLevel * balanceValue)) + (body["figureStat"]["health"] * bodyHealth + (body["figureStat"]["health"] * bodyHealth * bodyLevel * balanceValue)) + (head["figureStat"]["health"] * headHealth + (head["figureStat"]["health"] * headHealth * headLevel * balanceValue)) + (feet["figureStat"]["health"] * feetHealth + (feet["figureStat"]["health"] * feetHealth * feetLevel * balanceValue))
 	damage = (left["figureStat"]["damage"]* armDamage + (left["figureStat"]["damage"]* armDamage * leftLevel * balanceValue))+(right["figureStat"]["damage"] * armDamage + (right["figureStat"]["damage"] * armDamage * rightLevel * balanceValue)) + (body["figureStat"]["damage"] * bodyDamage + (body["figureStat"]["damage"] * bodyDamage * bodyLevel * balanceValue)) + (head["figureStat"]["damage"] * headDamage + (head["figureStat"]["damage"] * headDamage * headLevel * balanceValue)) + (feet["figureStat"]["damage"] * feetDamage+ (feet["figureStat"]["damage"] * feetDamage * feetLevel * balanceValue))
 	atqSpeed = (left["figureStat"]["atqspd"]* armAtqSpd + (left["figureStat"]["atqspd"]* armAtqSpd * leftLevel * balanceValue))+(right["figureStat"]["atqspd"] * armAtqSpd+(right["figureStat"]["atqspd"] * armAtqSpd * rightLevel * balanceValue)) + (body["figureStat"]["atqspd"] * bodyAtqSpd+ (body["figureStat"]["atqspd"] * bodyAtqSpd * bodyLevel * balanceValue)) + (head["figureStat"]["atqspd"] * headAtqSpd+ (head["figureStat"]["atqspd"] * headAtqSpd * headLevel * balanceValue)) + (feet["figureStat"]["atqspd"] * feetAtqSpd + (feet["figureStat"]["atqspd"] * feetAtqSpd * feetLevel * balanceValue))
+	health = round(health * 3) # 5 veces más puta vida
 	print("""
 	Velocidad: %s
 	Salud: %s
@@ -487,9 +488,11 @@ func setHealthBars(figure,rectangle):
 	#Seteamos cada barra con la mitad de la vida máxima
 	figure.set_max(health / 2)
 	rectangle.set_max(health / 2)
+	print(health, "  ", health/2, "  ", health/2 + health/2)
 	#Llenamos la barra de jugosa vida
-	figure.value = health / 2
+	figure.value = (health / 2)
 	rectangle.value = health / 2
+	print(figure.value, "  ", figure.max_value)
 	# Esto es para ahorrarnos 20 putas lineas al recibir daño
 	healthBarFigureInUse = figure
 	healthBarRectangleInUse = rectangle
@@ -741,29 +744,24 @@ func _on_sphere_xp_bar_value_changed(value):
 func _on_the_bar_value_changed(value):
 	if value == theBar.max_value && theBarSphere.value != theBarSphere.max_value && theBarCube.value != theBarCube.max_value && theBarPyramid.value != theBarPyramid.max_value && theBarCylinder.value != theBarCylinder.max_value:
 		changePolygon(AMEBA, upgrading["identity"])
-		resetStats()
 		selectPart()
 
 func _on_sphere_the_bar_value_changed(value): #Priorizamos la barra de ameba, si salen ambas a la vez solo dejamos pasar ameba
 	if value == theBarSphere.max_value:
 		changePolygon(SPHERE, upgrading["identity"])
-		resetStats()
 		selectPart()
 
 func _on_cube_the_bar_value_changed(value):
 	if value == theBarCube.max_value:
 		changePolygon(CUBE, upgrading["identity"])
-		resetStats()
 		selectPart()
 		
 func _on_pyramid_the_bar_value_changed(value):
 	if value == theBarPyramid.max_value:
 		changePolygon(PYRAMID, upgrading["identity"])
-		resetStats()
 		selectPart()
 		
 func _on_cylinder_the_bar_value_changed(value):
 	if value == theBarCylinder.max_value:
 		changePolygon(CYLINDER, upgrading["identity"])
-		resetStats()
 		selectPart()
