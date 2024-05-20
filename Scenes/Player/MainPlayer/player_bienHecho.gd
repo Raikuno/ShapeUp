@@ -305,7 +305,7 @@ func onSumarKill():
 	kills += 1
 	$Control/Kills.text = "💀%s" % kills
 func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
-	match expType:#Esto hay que oprimizarlo, las direcciones de memoria SON una cosa
+	match expType:
 		1:
 			upgrading["experience"]["cylinder"] +=1
 			theBarCylinder.value = theBarCylinder.value + 1
@@ -349,10 +349,18 @@ func onDamageTaken(damageAmount):
 		if invisible.is_stopped():
 			invisible.start()
 		if healthRemaining <= 0 and alive:
-			gameOver() #Esto lo puse como funcion porque en un futuro esto irá después de la animación de muerte
+			#gameOver() #Esto lo puse como funcion porque en un futuro esto irá después de la animación de muerte
+			alive = false
+			show()
+			$rightArmPlayer.play("RESET")
+			$rightArmPlayer.stop()
+			$leftArmPlayer.play("RESET")
+			$leftArmPlayer.stop()
+			$feet_animation.play("RESET")
+			$feet_animation.stop()
+			$body_animation.play("death")
 
 func gameOver():
-	alive = false
 	hide()
 	Score.kills = kills
 	Score.saveCharacter(head["figure"], body["figure"], right["figure"], left["figure"], feet["figure"])
@@ -362,20 +370,21 @@ func _on_invisible_timeout():
 	invisible.stop()
 	
 func _physics_process(delta):
-	if Input.is_action_just_pressed("debug"): #Poner esto a null explota, prefiero llamarlo desde el método correspondiente
-		selectPart()
-	feetLogic(delta)
-	aimingLogic(delta)
-	attackLogic(delta)
-	#Comprbaciones de estado
-	if velocity != Vector3.ZERO and state == STATIC:
-		changeState(MOVE)
-	if velocity == Vector3.ZERO and state == MOVE:
-		changeState(STATIC)
-	if invisible.is_stopped() && healthRemaining > 0:
-		show()
-	else:
-		hide()
+	if alive:
+		if Input.is_action_just_pressed("debug"): #Poner esto a null explota, prefiero llamarlo desde el método correspondiente
+			selectPart()
+		feetLogic(delta)
+		aimingLogic(delta)
+		attackLogic(delta)
+		#Comprbaciones de estado
+		if velocity != Vector3.ZERO and state == STATIC:
+			changeState(MOVE)
+		if velocity == Vector3.ZERO and state == MOVE:
+			changeState(STATIC)
+		if invisible.is_stopped() && healthRemaining > 0:
+			show()
+		else:
+			hide()
 		
 func initializePartSelection():
 	selectPart()
@@ -705,6 +714,7 @@ func _on_left_arm_player_animation_finished(anim_name):
 func onLevelUp(xPBar, levelLabel, upgradingPart):
 	levelLabel.text = "%s" % upgradingPart
 	changeXPBarSize(xPBar,xPNeededPerLevel[upgradingPart])
+	selectPart()
 
 func changeXPBarSize(xPBar, newSize):
 	xPBar.set_max(newSize)
@@ -744,25 +754,27 @@ func _on_sphere_xp_bar_value_changed(value):
 func _on_the_bar_value_changed(value):
 	if value == theBar.max_value && theBarSphere.value != theBarSphere.max_value && theBarCube.value != theBarCube.max_value && theBarPyramid.value != theBarPyramid.max_value && theBarCylinder.value != theBarCylinder.max_value:
 		changePolygon(AMEBA, upgrading["identity"])
-		selectPart()
 
 func _on_sphere_the_bar_value_changed(value): #Priorizamos la barra de ameba, si salen ambas a la vez solo dejamos pasar ameba
 	if value == theBarSphere.max_value:
 		changePolygon(SPHERE, upgrading["identity"])
-		selectPart()
 
 func _on_cube_the_bar_value_changed(value):
 	if value == theBarCube.max_value:
 		changePolygon(CUBE, upgrading["identity"])
-		selectPart()
 		
 func _on_pyramid_the_bar_value_changed(value):
 	if value == theBarPyramid.max_value:
 		changePolygon(PYRAMID, upgrading["identity"])
-		selectPart()
+		
 		
 func _on_cylinder_the_bar_value_changed(value):
 	if value == theBarCylinder.max_value:
-		selectPart()
+
 		changePolygon(CYLINDER, upgrading["identity"])
-	
+
+
+func endDeathAnim(anim_name):
+	if anim_name == "death":
+		gameOver()
+

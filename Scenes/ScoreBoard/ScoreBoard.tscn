@@ -131,9 +131,17 @@ title = "Wait!"
 initial_position = 4
 dialog_text = "You cant submit your score without a name!"
 
+[node name="IdiotPrevention" type="ConfirmationDialog" parent="."]
+title = "Please Confirm"
+initial_position = 4
+ok_button_text = "Yes"
+dialog_text = "Are you sure you want to leave without saving your score?"
+cancel_button_text = "No"
+
 [node name="notification" type="AcceptDialog" parent="."]
 title = ""
 initial_position = 4
 
 [connection signal="pressed" from="TextureRect/Back" to="." method="back"]
 [connection signal="pressed" from="TextureRect/Upload" to="." method="upload"]
+[connection signal="confirmed" from="IdiotPrevention" to="." method="exit"]

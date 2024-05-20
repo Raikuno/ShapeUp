@@ -4,6 +4,7 @@ var scores
 var asignedID
 var sortedScores
 var placement = 1
+var idiotPrevention = false
 func _ready():
 	asignedID = Score.generateID()
 	FirebaseLite.initializeFirebase(["Authentication", "Realtime Database"])
@@ -28,7 +29,7 @@ func calculatePosition():
 			break
 
 func upload():
-	const MAXCHAR = 10
+	const MAXCHAR = 20
 	#NECESITAMOS VER LO QUE PASA SI NO HAY CONEXION. EN TEORIA a SERÁ UN ERROR Y HABRÁ QUE CONTROLARLO
 	if scores != null:
 		var a
@@ -43,6 +44,7 @@ func upload():
 				$notification.title = "Done!"
 				$notification.dialog_text = "Your score have been uploaded successfully!"
 				$notification.show()
+				idiotPrevention = true
 		elif !$TextureRect/NameInput.text == "" && len($TextureRect/NameInput.text) > MAXCHAR:
 			$warning.dialog_text = "Your name cant have more than" + str(MAXCHAR) +" characters!"
 			$warning.show()
@@ -51,6 +53,13 @@ func upload():
 			$warning.show()
 
 func back():
+	if idiotPrevention:
+		exit()
+	else:
+		$IdiotPrevention.show()
+
+
+func exit():
 	Score.reset()
 	RoomManager.changeRoom(MAINMENU)
 	queue_free()
