@@ -2,6 +2,8 @@ extends Node3D
 
 var explanationNumber = 0
 var canPressTheButton = false
+var expPicked = false
+var expAmount = -1
 @onready var explanationText = $Control/ExplanationText
 @onready var circle = $Control/LittleCircle
 @onready var reallyLittlecircle = $Control/ReallyLittleCircle
@@ -42,8 +44,9 @@ var explanationTexts = [
 	"Cada parte del cuerpo puede subir de nivel de manera independiente del resto.
 	Al inicio del juego y cada vez que subamos un nivel nos aparecerá un menú 
 	mostrando 3 partes aleatorias, ¡elige la que te apetezca!",
-	"Bien! ahora estás mejorando tu 'nombre de la parte', 
+	"Bien! ahora estás mejorando la parte del cuerpo seleccionada', 
 	¡cojamos algo de experiencia!",
+	"¡Bien hecho!",
 	"Bien! veamos ahora las barras de experiencia.",
 	"Estas son las barras de la mejora actual, 
 	necesitarás llenar de experiencia cualquiera de las 5 barras, 
@@ -66,7 +69,8 @@ var explanationTexts = [
 	"Cada figura tiene sus fortalezas y debilidades, 
 	intenta encontrar tu forma favorita de jugar
 	y no te olvides de lo más importante, pasarlo bien :D.",
-	"Fin del tutorial, mucha suerte ^^"]
+	"Fin del tutorial, mucha suerte ^^",
+	""]
 	
 var positionTexts = [
 	Vector2(-374,-232),
@@ -79,19 +83,30 @@ var positionTexts = [
 	Vector2(-374,-232),
 	Vector2(-374,-232),
 	Vector2(-490,-232), #9
-	Vector2(-374,-232),
-	Vector2(-374,-232), 
-	Vector2(),
-	Vector2(),
-	Vector2(),
-	Vector2(),
-	Vector2(),
-	Vector2(),
-	Vector2(),
-	Vector2(),
-	]	
+	Vector2(-450,-232),
+	Vector2(-450,-232), 
+	Vector2(-450,-232), 
+	Vector2(-445,92),   #13
+	Vector2(-450,-202),
+	Vector2(-450,-232),
+	Vector2(-450,-232),
+	Vector2(-450,-232),
+	Vector2(-400,150), #18
+	Vector2(-387,110),
+	Vector2(-387,110),
+	Vector2(-387,110),
+	Vector2(-450,-232),
+	Vector2(-450,-232),
+	Vector2(-450,-232),
+	Vector2(-450,-232),
+	Vector2(-450,-232),
+	Vector2(-450,-232),
+	Vector2(-450,-232),
+	Vector2(-450,-232),
+	]
 func _ready():
 	SignalsTrain.isTutorialEnemy.connect(onTutorialEnemyDeath)
+	SignalsTrain.isTutorialExperience.connect(onTutorialExperiencePicked)
 	get_tree().paused = true
 	circle.position = Vector2(-5126, -4028)
 	reallyLittlecircle.position = Vector2(-1826, -1674)
@@ -102,7 +117,7 @@ func _ready():
 	explanationText.text = explanationTexts[explanationNumber]
 	explanationText.position = positionTexts[explanationNumber]
 
-	
+
 func _on_efectos_timeout():
 	match explanationNumber:
 		0: 
@@ -151,10 +166,12 @@ func _on_efectos_timeout():
 			effectsTimer.stop()	
 		12:
 			canPressTheButton = true
-			effectsTimer.stop()	
+			effectsTimer.stop()
 		13:
-			canPressTheButton = true
-			effectsTimer.stop()	
+			moveCircle(circle, 25, -4001, -4018, true, false)
+			if circle.position.x <= -4001 && circle.position.y >= -4018:
+				canPressTheButton = true
+				effectsTimer.stop()
 		14:
 			canPressTheButton = true
 			effectsTimer.stop()	
@@ -168,8 +185,38 @@ func _on_efectos_timeout():
 			canPressTheButton = true
 			effectsTimer.stop()	
 		18:
+			moveCircle(circle, 25, -4473, -3843, true, true)
+			if circle.position.x <= -4473 && circle.position.y <= -3843:
+				canPressTheButton = true
+				effectsTimer.stop()
+		19:
 			canPressTheButton = true
 			effectsTimer.stop()	
+		20:
+			moveCircle(circle, 10, -4000, -4009, false, true)
+			if circle.position.x >= -4000 && circle.position.y <= -4009:
+				canPressTheButton = true	
+				effectsTimer.stop()
+		21:
+			canPressTheButton = true
+			effectsTimer.stop()	
+		22:
+			moveCircle(circle, 10, -3508, -4197, false, true)
+			if circle.position.x >= -3508 && circle.position.y <= -4197:
+				canPressTheButton = true	
+				effectsTimer.stop()
+		23:
+			canPressTheButton = true
+			effectsTimer.stop()	
+		24:
+			canPressTheButton = true
+			effectsTimer.stop()	
+		25:
+			canPressTheButton = true
+			effectsTimer.stop()		
+		26:
+			canPressTheButton = true
+			effectsTimer.stop()		
 func moveCircle(theCircle, speed , positionX, positionY, isXHigher, isYHigher):  
 	#de derecha a izquierda es true, de abajo a arriba es true
 	if isXHigher && isYHigher: #3000 < 2000
@@ -200,6 +247,7 @@ func moveCircle(theCircle, speed , positionX, positionY, isXHigher, isYHigher):
 			theCircle.position = Vector2(theCircle.position.x + speed ,theCircle.position.y)	
 		elif theCircle.position.y < positionY:
 			theCircle.position = Vector2(theCircle.position.x ,theCircle.position.y + speed)	
+			
 func _on_next_pressed():
 	print(canPressTheButton," :",  explanationNumber)
 	if canPressTheButton:
@@ -226,7 +274,36 @@ func _on_next_pressed():
 				get_tree().paused = false
 				$Control/Next.hide()
 				explanationText.hide()
-			
+			12:
+				get_tree().paused = false
+				$Control/Next.hide()
+				explanationText.hide()
+			13:
+				circle.show()
+			14: 
+				circle.hide()
+				circle.position = Vector2(-3910,-3384)
+			15:
+				explanationText.hide()
+				$Control/Next.hide()
+				get_tree().paused = false
+				$MainTutorial.onPlayerSelectPart()
+			16:
+				get_tree().paused = false
+				$MainTutorial._onExpSpawn()
+				$Control/Next.hide()
+				circle.hide()
+			17:
+				circle.show()
+				circle.position = Vector2(-4102,-3410)
+			19:
+				reallyLittlecircle = Vector2(-1972,-1318)
+			24:
+				circle.hide()
+			27:
+				get_tree().paused = false
+				get_tree().change_scene_to_file(MENU)
+				
 func _on_try_yourself_timeout():
 	get_tree().paused = true
 	canPressTheButton = true
@@ -235,9 +312,23 @@ func _on_try_yourself_timeout():
 	tryYourselfTimer.stop()
 
 func onTutorialEnemyDeath():
-	tryYourselfTimer.start(1)
+	tryYourselfTimer.start(0.5)
 
+func onTutorialExperiencePicked():
+	if expPicked:
+		if expAmount == -1:
+			circle.show()
+			tryYourselfTimer.start(0.5)
+		expAmount += 1
+		if expAmount == 8:
+			circle.show()
+			tryYourselfTimer.start(0.5)
+	else:
+		circle.show()
+		tryYourselfTimer.start(0.5)
 
+	expPicked = true
+	
 func _on_salir_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file(MENU)

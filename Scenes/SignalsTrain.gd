@@ -15,3 +15,5 @@ signal sendPart(part)
 signal clubPenguinIsKill
 
 signal isTutorialEnemy
+
+signal isTutorialExperience

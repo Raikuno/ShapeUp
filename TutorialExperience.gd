@@ -7,7 +7,6 @@ func _ready():
 	SignalsTrain.xPDespawn.connect(_onDespawn)
 	
 func initialize(positionEnemy,_xpType): #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
-	print("aparesco")
 	global_transform.origin = positionEnemy
 	xpType = _xpType
 	match xpType:
@@ -33,12 +32,11 @@ func initialize(positionEnemy,_xpType): #1 = cilindro / 2 = cubo / 3 = esfera / 
 			randomDespawn = 35
 
 func _onDespawn():
+
 	if randi_range(1,randomDespawn) < 5 : 
 		queue_free()
 	
 func _on_area_3d_body_entered(body):
 	if SignalsTrain.has_signal("expPicked"):
 		SignalsTrain.emit_signal("expPicked", xpType)
-	if SignalsTrain.has_signal("isTutorialExperience"):
-		SignalsTrain.emit_signal("isTutorialExperience")
 	queue_free()

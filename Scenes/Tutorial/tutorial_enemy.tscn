@@ -207,7 +207,7 @@ collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_7r02d")
 Hp = 35
-Damage = 1
+Damage = 3
 
 [node name="pivot" type="Node3D" parent="."]
 transform = Transform3D(-2, 0, -5.07036e-06, 0, 2, 0, 5.07036e-06, 0, -2, 0.461145, 0.970601, -1.65704)

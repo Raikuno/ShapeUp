@@ -57,6 +57,7 @@ var bulletDirection
 @onready var healthBarRectanglePyramid = $Control/HealthBars/Pyramid/HealthBarRectanglePyramid
 var healthBarFigureInUse
 var healthBarRectangleInUse
+var tutorialPlayer = false
 var xPNeededPerLevel = {
 	0 : 5,   # 5
 	1 : 10,  # 10
@@ -257,6 +258,9 @@ func _ready():
 	SignalsTrain.sendPart.connect(setUpgrade)
 	
 func setUpgrade(part):
+	if tutorialPlayer:
+		if SignalsTrain.has_signal("isTutorialExperience"):
+			SignalsTrain.emit_signal("isTutorialExperience")
 	upgrading = part
 	setValueOnBar()
 	var xPNeeded = xPNeededPerLevel[upgrading["level"]["part"]]
@@ -316,12 +320,7 @@ func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamid
 			theBarPyramid.value = theBarPyramid.value + 1
 	theBar.value = theBar.value + 1
 	setValueOnBar()
-	print("""
-	CylinderXp: %s
-	CubeXp: %s
-	ShpereXp: %s
-	PyramidXp: %s
-	""" % [upgrading["experience"]["cylinder"], upgrading["experience"]["cube"], upgrading["experience"]["sphere"], upgrading["experience"]["pyramid"]])
+
 
 func setValueOnBar(): #no tiene ningun sentido, mañana hablamos
 	cylinderXPBar.value = upgrading["experience"]["cylinder"]
@@ -384,6 +383,7 @@ func initializePartSelection():
 func initializePlayerTutorial():
 	print("head")
 	setUpgrade(head)
+	tutorialPlayer = true
 		
 func selectPart():
 	if !shapingUp:
@@ -763,5 +763,6 @@ func _on_pyramid_the_bar_value_changed(value):
 		
 func _on_cylinder_the_bar_value_changed(value):
 	if value == theBarCylinder.max_value:
-		changePolygon(CYLINDER, upgrading["identity"])
 		selectPart()
+		changePolygon(CYLINDER, upgrading["identity"])
+	

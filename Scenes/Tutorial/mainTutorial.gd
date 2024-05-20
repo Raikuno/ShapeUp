@@ -3,6 +3,7 @@ extends Node
 var timeSecond = 0
 var timeMinute = 0
 var enemy : PackedScene
+var xP : PackedScene
 
 
 func _ready():
@@ -34,6 +35,23 @@ func _on_timer_timeout():
 	else:
 		$Time/Time.text =  "%s:%s" %  [timeMinute ,timeSecond]
 
+func onPlayerSelectPart():
+	$player.selectPart()
 
+func _onExpSpawn():  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
+	xPSpawn(4,Vector3(0,0,25))
+	xPSpawn(4,Vector3(-45,0,25))
+	xPSpawn(2,Vector3(18,0,78))
+	xPSpawn(2,Vector3(-40,0,-25))
+	xPSpawn(2,Vector3(-30,0,25))
+	xPSpawn(1,Vector3(50,0,0))
+	xPSpawn(2,Vector3(80,0,20))
+	xPSpawn(3,Vector3(0,0,55))
+	
+func xPSpawn(tipo, posicion):
+	xP = load("res://Scenes/Experience/experience.tscn")
+	var xPObject = xP.instantiate()
+	xPObject.initialize(posicion + $player.position, tipo)
+	add_child(xPObject)
 func _on_try_yourself_timeout():
 	spawnMob(2,1,0)

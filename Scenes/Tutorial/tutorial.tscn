@@ -34,29 +34,29 @@ placeholder_text = "a"
 
 [node name="LittleCircle" type="TextureRect" parent="Control"]
 layout_mode = 0
-offset_left = -4067.0
-offset_top = -4627.0
-offset_right = -2061.0
-offset_bottom = -2621.0
+offset_left = -3508.0
+offset_top = -4197.0
+offset_right = -1502.0
+offset_bottom = -2191.0
 scale = Vector2(4, 4)
 texture = ExtResource("3_xkl86")
 
 [node name="ReallyLittleCircle" type="TextureRect" parent="Control"]
 visible = false
 layout_mode = 0
-offset_left = -1486.0
-offset_top = -1760.0
-offset_right = 520.0
-offset_bottom = 246.0
+offset_left = -1508.0
+offset_top = -1501.0
+offset_right = 498.0
+offset_bottom = 505.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_xkl86")
 
 [node name="ExplanationText" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = -512.0
-offset_top = -201.0
-offset_right = 276.0
-offset_bottom = -148.0
+offset_left = -520.0
+offset_top = 133.0
+offset_right = 268.0
+offset_bottom = 186.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -94,7 +94,7 @@ wait_time = 0.001
 
 [node name="tryYourself" type="Timer" parent="."]
 process_mode = 3
-wait_time = 7.0
+wait_time = 5.0
 
 [connection signal="pressed" from="Control/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="Control/Salir" to="." method="_on_salir_pressed"]

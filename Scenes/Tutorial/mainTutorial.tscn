@@ -806,7 +806,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="tryYourself" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 4.0
 one_shot = true
 autostart = true
 
