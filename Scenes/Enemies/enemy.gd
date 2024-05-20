@@ -48,6 +48,7 @@ func getWanderingValue():
 			wanderingTime = 3
 
 func onBossSpawn():
+	Hp *= 3
 	isBoss = true
 	scale = Vector3(3,3,3)
 	
@@ -79,7 +80,7 @@ func enemyDeath():
 		if isBoss:
 			for i in 5:
 				SignalsTrain.emit_signal("sumarKills")
-				expSpawn(position + Vector3(i,i,i))
+				expSpawn(position + Vector3(0,i,0))
 		else:
 			SignalsTrain.emit_signal("sumarKills")
 			expSpawn(position)

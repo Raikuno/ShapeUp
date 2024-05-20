@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dhu1rmy81482n" path="res://Scenes/Experience/CilinderXP.glb" id="4_gn22v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1s8wy"]
-size = Vector3(10.5839, 2.56729, 10.6039)
+size = Vector3(8.05284, 2.56729, 8.01164)
 
 [sub_resource type="Animation" id="Animation_gsovd"]
 length = 0.001
@@ -104,7 +104,7 @@ transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
 collision_layer = 32
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.0150512, 1.35774, 0.0116234)
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.0151018, 1.35774, -0.0146851)
 shape = SubResource("BoxShape3D_1s8wy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -812,8 +812,7 @@ autostart = true
 autostart = true
 
 [node name="Eventos" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
+wait_time = 59.0
 
 [node name="MessageTime" type="Timer" parent="."]
 wait_time = 5.0

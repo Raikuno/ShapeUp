@@ -2,6 +2,8 @@ extends Node
 var SCOREBOARD = "res://Scenes/ScoreBoard/ScoreBoard.tscn"
 var timeSecond = 0
 var timeMinute = 0
+var sameEnemy = false
+var enemyArmy = 4
 var enemy : PackedScene
 const MENU = "res://Scenes/Main/mainPPK.tscn"
 @onready var messageLabel = $Time/Messages
@@ -22,7 +24,8 @@ var randomMessage = [
 	"Los enemigos se están poniendo MUY NERVIOSOS"]
 var randomEventMessage = [
 	"¡¡Se aproxima una horda!!",
-	"¡¡Se aproxima tu madre!!"]
+	"¡¡Se aproxima un jefe!!",
+	"¡¡Están dominando el server!!"]
 
 func _input(event):
 	if Input.is_action_just_pressed("pause"):
@@ -37,8 +40,11 @@ func _ready():
 
 func _on_mob_spawn_timer_timeout():
 	#1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
-	var enemyRandom = randi_range(1,4)
-	spawnMob(enemyRandom, 1, -0.5, false)
+	if sameEnemy:
+		spawnMob(enemyArmy, 1 + timeMinute, -0.5, false)
+	else:
+		var enemyRandom = randi_range(1,4)
+		spawnMob(enemyRandom, 1 + timeMinute, -0.5, false)
 func endOfGame():
 	Score.time = $Time/Time.text
 	Score.setScore()
@@ -46,7 +52,7 @@ func endOfGame():
 
 
 func spawnMob(enemyRandom,amount, statsMultiplier, bossEnemy):
-	for i in amount + timeMinute:
+	for i in amount:
 		match enemyRandom:
 			1:
 				enemy = load("res://Scenes/Enemies/enemyCylinder.tscn")
@@ -78,12 +84,12 @@ func _on_start_pressed():
 
 func _on_timer_timeout():
 	timeSecond += 1
-	
+	if timeSecond == 30:
+		$Eventos.start()
 	if timeSecond == 60:
 		timeSecond = 0
 		timeMinute += 1
-		showMessage(0, 0)
-		$Eventos.start()
+		showMessage(0, 0, 10)
 	if timeSecond < 10 && timeMinute < 10: # Perdón, me dió flojera
 		$Time/Time.text =  "0%s:0%s" %  [timeMinute ,timeSecond]
 	elif timeSecond < 10:
@@ -93,7 +99,7 @@ func _on_timer_timeout():
 	else:
 		$Time/Time.text =  "%s:%s" %  [timeMinute ,timeSecond]
 
-func showMessage(messageType, messageColor): # 0 negro, 1 cilindro, 2 cubo, 3 esfera , 4 peakamide
+func showMessage(messageType, messageColor, messageTime): # 0 negro, 1 cilindro, 2 cubo, 3 esfera , 4 peakamide
 	$Time/Messages.show()
 	match messageColor:
 		0:
@@ -107,26 +113,31 @@ func showMessage(messageType, messageColor): # 0 negro, 1 cilindro, 2 cubo, 3 es
 		4:
 			messageLabel.add_theme_color_override("font_color", Color.YELLOW)
 	if messageColor != 0:
-		messageLabel.text = randomEventMessage[randi_range(0,messageType -1)]
+		messageLabel.text = randomEventMessage[messageType]
 	else:
 		messageLabel.text = randomMessage[randi_range(0,randomMessage.size() -1)]
 	
-	$MessageTime.start()
-	Label
+	$MessageTime.start(messageTime)
+	
 func _on_eventos_timeout():
 	var enemyRandom = randi_range(1,4)
 	
-	match(randi_range(0,1)):
-		0:
-			showMessage(0, enemyRandom)
-			spawnMob(enemyRandom, 10, 1, false)
-		1:
-			showMessage(1, enemyRandom)
-			spawnMob(enemyRandom, 1, 4, true)
+	match(randi_range(0,2)):
+		0: #horda
+			showMessage(0, enemyRandom, 10)
+			spawnMob(enemyRandom, 10 + timeMinute, 1, false)
+		1: #boss
+			showMessage(1, enemyRandom, 10)
+			spawnMob(enemyRandom, 1 + roundi(timeMinute / 2), 4, true)
+		2: #golpe de estado
+			showMessage(2, enemyRandom, 20)
+			sameEnemy = true
+			enemyArmy = enemyRandom
+			$EventCooldown.start(20)
 
 func _on_message_time_timeout():
 	$Time/Messages.hide()
 
 
 func _on_event_cooldown_timeout():
-	pass
+	sameEnemy = false

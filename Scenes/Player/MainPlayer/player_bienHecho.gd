@@ -725,7 +725,6 @@ func _on_left_arm_player_animation_finished(anim_name):
 func onLevelUp(xPBar, levelLabel, upgradingPart):
 	levelLabel.text = "%s" % upgradingPart
 	changeXPBarSize(xPBar,xPNeededPerLevel[upgradingPart])
-	selectPart()
 
 func changeXPBarSize(xPBar, newSize):
 	xPBar.set_max(newSize)
@@ -765,24 +764,28 @@ func _on_sphere_xp_bar_value_changed(value):
 func _on_the_bar_value_changed(value):
 	if value == theBar.max_value && theBarSphere.value != theBarSphere.max_value && theBarCube.value != theBarCube.max_value && theBarPyramid.value != theBarPyramid.max_value && theBarCylinder.value != theBarCylinder.max_value:
 		changePolygon(AMEBA, upgrading["identity"])
+		selectPart()
 
 func _on_sphere_the_bar_value_changed(value): #Priorizamos la barra de ameba, si salen ambas a la vez solo dejamos pasar ameba
 	if value == theBarSphere.max_value:
 		changePolygon(SPHERE, upgrading["identity"])
+		selectPart()
 
 func _on_cube_the_bar_value_changed(value):
 	if value == theBarCube.max_value:
 		changePolygon(CUBE, upgrading["identity"])
+		selectPart()
 		
 func _on_pyramid_the_bar_value_changed(value):
 	if value == theBarPyramid.max_value:
 		changePolygon(PYRAMID, upgrading["identity"])
+		selectPart()
 		
 		
 func _on_cylinder_the_bar_value_changed(value):
 	if value == theBarCylinder.max_value:
-
 		changePolygon(CYLINDER, upgrading["identity"])
+		selectPart()
 
 
 func endDeathAnim(anim_name):
