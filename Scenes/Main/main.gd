@@ -8,7 +8,7 @@ const MENU = "res://Scenes/Main/mainPPK.tscn"
 
 var randomMessage = [
 	"Los enemigos están flexeando sus putísimos musculos 
- 	joder sí como me pone que los enemigos hagan pectorales", 
+ 	me encanta que los enemigos hagan pectorales", 
 	"Los enemigos están flexeando sus musculos ",
 	"Los enemigos se preparan para correr una maratón",
 	"Los cubos están afilando sus bordes",
@@ -19,7 +19,7 @@ var randomMessage = [
 	"Supercalifragilisticoespialodoso...
 	los enemigos te intentan distraer...",
 	"Los enemigos están farmeando para subir a nv 100",
-	"Los enemigos tocan los tambores de la liberación"]
+	"Los enemigos se están poniendo MUY NERVIOSOS"]
 var randomEventMessage = [
 	"¡¡Se aproxima una horda!!"]
 
