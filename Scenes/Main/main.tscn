@@ -812,11 +812,14 @@ autostart = true
 autostart = true
 
 [node name="Eventos" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 5.0
+autostart = true
 
 [node name="MessageTime" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="EventCooldown" type="Timer" parent="."]
 
 [connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Exit" to="." method="_on_exit_pressed"]
@@ -824,3 +827,4 @@ one_shot = true
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Eventos" to="." method="_on_eventos_timeout"]
 [connection signal="timeout" from="MessageTime" to="." method="_on_message_time_timeout"]
+[connection signal="timeout" from="EventCooldown" to="." method="_on_event_cooldown_timeout"]

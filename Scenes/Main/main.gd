@@ -21,7 +21,8 @@ var randomMessage = [
 	"Los enemigos están farmeando para subir a nv 100",
 	"Los enemigos se están poniendo MUY NERVIOSOS"]
 var randomEventMessage = [
-	"¡¡Se aproxima una horda!!"]
+	"¡¡Se aproxima una horda!!",
+	"¡¡Se aproxima tu madre!!"]
 
 func _input(event):
 	if Input.is_action_just_pressed("pause"):
@@ -37,13 +38,14 @@ func _ready():
 func _on_mob_spawn_timer_timeout():
 	#1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 	var enemyRandom = randi_range(1,4)
-	spawnMob(enemyRandom, 1, -0.5)
+	spawnMob(enemyRandom, 1, -0.5, false)
 func endOfGame():
 	Score.time = $Time/Time.text
 	Score.setScore()
 	changeRoom()
 
-func spawnMob(enemyRandom,amount, statsMultiplier):
+
+func spawnMob(enemyRandom,amount, statsMultiplier, bossEnemy):
 	for i in amount + timeMinute:
 		match enemyRandom:
 			1:
@@ -58,6 +60,8 @@ func spawnMob(enemyRandom,amount, statsMultiplier):
 		var enemySpawnLocation = get_node("player/Path3D/PathFollow3D")
 		enemySpawnLocation.progress_ratio = randf()
 		enemyObject.initialize(enemySpawnLocation.position + $player.position, $player.position, enemyRandom, statsMultiplier + timeMinute)
+		if bossEnemy:
+			enemyObject.onBossSpawn()
 		add_child(enemyObject)
 
 func _on_exit_pressed():
@@ -74,10 +78,11 @@ func _on_start_pressed():
 
 func _on_timer_timeout():
 	timeSecond += 1
+	
 	if timeSecond == 60:
 		timeSecond = 0
 		timeMinute += 1
-		showMessage(0)
+		showMessage(0, 0)
 		$Eventos.start()
 	if timeSecond < 10 && timeMinute < 10: # Perdón, me dió flojera
 		$Time/Time.text =  "0%s:0%s" %  [timeMinute ,timeSecond]
@@ -88,9 +93,9 @@ func _on_timer_timeout():
 	else:
 		$Time/Time.text =  "%s:%s" %  [timeMinute ,timeSecond]
 
-func showMessage(messageType): # 0 negro, 1 cilindro, 2 cubo, 3 esfera , 4 peakamide
+func showMessage(messageType, messageColor): # 0 negro, 1 cilindro, 2 cubo, 3 esfera , 4 peakamide
 	$Time/Messages.show()
-	match messageType:
+	match messageColor:
 		0:
 			messageLabel.add_theme_color_override("font_color", Color.BLACK)
 		1:
@@ -101,8 +106,8 @@ func showMessage(messageType): # 0 negro, 1 cilindro, 2 cubo, 3 esfera , 4 peaka
 			messageLabel.add_theme_color_override("font_color", Color.BLUE)
 		4:
 			messageLabel.add_theme_color_override("font_color", Color.YELLOW)
-	if messageType != 0:
-		messageLabel.text = randomEventMessage[randi_range(0,randomEventMessage.size() -1)]
+	if messageColor != 0:
+		messageLabel.text = randomEventMessage[randi_range(0,messageType -1)]
 	else:
 		messageLabel.text = randomMessage[randi_range(0,randomMessage.size() -1)]
 	
@@ -110,8 +115,18 @@ func showMessage(messageType): # 0 negro, 1 cilindro, 2 cubo, 3 esfera , 4 peaka
 	Label
 func _on_eventos_timeout():
 	var enemyRandom = randi_range(1,4)
-	showMessage(enemyRandom)
-	spawnMob(enemyRandom, 10, 1)
+	
+	match(randi_range(0,1)):
+		0:
+			showMessage(0, enemyRandom)
+			spawnMob(enemyRandom, 10, 1, false)
+		1:
+			showMessage(1, enemyRandom)
+			spawnMob(enemyRandom, 1, 4, true)
 
 func _on_message_time_timeout():
 	$Time/Messages.hide()
+
+
+func _on_event_cooldown_timeout():
+	pass

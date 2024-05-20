@@ -55,6 +55,12 @@ var bulletDirection
 @onready var healthBarRectangleCube = $Control/HealthBars/Cube/HealthBarRectangleCube
 @onready var healthBarPyramid = $Control/HealthBars/Pyramid/HealthBarPyramid
 @onready var healthBarRectanglePyramid = $Control/HealthBars/Pyramid/HealthBarRectanglePyramid
+var MouseCursorAmeba = load("res://Resources/MouseCursorAmeba.png")
+var MouseCursorCube = load("res://Resources/MouseCursorCube.png")
+var MouseCursorPyramid = load("res://Resources/MouseCursorPyramid.png")
+var MouseCursorSphere = load("res://Resources/MouseCursorSphere.png")
+var MouseCursorCylinder = load("res://Resources/MouseCursorCylinder.png")
+
 var healthBarFigureInUse
 var healthBarRectangleInUse
 var tutorialPlayer = false
@@ -245,9 +251,9 @@ var alive = true #Te lo juro que esto hace falta, no quieres saber lo que pasa s
 func _ready():
 	changePolygon(AMEBA, HEAD)
 	changePolygon(AMEBA, BODY)
-	changePolygon(AMEBA, RIGHT)
-	changePolygon(AMEBA, LEFT)
-	changePolygon(AMEBA, FEET)
+	changePolygon(CUBE, RIGHT)
+	changePolygon(CUBE, LEFT)
+	changePolygon(SPHERE, FEET)
 	healthBarFigureInUse = healthBarSphere
 	healthBarRectangleInUse = healthBarRectangleSphere
 	resetStats()
@@ -507,7 +513,7 @@ func setHealthBars(figure,rectangle):
 	healthBarRectangleInUse = rectangle
 	healthBarFigureInUse.show()
 	healthBarRectangleInUse.show()
-	
+
 func changePolygon(newPolygon, type):
 	match type:
 		HEAD:
@@ -518,18 +524,23 @@ func changePolygon(newPolygon, type):
 				SPHERE:
 					head["resource"] = $"pivot/head/cabeza-esferaPlayer"
 					head["figureStat"] = sphereStat
+					Input.set_custom_mouse_cursor(MouseCursorSphere)
 				CUBE:
 					head["resource"] = $"pivot/head/cabeza-cuboPlayer"
 					head["figureStat"] = cubeStat
+					Input.set_custom_mouse_cursor(MouseCursorCube)
 				PYRAMID:
 					head["resource"] = $"pivot/head/cabeza-piramidePlayer"
 					head["figureStat"] = pyramidStat
+					Input.set_custom_mouse_cursor(MouseCursorPyramid)
 				CYLINDER:
 					head["resource"] = $"pivot/head/cabeza-cilindroPlayer"
 					head["figureStat"] = cylinderStat
+					Input.set_custom_mouse_cursor(MouseCursorCylinder)
 				AMEBA:
 					head["resource"] = $"pivot/head/cabeza-amebaPlayerMK2"
 					head["figureStat"] = amebaStat
+					Input.set_custom_mouse_cursor(MouseCursorAmeba)
 			head["resource"].show()
 		BODY:
 			body["figure"] = newPolygon

@@ -10,7 +10,9 @@ var speed
 var hitting = false
 var omaewamoshindeiru = false
 var wanderingValue = 0
+var wanderingTime = 0
 var wandering = false
+var isBoss = false
 var wanderingPosition
 var enemyType #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 var x_range = Vector2(-1500, 1500)  # Rango en el eje X
@@ -33,13 +35,21 @@ func _ready():
 func getWanderingValue():
 	match enemyType:
 		1:
-			wanderingValue = 1500
+			wanderingValue = 180
+			wanderingTime = 12
 		2:
-			wanderingValue = 5000
+			wanderingValue = 1050
+			wanderingTime = 2
 		3:
-			wanderingValue = 500
+			wanderingValue = 140
+			wanderingTime = 10
 		4:
-			wanderingValue = 3500
+			wanderingValue = 850
+			wanderingTime = 3
+
+func onBossSpawn():
+	isBoss = true
+	scale = Vector3(3,3,3)
 	
 func onDamageTaken(damageAmount, body):
 	if body == self:
@@ -66,32 +76,39 @@ func _on_animation_player_animation_finished(anim_name):
 
 func enemyDeath():
 	if !omaewamoshindeiru:
-		if SignalsTrain.has_signal("sumarKills"):
+		if isBoss:
+			for i in 5:
+				SignalsTrain.emit_signal("sumarKills")
+				expSpawn(position + Vector3(i,i,i))
+		else:
 			SignalsTrain.emit_signal("sumarKills")
+			expSpawn(position)
 		omaewamoshindeiru = true
-		var position = global_transform.origin
-		var experience = load("res://Scenes/Experience/experience.tscn")
-		var experienceObject = experience.instantiate()
-		experienceObject.initialize(position, enemyType)
-		add_sibling(experienceObject)
 		if skinNumber == 1:
 			$Animation.get_child(0).play("DeathAnimation")
 		else:
 			$Animation.get_child(0).play("DeathAnimation2")
-	
+
+func expSpawn(expPosition):
+	var position = global_transform.origin
+	var experience = load("res://Scenes/Experience/experience.tscn")
+	var experienceObject = experience.instantiate()
+	experienceObject.initialize(expPosition, enemyType)
+	add_sibling(experienceObject)
+		
 func _physics_process(_delta):
 	var transform = get_transform()
 	transform.origin.y = 1.3
 	set_transform(transform)
 	#in wondering state the enemy move to random directions
-	if wandering:
+	if !isBoss && wandering:
 		if wanderingTimer.is_stopped():
-			wanderingTimer.start()
-		look_at_from_position(position, wanderingPosition, Vector3.UP)
+			wanderingTimer.start(randi_range(2,wanderingTime))
+			look_at_from_position(position, wanderingPosition, Vector3.UP)
 	else:
 		look_at_from_position(position, player.global_position, Vector3.UP)
 		# una probabilidad random de que el enemigo entre en estado wandering
-		if randi_range(1,wanderingValue) == 1:
+		if !isBoss && randi_range(1,wanderingValue) == 1:
 			wanderingPosition = Vector3(randi_range(x_range.x, x_range.y), position.y,randi_range(z_range.x, z_range.y))
 			wandering = true
 		
@@ -137,5 +154,5 @@ func _on_hitting_timeout():
 
 
 func _on_expire_time_timeout():
-	if !$VisibleOnScreenNotifier3D.is_on_screen():
+	if !isBoss && !$VisibleOnScreenNotifier3D.is_on_screen():
 		queue_free()
