@@ -27,6 +27,10 @@ RoomManager="*res://Scenes/RoomManager.gd"
 
 window/stretch/mode="canvas_items"
 
+[editor]
+
+movie_writer/custom_image="res://Resources/Sprites and others/mouse.jpg"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_firebase_lite/plugin.cfg")
