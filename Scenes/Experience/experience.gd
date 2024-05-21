@@ -59,7 +59,5 @@ func hideAndDestroy():
 	$Experience.hide()
 	$Area3D.queue_free()
 
-
-
 func soundAndDestroy():
 	queue_free()

@@ -253,7 +253,7 @@ var alive = true #Te lo juro que esto hace falta, no quieres saber lo que pasa s
 func _ready():
 	changePolygon(AMEBA, HEAD)
 	changePolygon(AMEBA, BODY)
-	changePolygon(CUBE, RIGHT)
+	changePolygon(AMEBA, RIGHT)
 	changePolygon(AMEBA, LEFT)
 	changePolygon(AMEBA, FEET)
 	healthBarFigureInUse = healthBarSphere
