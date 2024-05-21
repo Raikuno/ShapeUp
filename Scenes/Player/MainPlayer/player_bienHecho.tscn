@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://bavtwemfemmxy"]
+[gd_scene load_steps=91 format=3 uid="uid://bavtwemfemmxy"]
 
 [ext_resource type="Script" path="res://Scenes/Player/MainPlayer/player_bienHecho.gd" id="1_4kplc"]
 [ext_resource type="PackedScene" uid="uid://baj52amprcwev" path="res://Resources/BodyParts/Head/cabeza-amebaPlayer.glb" id="2_h7yxf"]
@@ -54,7 +54,6 @@
 [ext_resource type="Texture2D" uid="uid://cabvf732hhswe" path="res://Resources/XPTextures/LittleCube.png" id="49_nq5l5"]
 [ext_resource type="Texture2D" uid="uid://bfmajyrx2cgjg" path="res://Resources/HealthBars/HealthBarRectangleAmebaFill.png" id="50_p7dt5"]
 [ext_resource type="Texture2D" uid="uid://boaqmsfpdgbsh" path="res://Resources/XPTextures/LittlePyramid.png" id="50_rhiec"]
-[ext_resource type="AudioStream" uid="uid://b7s3gjm7gesgi" path="res://Resources/Sounds/Player/bulletThrow.ogg" id="55_eqy22"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a2ap"]
 albedo_color = Color(0.219608, 0.513726, 0, 1)
@@ -1353,15 +1352,15 @@ transform = Transform3D(0.232791, -0.511618, 0.827076, 0.0507347, 0.855672, 0.51
 visible = false
 
 [node name="brazo-cuboPlayer" parent="pivot/rightArm" instance=ExtResource("16_ne5te")]
-transform = Transform3D(0.462744, 5.00679e-07, -0.525231, -0.304705, 0.570165, -0.268453, 0.427812, 0.406094, 0.376915, 0.256621, 2.1317, 2.58995)
+transform = Transform3D(0.462744, 5.42402e-07, -0.525231, -0.304705, 0.570165, -0.268453, 0.427812, 0.406094, 0.376915, 0.256621, 2.1317, 2.58995)
 visible = false
 
 [node name="brazo-esferaPlayer" parent="pivot/rightArm" instance=ExtResource("17_87h6d")]
-transform = Transform3D(0.821905, 0.569624, 3.73957e-08, -0.529623, 0.764188, -0.368125, -0.209693, 0.302564, 0.929776, 0.585547, 1.73018, 2.30501)
+transform = Transform3D(0.821905, 0.569624, 4.68533e-08, -0.529623, 0.764188, -0.368125, -0.209693, 0.302564, 0.929776, 0.585547, 1.73018, 2.30501)
 visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/rightArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.49767e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
+transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.39646e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
 visible = false
 
 [node name="brazo-cilindroPlayer" type="MeshInstance3D" parent="pivot/rightArm"]
@@ -1381,11 +1380,11 @@ transform = Transform3D(0.67474, 0.133303, 0.130216, 0, 0.489144, -0.500738, -0.
 visible = false
 
 [node name="brazo-esferaPlayer" parent="pivot/leftArm" instance=ExtResource("17_87h6d")]
-transform = Transform3D(0.49982, 0.418864, 0.758112, -0.642306, 0.766448, 1.45103e-07, -0.581053, -0.48694, 0.652125, -0.0885837, 2.01696, -1.9455)
+transform = Transform3D(0.49982, 0.418864, 0.758111, -0.642306, 0.766448, 1.61189e-07, -0.581053, -0.48694, 0.652125, -0.0885837, 2.01696, -1.9455)
 visible = false
 
 [node name="brazo-trianguloPlayer" parent="pivot/leftArm" instance=ExtResource("18_hftsq")]
-transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.33181e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
+transform = Transform3D(-0.31942, 0.754482, 0.573348, -0.920873, -0.389863, -3.56521e-07, 0.223527, -0.52798, 0.819312, -0.482053, 1.795, -1.78065)
 visible = false
 
 [node name="brazo-amebaPlayerMKII" parent="pivot/leftArm" instance=ExtResource("19_hh71a")]
@@ -1460,7 +1459,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 visible = false
 
 [node name="piernas-piramidePlayer" parent="legs/pyramid" instance=ExtResource("24_d3gix")]
-transform = Transform3D(1.48772, 0.191584, -4.833e-09, -0.191584, 1.48772, -7.53696e-08, -4.83297e-09, 7.53699e-08, 1.5, -0.545794, 0, 0.0168477)
+transform = Transform3D(1.48772, 0.191584, -4.833e-09, -0.191584, 1.48772, -7.53696e-08, -4.83297e-09, 7.53698e-08, 1.5, -0.545794, 0, 0.0168477)
 
 [node name="rightArmPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -2098,10 +2097,6 @@ offset_top = 650.0
 offset_right = 1261.5
 offset_bottom = 771.0
 texture = ExtResource("50_rhiec")
-
-[node name="bulletsSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("55_eqy22")
-volume_db = -30.0
 
 [connection signal="animation_finished" from="rightArmPlayer" to="." method="_on_right_arm_player_animation_finished"]
 [connection signal="animation_finished" from="body_animation" to="." method="endDeathAnim"]
