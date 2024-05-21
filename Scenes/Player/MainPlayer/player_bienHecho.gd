@@ -55,6 +55,8 @@ var bulletDirection
 @onready var healthBarRectangleCube = $Control/HealthBars/Cube/HealthBarRectangleCube
 @onready var healthBarPyramid = $Control/HealthBars/Pyramid/HealthBarPyramid
 @onready var healthBarRectanglePyramid = $Control/HealthBars/Pyramid/HealthBarRectanglePyramid
+@onready var healthBarAmeba = $Control/HealthBars/Ameba/HealthBarAmeba
+@onready var healthBarRectangleAmeba = $Control/HealthBars/Ameba/HealthBarRectangleAmeba
 var MouseCursorAmeba = load("res://Resources/MouseCursorAmeba.png")
 var MouseCursorCube = load("res://Resources/MouseCursorCube.png")
 var MouseCursorPyramid = load("res://Resources/MouseCursorPyramid.png")
@@ -499,7 +501,7 @@ func resetStats():
 				CYLINDER:
 					setHealthBars(healthBarCylinder,healthBarRectangleCylinder)
 				AMEBA:
-					setHealthBars(healthBarSphere,healthBarRectangleSphere)
+					setHealthBars(healthBarAmeba,healthBarRectangleAmeba)
 	if SignalsTrain.has_signal("xPDespawn"):
 		SignalsTrain.emit_signal("xPDespawn")
 	#Este método es para setear las barras de vida, usará el cuerpo para saber que sprite poner
