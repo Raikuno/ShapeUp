@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cv2qac5bxr24o"]
+[gd_scene load_steps=40 format=3 uid="uid://cv2qac5bxr24o"]
 
 [ext_resource type="Script" path="res://Scenes/Player/PartSelect/PartSelect.gd" id="1_tyn61"]
 [ext_resource type="PackedScene" uid="uid://dl03c1njwt368" path="res://Resources/BodyParts/Arms/brazo-amebaPlayerMKII.glb" id="2_o2mdt"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://b8fll3a5laa56" path="res://Resources/BodyParts/Legs/piernas-esferaPlayer.glb" id="18_mkmjk"]
 [ext_resource type="PackedScene" uid="uid://e60ta7w4fqqq" path="res://Resources/BodyParts/Legs/piernaderecha-amebaPlayer.glb" id="20_uh4jr"]
 [ext_resource type="PackedScene" uid="uid://crkwcgesbomod" path="res://Resources/BodyParts/Legs/piernas-piramidePlayer.glb" id="21_aqiao"]
+[ext_resource type="AudioStream" uid="uid://cnimw4d5dpuil" path="res://Resources/Sounds/PartSelect/Selection.ogg" id="22_nfjkr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a2ap"]
 albedo_color = Color(0.219608, 0.513726, 0, 1)
@@ -466,7 +467,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, -10, -13
 fov = 65.9648
 
 [node name="armsPosition" type="Marker3D" parent="part1Container/SubViewportContainer/SubViewport"]
-transform = Transform3D(-0.193185, -1.42333e-06, 0.0517632, -0.0517632, -1.87382e-07, -0.193185, 1.42333e-06, -0.2, -1.87382e-07, -10, -13.4124, -1.59798)
+transform = Transform3D(-0.193185, -1.42333e-06, 0.0517631, -0.0517631, -1.87382e-07, -0.193185, 1.42332e-06, -0.2, -1.87382e-07, -10, -13.4124, -1.59798)
 
 [node name="ameba" parent="part1Container/SubViewportContainer/SubViewport/armsPosition" instance=ExtResource("2_o2mdt")]
 visible = false
@@ -625,7 +626,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, -10, -13
 fov = 65.9648
 
 [node name="armsPosition" type="Marker3D" parent="part2Container/SubViewportContainer/SubViewport"]
-transform = Transform3D(-0.193185, -1.42333e-06, 0.0517632, -0.0517632, -1.87382e-07, -0.193185, 1.42333e-06, -0.2, -1.87382e-07, -10, -13.4124, -1.59798)
+transform = Transform3D(-0.193185, -1.42333e-06, 0.0517631, -0.0517631, -1.87382e-07, -0.193185, 1.42332e-06, -0.2, -1.87382e-07, -10, -13.4124, -1.59798)
 
 [node name="ameba" parent="part2Container/SubViewportContainer/SubViewport/armsPosition" instance=ExtResource("2_o2mdt")]
 visible = false
@@ -784,7 +785,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, -10, -13
 fov = 65.9648
 
 [node name="armsPosition" type="Marker3D" parent="part3Container/SubViewportContainer/SubViewport"]
-transform = Transform3D(-0.193185, -1.42333e-06, 0.0517632, -0.0517632, -1.87382e-07, -0.193185, 1.42333e-06, -0.2, -1.87382e-07, -10, -13.4124, -1.59798)
+transform = Transform3D(-0.193185, -1.42333e-06, 0.0517631, -0.0517631, -1.87382e-07, -0.193185, 1.42332e-06, -0.2, -1.87382e-07, -10, -13.4124, -1.59798)
 
 [node name="ameba" parent="part3Container/SubViewportContainer/SubViewport/armsPosition" instance=ExtResource("2_o2mdt")]
 visible = false
@@ -946,6 +947,10 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_nfjkr")
+volume_db = -30.0
 
 [connection signal="pressed" from="part1Container/button" to="." method="part1Selected"]
 [connection signal="pressed" from="part2Container/button" to="." method="part2Selected"]
