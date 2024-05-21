@@ -4,8 +4,10 @@ enum {CUBE, PYRAMID, SPHERE, CYLINDER, AMEBA}
 var part1
 var part2
 var part3
+var partSelected
 func _ready():
 	get_tree().paused = true
+	$AnimationPlayer.speed_scale = 2
 
 func initialize(newParts): #node, figure, part
 	part1 = newParts[0]
@@ -50,23 +52,39 @@ func setValues(part, newParts):
 	bodyPart.show()
 
 func part1Selected():
-	get_tree().paused = false
-	SignalsTrain.emit_signal("sendPart", part1)
-	queue_free()
-
-func manager(msg):
-	pass
+	if partSelected == null:
+		$AnimationPlayer2.play("moveContainer1")
+		$AnimationPlayer.play("RESET")
+		$AnimationPlayer.play("vanish")
+		partSelected = part1
 
 func part2Selected():
-	get_tree().paused = false
-	SignalsTrain.emit_signal("sendPart", part2)
-	queue_free()
-
-
+	if partSelected == null:
+		$AnimationPlayer2.play("moveContainer2")
+		$AnimationPlayer.play("RESET")
+		$AnimationPlayer.play("vanish")
+		partSelected = part2
 
 func part3Selected():
+	if partSelected == null:
+		$AnimationPlayer2.play("moveContainer3")
+		$AnimationPlayer.play("RESET")
+		$AnimationPlayer.play("vanish")
+		partSelected = part3
+
+func textAnimationFinish(anim_name):
+	match anim_name:
+		"vanish":
+			$AnimationPlayer.play("apear")
+		"apear":
+			$AnimationPlayer.play("move")
+		"move":
+			$AnimationPlayer.play("partSelectionAnimations")
+			$Timer.start(2)
+
+
+
+func endSelection():
 	get_tree().paused = false
-	SignalsTrain.emit_signal("sendPart", part3)
+	SignalsTrain.emit_signal("sendPart", partSelected)
 	queue_free()
-
-
