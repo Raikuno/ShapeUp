@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://1gj1nmqqc76k"]
+[gd_scene load_steps=24 format=3 uid="uid://1gj1nmqqc76k"]
 
 [ext_resource type="Script" path="res://Scenes/Player/BulletsPlayer/bulletsPlayer.gd" id="1_ltc3q"]
 [ext_resource type="Animation" uid="uid://djhy2ijgkuatc" path="res://Resources/Animations/attacks/ameba.res" id="2_6f4k7"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cq0j2erpuodbe" path="res://Resources/BodyParts/Arms/brazo-cuboPlayer.glb" id="4_yrhqa"]
 [ext_resource type="PackedScene" uid="uid://bheibhfkrbt2" path="res://Resources/BodyParts/Arms/brazo-esferaPlayer.glb" id="5_gbc5e"]
 [ext_resource type="PackedScene" uid="uid://dl03c1njwt368" path="res://Resources/BodyParts/Arms/brazo-amebaPlayerMKII.glb" id="6_r878h"]
+[ext_resource type="AudioStream" uid="uid://bnw7rugdm4wic" path="res://Resources/Sounds/Bullet/cubeExplode.ogg" id="8_bdub4"]
 
 [sub_resource type="Animation" id="Animation_3tq7a"]
 length = 0.001
@@ -305,6 +306,10 @@ wait_time = 0.5
 
 [node name="cylinderDespawn" type="Timer" parent="."]
 wait_time = 6.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_bdub4")
+volume_db = -30.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="brazoTriangulo" to="." method="pyramidCollision"]

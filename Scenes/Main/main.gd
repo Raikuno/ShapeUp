@@ -141,3 +141,6 @@ func _on_message_time_timeout():
 
 func _on_event_cooldown_timeout():
 	sameEnemy = false
+
+func loopBgm():
+	$AudioStreamPlayer.play()
