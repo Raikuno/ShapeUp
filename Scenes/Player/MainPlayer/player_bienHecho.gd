@@ -402,6 +402,8 @@ func initializePlayerTutorial():
 		
 func selectPart():
 	if !shapingUp:
+		var checkExistence = get_node_or_null("res://Scenes/Player/PartSelect/PartSelect.tscn")
+		print(checkExistence)
 		shapingUp = true
 		var menuScene: PackedScene = load("res://Scenes/Player/PartSelect/PartSelect.tscn")
 		var menuNode: Control = menuScene.instantiate()
