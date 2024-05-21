@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://tddngfg7bjal"]
+[gd_scene load_steps=14 format=3 uid="uid://tddngfg7bjal"]
 
 [ext_resource type="PackedScene" uid="uid://0cg5kuus6aon" path="res://Objets/tree.tscn" id="1_32qud"]
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_iq3yo"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dakevsqwteftq" path="res://Resources/Obstacles/nube.glb" id="3_3i0lf"]
 [ext_resource type="PackedScene" uid="uid://epp8ep3svpij" path="res://Objets/fence.tscn" id="5_gdm2e"]
 [ext_resource type="PackedScene" uid="uid://bavtwemfemmxy" path="res://Scenes/Player/MainPlayer/player_bienHecho.tscn" id="5_rw2lt"]
+[ext_resource type="AudioStream" uid="uid://dflbbjvdfvwci" path="res://Resources/Sounds/bgm/game.mp3" id="7_cqpjh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0jysc"]
 size = Vector3(1800, 2, 1800)
@@ -818,6 +819,12 @@ wait_time = 5.0
 one_shot = true
 
 [node name="EventCooldown" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("7_cqpjh")
+volume_db = -30.0
+autoplay = true
 
 [connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Exit" to="." method="_on_exit_pressed"]

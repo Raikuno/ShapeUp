@@ -766,8 +766,6 @@ func _on_sphere_xp_bar_value_changed(value):
 		upgrading["experience"]["sphere"] = 0
 		onLevelUp(sphereXPBar, sphereLevel , upgrading["level"]["sphere"])
 
-
-
 func _on_the_bar_value_changed(value):
 	if value == theBar.max_value && theBarSphere.value != theBarSphere.max_value && theBarCube.value != theBarCube.max_value && theBarPyramid.value != theBarPyramid.max_value && theBarCylinder.value != theBarCylinder.max_value:
 		$levelUpSound.stream = load("res://Resources/Sounds/Player/badUpgrade.wav")
