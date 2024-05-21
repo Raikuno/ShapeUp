@@ -26,6 +26,8 @@ var signalBus
 
 # HAY UN PROBLEMA CON LA PERCEPCIÓN DE LA VELOCIDAD, SI HACEMOS QUE EL PERSONAJE PUEDA ESCALAR EN VELOCIDAD INFINITAMENTE Y LOS ENEMIGOS NO ESCALAN NUNCA EN VELOCIDAD EL JUGADOR PODRÍA LITERALMENTE ESQUIVAR INFINITAMENTE A LOS ENEMIGOS Y ROMPER EL JUEGO
 func _ready():
+	$AudioStreamPlayer.stream = load("res://Resources/Sounds/Enemy/enemyHitted.ogg")
+	$AudioStreamPlayer.volume_db = -30
 	var animation = $Animation/AnimationPlayer
 	speed = randi_range(minSpeed, maxSpeed)
 	SignalsTrain.bulletHit.connect(onDamageTaken)
@@ -54,6 +56,7 @@ func onBossSpawn():
 	
 func onDamageTaken(damageAmount, body):
 	if body == self:
+		$AudioStreamPlayer.play()
 		$GPUParticles3D.restart()
 		Hp -= damageAmount
 		if(Hp <= 0):

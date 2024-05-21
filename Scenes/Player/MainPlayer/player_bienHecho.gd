@@ -367,6 +367,8 @@ func onDamageTaken(damageAmount):
 			$feet_animation.play("RESET")
 			$feet_animation.stop()
 			$body_animation.play("death")
+		if alive:
+			$hurtSound.play()
 
 func gameOver():
 	hide()

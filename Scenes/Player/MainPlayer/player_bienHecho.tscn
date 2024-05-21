@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://bavtwemfemmxy"]
+[gd_scene load_steps=93 format=3 uid="uid://bavtwemfemmxy"]
 
 [ext_resource type="Script" path="res://Scenes/Player/MainPlayer/player_bienHecho.gd" id="1_4kplc"]
 [ext_resource type="PackedScene" uid="uid://baj52amprcwev" path="res://Resources/BodyParts/Head/cabeza-amebaPlayer.glb" id="2_h7yxf"]
@@ -55,6 +55,7 @@
 [ext_resource type="Texture2D" uid="uid://bfmajyrx2cgjg" path="res://Resources/HealthBars/HealthBarRectangleAmebaFill.png" id="50_p7dt5"]
 [ext_resource type="Texture2D" uid="uid://boaqmsfpdgbsh" path="res://Resources/XPTextures/LittlePyramid.png" id="50_rhiec"]
 [ext_resource type="AudioStream" uid="uid://b7s3gjm7gesgi" path="res://Resources/Sounds/Player/bulletThrow.ogg" id="55_eqy22"]
+[ext_resource type="AudioStream" uid="uid://c1ny80kjr2vkd" path="res://Resources/Sounds/Player/damage.ogg" id="56_tttdb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a2ap"]
 albedo_color = Color(0.219608, 0.513726, 0, 1)
@@ -2105,6 +2106,10 @@ volume_db = -30.0
 
 [node name="levelUpSound" type="AudioStreamPlayer" parent="."]
 process_mode = 3
+volume_db = -30.0
+
+[node name="hurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("56_tttdb")
 volume_db = -30.0
 
 [connection signal="animation_finished" from="rightArmPlayer" to="." method="_on_right_arm_player_animation_finished"]
