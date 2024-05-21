@@ -251,7 +251,6 @@ var intensity = 0
 var alive = true #Te lo juro que esto hace falta, no quieres saber lo que pasa si lo quitas
 @onready var shapingUp = false
 func _ready():
-	$bulletsSound.volume_db *= RoomManager.globalVolume
 	changePolygon(AMEBA, HEAD)
 	changePolygon(AMEBA, BODY)
 	changePolygon(AMEBA, RIGHT)
