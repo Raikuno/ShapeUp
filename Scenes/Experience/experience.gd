@@ -42,7 +42,6 @@ func _on_area_3d_body_entered(body):
 	if SignalsTrain.has_signal("isTutorialExperience"):
 		SignalsTrain.emit_signal("isTutorialExperience")
 	playSound()
-	queue_free()
 func playSound():
 	var sound = AudioStreamPlayer.new()
 	if $Experience/SphereXP.visible:
