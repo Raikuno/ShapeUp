@@ -41,4 +41,23 @@ func _on_area_3d_body_entered(body):
 		SignalsTrain.emit_signal("expPicked", xpType)
 	if SignalsTrain.has_signal("isTutorialExperience"):
 		SignalsTrain.emit_signal("isTutorialExperience")
+	playSound()
+	delete_exp()
+func playSound():
+	
+	var sound = AudioStreamPlayer.new()
+	if $Experience/SphereXP.visible:
+		sound.stream = load("res://Resources/Sounds/Experience/expPickUpSph.ogg")
+	elif $Experience/PyramidXP.visible:
+		sound.stream = load("res://Resources/Sounds/Experience/expPickUpPyr.wav")
+	elif $Experience/CubeXP.visible:
+		sound.stream = load("res://Resources/Sounds/Experience/expPickUpPyr.wav")
+	elif $Experience/CilinderXP.visible:
+		sound.stream = load("res://Resources/Sounds/Experience/expPickUpCil.wav")
+	
+func delete_exp():
+	$Area3D.queue_free()
+	for i in $Experience.get_children():
+		i.hide()
+func _on_audio_stream_player_finished():
 	queue_free()

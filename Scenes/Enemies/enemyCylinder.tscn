@@ -283,4 +283,6 @@ visibility_aabb = AABB(-6, -4, -4, 12, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_2j5wq")
 draw_pass_1 = SubResource("CylinderMesh_rkpb1")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="9"]
+
 [connection signal="animation_finished" from="Animation/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

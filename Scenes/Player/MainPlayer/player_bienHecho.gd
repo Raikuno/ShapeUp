@@ -251,8 +251,8 @@ var alive = true #Te lo juro que esto hace falta, no quieres saber lo que pasa s
 func _ready():
 	changePolygon(AMEBA, HEAD)
 	changePolygon(AMEBA, BODY)
-	changePolygon(CUBE, RIGHT)
-	changePolygon(CUBE, LEFT)
+	changePolygon(AMEBA, RIGHT)
+	changePolygon(AMEBA, LEFT)
 	changePolygon(SPHERE, FEET)
 	healthBarFigureInUse = healthBarSphere
 	healthBarRectangleInUse = healthBarRectangleSphere
@@ -403,7 +403,7 @@ func initializePlayerTutorial():
 func selectPart():
 	if !shapingUp:
 		var node = get_node_or_null(NodePath("PartSelect"))
-		if node == null:
+		if node != null:
 			remove_child($PartSelect)
 		shapingUp = true
 		var menuScene: PackedScene = load("res://Scenes/Player/PartSelect/PartSelect.tscn")
@@ -718,6 +718,7 @@ func fire(weapon, part, direction):
 	biggerWeapons = iNeedMoreBulletss.instantiate()
 	biggerWeapons.initialize(weapon, damage * variableDamage, bulletDirection, part.global_position, part.global_rotation)
 	add_sibling(biggerWeapons)
+	$bulletsSound.play()
 
 #Función que será llamada cada vez que finalice la animación de recarga. Esta animación y su velocidad determinarán la velocidad de ataque
 func _on_right_arm_player_animation_finished(anim_name):

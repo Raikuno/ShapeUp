@@ -315,4 +315,6 @@ randomness = 0.96
 process_material = SubResource("ParticleProcessMaterial_2ye2o")
 draw_pass_1 = SubResource("BoxMesh_bofoh")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="9"]
+
 [connection signal="animation_finished" from="Animation/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

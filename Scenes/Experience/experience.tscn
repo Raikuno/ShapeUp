@@ -99,6 +99,9 @@ _data = {
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.119892, 0)
 script = ExtResource("1_vv4l4")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -3.0
+
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
 collision_layer = 32
@@ -127,4 +130,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.504597, 0)
 [node name="CilinderXP" parent="Experience" instance=ExtResource("4_gn22v")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
