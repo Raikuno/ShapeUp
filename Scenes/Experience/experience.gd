@@ -39,8 +39,6 @@ func _onDespawn():
 func _on_area_3d_body_entered(body):
 	if SignalsTrain.has_signal("expPicked"):
 		SignalsTrain.emit_signal("expPicked", xpType)
-	if SignalsTrain.has_signal("isTutorialExperience"):
-		SignalsTrain.emit_signal("isTutorialExperience")
 	playSound()
 	hideAndDestroy()
 	

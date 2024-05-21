@@ -264,6 +264,7 @@ func _on_next_pressed():
 				circle.show()
 				reallyLittlecircle.hide()
 				circle.position = Vector2(-3990,-4784)
+			
 			10:
 				circle.hide()
 				get_tree().paused = false
@@ -274,10 +275,13 @@ func _on_next_pressed():
 				get_tree().paused = false
 				$Control/Next.hide()
 				explanationText.hide()
+			
 			12:
 				get_tree().paused = false
 				$Control/Next.hide()
 				explanationText.hide()
+				if SignalsTrain.has_signal("isTutorialExperienceEnable"):
+					SignalsTrain.emit_signal("isTutorialExperienceEnable")
 			13:
 				circle.show()
 			14: 
@@ -303,7 +307,7 @@ func _on_next_pressed():
 			27:
 				get_tree().paused = false
 				get_tree().change_scene_to_file(MENU)
-				
+
 func _on_try_yourself_timeout():
 	get_tree().paused = true
 	canPressTheButton = true
@@ -315,6 +319,7 @@ func onTutorialEnemyDeath():
 	tryYourselfTimer.start(0.5)
 
 func onTutorialExperiencePicked():
+	print(expPicked, "  ", expAmount)
 	if expPicked:
 		if expAmount == -1:
 			circle.show()

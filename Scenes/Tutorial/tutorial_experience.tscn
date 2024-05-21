@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dn86mejyt6s6i"]
 
-[ext_resource type="Script" path="res://TutorialExperience.gd" id="1_qomhd"]
+[ext_resource type="Script" path="res://Scenes/Tutorial/TutorialExperience.gd" id="1_qomhd"]
 [ext_resource type="PackedScene" uid="uid://bpc14ktsk2mvk" path="res://Scenes/Experience/SphereXP.glb" id="2_e6n2i"]
 [ext_resource type="PackedScene" uid="uid://4m12hcr76fr1" path="res://Scenes/Experience/PyramidXP.glb" id="3_x5tyw"]
 [ext_resource type="PackedScene" uid="uid://cow1lld0fkonn" path="res://Scenes/Experience/CubeXP.glb" id="4_uunra"]

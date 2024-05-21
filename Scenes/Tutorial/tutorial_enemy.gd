@@ -51,9 +51,9 @@ func enemyDeath():
 			SignalsTrain.emit_signal("isTutorialEnemy")
 		omaewamoshindeiru = true
 		var position = global_transform.origin
-		var experience = load("res://Scenes/Experience/experience.tscn")
+		var experience = load("res://Scenes/Tutorial/tutorial_experience.tscn")
 		var experienceObject = experience.instantiate()
-		experienceObject.initialize(position, enemyType)
+		experienceObject.initialize(position, enemyType, false)
 		add_sibling(experienceObject)
 		$Animation.get_child(0).play("DeathAnimation")
 	

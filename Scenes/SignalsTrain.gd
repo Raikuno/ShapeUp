@@ -17,3 +17,5 @@ signal clubPenguinIsKill
 signal isTutorialEnemy
 
 signal isTutorialExperience
+
+signal isTutorialExperienceEnable
