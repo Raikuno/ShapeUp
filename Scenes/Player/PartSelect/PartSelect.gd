@@ -75,19 +75,7 @@ func part3Selected():
 		$part3Container/button.queue_free()
 		partSelected = part3
 
-func textAnimationFinish(anim_name):
-	match anim_name:
-		"vanish":
-			$AnimationPlayer.play("apear")
-		"apear":
-			$AnimationPlayer.play("move")
-		"move":
-			$AnimationPlayer.play("partSelectionAnimations")
-			$Timer.start(2)
-
-
-
-func endSelection():
+func endSelection(anim_name):
 	get_tree().paused = false
 	SignalsTrain.emit_signal("sendPart", partSelected)
 	match partSelected:
@@ -102,3 +90,7 @@ func endSelection():
 			$part2Container.queue_free()
 	$Label.queue_free()
 	$ColorRect.queue_free()
+
+
+func textAnimationFinish(anim_name):
+	pass # Replace with function body.

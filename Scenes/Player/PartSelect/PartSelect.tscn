@@ -29,6 +29,57 @@ albedo_color = Color(0.219608, 0.513726, 0, 1)
 material = SubResource("StandardMaterial3D_8a2ap")
 height = 5.0
 
+[sub_resource type="Animation" id="Animation_7kgdq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("armsPosition:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.309, 1.5708, -1.5708)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("legsPosition:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("headPosition:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("bodyPosition:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_n7jsw"]
 resource_name = "test"
 length = 2.0
@@ -82,57 +133,6 @@ tracks/3/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_7kgdq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("armsPosition:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.309, 1.5708, -1.5708)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("legsPosition:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5708, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("headPosition:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5708, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("bodyPosition:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5708, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_chrs8"]
 _data = {
 "RESET": SubResource("Animation_7kgdq"),
@@ -182,6 +182,36 @@ tracks/2/keys = {
 "values": [Vector2(-2, 55)]
 }
 
+[sub_resource type="Animation" id="Animation_1ioey"]
+resource_name = "apear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "No", "Now", "Now", "Now S", "Now Sh", "Now Sha", "Now Shap", "Now Shapi", "Now Shapin", "Now Shaping:"]
+}
+
+[sub_resource type="Animation" id="Animation_oplvh"]
+resource_name = "move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-2, 55), Vector2(100, 536)]
+}
+
 [sub_resource type="Animation" id="Animation_toaa6"]
 resource_name = "partSelectionAnimations"
 length = 0.6
@@ -218,36 +248,6 @@ tracks/0/keys = {
 ", "Select a SHAPE to ", "Select a SHAPE t", "Select a SHAPE", "Select a SHAP", "Select a SHA", "Select a SH", "Select a S", "Select a", "Select", "Selec", "Sele", "Sel", "Se", "S", ""]
 }
 
-[sub_resource type="Animation" id="Animation_oplvh"]
-resource_name = "move"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-2, 55), Vector2(100, 536)]
-}
-
-[sub_resource type="Animation" id="Animation_1ioey"]
-resource_name = "apear"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": ["", "No", "Now", "Now", "Now S", "Now Sh", "Now Sha", "Now Shap", "Now Shapi", "Now Shapin", "Now Shaping:"]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_arfui"]
 _data = {
 "RESET": SubResource("Animation_qxtjd"),
@@ -255,6 +255,45 @@ _data = {
 "move": SubResource("Animation_oplvh"),
 "partSelectionAnimations": SubResource("Animation_toaa6"),
 "vanish": SubResource("Animation_yk6sj")
+}
+
+[sub_resource type="Animation" id="Animation_l5bpc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("part2Container:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(476, 224)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("part3Container:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(825, 224)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("part1Container:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(125, 224)]
 }
 
 [sub_resource type="Animation" id="Animation_p6gt6"]
@@ -295,45 +334,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(125, 224), Vector2(950, 448)]
-}
-
-[sub_resource type="Animation" id="Animation_l5bpc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("part2Container:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(476, 224)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("part3Container:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(825, 224)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("part1Container:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(125, 224)]
 }
 
 [sub_resource type="Animation" id="Animation_2nsp0"]
@@ -443,8 +443,8 @@ anchor_left = 0.109
 anchor_top = 0.346
 anchor_right = 0.109
 anchor_bottom = 0.346
-offset_left = -0.568008
-offset_top = -0.208008
+offset_left = -0.567993
+offset_top = -0.207993
 offset_right = 199.432
 offset_bottom = 199.792
 grow_vertical = 2
@@ -466,7 +466,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, -10, -13
 fov = 65.9648
 
 [node name="armsPosition" type="Marker3D" parent="part1Container/SubViewportContainer/SubViewport"]
-transform = Transform3D(-0.193185, 7.46758e-09, 0.0517638, -0.0517638, -8.4334e-09, -0.193185, -5.0304e-09, -0.2, 1.00788e-08, -10, -13.4124, -1.59798)
+transform = Transform3D(-0.193185, -1.42333e-06, 0.0517632, -0.0517632, -1.87382e-07, -0.193185, 1.42333e-06, -0.2, -1.87382e-07, -10, -13.4124, -1.59798)
 
 [node name="ameba" parent="part1Container/SubViewportContainer/SubViewport/armsPosition" instance=ExtResource("2_o2mdt")]
 visible = false
@@ -489,7 +489,7 @@ transform = Transform3D(0.431856, 1.30622, 0.259413, -1.30622, 0.362347, 0.35, 0
 visible = false
 
 [node name="bodyPosition" type="Marker3D" parent="part1Container/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10, -13.412, -1.598)
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, -10, -13.412, -1.598)
 
 [node name="ameba" parent="part1Container/SubViewportContainer/SubViewport/bodyPosition" instance=ExtResource("6_0de2x")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -512,7 +512,7 @@ transform = Transform3D(-0.4, 0, 3.49691e-08, 0, 0.4, 0, -3.49691e-08, 0, -0.4, 
 visible = false
 
 [node name="headPosition" type="Marker3D" parent="part1Container/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10, -13.412, -1.598)
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, -10, -13.412, -1.598)
 
 [node name="ameba" parent="part1Container/SubViewportContainer/SubViewport/headPosition" instance=ExtResource("11_y74to")]
 transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0, 0, 0)
@@ -535,7 +535,7 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 visible = false
 
 [node name="legsPosition" type="Marker3D" parent="part1Container/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10, -13.412, -1.598)
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, -10, -13.412, -1.598)
 
 [node name="cilindro" type="Node3D" parent="part1Container/SubViewportContainer/SubViewport/legsPosition"]
 transform = Transform3D(0.075, 0, 0.129904, 0, 0.15, 0, -0.129904, 0, 0.075, 0, 0, 0)
@@ -600,10 +600,10 @@ anchor_left = 0.413
 anchor_top = 0.346
 anchor_right = 0.587
 anchor_bottom = 0.654
-offset_left = 0.223969
-offset_top = -0.208008
+offset_left = 0.223999
+offset_top = -0.207993
 offset_right = -0.223999
-offset_bottom = 0.207977
+offset_bottom = 0.208008
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -625,7 +625,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, -10, -13
 fov = 65.9648
 
 [node name="armsPosition" type="Marker3D" parent="part2Container/SubViewportContainer/SubViewport"]
-transform = Transform3D(-0.193185, 7.46758e-09, 0.0517638, -0.0517638, -8.4334e-09, -0.193185, -5.0304e-09, -0.2, 1.00788e-08, -10, -13.4124, -1.59798)
+transform = Transform3D(-0.193185, -1.42333e-06, 0.0517632, -0.0517632, -1.87382e-07, -0.193185, 1.42333e-06, -0.2, -1.87382e-07, -10, -13.4124, -1.59798)
 
 [node name="ameba" parent="part2Container/SubViewportContainer/SubViewport/armsPosition" instance=ExtResource("2_o2mdt")]
 visible = false
@@ -648,7 +648,7 @@ transform = Transform3D(0.431856, 1.30622, 0.259413, -1.30622, 0.362347, 0.35, 0
 visible = false
 
 [node name="bodyPosition" type="Marker3D" parent="part2Container/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10, -13.412, -1.598)
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, -10, -13.412, -1.598)
 
 [node name="ameba" parent="part2Container/SubViewportContainer/SubViewport/bodyPosition" instance=ExtResource("6_0de2x")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -671,7 +671,7 @@ transform = Transform3D(-0.4, 0, 3.49691e-08, 0, 0.4, 0, -3.49691e-08, 0, -0.4, 
 visible = false
 
 [node name="headPosition" type="Marker3D" parent="part2Container/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10, -13.412, -1.598)
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, -10, -13.412, -1.598)
 
 [node name="ameba" parent="part2Container/SubViewportContainer/SubViewport/headPosition" instance=ExtResource("11_y74to")]
 transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0, 0, 0)
@@ -694,7 +694,7 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 visible = false
 
 [node name="legsPosition" type="Marker3D" parent="part2Container/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10, -13.412, -1.598)
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, -10, -13.412, -1.598)
 
 [node name="cilindro" type="Node3D" parent="part2Container/SubViewportContainer/SubViewport/legsPosition"]
 transform = Transform3D(0.075, 0, 0.129904, 0, 0.15, 0, -0.129904, 0, 0.075, 0, 0, 0)
@@ -760,9 +760,9 @@ anchor_top = 0.346
 anchor_right = 0.89
 anchor_bottom = 0.654
 offset_left = 0.167969
-offset_top = -0.208008
+offset_top = -0.207993
 offset_right = -0.280029
-offset_bottom = 0.207977
+offset_bottom = 0.208008
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -784,7 +784,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, -10, -13
 fov = 65.9648
 
 [node name="armsPosition" type="Marker3D" parent="part3Container/SubViewportContainer/SubViewport"]
-transform = Transform3D(-0.193185, 7.46758e-09, 0.0517638, -0.0517638, -8.4334e-09, -0.193185, -5.0304e-09, -0.2, 1.00788e-08, -10, -13.4124, -1.59798)
+transform = Transform3D(-0.193185, -1.42333e-06, 0.0517632, -0.0517632, -1.87382e-07, -0.193185, 1.42333e-06, -0.2, -1.87382e-07, -10, -13.4124, -1.59798)
 
 [node name="ameba" parent="part3Container/SubViewportContainer/SubViewport/armsPosition" instance=ExtResource("2_o2mdt")]
 visible = false
@@ -807,7 +807,7 @@ transform = Transform3D(0.431856, 1.30622, 0.259413, -1.30622, 0.362347, 0.35, 0
 visible = false
 
 [node name="bodyPosition" type="Marker3D" parent="part3Container/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10, -13.412, -1.598)
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, -10, -13.412, -1.598)
 
 [node name="ameba" parent="part3Container/SubViewportContainer/SubViewport/bodyPosition" instance=ExtResource("6_0de2x")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -830,7 +830,7 @@ transform = Transform3D(-0.4, 0, 3.49691e-08, 0, 0.4, 0, -3.49691e-08, 0, -0.4, 
 visible = false
 
 [node name="headPosition" type="Marker3D" parent="part3Container/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10, -13.412, -1.598)
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, -10, -13.412, -1.598)
 
 [node name="ameba" parent="part3Container/SubViewportContainer/SubViewport/headPosition" instance=ExtResource("11_y74to")]
 transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0, 0, 0)
@@ -853,7 +853,7 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 visible = false
 
 [node name="legsPosition" type="Marker3D" parent="part3Container/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10, -13.412, -1.598)
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, -10, -13.412, -1.598)
 
 [node name="cilindro" type="Node3D" parent="part3Container/SubViewportContainer/SubViewport/legsPosition"]
 transform = Transform3D(0.075, 0, 0.129904, 0, 0.15, 0, -0.129904, 0, 0.075, 0, 0, 0)
@@ -926,7 +926,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_left = -2.0
 offset_top = 55.0
-offset_right = -7.0
+offset_right = -3.0
 offset_bottom = 124.0
 grow_horizontal = 2
 text = "Select a SHAPE to UP!!"
@@ -951,4 +951,5 @@ one_shot = true
 [connection signal="pressed" from="part2Container/button" to="." method="part2Selected"]
 [connection signal="pressed" from="part3Container/button" to="." method="part3Selected"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="textAnimationFinish"]
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="endSelection"]
 [connection signal="timeout" from="Timer" to="." method="endSelection"]

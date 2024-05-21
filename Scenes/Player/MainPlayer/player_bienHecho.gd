@@ -718,7 +718,7 @@ func fire(weapon, part, direction):
 	biggerWeapons = iNeedMoreBulletss.instantiate()
 	biggerWeapons.initialize(weapon, damage * variableDamage, bulletDirection, part.global_position, part.global_rotation)
 	add_sibling(biggerWeapons)
-	$bulletsSound.play()
+	#$bulletsSound.play()
 
 #Función que será llamada cada vez que finalice la animación de recarga. Esta animación y su velocidad determinarán la velocidad de ataque
 func _on_right_arm_player_animation_finished(anim_name):
