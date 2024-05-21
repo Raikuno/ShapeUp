@@ -53,6 +53,7 @@ func setValues(part, newParts):
 
 func part1Selected():
 	if partSelected == null:
+		$AudioStreamPlayer.play()
 		$AnimationPlayer2.play("moveContainer1")
 		$AnimationPlayer.play("RESET")
 		$AnimationPlayer.play("vanish")
@@ -61,6 +62,7 @@ func part1Selected():
 
 func part2Selected():
 	if partSelected == null:
+		$AudioStreamPlayer.play()
 		$AnimationPlayer2.play("moveContainer2")
 		$AnimationPlayer.play("RESET")
 		$AnimationPlayer.play("vanish")
@@ -69,6 +71,7 @@ func part2Selected():
 
 func part3Selected():
 	if partSelected == null:
+		$AudioStreamPlayer.play()
 		$AnimationPlayer2.play("moveContainer3")
 		$AnimationPlayer.play("RESET")
 		$AnimationPlayer.play("vanish")

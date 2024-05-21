@@ -51,7 +51,7 @@ func playSound():
 	elif $Experience/PyramidXP.visible:
 		sound = load("res://Resources/Sounds/Experience/expPickUpPyr.wav")
 	elif $Experience/CubeXP.visible:
-		sound = load("res://Resources/Sounds/Experience/expPickUpPyr.wav")
+		sound = load("res://Resources/Sounds/Experience/expPickUpCub.ogg")
 	elif $Experience/CilinderXP.visible:
 		sound = load("res://Resources/Sounds/Experience/expPickUpCyl.ogg")
 	$AudioStreamPlayer.stream = sound
