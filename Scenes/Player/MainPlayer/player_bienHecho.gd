@@ -253,9 +253,9 @@ var alive = true #Te lo juro que esto hace falta, no quieres saber lo que pasa s
 func _ready():
 	changePolygon(AMEBA, HEAD)
 	changePolygon(AMEBA, BODY)
-	changePolygon(AMEBA, RIGHT)
+	changePolygon(CUBE, RIGHT)
 	changePolygon(AMEBA, LEFT)
-	changePolygon(SPHERE, FEET)
+	changePolygon(AMEBA, FEET)
 	healthBarFigureInUse = healthBarSphere
 	healthBarRectangleInUse = healthBarRectangleSphere
 	resetStats()
@@ -367,6 +367,8 @@ func onDamageTaken(damageAmount):
 			$feet_animation.play("RESET")
 			$feet_animation.stop()
 			$body_animation.play("death")
+		if alive:
+			$hurtSound.play()
 
 func gameOver():
 	hide()
@@ -765,8 +767,6 @@ func _on_sphere_xp_bar_value_changed(value):
 		upgrading["level"]["sphere"] += 1
 		upgrading["experience"]["sphere"] = 0
 		onLevelUp(sphereXPBar, sphereLevel , upgrading["level"]["sphere"])
-
-
 
 func _on_the_bar_value_changed(value):
 	if value == theBar.max_value && theBarSphere.value != theBarSphere.max_value && theBarCube.value != theBarCube.max_value && theBarPyramid.value != theBarPyramid.max_value && theBarCylinder.value != theBarCylinder.max_value:

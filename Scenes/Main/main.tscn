@@ -689,6 +689,7 @@ transform = Transform3D(0.802965, 0, -0.596016, 0, 1, 0, 0.596017, 0, 0.802965, 
 
 [node name="Camera3D2" type="Camera3D" parent="player"]
 transform = Transform3D(-1, -1.06581e-14, 8.9407e-08, 6.91462e-08, 0.633934, 0.773387, -5.66782e-08, 0.773387, -0.633934, -1, 35.3397, -38.4059)
+current = true
 fov = 78.75
 
 [node name="Menu" type="Control" parent="."]
@@ -819,6 +820,11 @@ one_shot = true
 
 [node name="EventCooldown" type="Timer" parent="."]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+volume_db = -30.0
+autoplay = true
+
 [connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Exit" to="." method="_on_exit_pressed"]
 [connection signal="timeout" from="mobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]
@@ -826,3 +832,4 @@ one_shot = true
 [connection signal="timeout" from="Eventos" to="." method="_on_eventos_timeout"]
 [connection signal="timeout" from="MessageTime" to="." method="_on_message_time_timeout"]
 [connection signal="timeout" from="EventCooldown" to="." method="_on_event_cooldown_timeout"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="loopBgm"]

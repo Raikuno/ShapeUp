@@ -93,8 +93,10 @@ func cubeLogic(delta):
 		global_transform.origin += Vector3(displacement.x, displacement.y + (height * delta), displacement.z)
 func cubeCollision(body):
 	bulletHitting(body)
-	$AnimationPlayer.play("cubeExplode")
 	collision = false
+	if $brazoCubo.visible and !$AudioStreamPlayer.playing: 
+		$AnimationPlayer.play("cubeExplode")
+		$AudioStreamPlayer.play()
 
 func _on_animation_player_animation_finished(anim_name):
 	if(anim_name == "cubeExplode"):
