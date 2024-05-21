@@ -402,6 +402,9 @@ func initializePlayerTutorial():
 		
 func selectPart():
 	if !shapingUp:
+		var node = get_node_or_null(NodePath("PartSelect"))
+		if node == null:
+			remove_child($PartSelect)
 		shapingUp = true
 		var menuScene: PackedScene = load("res://Scenes/Player/PartSelect/PartSelect.tscn")
 		var menuNode: Control = menuScene.instantiate()
@@ -413,7 +416,8 @@ func selectPart():
 			result.append(toAdd)
 			parts.erase(toAdd)
 		menuNode.initialize(result)
-		add_sibling(menuNode)
+		add_child(menuNode)
+		
 func changeState(newState):
 	state = newState
 	match state:
