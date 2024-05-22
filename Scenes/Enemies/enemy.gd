@@ -13,6 +13,7 @@ var wanderingValue = 0
 var wanderingTime = 0
 var wandering = false
 var isBoss = false
+var isMiniBoss = false
 var wanderingPosition
 var enemyType #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 var x_range = Vector2(-1500, 1500)  # Rango en el eje X
@@ -24,7 +25,6 @@ var signalBus
 @onready var player = get_node("../player")
 
 
-# HAY UN PROBLEMA CON LA PERCEPCIÓN DE LA VELOCIDAD, SI HACEMOS QUE EL PERSONAJE PUEDA ESCALAR EN VELOCIDAD INFINITAMENTE Y LOS ENEMIGOS NO ESCALAN NUNCA EN VELOCIDAD EL JUGADOR PODRÍA LITERALMENTE ESQUIVAR INFINITAMENTE A LOS ENEMIGOS Y ROMPER EL JUEGO
 func _ready():
 	$AudioStreamPlayer.stream = load("res://Resources/Sounds/Enemy/enemyHitted.ogg")
 	$AudioStreamPlayer.volume_db = -30
@@ -49,10 +49,27 @@ func getWanderingValue():
 			wanderingValue = 850
 			wanderingTime = 3
 
+func bossesHealthScale(bossScale):
+	match enemyType:#1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
+		1:
+			Hp *= 2.5 + bossScale
+		2:
+			Hp *= 1 + bossScale
+		3:
+			Hp *= 3 + bossScale
+		4:
+			Hp *= 1.5 + bossScale
+			
 func onBossSpawn():
-	Hp *= 3
+	bossesHealthScale(2)
 	isBoss = true
 	scale = Vector3(3,3,3)
+	
+func onMiniBossSpawn():
+	bossesHealthScale(0)
+	wanderingValue += 500
+	isMiniBoss = true
+	scale = Vector3(1.3,1.3,1.3)
 	
 func onDamageTaken(damageAmount, body):
 	if body == self:
@@ -82,6 +99,10 @@ func enemyDeath():
 	if !omaewamoshindeiru:
 		if isBoss:
 			for i in 5:
+				SignalsTrain.emit_signal("sumarKills")
+				expSpawn(position + Vector3(0,i,0))
+		elif isMiniBoss:
+			for i in 2:
 				SignalsTrain.emit_signal("sumarKills")
 				expSpawn(position + Vector3(0,i,0))
 		else:

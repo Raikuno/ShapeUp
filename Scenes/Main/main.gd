@@ -4,6 +4,9 @@ var timeSecond = 0
 var timeMinute = 0
 var sameEnemy = false
 var enemyArmy = 4
+var miniBossSpawnRate = 200
+var nightMode = false
+var currentDayTime = ""
 var enemy : PackedScene
 const MENU = "res://Scenes/Main/mainPPK.tscn"
 @onready var messageLabel = $Time/Messages
@@ -37,14 +40,20 @@ func _ready():
 	SignalsTrain.clubPenguinIsKill.connect(endOfGame)
 	$Menu.hide()
 	$player.initializePartSelection()	
+	$DayCicle.play("Day")
+	currentDayTime = $DayCicle.current_animation
 
 func _on_mob_spawn_timer_timeout():
 	#1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 	if sameEnemy:
-		spawnMob(enemyArmy, 1 + timeMinute, -0.5, false)
+		spawnMob(enemyArmy, 1 + timeMinute, 0, false)
 	else:
 		var enemyRandom = randi_range(1,4)
-		spawnMob(enemyRandom, 1 + timeMinute, -0.5, false)
+		if nightMode:
+			spawnMob(enemyRandom, 1 + roundi(timeMinute/2), 0, false)
+		else:
+			spawnMob(enemyRandom, 1 + timeMinute, -0.5, false)
+	
 func endOfGame():
 	Score.time = $Time/Time.text
 	Score.setScore()
@@ -52,6 +61,8 @@ func endOfGame():
 
 
 func spawnMob(enemyRandom,amount, statsMultiplier, bossEnemy):
+	if nightMode:
+		statsMultiplier += 1.5
 	for i in amount:
 		match enemyRandom:
 			1:
@@ -68,6 +79,9 @@ func spawnMob(enemyRandom,amount, statsMultiplier, bossEnemy):
 		enemyObject.initialize(enemySpawnLocation.position + $player.position, $player.position, enemyRandom, statsMultiplier + timeMinute)
 		if bossEnemy:
 			enemyObject.onBossSpawn()
+		elif randi_range(1,miniBossSpawnRate) == 1 || nightMode:
+			print("mninijefe")
+			enemyObject.onMiniBossSpawn()
 		add_child(enemyObject)
 
 func _on_exit_pressed():
@@ -121,28 +135,44 @@ func showMessage(messageType, messageColor, messageTime): # 0 negro, 1 cilindro,
 	
 func _on_eventos_timeout():
 	var enemyRandom = randi_range(1,4)
-	
 	match(randi_range(0,2)):
 		0: #horda
 			showMessage(0, enemyRandom, 10)
-			spawnMob(enemyRandom, 10 + timeMinute, 1, false)
+			spawnMob(enemyRandom, 20 + timeMinute, 1, false)
 		1: #boss
 			showMessage(1, enemyRandom, 10)
-			spawnMob(enemyRandom, 1 + roundi(timeMinute / 2), 4, true)
+			spawnMob(enemyRandom, 1 + roundi(timeMinute / 3), 4, true)
 		2: #golpe de estado
-			showMessage(2, enemyRandom, 20)
+			showMessage(2, enemyRandom, 40)
 			sameEnemy = true
 			enemyArmy = enemyRandom
-			$EventCooldown.start(20)
-		3: #cayo la noche
-			pass
-
+			$EventCooldown.start(40)
+		
+			
 func _on_message_time_timeout():
 	$Time/Messages.hide()
 
 
 func _on_event_cooldown_timeout():
 	sameEnemy = false
+	nightMode = false
 
 func loopBgm():
 	$AudioStreamPlayer.play()
+
+
+func _on_day_cicle_animation_finished(anim_name):
+	if $DayCicle.current_animation == "Day":
+		if randi_range(1,1) == 1:
+			messageLabel.add_theme_color_override("font_color", Color.BLACK)
+			messageLabel.text = "Esta noche oscura te tortura la locura"
+			$MessageTime.start(10)
+			nightMode = true
+			$DayCicle.play("night")
+		else:
+			$DayCicle.play("night")
+	else:
+		nightMode = false
+		$DayCicle.play("Day")
+		
+	currentDayTime = $DayCicle.current_animation

@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://tddngfg7bjal"]
+[gd_scene load_steps=17 format=3 uid="uid://tddngfg7bjal"]
 
 [ext_resource type="PackedScene" uid="uid://0cg5kuus6aon" path="res://Objets/tree.tscn" id="1_32qud"]
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_iq3yo"]
 [ext_resource type="PackedScene" uid="uid://dcgthd8xx1r5n" path="res://Objets/rock.tscn" id="2_xg0ka"]
-[ext_resource type="PackedScene" uid="uid://dakevsqwteftq" path="res://Resources/Obstacles/nube.glb" id="3_3i0lf"]
 [ext_resource type="PackedScene" uid="uid://epp8ep3svpij" path="res://Objets/fence.tscn" id="5_gdm2e"]
 [ext_resource type="PackedScene" uid="uid://bavtwemfemmxy" path="res://Scenes/Player/MainPlayer/player_bienHecho.tscn" id="5_rw2lt"]
 
@@ -30,6 +29,137 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 35
+
+[sub_resource type="Animation" id="Animation_2m3jq"]
+resource_name = "night"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sol:light_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 23.7, 32.3, 45.8, 60),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.411765, 0.415686, 0.760784, 1), Color(0.239216, 0.235294, 0.501961, 1), Color(0.211765, 0.211765, 0.443137, 1), Color(0.411765, 0.415686, 0.760784, 1), Color(0.894118, 0.65098, 0.631373, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sol:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 20.2, 35.3, 48.5, 60),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.7, 0.2, 0.2, 0.7, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sol:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 14.8, 48.4, 48.5, 60),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.261799, 0, 2.87979), Vector3(0.0872665, 0, 2.87979), Vector3(3.31613, 0, 2.87979), Vector3(-2.96706, 0, 2.87979), Vector3(-2.87979, 0, 2.87979)]
+}
+
+[sub_resource type="Animation" id="Animation_vcial"]
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sol:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 41.5, 60),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.6, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sol:light_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sol:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.261799, -3.72529e-08, 2.87979)]
+}
+
+[sub_resource type="Animation" id="Animation_820ic"]
+resource_name = "Day"
+length = 80.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sol:light_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 26.4, 50, 80),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.894118, 0.65098, 0.631373, 1), Color(0.878431, 0.764706, 0.819608, 1), Color(0.870588, 0.839216, 0.913725, 1), Color(0.411765, 0.415686, 0.760784, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sol:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 29.9, 52.6, 80),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.5, 0.5, 0.7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sol:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 40, 80),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-2.87979, 0, 2.87979), Vector3(-2.87979, 0, 2.87979), Vector3(-1.5708, 0, 2.87979), Vector3(-0.261799, 0, 2.87979)]
+}
+
+[sub_resource type="Animation" id="Animation_1l1gp"]
+resource_name = "nightDark"
+length = 50.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tsix6"]
+_data = {
+"Day": SubResource("Animation_820ic"),
+"RESET": SubResource("Animation_vcial"),
+"night": SubResource("Animation_2m3jq"),
+"nightDark": SubResource("Animation_1l1gp")
+}
 
 [node name="main" type="Node"]
 script = ExtResource("1_iq3yo")
@@ -258,38 +388,6 @@ transform = Transform3D(3.27444, 0, 2.29739, 0, 4, 0, -2.29739, 0, 3.27444, 432.
 
 [node name="rock15" parent="rocks" instance=ExtResource("2_xg0ka")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -22.2956, 1, -17.3572)
-
-[node name="nubes" type="Node3D" parent="."]
-
-[node name="nube" parent="nubes" instance=ExtResource("3_3i0lf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247.823, 204.149, 266.315)
-
-[node name="nube2" parent="nubes" instance=ExtResource("3_3i0lf")]
-transform = Transform3D(-0.998716, 0, 0.0506627, 0, 1, 0, -0.0506627, 0, -0.998716, 316.327, 246.838, 363.81)
-
-[node name="nube3" parent="nubes" instance=ExtResource("3_3i0lf")]
-transform = Transform3D(-0.987917, 0, 0.154986, 0, 1, 0, -0.154986, 0, -0.987917, -167.225, 365.092, -316.625)
-
-[node name="nube4" parent="nubes" instance=ExtResource("3_3i0lf")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 121.324, 278.531, 99.6749)
-
-[node name="nube5" parent="nubes" instance=ExtResource("3_3i0lf")]
-transform = Transform3D(1.08931, 0, 0.5034, 0, 1.2, 0, -0.5034, 0, 1.08931, 473.639, 161.326, 331.143)
-
-[node name="nube6" parent="nubes" instance=ExtResource("3_3i0lf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 340.939, 171.287, -157.45)
-
-[node name="nube7" parent="nubes" instance=ExtResource("3_3i0lf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.873, 223.695, 525.551)
-
-[node name="nube8" parent="nubes" instance=ExtResource("3_3i0lf")]
-transform = Transform3D(-0.996755, 0, 0.0804946, 0, 1, 0, -0.0804946, 0, -0.996755, -110.711, 183.581, -143.167)
-
-[node name="nube9" parent="nubes" instance=ExtResource("3_3i0lf")]
-transform = Transform3D(3, 0, 0, 0, -2.99938, -0.0608903, 0, 0.0608903, -2.99938, -561.757, 245.231, 364.444)
-
-[node name="nube10" parent="nubes" instance=ExtResource("3_3i0lf")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -485.87, 214.159, -243.604)
 
 [node name="fence" type="Node3D" parent="."]
 
@@ -674,7 +772,8 @@ material_override = SubResource("StandardMaterial3D_ldrqe")
 mesh = SubResource("CylinderMesh_28cft")
 
 [node name="sol" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.965926, -0.258819, -2.338e-08, 0.25, -0.933013, 0.258819, -0.0669873, 0.25, 0.965926, 0, 582, 379)
+transform = Transform3D(-0.965926, -0.258819, -3.59835e-08, 0.25, -0.933013, 0.258819, -0.0669873, 0.25, 0.965926, 0, 582, 379)
+light_indirect_energy = 0.5
 shadow_enabled = true
 
 [node name="player" parent="." instance=ExtResource("5_rw2lt")]
@@ -794,7 +893,12 @@ text = "00:00"
 metadata/_edit_use_anchors_ = true
 
 [node name="Messages" type="Label" parent="Time"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.575
+anchor_right = 0.125
+anchor_bottom = 0.575
 offset_left = -257.0
 offset_top = 89.0
 offset_right = 308.0
@@ -824,6 +928,11 @@ process_mode = 3
 volume_db = -30.0
 autoplay = true
 
+[node name="DayCicle" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tsix6")
+}
+
 [connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Exit" to="." method="_on_exit_pressed"]
 [connection signal="timeout" from="mobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]
@@ -832,3 +941,4 @@ autoplay = true
 [connection signal="timeout" from="MessageTime" to="." method="_on_message_time_timeout"]
 [connection signal="timeout" from="EventCooldown" to="." method="_on_event_cooldown_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="loopBgm"]
+[connection signal="animation_finished" from="DayCicle" to="." method="_on_day_cicle_animation_finished"]
