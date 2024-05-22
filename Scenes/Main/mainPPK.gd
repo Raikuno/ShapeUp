@@ -49,5 +49,7 @@ func scoreboard():
 
 
 func volumeChanged(value_changed):
-	RoomManager.globalVolume = value_changed / 100
-	$Menu/VolumeNum.text ="Volume: " + str(RoomManager.globalVolume*100)
+	var master_bus = AudioServer.get_bus_index("Master")
+	RoomManager.globalVolume = value_changed
+	$Menu/VolumeNum.text ="Volume: " + str(RoomManager.globalVolume + 100)
+	AudioServer.set_bus_volume_db(master_bus, value_changed)
