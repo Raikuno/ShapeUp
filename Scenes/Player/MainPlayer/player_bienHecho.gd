@@ -397,8 +397,6 @@ func _physics_process(delta):
 		else:
 			hide()
 		
-func initializePartSelection():
-	selectPart()
 
 func initializePlayerTutorial():
 	print("head")
@@ -467,7 +465,7 @@ func getLevel(map):
 			result = map["level"]["part"]
 	return result
 func resetStats():
-	var balanceValue = 0.2
+	var balanceValue = 0.4
 	var headLevel = getLevel(head)
 	var rightLevel = getLevel(right)
 	var leftLevel = getLevel(left)
@@ -783,28 +781,28 @@ func _on_sphere_xp_bar_value_changed(value):
 		onLevelUp(sphereXPBar, sphereLevel , upgrading["level"]["sphere"])
 
 func _on_the_bar_value_changed(value):
-	if value == theBar.max_value && theBarSphere.value != theBarSphere.max_value && theBarCube.value != theBarCube.max_value && theBarPyramid.value != theBarPyramid.max_value && theBarCylinder.value != theBarCylinder.max_value:
+	if value >= theBar.max_value && theBarSphere.value != theBarSphere.max_value && theBarCube.value != theBarCube.max_value && theBarPyramid.value != theBarPyramid.max_value && theBarCylinder.value != theBarCylinder.max_value and !shapingUp:
 		$levelUpSound.stream = load("res://Resources/Sounds/Player/badUpgrade.wav")
 		$levelUpSound.play()
 		changePolygon(AMEBA, upgrading["identity"])
 		selectPart()
 
 func _on_sphere_the_bar_value_changed(value): #Priorizamos la barra de ameba, si salen ambas a la vez solo dejamos pasar ameba
-	if value == theBarSphere.max_value:
+	if value >= theBarSphere.max_value and !shapingUp:
 		$levelUpSound.stream = load("res://Resources/Sounds/Player/upgrade.ogg")
 		$levelUpSound.play()
 		changePolygon(SPHERE, upgrading["identity"])
 		selectPart()
 
 func _on_cube_the_bar_value_changed(value):
-	if value == theBarCube.max_value:
+	if value >= theBarCube.max_value and !shapingUp:
 		$levelUpSound.stream = load("res://Resources/Sounds/Player/upgrade.ogg")
 		$levelUpSound.play()
 		changePolygon(CUBE, upgrading["identity"])
 		selectPart()
 		
 func _on_pyramid_the_bar_value_changed(value):
-	if value == theBarPyramid.max_value:
+	if value >= theBarPyramid.max_value and !shapingUp:
 		$levelUpSound.stream = load("res://Resources/Sounds/Player/upgrade.ogg")
 		$levelUpSound.play()
 		changePolygon(PYRAMID, upgrading["identity"])
@@ -812,7 +810,7 @@ func _on_pyramid_the_bar_value_changed(value):
 		
 		
 func _on_cylinder_the_bar_value_changed(value):
-	if value == theBarCylinder.max_value:
+	if value >= theBarCylinder.max_value and !shapingUp:
 		$levelUpSound.stream = load("res://Resources/Sounds/Player/upgrade.ogg")
 		$levelUpSound.play()
 		changePolygon(CYLINDER, upgrading["identity"])

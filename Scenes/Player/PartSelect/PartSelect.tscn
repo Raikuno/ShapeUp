@@ -467,7 +467,7 @@ anchor_bottom = 0.654
 offset_left = -0.567993
 offset_top = -0.207993
 offset_right = 0.135986
-offset_bottom = 0.208038
+offset_bottom = 0.208008
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
@@ -948,7 +948,6 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_left = -2.0
 offset_top = 55.0
-offset_right = -9.0
 offset_bottom = 124.0
 grow_horizontal = 2
 text = "Select a SHAPE to UP!!"
@@ -989,6 +988,7 @@ text = "Level: X"
 label_settings = SubResource("LabelSettings_pb82a")
 
 [node name="Pyramid" type="Label" parent="Part1Desc"]
+layout_mode = 0
 offset_top = 58.0
 offset_right = 13.0
 offset_bottom = 86.0
@@ -996,6 +996,7 @@ text = " X "
 label_settings = SubResource("LabelSettings_gjxwq")
 
 [node name="Sphere" type="Label" parent="Part1Desc"]
+layout_mode = 0
 offset_left = 23.0
 offset_top = 58.0
 offset_right = 46.0
@@ -1004,6 +1005,7 @@ text = " X "
 label_settings = SubResource("LabelSettings_j57k0")
 
 [node name="Cylinider" type="Label" parent="Part1Desc"]
+layout_mode = 0
 offset_left = 46.0
 offset_top = 58.0
 offset_right = 69.0
@@ -1012,6 +1014,7 @@ text = " X "
 label_settings = SubResource("LabelSettings_5ctf4")
 
 [node name="Cube" type="Label" parent="Part1Desc"]
+layout_mode = 0
 offset_left = 69.0
 offset_top = 58.0
 offset_right = 92.0
@@ -1034,12 +1037,14 @@ offset_bottom = 358.0
 text = " DMG: X"
 
 [node name="Spd" type="Label" parent="Part1Desc"]
+layout_mode = 0
 offset_top = 358.0
 offset_right = 40.0
 offset_bottom = 381.0
 text = " SPD: X"
 
 [node name="Atkspd" type="Label" parent="Part1Desc"]
+layout_mode = 0
 offset_top = 381.0
 offset_right = 40.0
 offset_bottom = 404.0
@@ -1054,6 +1059,7 @@ text = " HP: X"
 
 [node name="PanelContainer" type="PanelContainer" parent="Part1Desc"]
 show_behind_parent = true
+layout_mode = 0
 offset_top = 300.0
 offset_right = 200.0
 offset_bottom = 427.0
@@ -1075,6 +1081,7 @@ text = "Level: X"
 label_settings = SubResource("LabelSettings_pb82a")
 
 [node name="Pyramid" type="Label" parent="Part2Desc"]
+layout_mode = 0
 offset_top = 58.0
 offset_right = 13.0
 offset_bottom = 86.0
@@ -1082,6 +1089,7 @@ text = " X "
 label_settings = SubResource("LabelSettings_gjxwq")
 
 [node name="Sphere" type="Label" parent="Part2Desc"]
+layout_mode = 0
 offset_left = 23.0
 offset_top = 58.0
 offset_right = 46.0
@@ -1090,6 +1098,7 @@ text = " X "
 label_settings = SubResource("LabelSettings_j57k0")
 
 [node name="Cylinider" type="Label" parent="Part2Desc"]
+layout_mode = 0
 offset_left = 46.0
 offset_top = 58.0
 offset_right = 69.0
@@ -1098,6 +1107,7 @@ text = " X "
 label_settings = SubResource("LabelSettings_5ctf4")
 
 [node name="Cube" type="Label" parent="Part2Desc"]
+layout_mode = 0
 offset_left = 69.0
 offset_top = 58.0
 offset_right = 92.0
@@ -1120,12 +1130,14 @@ offset_bottom = 358.0
 text = " DMG: X"
 
 [node name="Spd" type="Label" parent="Part2Desc"]
+layout_mode = 0
 offset_top = 358.0
 offset_right = 40.0
 offset_bottom = 381.0
 text = " SPD: X"
 
 [node name="Atkspd" type="Label" parent="Part2Desc"]
+layout_mode = 0
 offset_top = 381.0
 offset_right = 40.0
 offset_bottom = 404.0
@@ -1140,6 +1152,7 @@ text = " HP: X"
 
 [node name="PanelContainer" type="PanelContainer" parent="Part2Desc"]
 show_behind_parent = true
+layout_mode = 0
 offset_top = 300.0
 offset_right = 200.0
 offset_bottom = 427.0
@@ -1161,6 +1174,7 @@ text = "Level: X"
 label_settings = SubResource("LabelSettings_pb82a")
 
 [node name="Pyramid" type="Label" parent="Part3Desc"]
+layout_mode = 0
 offset_top = 58.0
 offset_right = 13.0
 offset_bottom = 86.0
@@ -1168,6 +1182,7 @@ text = " X "
 label_settings = SubResource("LabelSettings_gjxwq")
 
 [node name="Sphere" type="Label" parent="Part3Desc"]
+layout_mode = 0
 offset_left = 23.0
 offset_top = 58.0
 offset_right = 46.0
@@ -1176,6 +1191,7 @@ text = " X "
 label_settings = SubResource("LabelSettings_j57k0")
 
 [node name="Cylinider" type="Label" parent="Part3Desc"]
+layout_mode = 0
 offset_left = 46.0
 offset_top = 58.0
 offset_right = 69.0
@@ -1184,6 +1200,7 @@ text = " X "
 label_settings = SubResource("LabelSettings_5ctf4")
 
 [node name="Cube" type="Label" parent="Part3Desc"]
+layout_mode = 0
 offset_left = 69.0
 offset_top = 58.0
 offset_right = 92.0
@@ -1206,12 +1223,14 @@ offset_bottom = 358.0
 text = " DMG: X"
 
 [node name="Spd" type="Label" parent="Part3Desc"]
+layout_mode = 0
 offset_top = 358.0
 offset_right = 40.0
 offset_bottom = 381.0
 text = " SPD: X"
 
 [node name="Atkspd" type="Label" parent="Part3Desc"]
+layout_mode = 0
 offset_top = 381.0
 offset_right = 40.0
 offset_bottom = 404.0
@@ -1226,9 +1245,13 @@ text = " HP: X"
 
 [node name="PanelContainer" type="PanelContainer" parent="Part3Desc"]
 show_behind_parent = true
+layout_mode = 0
 offset_top = 300.0
 offset_right = 200.0
 offset_bottom = 427.0
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.1
 
 [connection signal="pressed" from="part1Container/button" to="." method="part1Selected"]
 [connection signal="pressed" from="part2Container/button" to="." method="part2Selected"]
@@ -1236,3 +1259,4 @@ offset_bottom = 427.0
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="textAnimationFinish"]
 [connection signal="animation_finished" from="AnimationPlayer2" to="." method="endSelection"]
 [connection signal="timeout" from="Timer" to="." method="endSelection"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

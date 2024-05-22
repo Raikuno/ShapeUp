@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bnv4cf83pndpr"]
+[gd_scene load_steps=10 format=3 uid="uid://bnv4cf83pndpr"]
 
 [ext_resource type="Script" path="res://Scenes/Main/mainPPK.gd" id="1_ykc7c"]
 [ext_resource type="PackedScene" uid="uid://0cg5kuus6aon" path="res://Objets/tree.tscn" id="2_8ppjq"]
 [ext_resource type="PackedScene" uid="uid://dcgthd8xx1r5n" path="res://Objets/rock.tscn" id="3_43xk6"]
 [ext_resource type="PackedScene" uid="uid://dakevsqwteftq" path="res://Resources/Obstacles/nube.glb" id="4_euwge"]
 [ext_resource type="PackedScene" uid="uid://epp8ep3svpij" path="res://Objets/fence.tscn" id="6_82sr5"]
-[ext_resource type="AudioStream" uid="uid://bfbjkwhjli4ar" path="res://Resources/Sounds/bgm/menu.mp3" id="7_nllll"]
 [ext_resource type="PackedScene" uid="uid://bdm0cur8gw70l" path="res://Scenes/Player/player.tscn" id="10_4hobi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wt6aa"]
@@ -425,7 +424,6 @@ transform = Transform3D(-0.0115887, 0, 3.99998, 0, 4, 0, -3.99998, 0, -0.0115887
 transform = Transform3D(-5.90281, -0.00696559, 5.3997, 0.0648912, -7.99951, 0.060618, 5.39932, 0.0885262, 5.9025, -792.977, 6.57466, 796.754)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_nllll")
 volume_db = -30.0
 autoplay = true
 

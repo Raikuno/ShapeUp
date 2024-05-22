@@ -9,12 +9,16 @@ func _ready():
 	asignedID = Score.generateID()
 	FirebaseLite.initializeFirebase(["Authentication", "Realtime Database"])
 	FirebaseLite.Authentication.initializeAuth(1)
-	scores = (await FirebaseLite.RealtimeDatabase.read("/scores/"))
+	scores = (await FirebaseLite.RealtimeDatabase.read("/"))
+	print(scores)
 	if scores[0] != 0:
 		$TextureRect/Placement.text = "Couldn't calculate your \n global position"
 	else: 
-		sortedScores = Score.orderScores(scores[1])
-		calculatePosition()
+		if scores[1]!=null:
+			sortedScores = Score.orderScores(scores[1])
+			calculatePosition()
+		else: 
+			placement = 1
 		$TextureRect/Placement.text = $TextureRect/Placement.text.replace("X", str(placement))
 	$TextureRect/Kills.text = "Figures executed: " + str(Score.kills)
 	$TextureRect/Time.text = "Time Survived: " + str(Score.time)
@@ -34,7 +38,7 @@ func upload():
 	if scores != null:
 		var a
 		if !$TextureRect/NameInput.text == "" && len($TextureRect/NameInput.text) < MAXCHAR:
-			a = await FirebaseLite.RealtimeDatabase.write("scores/" + asignedID, {"name" : $TextureRect/NameInput.text, "score": Score.score, "character":Score.characterToString()})
+			a = await FirebaseLite.RealtimeDatabase.write(asignedID, {"name" : $TextureRect/NameInput.text, "score": Score.score, "kills":Score.kills, "time":Score.time, "character":Score.characterToString()})
 			if a[0] != 0:
 				$notification.title = "Ups!"
 				$notification.dialog_text = "There was an error uploading your score. Check your conection"
