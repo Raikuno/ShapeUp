@@ -134,6 +134,8 @@ func _on_eventos_timeout():
 			sameEnemy = true
 			enemyArmy = enemyRandom
 			$EventCooldown.start(20)
+		3: #cayo la noche
+			pass
 
 func _on_message_time_timeout():
 	$Time/Messages.hide()

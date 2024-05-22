@@ -251,6 +251,7 @@ var intensity = 0
 var alive = true #Te lo juro que esto hace falta, no quieres saber lo que pasa si lo quitas
 @onready var shapingUp = false
 func _ready():
+	#qwerty
 	changePolygon(AMEBA, HEAD)
 	changePolygon(AMEBA, BODY)
 	changePolygon(AMEBA, RIGHT)
