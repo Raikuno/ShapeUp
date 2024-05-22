@@ -10,7 +10,7 @@ func _ready():
 	FirebaseLite.initializeFirebase(["Authentication", "Realtime Database"])
 	FirebaseLite.Authentication.initializeAuth(1)
 	scores = (await FirebaseLite.RealtimeDatabase.read("/scores/"))
-	if scores[0] == 35:
+	if scores[0] != 0:
 		$TextureRect/Placement.text = "Couldn't calculate your \n global position"
 	else: 
 		sortedScores = Score.orderScores(scores[1])
@@ -35,8 +35,7 @@ func upload():
 		var a
 		if !$TextureRect/NameInput.text == "" && len($TextureRect/NameInput.text) < MAXCHAR:
 			a = await FirebaseLite.RealtimeDatabase.write("scores/" + asignedID, {"name" : $TextureRect/NameInput.text, "score": Score.score, "character":Score.characterToString()})
-			print(a)
-			if a[0] == 35:
+			if a[0] != 0:
 				$notification.title = "Ups!"
 				$notification.dialog_text = "There was an error uploading your score. Check your conection"
 				$notification.show()

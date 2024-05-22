@@ -92,9 +92,9 @@ var cylinderStat = {
 }
 #----------------------------------------------------------------------
 var cubeStat = {
-	"health" : 15,
+	"health" : 16,
 	"speed" : 5,
-	"damage" : 15,
+	"damage" : 14,
 	"atqspd": 5
 }
 #----------------------------------------------------------------------
@@ -705,6 +705,7 @@ func fire(weapon, part, direction):
 	var iNeedMoreBulletss: PackedScene
 	var biggerWeapons:Node3D
 	var variableDamage
+	var bulletSound
 	if direction=="right":
 		iNeedMoreBulletss = load("res://Scenes/Player/BulletsPlayer/bulletsPlayer.tscn")
 	elif direction=="left":
@@ -723,6 +724,18 @@ func fire(weapon, part, direction):
 	biggerWeapons = iNeedMoreBulletss.instantiate()
 	biggerWeapons.initialize(weapon, damage * variableDamage, bulletDirection, part.global_position, part.global_rotation)
 	add_sibling(biggerWeapons)
+	match weapon:
+		SPHERE:
+			pass
+		CUBE:
+			bulletSound = load("res://Resources/Sounds/Player/bulletThrow.ogg")
+		PYRAMID:
+			pass
+		CYLINDER:
+			pass
+		AMEBA:
+			bulletSound = load("res://Resources/Sounds/Player/bulletThrow.ogg")
+			
 	$bulletsSound.play()
 
 #Función que será llamada cada vez que finalice la animación de recarga. Esta animación y su velocidad determinarán la velocidad de ataque
