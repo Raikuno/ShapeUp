@@ -12,20 +12,16 @@ var highMultiplier = 1.25
 var reallyHighMultiplier = 1.5
 
 func _ready():
-	get_tree().paused = true
+	$Timer2.start()
+	
 	$AnimationPlayer.speed_scale = 2
 	$AnimationPlayer2.speed_scale= 2
+	print("ASDASDASDASDASDASD")
 
 func initialize(newParts): #node, figure, part
 	part1 = newParts[0]
 	part2 = newParts[1]
 	part3 = newParts[2]
-	setValues("part1Container", part1)
-	setValues("part2Container", part2)
-	setValues("part3Container", part3)
-	showStats("Part1Desc", part1)
-	showStats("Part2Desc", part2)
-	showStats("Part3Desc", part3)
 func setValues(part, newParts):
 	var text = get_node(NodePath(part + "/button"))
 	var bodyPart:Node3D
@@ -175,3 +171,14 @@ func endSelection(anim_name):
 
 func textAnimationFinish(anim_name):
 	pass # Replace with function body.
+
+
+func _on_timer_2_timeout():
+	$Timer2.stop()
+	get_tree().paused = true
+	setValues("part1Container", part1)
+	setValues("part2Container", part2)
+	setValues("part3Container", part3)
+	showStats("Part1Desc", part1)
+	showStats("Part2Desc", part2)
+	showStats("Part3Desc", part3)

@@ -39,7 +39,7 @@ func _input(event):
 func _ready():
 	SignalsTrain.clubPenguinIsKill.connect(endOfGame)
 	$Menu.hide()
-	$player.initializePartSelection()	
+	$player.selectPart()	
 	$DayCicle.play("Day")
 	currentDayTime = $DayCicle.current_animation
 

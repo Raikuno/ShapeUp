@@ -1,7 +1,7 @@
 extends Node
 
 enum {CUBE, PYRAMID, SPHERE, CYLINDER, AMEBA}#Quiza podriamos aprovechar que esto hay que cargarlo aqui y hacerlo global (Semana 6)
-const SECONDSPOINTS = 10
+const SECONDSPOINTS = 40
 const KILLSPOINTS = 600
 var time : String
 var kills : int = 0
@@ -63,17 +63,27 @@ func generateID():
 	return result
 	
 func orderScores(map: Dictionary):
-	var tempArray : Array
-	for value in map:
-		tempArray.append({"name" : map[value]["name"], "score" : map[value]["score"], "id" : value})
-	tempArray.sort_custom(customComparison)
-	return tempArray
+	if map is Dictionary:
+		var tempArray : Array
+		for value in map:
+			print(value)
+			tempArray.append({"name" : map[value]["name"], "score" : map[value]["score"], "id" : value, "time" : map[value]["time"], "kills" : map[value]["kills"]})
+		tempArray.sort_custom(customComparison)
+		return tempArray
+	else:
+		return {}
 	
 func customComparison(a, b):
 	if a["score"]==b["score"]:
-		if a["name"] == b["name"]:
-			return a["name"] == b["name"]
+		if a["kills"]==b["kills"]:
+			if a["time"]==b["time"]:
+				if a["name"] == b["name"]:
+					return a["name"] == b["name"]
+				else:
+					return a["name"] > b["name"]
+			else:
+				return a["time"]>b["time"]
 		else:
-			return a["name"] > b["name"]
+			return a["kills"]>b["kills"]
 	else:
 		return a["score"] > b["score"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcgfcieon2vc2"]
+[gd_scene load_steps=7 format=3 uid="uid://bcgfcieon2vc2"]
 
 [ext_resource type="PackedScene" uid="uid://byj11x50wvowy" path="res://Scenes/ScoreBoard/player_preview.tscn" id="1_pygpm"]
 [ext_resource type="Script" path="res://Scenes/ScoreBoard/ScoreBoard.gd" id="1_whwhf"]
@@ -6,6 +6,10 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_m38ha"]
 font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8428s"]
+font_size = 50
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ji6nb"]
@@ -62,7 +66,7 @@ offset_top = 209.0
 offset_right = 1082.0
 offset_bottom = 278.0
 text = "Score:"
-label_settings = SubResource("LabelSettings_m38ha")
+label_settings = SubResource("LabelSettings_8428s")
 metadata/_edit_use_anchors_ = true
 
 [node name="Time" type="Label" parent="TextureRect"]
