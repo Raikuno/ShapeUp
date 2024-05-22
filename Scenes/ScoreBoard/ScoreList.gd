@@ -10,12 +10,12 @@ var playerName
 func _ready():
 	FirebaseLite.initializeFirebase(["Authentication", "Realtime Database"])
 	FirebaseLite.Authentication.initializeAuth(1)
-	scores = (await FirebaseLite.RealtimeDatabase.read("/scores/"))[1]
-	if scores == null:
-		scores = {}
-	print(scores)
-	sortedScores = Score.orderScores(scores)
-	giveListValue()
+	scores = await FirebaseLite.RealtimeDatabase.read("/scores/")
+	if scores[0] == 0:
+		sortedScores = Score.orderScores(scores[1])
+		giveListValue()
+	else:
+		$TextureRect/Score.text = "Can't connect to the database"
 
 func giveListValue():
 	var position = 1
@@ -28,7 +28,6 @@ func setInfo():
 	$TextureRect/Name.text = "Name: " + playerName
 	$TextureRect/SubViewportContainer/SubViewport/playerPreview.resetVisibility()
 	$TextureRect/SubViewportContainer/SubViewport/playerPreview.changeVisibilityString(playerCharacter)
-	pass
 
 func back():
 	RoomManager.changeRoom(MAINMENU)
@@ -37,9 +36,7 @@ func back():
 
 func _on_item_list_item_selected(index):
 	var id = sortedScores[index]["id"]
-	print(id)
-	print(scores[id])
-	playerCharacter = scores[id]["character"]
-	playerName = scores[id]["name"]
-	playerScore = scores[id]["score"]
+	playerCharacter = scores[1][id]["character"]
+	playerName = scores[1][id]["name"]
+	playerScore = scores[1][id]["score"]
 	setInfo()
