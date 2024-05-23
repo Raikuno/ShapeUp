@@ -101,6 +101,8 @@ func _on_timer_timeout():
 	if timeSecond == 30:
 		$Eventos.start()
 	if timeSecond == 60:
+		if miniBossSpawnRate > 100:
+			miniBossSpawnRate -= 10
 		timeSecond = 0
 		timeMinute += 1
 		showMessage(0, 0, 10)
@@ -162,16 +164,17 @@ func loopBgm():
 
 
 func _on_day_cicle_animation_finished(anim_name):
-	if $DayCicle.current_animation == "Day":
-		if randi_range(1,1) == 1:
-			messageLabel.add_theme_color_override("font_color", Color.BLACK)
-			messageLabel.text = "Esta noche oscura te tortura la locura"
-			$MessageTime.start(10)
+	if currentDayTime == "Day":
+		if randi_range(1,10) == 1:
+			$Time/Noche.add_theme_color_override("font_color", Color.DEEP_PINK)
+			$Time/Noche.text = "Esta noche oscura te tortura la locura"
+			$Time/Noche.show()
 			nightMode = true
-			$DayCicle.play("night")
+			$DayCicle.play("nightDark")
 		else:
 			$DayCicle.play("night")
 	else:
+		$Time/Noche.hide()
 		nightMode = false
 		$DayCicle.play("Day")
 		

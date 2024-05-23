@@ -131,10 +131,10 @@ tracks/1/path = NodePath("sol:light_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 20.2, 35.3, 48.5, 60),
+"times": PackedFloat32Array(0, 24.8, 41.7, 42.1, 60),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.7, 0.2, 0.2, 0.7, 1.0]
+"values": [0.7, 0.2, 0.0, 0.7, 1.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -143,7 +143,7 @@ tracks/2/path = NodePath("sol:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 14.8, 48.4, 48.5, 60),
+"times": PackedFloat32Array(0, 14.8, 41.4, 41.5, 60),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.261799, 0, 2.87979), Vector3(0.0872665, 0, 2.87979), Vector3(3.31613, 0, 2.87979), Vector3(-2.96706, 0, 2.87979), Vector3(-2.87979, 0, 2.87979)]
@@ -152,6 +152,42 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_1l1gp"]
 resource_name = "nightDark"
 length = 50.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sol:light_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 14.3, 22.9, 36.3, 50),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.411765, 0.415686, 0.760784, 1), Color(0.733333, 0.207843, 0.223529, 1), Color(0.701961, 0.180392, 0.294118, 1), Color(0.639216, 0.117647, 0.239216, 1), Color(0.894118, 0.65098, 0.631373, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sol:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 19.9, 29.4, 34.4, 50),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.7, 0.3, 0.3, 0.7, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sol:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 13, 24, 24.3, 35.2, 35.5, 50),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.261799, 0, 2.87979), Vector3(0.0872665, 0, 2.87979), Vector3(3.31613, 0, 2.87979), Vector3(-2.96706, 0, 2.87979), Vector3(3.31613, 0, 2.87979), Vector3(-2.96706, 0, 2.87979), Vector3(-2.87979, 0, 2.87979)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tsix6"]
 _data = {
@@ -772,7 +808,7 @@ material_override = SubResource("StandardMaterial3D_ldrqe")
 mesh = SubResource("CylinderMesh_28cft")
 
 [node name="sol" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.965925, -0.258822, -3.59835e-08, 0.250003, -0.933012, 0.258819, -0.0669881, 0.249999, 0.965926, 0, 582, 379)
+transform = Transform3D(-0.965925, -0.258822, -3.59835e-08, 0.250003, -0.933012, 0.258819, -0.066988, 0.249999, 0.965926, 0, 582, 379)
 light_indirect_energy = 0.5
 shadow_enabled = true
 
@@ -895,10 +931,10 @@ metadata/_edit_use_anchors_ = true
 [node name="Messages" type="Label" parent="Time"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.125
-anchor_top = 0.575
-anchor_right = 0.125
-anchor_bottom = 0.575
+anchor_left = -0.25
+anchor_top = 0.075
+anchor_right = -0.25
+anchor_bottom = 0.075
 offset_left = -257.0
 offset_top = 89.0
 offset_right = 308.0
@@ -906,6 +942,21 @@ offset_bottom = 150.0
 theme_override_colors/font_color = Color(0.654902, 0.639216, 0.278431, 1)
 theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Noche" type="Label" parent="Time"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 9.625
+anchor_top = -1.725
+anchor_right = 2.6
+anchor_bottom = -1.825
+offset_left = -257.0
+offset_top = 89.0
+offset_right = 308.0
+offset_bottom = 150.0
+theme_override_colors/font_color = Color(0.654902, 0.639216, 0.278431, 1)
+theme_override_font_sizes/font_size = 15
 metadata/_edit_use_anchors_ = true
 
 [node name="mobSpawnTimer" type="Timer" parent="."]
