@@ -135,6 +135,7 @@ label_settings = SubResource("LabelSettings_xjapk")
 
 [node name="Kills" type="Label" parent="TextureRect"]
 visible = false
+layout_mode = 0
 offset_left = 794.0
 offset_top = 31.0
 offset_right = 905.0

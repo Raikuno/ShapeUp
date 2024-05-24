@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcgfcieon2vc2"]
+[gd_scene load_steps=8 format=3 uid="uid://bcgfcieon2vc2"]
 
 [ext_resource type="PackedScene" uid="uid://byj11x50wvowy" path="res://Scenes/ScoreBoard/player_preview.tscn" id="1_pygpm"]
 [ext_resource type="Script" path="res://Scenes/ScoreBoard/ScoreBoard.gd" id="1_whwhf"]
@@ -14,6 +14,10 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ji6nb"]
 font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n7wtg"]
+font_size = 30
 font_color = Color(0, 0, 0, 1)
 
 [node name="ScoreBoard" type="Node"]
@@ -60,7 +64,12 @@ label_settings = SubResource("LabelSettings_m38ha")
 metadata/_edit_use_anchors_ = true
 
 [node name="Score" type="Label" parent="TextureRect"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0963542
+anchor_top = -0.0324074
+anchor_right = -0.0963542
+anchor_bottom = -0.0324074
 offset_left = 714.0
 offset_top = 209.0
 offset_right = 1082.0
@@ -125,6 +134,21 @@ offset_bottom = 511.0
 text = "You are the Xth
 best player in the world!"
 label_settings = SubResource("LabelSettings_ji6nb")
+
+[node name="ScoreNum" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.663
+anchor_top = 0.319086
+anchor_right = 0.996
+anchor_bottom = 0.384
+offset_left = 0.223938
+offset_top = 0.231995
+offset_right = -0.39209
+offset_bottom = 0.167999
+text = "Placeholder"
+label_settings = SubResource("LabelSettings_n7wtg")
+metadata/_edit_use_anchors_ = true
 
 [node name="warning" type="AcceptDialog" parent="."]
 title = "Wait!"

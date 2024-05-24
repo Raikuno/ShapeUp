@@ -37,7 +37,7 @@ func callBullet(newScale):
 			remove_child($bracoCilindro)
 		CYLINDER:
 			$bracoCilindro.show()
-			$bracoCilindro/MeshInstance3D.scale = newScale
+			$bracoCilindro/MeshInstance3D2.scale = newScale
 			remove_child($bracoAmeba)
 			remove_child($brazoCubo)
 			remove_child($brazoTriangulo)

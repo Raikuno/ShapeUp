@@ -254,7 +254,7 @@ func _ready():
 	#qwerty
 	changePolygon(AMEBA, HEAD)
 	changePolygon(AMEBA, BODY)
-	changePolygon(AMEBA, RIGHT)
+	changePolygon(CYLINDER, RIGHT)
 	changePolygon(AMEBA, LEFT)
 	changePolygon(AMEBA, FEET)
 	healthBarFigureInUse = healthBarSphere

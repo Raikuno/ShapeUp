@@ -22,7 +22,7 @@ func _ready():
 		$TextureRect/Placement.text = $TextureRect/Placement.text.replace("X", str(placement))
 	$TextureRect/Kills.text = "Figures executed: " + str(Score.kills)
 	$TextureRect/Time.text = "Time Survived: " + str(Score.time)
-	$TextureRect/Score.text = "Total Score: " + str(Score.score)
+	$TextureRect/ScoreNum.text = str(Score.score)
 	$TextureRect/SubViewportContainer/SubViewport/playerPreview.changeVisibility(Score.character)
 	$TextureRect/Placement.show()
 func calculatePosition():
