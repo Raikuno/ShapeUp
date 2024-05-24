@@ -297,7 +297,7 @@ func whatPart(figure):
 
 func howManyxPNeededForTheBar():
 	match upgrading["level"]["part"]:
-		0:  ##preguntar a jorge si sabe coger un indice específico de un puto mapa
+		0:
 			return xPNeededPerLevel["nivel1"]
 		1:
 			return xPNeededPerLevel["nivel2"]
@@ -307,9 +307,9 @@ func howManyxPNeededForTheBar():
 			return xPNeededPerLevel["nivel4"]
 		4:
 			return xPNeededPerLevel["nivel5"]
-		5:
-			return 666
-	return 500
+		_:
+			return (xPNeededPerLevel["nivel5"] / (xPNeededPerLevel["nivel5"]/5)) * upgrading["level"]["part"]
+	return (xPNeededPerLevel["nivel5"] / (xPNeededPerLevel["nivel5"]/5)) * upgrading["level"]["part"]
 func onSumarKill():
 	kills += 1
 	$Control/Kills.text = "💀%s" % kills

@@ -5,8 +5,8 @@ const MAIN = "res://Scenes/Main/main.tscn"
 const TUTORIAL = "res://Scenes/Tutorial/tutorial.tscn"
 const SCOREBOARD = "res://Scenes/ScoreBoard/ScoreList.tscn"
 func _ready():
-	$Menu/VolumeNum.text ="Volume: " + str(RoomManager.globalVolume*100)
-	$Menu/HSlider.value = RoomManager.globalVolume*100
+	$Menu/VolumeNum.text ="Volume: " + str(RoomManager.globalVolume+100)
+	$Menu/HSlider.value = RoomManager.globalVolume
 	for vector3 in arrayVectores:
 		var enemyRandom = randi_range(1,4) #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
 		match enemyRandom:

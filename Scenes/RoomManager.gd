@@ -1,5 +1,5 @@
 extends Node
-var globalVolume = 1
+var globalVolume = 0
 func changeRoom(res_path):
 	call_deferred("_deferred_switch_scene", res_path)
 	var s = load(res_path)
