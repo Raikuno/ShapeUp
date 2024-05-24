@@ -255,7 +255,7 @@ func _ready():
 	changePolygon(AMEBA, HEAD)
 	changePolygon(AMEBA, BODY)
 	changePolygon(CYLINDER, RIGHT)
-	changePolygon(AMEBA, LEFT)
+	changePolygon(CYLINDER, LEFT)
 	changePolygon(AMEBA, FEET)
 	healthBarFigureInUse = healthBarSphere
 	healthBarRectangleInUse = healthBarRectangleSphere

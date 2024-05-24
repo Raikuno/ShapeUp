@@ -37,7 +37,7 @@ func callBullet(newScale):
 			remove_child($bracoCilindro)
 		CYLINDER:
 			$bracoCilindro.show()
-			$bracoCilindro/MeshInstance3D2.scale = newScale
+			$"bracoCilindro/brazo-cilindroPlayer".scale = newScale
 			remove_child($bracoAmeba)
 			remove_child($brazoCubo)
 			remove_child($brazoTriangulo)
@@ -138,9 +138,10 @@ func pyramidCollision(body):
 func _on_braco_cilindro_body_entered(body):
 	if $bracoCilindro.visible:
 		bulletHitting(body)
-		if(body.name == "Ground"||body.name == "rock"||body.name=="tree"):
+		if((body.name == "Ground"||body.name == "rock"||body.name=="tree") and !onFloor):
 			onFloor = true
 			$cylinderDespawn.start()
+			print($cylinderDespawn.is_stopped())
 
 func _on_brazo_ameba_body_entered(body):
 	if $brazoAmeba.visible:
