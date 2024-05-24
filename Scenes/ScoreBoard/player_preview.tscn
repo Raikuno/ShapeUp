@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://byj11x50wvowy"]
+[gd_scene load_steps=30 format=3 uid="uid://byj11x50wvowy"]
 
 [ext_resource type="Script" path="res://Scenes/ScoreBoard/player_preview.gd" id="1_p1xub"]
 [ext_resource type="PackedScene" uid="uid://baj52amprcwev" path="res://Resources/BodyParts/Head/cabeza-amebaPlayer.glb" id="2_ngtc5"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cq0j2erpuodbe" path="res://Resources/BodyParts/Arms/brazo-cuboPlayer.glb" id="16_he1j8"]
 [ext_resource type="PackedScene" uid="uid://bheibhfkrbt2" path="res://Resources/BodyParts/Arms/brazo-esferaPlayer.glb" id="17_ypvdv"]
 [ext_resource type="PackedScene" uid="uid://bkp58g2kmp5qo" path="res://Resources/BodyParts/Arms/brazo-trianguloPlayer.glb" id="18_yinf2"]
+[ext_resource type="PackedScene" uid="uid://0shwgyvhoskg" path="res://Resources/BodyParts/Arms/brazoC-cilindroPlayerBien.glb" id="19_claa8"]
 [ext_resource type="PackedScene" uid="uid://dddhw7tfvtpky" path="res://Resources/BodyParts/Legs/piernas-amebaPlayer.glb" id="19_fn8c3"]
 [ext_resource type="PackedScene" uid="uid://cttxytsylpxo7" path="res://Resources/BodyParts/Legs/piernas-cilindroPlayerRevisar.glb" id="20_qjjio"]
 [ext_resource type="PackedScene" uid="uid://c8gyxpwu2km3s" path="res://Resources/BodyParts/Legs/piernas-cuadradoPlayer.glb" id="21_3wgc7"]
@@ -25,20 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://c6is7r63uk3e7" path="res://Resources/BodyParts/Legs/piernaizquierda-amebaPlayer.glb" id="23_rxc2l"]
 [ext_resource type="PackedScene" uid="uid://e60ta7w4fqqq" path="res://Resources/BodyParts/Legs/piernaderecha-amebaPlayer.glb" id="24_eyhew"]
 [ext_resource type="PackedScene" uid="uid://crkwcgesbomod" path="res://Resources/BodyParts/Legs/piernas-piramidePlayer.glb" id="25_k0dor"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a2ap"]
-albedo_color = Color(0.219608, 0.513726, 0, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_21wkb"]
-material = SubResource("StandardMaterial3D_8a2ap")
-height = 5.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_my5qg"]
-albedo_color = Color(0.219608, 0.513726, 0, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_hvon2"]
-material = SubResource("StandardMaterial3D_my5qg")
-height = 5.0
 
 [sub_resource type="Animation" id="Animation_sm6nt"]
 length = 0.001
@@ -303,13 +290,12 @@ visible = false
 transform = Transform3D(-0.108257, 0.797434, -0.593616, -0.990911, -0.134523, 2.49664e-07, -0.0798545, 0.58822, 0.804749, -0.640296, 1.89923, 2.18977)
 visible = false
 
-[node name="brazo-cilindroPlayer" type="MeshInstance3D" parent="pivot/rightArm"]
-transform = Transform3D(-0.258819, -0.965926, -5.50248e-07, 0.965926, -0.258819, 4.2222e-07, -5.50248e-07, -4.2222e-07, 1, -6.6382e-07, 1.77499, 1.51864)
-visible = false
-mesh = SubResource("CylinderMesh_21wkb")
-
 [node name="brazo-amebaPlayerMKII2" parent="pivot/rightArm" instance=ExtResource("14_0qacq")]
 transform = Transform3D(0.126027, 0.444315, -0.653224, 0.663846, 0.299044, 0.331483, 0.428282, -0.59427, -0.321587, 0.501805, 1.93382, 2.24326)
+visible = false
+
+[node name="brazo-cilindroPlayer" parent="pivot/rightArm" instance=ExtResource("19_claa8")]
+transform = Transform3D(0.836517, 0.224143, -0.5, -0.482963, -0.12941, -0.866025, -0.258819, 0.965926, -2.60779e-07, 0.284001, 1.33333, 1.81934)
 visible = false
 
 [node name="leftArm" type="Node3D" parent="pivot"]
@@ -335,10 +321,9 @@ visible = false
 transform = Transform3D(0.8, 0, 5.68434e-14, 0, 0.8, 0, -5.68434e-14, 0, 0.8, -0.112614, 1.92706, -2.12493)
 visible = false
 
-[node name="brazo-cilindroPlayer" type="MeshInstance3D" parent="pivot/leftArm"]
-transform = Transform3D(-0.258822, -0.965925, -1.48945e-08, 0.965925, -0.258822, 1.13134e-07, -1.13134e-07, 1.48946e-08, 1, 6.82818e-07, 1.67452, -1.5621)
+[node name="brazo-cilindroPlayer2" parent="pivot/leftArm" instance=ExtResource("19_claa8")]
+transform = Transform3D(0.836517, 0.224143, -0.5, -0.482963, -0.12941, -0.866025, -0.258819, 0.965926, -2.60779e-07, 0.284003, 1.33333, -1.96624)
 visible = false
-mesh = SubResource("CylinderMesh_hvon2")
 
 [node name="legs" type="Node3D" parent="."]
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -0.437759, 0, -9.56754e-08)

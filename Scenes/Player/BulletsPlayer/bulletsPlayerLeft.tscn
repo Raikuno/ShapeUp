@@ -240,7 +240,7 @@ transform = Transform3D(-3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0, 0, 1, 0, 0, 
 shape = SubResource("CylinderShape3D_glmqf")
 
 [node name="brazo-cilindroPlayer" parent="bracoCilindro" instance=ExtResource("9_jfcg2")]
-transform = Transform3D(0.162983, 0, -0.986629, 0, 1, 0, 0.986629, 0, 0.162983, 0.13627, -0.116403, 5.95655e-09)
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0.13627, -0.116403, 5.95655e-09)
 
 [node name="amebaDespawn" type="Timer" parent="."]
 wait_time = 0.5
