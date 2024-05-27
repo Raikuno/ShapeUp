@@ -947,16 +947,17 @@ metadata/_edit_use_anchors_ = true
 [node name="Noche" type="Label" parent="Time"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 2.6
-anchor_top = -1.825
-anchor_right = 2.6
-anchor_bottom = -1.825
+anchor_left = 2.7
+anchor_top = -2.175
+anchor_right = -3.025
+anchor_bottom = -2.175
 offset_left = -257.0
 offset_top = 89.0
 offset_right = 308.0
 offset_bottom = 150.0
 theme_override_colors/font_color = Color(0.654902, 0.639216, 0.278431, 1)
 theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="mobSpawnTimer" type="Timer" parent="."]

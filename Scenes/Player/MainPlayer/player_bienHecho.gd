@@ -279,7 +279,7 @@ func setUpgrade(part):
 	changeTheBarSize(theBarCube,xPNeeded) 
 	changeTheBarSize(theBarPyramid,xPNeeded) 
 	upgrading["level"]["part"] += 1
-	$Control/XPBars/PartLevel.text = "%s: %s" % [whatPart(upgrading["identity"]), upgrading["level"]["part"]]
+	$Control/XPBars/PartLevel.text = "Part Level: %s" % [upgrading["level"]["part"]]
 	resetStats()
 	shapingUp = false
 func whatPart(figure):
