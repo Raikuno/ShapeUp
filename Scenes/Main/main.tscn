@@ -947,10 +947,10 @@ metadata/_edit_use_anchors_ = true
 [node name="Noche" type="Label" parent="Time"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 2.6
-anchor_top = -1.825
-anchor_right = 2.6
-anchor_bottom = -1.825
+anchor_left = 9.4
+anchor_top = -1.775
+anchor_right = 9.4
+anchor_bottom = -1.775
 offset_left = -257.0
 offset_top = 89.0
 offset_right = 308.0
