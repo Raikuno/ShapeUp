@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cv2qac5bxr24o"]
+[gd_scene load_steps=44 format=3 uid="uid://cv2qac5bxr24o"]
 
 [ext_resource type="Script" path="res://Scenes/Player/PartSelect/PartSelect.gd" id="1_tyn61"]
 [ext_resource type="PackedScene" uid="uid://dl03c1njwt368" path="res://Resources/BodyParts/Arms/brazo-amebaPlayerMKII.glb" id="2_o2mdt"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bheibhfkrbt2" path="res://Resources/BodyParts/Arms/brazo-esferaPlayer.glb" id="4_dqa2v"]
 [ext_resource type="PackedScene" uid="uid://bkp58g2kmp5qo" path="res://Resources/BodyParts/Arms/brazo-trianguloPlayer.glb" id="5_7tcp0"]
 [ext_resource type="PackedScene" uid="uid://dvt2u8mpvnwai" path="res://Resources/BodyParts/Body/cuerpo-amebaPlayerMKII.glb" id="6_0de2x"]
+[ext_resource type="PackedScene" uid="uid://0shwgyvhoskg" path="res://Resources/BodyParts/Arms/brazoC-cilindroPlayerBien.glb" id="6_kur5g"]
 [ext_resource type="PackedScene" uid="uid://c71oumdlro7wj" path="res://Resources/BodyParts/Body/cuerpo-cilindroPlayer.glb" id="7_b4xkb"]
 [ext_resource type="PackedScene" uid="uid://c4imn3shangj0" path="res://Resources/BodyParts/Body/cuerpo-cuboPlayer.glb" id="8_m6i12"]
 [ext_resource type="PackedScene" uid="uid://b0bmt26j8lmvk" path="res://Resources/BodyParts/Body/cuerpo-piramidePlayer.glb" id="9_5phbx"]
@@ -22,13 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://e60ta7w4fqqq" path="res://Resources/BodyParts/Legs/piernaderecha-amebaPlayer.glb" id="20_uh4jr"]
 [ext_resource type="PackedScene" uid="uid://crkwcgesbomod" path="res://Resources/BodyParts/Legs/piernas-piramidePlayer.glb" id="21_aqiao"]
 [ext_resource type="AudioStream" uid="uid://cnimw4d5dpuil" path="res://Resources/Sounds/PartSelect/Selection.ogg" id="22_nfjkr"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a2ap"]
-albedo_color = Color(0.219608, 0.513726, 0, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_eh4xp"]
-material = SubResource("StandardMaterial3D_8a2ap")
-height = 5.0
 
 [sub_resource type="Animation" id="Animation_7kgdq"]
 length = 0.001
@@ -501,13 +495,12 @@ visible = false
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
 visible = false
 
-[node name="cilindro" type="MeshInstance3D" parent="part1Container/SubViewportContainer/SubViewport/armsPosition"]
-transform = Transform3D(-0.167704, -0.625881, -0.761674, 0.965925, -0.258819, 4.2222e-07, -0.197136, -0.735721, 0.647959, 0, 0, 0)
-visible = false
-mesh = SubResource("CylinderMesh_eh4xp")
-
 [node name="piramide" parent="part1Container/SubViewportContainer/SubViewport/armsPosition" instance=ExtResource("5_7tcp0")]
 transform = Transform3D(0.431856, 1.30622, 0.259413, -1.30622, 0.362347, 0.35, 0.259413, -0.35, 1.33049, -0.328096, 0.804958, -1.22447)
+visible = false
+
+[node name="cilindro" parent="part1Container/SubViewportContainer/SubViewport/armsPosition" instance=ExtResource("6_kur5g")]
+transform = Transform3D(0.62311, -0.576343, 0.528738, 0.551018, 0.803251, 0.226204, -0.55508, 0.150395, 0.818089, 0.300468, 0.567654, -0.188801)
 visible = false
 
 [node name="bodyPosition" type="Marker3D" parent="part1Container/SubViewportContainer/SubViewport"]
@@ -660,13 +653,12 @@ visible = false
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
 visible = false
 
-[node name="cilindro" type="MeshInstance3D" parent="part2Container/SubViewportContainer/SubViewport/armsPosition"]
-transform = Transform3D(-0.167704, -0.625881, -0.761674, 0.965925, -0.258819, 4.2222e-07, -0.197136, -0.735721, 0.647959, 0, 0, 0)
-visible = false
-mesh = SubResource("CylinderMesh_eh4xp")
-
 [node name="piramide" parent="part2Container/SubViewportContainer/SubViewport/armsPosition" instance=ExtResource("5_7tcp0")]
 transform = Transform3D(0.431856, 1.30622, 0.259413, -1.30622, 0.362347, 0.35, 0.259413, -0.35, 1.33049, -0.328096, 0.804958, -1.22447)
+visible = false
+
+[node name="cilindro" parent="part2Container/SubViewportContainer/SubViewport/armsPosition" instance=ExtResource("6_kur5g")]
+transform = Transform3D(0.62311, -0.576343, 0.528738, 0.551018, 0.803251, 0.226204, -0.55508, 0.150395, 0.818089, 0.300468, 0.567654, -0.188801)
 visible = false
 
 [node name="bodyPosition" type="Marker3D" parent="part2Container/SubViewportContainer/SubViewport"]
@@ -819,13 +811,12 @@ visible = false
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
 visible = false
 
-[node name="cilindro" type="MeshInstance3D" parent="part3Container/SubViewportContainer/SubViewport/armsPosition"]
-transform = Transform3D(-0.167704, -0.625881, -0.761674, 0.965925, -0.258819, 4.2222e-07, -0.197136, -0.735721, 0.647959, 0, 0, 0)
-visible = false
-mesh = SubResource("CylinderMesh_eh4xp")
-
 [node name="piramide" parent="part3Container/SubViewportContainer/SubViewport/armsPosition" instance=ExtResource("5_7tcp0")]
 transform = Transform3D(0.431856, 1.30622, 0.259413, -1.30622, 0.362347, 0.35, 0.259413, -0.35, 1.33049, -0.328096, 0.804958, -1.22447)
+visible = false
+
+[node name="cilindro" parent="part3Container/SubViewportContainer/SubViewport/armsPosition" instance=ExtResource("6_kur5g")]
+transform = Transform3D(0.62311, -0.576343, 0.528738, 0.551018, 0.803251, 0.226204, -0.55508, 0.150395, 0.818089, 0.300468, 0.567654, -0.188801)
 visible = false
 
 [node name="bodyPosition" type="Marker3D" parent="part3Container/SubViewportContainer/SubViewport"]
@@ -948,6 +939,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_left = -2.0
 offset_top = 55.0
+offset_right = -7.0
 offset_bottom = 124.0
 grow_horizontal = 2
 text = "Select a SHAPE to UP!!"

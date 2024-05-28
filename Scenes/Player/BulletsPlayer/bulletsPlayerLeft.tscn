@@ -1,13 +1,15 @@
-[gd_scene load_steps=24 format=3 uid="uid://c23r2wxyq84x"]
+[gd_scene load_steps=23 format=3 uid="uid://c23r2wxyq84x"]
 
 [ext_resource type="Script" path="res://Scenes/Player/BulletsPlayer/bulletsPlayer.gd" id="1_45il7"]
 [ext_resource type="Animation" uid="uid://djhy2ijgkuatc" path="res://Resources/Animations/attacks/ameba.res" id="2_de7cj"]
 [ext_resource type="Animation" uid="uid://bw7qgpsw07g2w" path="res://Resources/Animations/attacks/cubeExplode.res" id="3_rfkq5"]
 [ext_resource type="PackedScene" uid="uid://bkp58g2kmp5qo" path="res://Resources/BodyParts/Arms/brazo-trianguloPlayer.glb" id="4_gky5d"]
+[ext_resource type="Animation" uid="uid://cjryj2kfh7g5c" path="res://Resources/Animations/attacks/cylinderBullet.res" id="4_j0646"]
 [ext_resource type="PackedScene" uid="uid://cq0j2erpuodbe" path="res://Resources/BodyParts/Arms/brazo-cuboPlayer.glb" id="5_88txu"]
 [ext_resource type="PackedScene" uid="uid://bheibhfkrbt2" path="res://Resources/BodyParts/Arms/brazo-esferaPlayer.glb" id="6_ruk38"]
 [ext_resource type="PackedScene" uid="uid://dl03c1njwt368" path="res://Resources/BodyParts/Arms/brazo-amebaPlayerMKII.glb" id="7_frgyd"]
 [ext_resource type="AudioStream" uid="uid://bnw7rugdm4wic" path="res://Resources/Sounds/Bullet/cubeExplode.ogg" id="8_mh3kt"]
+[ext_resource type="PackedScene" uid="uid://0shwgyvhoskg" path="res://Resources/BodyParts/Arms/brazoC-cilindroPlayerBien.glb" id="9_jfcg2"]
 
 [sub_resource type="Animation" id="Animation_3tq7a"]
 length = 0.001
@@ -86,22 +88,10 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("bracoCilindro/MeshInstance3D:rotation")
+tracks/6/path = NodePath("bracoCilindro/CollisionShape3D:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 1.5708)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("bracoCilindro/CollisionShape3D:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -125,50 +115,9 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 6.28319), Vector3(12.5664, 0, 12.5664)]
 }
 
-[sub_resource type="Animation" id="Animation_3au4q"]
-resource_name = "cylinderBullet"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("bracoCilindro/MeshInstance3D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 1.5708), Vector3(0, 6.28319, 1.5708)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("bracoCilindro/CollisionShape3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 1.5708), Vector3(0, 6.28319, 1.5708)]
-}
-
 [sub_resource type="Animation" id="Animation_sxnnt"]
 resource_name = "cylinderPreBullet"
 length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("bracoCilindro/MeshInstance3D:mesh:height")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.5, 2.0]
-}
 
 [sub_resource type="Animation" id="Animation_vatco"]
 resource_name = "pyramid"
@@ -192,7 +141,7 @@ _data = {
 "ameba": ExtResource("2_de7cj"),
 "cube": SubResource("Animation_njmiu"),
 "cubeExplode": ExtResource("3_rfkq5"),
-"cylinderBullet": SubResource("Animation_3au4q"),
+"cylinderBullet": ExtResource("4_j0646"),
 "cylinderPreBullet": SubResource("Animation_sxnnt"),
 "pyramid": SubResource("Animation_vatco")
 }
@@ -214,13 +163,6 @@ size = Vector3(1.8, 1.8, 1.8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nxxhr"]
 size = Vector3(1.7, 1.7, 1.7)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg54b"]
-albedo_color = Color(0.219608, 0.513726, 0, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_ste0a"]
-material = SubResource("StandardMaterial3D_dg54b")
-height = 5.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_glmqf"]
 height = 5.0
@@ -289,16 +231,16 @@ shape = SubResource("BoxShape3D_nxxhr")
 
 [node name="bracoCilindro" type="Area3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+visible = false
 collision_layer = 2
 collision_mask = 2
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="bracoCilindro"]
-transform = Transform3D(-3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_ste0a")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bracoCilindro"]
 transform = Transform3D(-3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_glmqf")
+
+[node name="brazo-cilindroPlayer" parent="bracoCilindro" instance=ExtResource("9_jfcg2")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0.13627, -0.116403, 5.95655e-09)
 
 [node name="amebaDespawn" type="Timer" parent="."]
 wait_time = 0.5

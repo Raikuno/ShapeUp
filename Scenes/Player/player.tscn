@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://b0bmt26j8lmvk" path="res://Resources/BodyParts/Body/cuerpo-piramidePlayer.glb" id="9_23y1q"]
 [ext_resource type="PackedScene" uid="uid://by73aj3lq4ab6" path="res://Resources/BodyParts/Body/esfera-CuerpoPlayer.glb" id="10_esih7"]
 [ext_resource type="PackedScene" uid="uid://cexay7lte532a" path="res://Resources/BodyParts/Arms/brazo-amebaPlayer.glb" id="11_brila"]
-[ext_resource type="PackedScene" uid="uid://bm1ibomko8glu" path="res://Resources/BodyParts/Arms/brazo-cilindroPlayer.glb" id="12_sgly2"]
 [ext_resource type="PackedScene" uid="uid://dvt2u8mpvnwai" path="res://Resources/BodyParts/Body/cuerpo-amebaPlayerMKII.glb" id="13_ka30x"]
 [ext_resource type="PackedScene" uid="uid://cq0j2erpuodbe" path="res://Resources/BodyParts/Arms/brazo-cuboPlayer.glb" id="13_rkjrh"]
 [ext_resource type="PackedScene" uid="uid://bheibhfkrbt2" path="res://Resources/BodyParts/Arms/brazo-esferaPlayer.glb" id="14_nbrq2"]
@@ -23,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://c8gyxpwu2km3s" path="res://Resources/BodyParts/Legs/piernas-cuadradoPlayer.glb" id="18_vlvk7"]
 [ext_resource type="PackedScene" uid="uid://b8fll3a5laa56" path="res://Resources/BodyParts/Legs/piernas-esferaPlayer.glb" id="19_bpvqr"]
 [ext_resource type="PackedScene" uid="uid://dl03c1njwt368" path="res://Resources/BodyParts/Arms/brazo-amebaPlayerMKII.glb" id="19_c1mj0"]
+[ext_resource type="PackedScene" uid="uid://0shwgyvhoskg" path="res://Resources/BodyParts/Arms/brazoC-cilindroPlayerBien.glb" id="19_tv22h"]
 [ext_resource type="PackedScene" uid="uid://crkwcgesbomod" path="res://Resources/BodyParts/Legs/piernas-piramidePlayer.glb" id="20_kgwoi"]
 [ext_resource type="PackedScene" uid="uid://c6is7r63uk3e7" path="res://Resources/BodyParts/Legs/piernaizquierda-amebaPlayer.glb" id="25_boxgj"]
 [ext_resource type="PackedScene" uid="uid://e60ta7w4fqqq" path="res://Resources/BodyParts/Legs/piernaderecha-amebaPlayer.glb" id="26_kpibb"]
@@ -93,10 +93,6 @@ visible = false
 transform = Transform3D(0.232791, -0.511618, 0.827076, 0.0507347, 0.855672, 0.515026, -0.971202, -0.0779322, 0.22515, 0.570439, 0.163965, 2.12599)
 visible = false
 
-[node name="brazo-cilindroPlayer" parent="pivot/leftArm" instance=ExtResource("12_sgly2")]
-transform = Transform3D(0.140941, -0.895938, -0.421226, 0.987852, 0.1554, 0, 0.0654585, -0.416109, 0.906956, 0.129211, 2.17211, 2.34999)
-visible = false
-
 [node name="brazo-cuboPlayer" parent="pivot/leftArm" instance=ExtResource("13_rkjrh")]
 transform = Transform3D(0.462744, 0, -0.525231, -0.304705, 0.570165, -0.268454, 0.427812, 0.406094, 0.376915, -0.302568, 2.1317, 2.58995)
 visible = false
@@ -113,14 +109,14 @@ visible = false
 transform = Transform3D(0.644859, 0.473194, -0.0156249, 0.201823, -0.250859, 0.732351, 0.42828, -0.594271, -0.321588, -1, 1.54817, 2.14961)
 visible = false
 
+[node name="brazo-cilindroPlayer" parent="pivot/leftArm" instance=ExtResource("19_tv22h")]
+transform = Transform3D(0.647182, 0.173412, 0.74235, 0.717055, 0.192134, -0.670012, -0.258819, 0.965926, -4.63393e-08, 0.284003, 1.33333, 1.89716)
+visible = false
+
 [node name="rightArm" type="Node3D" parent="pivot"]
 
 [node name="brazo-amebaPlayer" parent="pivot/rightArm" instance=ExtResource("11_brila")]
 transform = Transform3D(-0.219624, -0.509782, 0.831797, -0.0367256, 0.85633, 0.515121, -0.974893, 0.082585, -0.206793, 0.625589, 0.20993, -1.8244)
-visible = false
-
-[node name="brazo-cilindroPlayer" parent="pivot/rightArm" instance=ExtResource("12_sgly2")]
-transform = Transform3D(0.325216, -0.785179, 0.527, 0.923886, 0.382667, 0, -0.201666, 0.486888, 0.849865, 0.533123, 1.75723, -2.34149)
 visible = false
 
 [node name="brazo-cuboPlayer" parent="pivot/rightArm" instance=ExtResource("13_rkjrh")]
@@ -137,6 +133,10 @@ visible = false
 
 [node name="brazo-amebaPlayerMKII" parent="pivot/rightArm" instance=ExtResource("19_c1mj0")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.680637, 2.04254, -2.10011)
+visible = false
+
+[node name="brazo-cilindroPlayer" parent="pivot/rightArm" instance=ExtResource("19_tv22h")]
+transform = Transform3D(0.647182, 0.173412, 0.74235, 0.717055, 0.192134, -0.670012, -0.258819, 0.965926, -4.63393e-08, 0.284003, 1.33333, -1.4696)
 visible = false
 
 [node name="legs" type="Node3D" parent="pivot"]

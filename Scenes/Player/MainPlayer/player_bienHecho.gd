@@ -254,7 +254,7 @@ func _ready():
 	#qwerty
 	changePolygon(AMEBA, HEAD)
 	changePolygon(AMEBA, BODY)
-	changePolygon(CYLINDER, RIGHT)
+	changePolygon(AMEBA, RIGHT)
 	changePolygon(AMEBA, LEFT)
 	changePolygon(AMEBA, FEET)
 	healthBarFigureInUse = healthBarSphere
@@ -279,7 +279,7 @@ func setUpgrade(part):
 	changeTheBarSize(theBarCube,xPNeeded) 
 	changeTheBarSize(theBarPyramid,xPNeeded) 
 	upgrading["level"]["part"] += 1
-	$Control/XPBars/PartLevel.text = "%s: %s" % [whatPart(upgrading["identity"]), upgrading["level"]["part"]]
+	$Control/XPBars/PartLevel.text = "Part Level: %s" % [upgrading["level"]["part"]]
 	resetStats()
 	shapingUp = false
 func whatPart(figure):
@@ -297,7 +297,7 @@ func whatPart(figure):
 
 func howManyxPNeededForTheBar():
 	match upgrading["level"]["part"]:
-		0:  ##preguntar a jorge si sabe coger un indice específico de un puto mapa
+		0:
 			return xPNeededPerLevel["nivel1"]
 		1:
 			return xPNeededPerLevel["nivel2"]
@@ -307,9 +307,9 @@ func howManyxPNeededForTheBar():
 			return xPNeededPerLevel["nivel4"]
 		4:
 			return xPNeededPerLevel["nivel5"]
-		5:
-			return 666
-	return 500
+		_:
+			return (xPNeededPerLevel["nivel5"] / (xPNeededPerLevel["nivel5"]/5)) * upgrading["level"]["part"]
+	return (xPNeededPerLevel["nivel5"] / (xPNeededPerLevel["nivel5"]/5)) * upgrading["level"]["part"]
 func onSumarKill():
 	kills += 1
 	$Control/Kills.text = "💀%s" % kills
@@ -396,8 +396,33 @@ func _physics_process(delta):
 			show()
 		else:
 			hide()
-		
-
+		animationChange()
+func animationChange():
+		match state:
+			MOVE:
+				match feet["figure"]:
+					PYRAMID:
+						animation = "pyramidFeetWalking"
+					SPHERE:
+						animation = "sphereFeetWalking"
+					CUBE:
+						animation = "cubeFeetWalking"
+					CYLINDER:
+						animation = "cylinderFeetWalking"
+					AMEBA:
+						animation = "amebaFeetWalking"
+			STATIC:
+				match feet["figure"]:
+					PYRAMID:
+						animation = "pyramidFeetIdle"
+					SPHERE:
+						animation = "sphereFeetIdle"
+					CUBE:
+						animation = "cubeFeetIdle"
+					CYLINDER:
+						animation = "cylinderFeetIdle"
+					AMEBA:
+						animation = "amebaFeetIdle"
 func initializePlayerTutorial():
 	print("head")
 	setUpgrade(head)
@@ -423,32 +448,6 @@ func selectPart():
 		
 func changeState(newState):
 	state = newState
-	match state:
-		MOVE:
-			match feet["figure"]:
-				PYRAMID:
-					animation = "pyramidFeetWalking"
-				SPHERE:
-					animation = "sphereFeetWalking"
-				CUBE:
-					animation = "cubeFeetWalking"
-				CYLINDER:
-					animation = "cylinderFeetWalking"
-				AMEBA:
-					animation = "amebaFeetWalking"
-		STATIC:
-			match feet["figure"]:
-				PYRAMID:
-					animation = "pyramidFeetIdle"
-				SPHERE:
-					animation = "sphereFeetIdle"
-				CUBE:
-					animation = "cubeFeetIdle"
-				CYLINDER:
-					animation = "cylinderFeetIdle"
-				AMEBA:
-					animation = "amebaFeetIdle"
-			#new_animation_feet = "idle"
 			
 func getLevel(map):
 	var result
