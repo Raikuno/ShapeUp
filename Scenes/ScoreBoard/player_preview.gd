@@ -3,7 +3,6 @@ extends CharacterBody3D
 enum {CUBE, PYRAMID, SPHERE, CYLINDER, AMEBA}
 
 func changeVisibility(character):
-	print("abejas")
 	match character["head"]:
 		CUBE:
 			$"pivot/head/cabeza-cuboPlayer".show()
@@ -62,7 +61,6 @@ func changeVisibility(character):
 	print(character)
 
 func changeVisibilityString(character):
-	print("abejas")
 	match character["head"]:
 		"CUBE":
 			$"pivot/head/cabeza-cuboPlayer".show()

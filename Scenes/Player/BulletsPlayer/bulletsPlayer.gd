@@ -8,6 +8,7 @@ var type
 @export var jump_impulse = 20
 @export var damage = 50   # cada tipo de brazo va a tener un multiplicador al daño base del jugador, por ejemplo circulo hará un 0.75 del daño base y cuadrado un 1.25
 @onready var height = -4
+var scaleModifiers
 func _ready():
 	pass
 func _process(delta):
@@ -16,28 +17,28 @@ func callBullet(newScale):
 	match type:
 		CUBE:
 			$brazoCubo.show()
-			$"brazoCubo/brazo-cuboPlayer".scale = newScale
+			$"brazoCubo/brazo-cuboPlayer".scale = newScale + scaleModifiers
 			remove_child($brazoTriangulo)
 			remove_child($brazoEsfera)
 			remove_child($brazoAmeba)
 			remove_child($bracoCilindro)
 		PYRAMID:
 			$brazoTriangulo.show()
-			$brazoTriangulo.scale = newScale
+			$brazoTriangulo.scale = newScale + scaleModifiers
 			remove_child($brazoCubo)
 			remove_child($brazoEsfera)
 			remove_child($brazoAmeba)
 			remove_child($bracoCilindro)
 		SPHERE:
 			$brazoEsfera.show()
-			$"brazoEsfera/brazo-esferaPlayer".scale = newScale
+			$"brazoEsfera/brazo-esferaPlayer".scale = newScale + scaleModifiers
 			remove_child($brazoCubo)
 			remove_child($brazoTriangulo)
 			remove_child($brazoAmeba)
 			remove_child($bracoCilindro)
 		CYLINDER:
 			$bracoCilindro.show()
-			$"bracoCilindro/brazo-cilindroPlayer".scale = newScale
+			$"bracoCilindro/brazo-cilindroPlayer".scale = newScale + scaleModifiers
 			remove_child($bracoAmeba)
 			remove_child($brazoCubo)
 			remove_child($brazoTriangulo)
@@ -46,13 +47,13 @@ func callBullet(newScale):
 			
 		AMEBA:
 			$brazoAmeba.show()
-			$brazoAmeba.scale = newScale
+			$brazoAmeba.scale = newScale + scaleModifiers
 			remove_child($brazoCubo)
 			remove_child($brazoTriangulo)
 			remove_child($brazoSphere)
 			remove_child($bracoCilindro)
 
-func initialize(newType, newDamage, bulletDirection, newPosition = position, newRotation = rotation, newScale = scale):
+func initialize(newType, newDamage, bulletDirection, scaleModifier,newPosition = position, newRotation = rotation, newScale = scale):
 	var downer : float
 	if newType == SPHERE:
 		downer = 1.5
@@ -62,6 +63,7 @@ func initialize(newType, newDamage, bulletDirection, newPosition = position, new
 	position = Vector3(newPosition.x, newPosition.y - downer, newPosition.z)
 	rotation = newRotation
 	scale = newScale
+	scaleModifiers = Vector3(scaleModifier, scaleModifier, scaleModifier)
 	type = newType
 	damage = newDamage
 	look_at(Vector3(bulletDirection.x, position.y, bulletDirection.z), Vector3.UP)

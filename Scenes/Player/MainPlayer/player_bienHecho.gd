@@ -3,6 +3,7 @@ enum {MOVE, STATIC}
 enum {CUBE, PYRAMID, SPHERE, CYLINDER, AMEBA}
 enum {HEAD, BODY, RIGHT, LEFT, FEET}
 
+const BASE_XP_NEEDED = 5
 var bulletDirection
 #Multiplicadores
 #--------------------Tipos de Multiplicadores--------------------------
@@ -66,16 +67,16 @@ var MouseCursorCylinder = load("res://Resources/MouseCursorCylinder.png")
 var healthBarFigureInUse
 var healthBarRectangleInUse
 var tutorialPlayer = false
-var xPNeededPerLevel = {
+var xPNeededPerLevel = { #Este valor es simbolico, no se utiliza el array en las operaciones
 	0 : 5,   # 5
 	1 : 10,  # 10
 	2 : 20,  # 20
-	3 : 40,  # 40
-	4 : 80 ,  # 155
-	5 : 100   # 255, lo que mide un byte guapísimo
+	3 : 35,  # 40
+	4 : 55 ,  # 155
+	5 : 80   # 255, lo que mide un byte guapísimo
+	#Formula resultante: (5 + 5 * (nivel - 1)) + (5 * nivel); teniendo como caso base 5 en lugar de 0 (ns como se deberia escribir eso de forma que se entienda)
 }
-
-
+var xPNeededPerLevelValue = BASE_XP_NEEDED
 # anotacion de carmelo, distintas dificultades. (FUMAO)
 var sphereStat = {
 	"health" : 5,
@@ -272,7 +273,7 @@ func setUpgrade(part):
 			SignalsTrain.emit_signal("isTutorialExperience")
 	upgrading = part
 	setValueOnBar()
-	var xPNeeded = xPNeededPerLevel[upgrading["level"]["part"]]
+	var xPNeeded = xPNeededPerLevelValue
 	changeTheBarSize(theBar,xPNeeded * 2) 
 	changeTheBarSize(theBarSphere,xPNeeded) 
 	changeTheBarSize(theBarCylinder,xPNeeded) 
@@ -296,20 +297,22 @@ func whatPart(figure):
 			return "Piernas "
 
 func howManyxPNeededForTheBar():
-	match upgrading["level"]["part"]:
-		0:
-			return xPNeededPerLevel["nivel1"]
-		1:
-			return xPNeededPerLevel["nivel2"]
-		2:
-			return xPNeededPerLevel["nivel3"]
-		3:
-			return xPNeededPerLevel["nivel4"]
-		4:
-			return xPNeededPerLevel["nivel5"]
-		_:
-			return (xPNeededPerLevel["nivel5"] / (xPNeededPerLevel["nivel5"]/5)) * upgrading["level"]["part"]
-	return (xPNeededPerLevel["nivel5"] / (xPNeededPerLevel["nivel5"]/5)) * upgrading["level"]["part"]
+	#match upgrading["level"]["part"]:
+	#	0:
+	#		return xPNeededPerLevel["nivel1"]
+	#	1:
+	#		return xPNeededPerLevel["nivel2"]
+	#	2:
+	#		return xPNeededPerLevel["nivel3"]
+	#	3:
+	#		return xPNeededPerLevel["nivel4"]
+	#	4:
+	#		return xPNeededPerLevel["nivel5"]
+	#	_:
+	#		return (xPNeededPerLevel["nivel5"] / (xPNeededPerLevel["nivel5"]/5)) * upgrading["level"]["part"]
+	#return (xPNeededPerLevel["nivel5"] / (xPNeededPerLevel["nivel5"]/5)) * upgrading["level"]["part"]
+	xPNeededPerLevelValue = 5 + (upgrading["level"]["part"] * 5)
+	return xPNeededPerLevelValue
 func onSumarKill():
 	kills += 1
 	$Control/Kills.text = "💀%s" % kills
@@ -331,7 +334,16 @@ func onExpPicked(expType):  #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamid
 	setValueOnBar()
 
 
-func setValueOnBar(): #no tiene ningun sentido, mañana hablamos
+func setValueOnBar():
+	var cylinderXPNeeded = (BASE_XP_NEEDED + (BASE_XP_NEEDED *(upgrading["level"]["cylinder"] - 1))) + (BASE_XP_NEEDED * upgrading["level"]["cylinder"])
+	var sphereXPNeeded = (BASE_XP_NEEDED + (BASE_XP_NEEDED *(upgrading["level"]["sphere"] - 1))) + (BASE_XP_NEEDED * upgrading["level"]["sphere"])
+	var cubeXPNeeded = (BASE_XP_NEEDED + (BASE_XP_NEEDED *(upgrading["level"]["cube"] - 1))) + (BASE_XP_NEEDED * upgrading["level"]["cube"])
+	var pyramidXPNeeded = (BASE_XP_NEEDED + (BASE_XP_NEEDED *(upgrading["level"]["pyramid"] - 1))) + (BASE_XP_NEEDED * upgrading["level"]["pyramid"])
+	cylinderXPNeeded = checkMinXP(cylinderXPNeeded)
+	sphereXPNeeded = checkMinXP(sphereXPNeeded)
+	cubeXPNeeded = checkMinXP(cubeXPNeeded)
+	pyramidXPNeeded = checkMinXP(pyramidXPNeeded)
+	
 	cylinderXPBar.value = upgrading["experience"]["cylinder"]
 	sphereXPBar.value = upgrading["experience"]["sphere"]
 	cubeXPBar.value = upgrading["experience"]["cube"]
@@ -340,10 +352,21 @@ func setValueOnBar(): #no tiene ningun sentido, mañana hablamos
 	sphereLevel.text = "%s" % upgrading["level"]["sphere"]
 	cubeLevel.text = "%s" % upgrading["level"]["cube"]
 	pyramidLevel.text = "%s" % upgrading["level"]["pyramid"]
-	changeXPBarSize(cylinderXPBar,xPNeededPerLevel[upgrading["level"]["cylinder"]])
-	changeXPBarSize(sphereXPBar,xPNeededPerLevel[upgrading["level"]["sphere"]])
-	changeXPBarSize(cubeXPBar,xPNeededPerLevel[upgrading["level"]["cube"]])
-	changeXPBarSize(pyramidXPBar,xPNeededPerLevel[upgrading["level"]["pyramid"]])
+	#changeXPBarSize(cylinderXPBar,xPNeededPerLevel[upgrading["level"]["cylinder"]])
+	#changeXPBarSize(sphereXPBar,xPNeededPerLevel[upgrading["level"]["sphere"]])
+	#changeXPBarSize(cubeXPBar,xPNeededPerLevel[upgrading["level"]["cube"]])
+	#changeXPBarSize(pyramidXPBar,xPNeededPerLevel[upgrading["level"]["pyramid"]])
+	
+	changeXPBarSize(cylinderXPBar,cylinderXPNeeded)
+	changeXPBarSize(sphereXPBar,sphereXPNeeded)
+	changeXPBarSize(cubeXPBar,cubeXPNeeded)
+	changeXPBarSize(pyramidXPBar,pyramidXPNeeded)
+
+func checkMinXP(value):
+	if value<=0:
+		return 5
+	else:
+		return value
 
 	#Este método es para recibir damages
 func onDamageTaken(damageAmount):
@@ -698,53 +721,56 @@ func attackLogic(delta):
 		AMEBA:
 			$leftArmPlayer.play("amebaBulletLeft")
 
-func fire(weapon, part, direction):
+func fire(part):
+	const BALANCINGMULTIPLIER = 0.15
 	var iNeedMoreBulletss: PackedScene
 	var biggerWeapons:Node3D
 	var variableDamage
 	var bulletSound
-	if direction=="right":
+	
+	var scaleIndex
+	if part["identity"]==RIGHT:
 		iNeedMoreBulletss = load("res://Scenes/Player/BulletsPlayer/bulletsPlayer.tscn")
-	elif direction=="left":
+	elif part["identity"]==LEFT:
 		iNeedMoreBulletss = load("res://Scenes/Player/BulletsPlayer/bulletsPlayerLeft.tscn")
-	match weapon:
+	match part["figure"]:
 		SPHERE:
 			variableDamage = 0.65
+			scaleIndex = part["level"]["sphere"]
 		AMEBA:
 			variableDamage = 0.5
+			bulletSound = load("res://Resources/Sounds/Player/bulletThrow.ogg")
+			scaleIndex = part["level"]["part"]
 		PYRAMID:
 			variableDamage = 1
+			scaleIndex = part["level"]["pyramid"]
 		CUBE:
 			variableDamage = 0.8
+			bulletSound = load("res://Resources/Sounds/Player/bulletThrow.ogg")
+			scaleIndex = part["level"]["cube"]
 		CYLINDER:
 			variableDamage = 0.3
+			scaleIndex = part["level"]["cylinder"]
+		
+	scaleIndex *=BALANCINGMULTIPLIER
+	print(scaleIndex)
 	biggerWeapons = iNeedMoreBulletss.instantiate()
-	biggerWeapons.initialize(weapon, damage * variableDamage, bulletDirection, part.global_position, part.global_rotation)
+	biggerWeapons.initialize(part["figure"], damage * variableDamage, bulletDirection, scaleIndex,part["resource"].global_position, part["resource"].global_rotation)
 	add_sibling(biggerWeapons)
-	match weapon:
-		SPHERE:
-			pass
-		CUBE:
-			bulletSound = load("res://Resources/Sounds/Player/bulletThrow.ogg")
-		PYRAMID:
-			pass
-		CYLINDER:
-			pass
-		AMEBA:
-			bulletSound = load("res://Resources/Sounds/Player/bulletThrow.ogg")
-			
 	$bulletsSound.play()
 
 #Función que será llamada cada vez que finalice la animación de recarga. Esta animación y su velocidad determinarán la velocidad de ataque
 func _on_right_arm_player_animation_finished(anim_name):
-	fire(right["figure"], right["resource"], "right")
+	fire(right)
 func _on_left_arm_player_animation_finished(anim_name):
-	fire(left["figure"], left["resource"], "left")
+	fire(left)
 
 
 func onLevelUp(xPBar, levelLabel, upgradingPart):
+	var xpNeeded = (BASE_XP_NEEDED + BASE_XP_NEEDED * (upgradingPart - 1)) + (BASE_XP_NEEDED * upgradingPart)
+	xpNeeded = checkMinXP(xpNeeded)
 	levelLabel.text = "%s" % upgradingPart
-	changeXPBarSize(xPBar,xPNeededPerLevel[upgradingPart])
+	changeXPBarSize(xPBar,xpNeeded)
 
 func changeXPBarSize(xPBar, newSize):
 	xPBar.set_max(newSize)

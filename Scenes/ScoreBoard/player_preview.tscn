@@ -321,7 +321,7 @@ visible = false
 transform = Transform3D(0.8, 0, 5.68434e-14, 0, 0.8, 0, -5.68434e-14, 0, 0.8, -0.112614, 1.92706, -2.12493)
 visible = false
 
-[node name="brazo-cilindroPlayer2" parent="pivot/leftArm" instance=ExtResource("19_claa8")]
+[node name="brazo-cilindroPlayer" parent="pivot/leftArm" instance=ExtResource("19_claa8")]
 transform = Transform3D(0.836517, 0.224143, -0.5, -0.482963, -0.12941, -0.866025, -0.258819, 0.965926, -2.60779e-07, 0.284003, 1.33333, -1.96624)
 visible = false
 
