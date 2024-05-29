@@ -273,28 +273,17 @@ func setUpgrade(part):
 			SignalsTrain.emit_signal("isTutorialExperience")
 	upgrading = part
 	setValueOnBar()
-	var xPNeeded = xPNeededPerLevelValue
+	var xPNeeded = (BASE_XP_NEEDED + BASE_XP_NEEDED * (upgrading["level"]["part"] - 1)) + (BASE_XP_NEEDED * upgrading["level"]["part"])
+	xPNeeded = checkMinXP(xPNeeded)
 	changeTheBarSize(theBar,xPNeeded * 2) 
 	changeTheBarSize(theBarSphere,xPNeeded) 
 	changeTheBarSize(theBarCylinder,xPNeeded) 
 	changeTheBarSize(theBarCube,xPNeeded) 
 	changeTheBarSize(theBarPyramid,xPNeeded) 
 	upgrading["level"]["part"] += 1
-	$Control/XPBars/PartLevel.text = "Part Level: %s" % [upgrading["level"]["part"]]
+	$Control/XPBars/PartLevel.text = "%s" % [upgrading["level"]["part"]]
 	resetStats()
 	shapingUp = false
-func whatPart(figure):
-	match figure:
-		0:
-			return "Cabeza "
-		1:
-			return "Cuerpo "
-		2:
-			return "Brazo Derecho "
-		3:
-			return "Brazo Izquierdo "
-		4:
-			return "Piernas "
 
 func howManyxPNeededForTheBar():
 	#match upgrading["level"]["part"]:
@@ -311,7 +300,7 @@ func howManyxPNeededForTheBar():
 	#	_:
 	#		return (xPNeededPerLevel["nivel5"] / (xPNeededPerLevel["nivel5"]/5)) * upgrading["level"]["part"]
 	#return (xPNeededPerLevel["nivel5"] / (xPNeededPerLevel["nivel5"]/5)) * upgrading["level"]["part"]
-	xPNeededPerLevelValue = 5 + (upgrading["level"]["part"] * 5)
+	xPNeededPerLevelValue = (BASE_XP_NEEDED + (BASE_XP_NEEDED *(upgrading["level"]["part"] - 1))) + (BASE_XP_NEEDED * upgrading["level"]["part"])
 	return xPNeededPerLevelValue
 func onSumarKill():
 	kills += 1

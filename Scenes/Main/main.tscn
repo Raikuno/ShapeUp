@@ -282,6 +282,46 @@ _data = {
 "RESET": SubResource("Animation_sulm2")
 }
 
+[sub_resource type="Animation" id="Animation_t5ids"]
+resource_name = "EventTextEnter"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Time/Messages:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 2.5, 4, 15, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 38, 40),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-132, -177), Vector2(-191, 91), Vector2(-263, 78), Vector2(-217, 86), Vector2(-205, 69), Vector2(-205, 69), Vector2(-181, 80), Vector2(-177, 74), Vector2(-181, 80), Vector2(-177, 74), Vector2(-181, 80), Vector2(-177, 74), Vector2(-181, 80), Vector2(-177, 74), Vector2(-181, 80), Vector2(-177, 74), Vector2(-181, 80), Vector2(-177, 74), Vector2(-181, 80), Vector2(-177, 74), Vector2(-181, 80), Vector2(-177, 74), Vector2(-205, 75), Vector2(-205, 75), Vector2(-117, -74)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Time/Messages:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 2.5, 4, 6, 15, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 38, 40),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, -0.0436332, 0.0436332, 0.0, 0.0, -0.0174533, 0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533, 0.0174533, 0.0, 0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Time/Messages:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 2.5, 4, 15, 18, 33, 34, 38, 40),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.75, 0.75), Vector2(1, 1), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.7, 0.7), Vector2(0.7, 0.7), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.5, 0.5)]
+}
+
 [sub_resource type="Animation" id="Animation_d2k1b"]
 resource_name = "NormalTextEnter"
 length = 11.0
@@ -359,46 +399,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_t5ids"]
-resource_name = "EventTextEnter"
-length = 40.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Time/Messages:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 2.5, 4, 15, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 38, 40),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-132, -177), Vector2(-191, 91), Vector2(-263, 78), Vector2(-217, 86), Vector2(-205, 69), Vector2(-205, 69), Vector2(-181, 80), Vector2(-177, 74), Vector2(-181, 80), Vector2(-177, 74), Vector2(-181, 80), Vector2(-177, 74), Vector2(-181, 80), Vector2(-177, 74), Vector2(-181, 80), Vector2(-177, 74), Vector2(-181, 80), Vector2(-177, 74), Vector2(-181, 80), Vector2(-177, 74), Vector2(-181, 80), Vector2(-177, 74), Vector2(-205, 75), Vector2(-205, 75), Vector2(-117, -74)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Time/Messages:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 2.5, 4, 6, 15, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 38, 40),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, 0.0, -0.0436332, 0.0436332, 0.0, 0.0, -0.0174533, 0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533, -0.0174533, 0.0174533, 0.0174533, 0.0, 0.0, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Time/Messages:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 2.5, 4, 15, 18, 33, 34, 38, 40),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(0.75, 0.75), Vector2(1, 1), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.7, 0.7), Vector2(0.7, 0.7), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(0.5, 0.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5ou4q"]
@@ -1144,6 +1144,7 @@ text = "00:00"
 metadata/_edit_use_anchors_ = true
 
 [node name="Messages" type="Label" parent="Time"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 13.025
@@ -1219,3 +1220,4 @@ libraries = {
 [connection signal="timeout" from="EventCooldown" to="." method="_on_event_cooldown_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="loopBgm"]
 [connection signal="animation_finished" from="DayCicle" to="." method="_on_day_cicle_animation_finished"]
+[connection signal="animation_finished" from="EventText" to="." method="hideText"]

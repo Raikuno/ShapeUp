@@ -57,6 +57,7 @@ func _on_mob_spawn_timer_timeout():
 	
 func endOfGame():
 	Score.time = $Time/Time.text
+	$Timer.stop()
 	Score.setScore()
 	changeRoom()
 
@@ -133,6 +134,7 @@ func showMessage(messageType, messageColor, messageTime): # 0 negro, 1 cilindro,
 		messageLabel.text = randomEventMessage[messageType]
 	else:
 		messageLabel.text = randomMessage[randi_range(0,randomMessage.size() -1)]
+	$Time/Messages.show()
 
 	
 func _on_eventos_timeout():
@@ -178,3 +180,7 @@ func _on_day_cicle_animation_finished(anim_name):
 		$DayCicle.play("Day")
 		
 	currentDayTime = $DayCicle.current_animation
+
+
+func hideText(anim_name):
+	$Time/Messages.hide()
