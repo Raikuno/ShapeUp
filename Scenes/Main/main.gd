@@ -2,6 +2,7 @@ extends Node
 var SCOREBOARD = "res://Scenes/ScoreBoard/ScoreBoard.tscn"
 var timeSecond = 0
 var timeMinute = 0
+var nightDarkCounter = 6
 var sameEnemy = false
 var enemyArmy = 4
 var miniBossSpawnRate = 200
@@ -98,14 +99,15 @@ func _on_start_pressed():
 
 func _on_timer_timeout():
 	timeSecond += 1
-	if timeSecond == 30:
+	if timeSecond == 15:
 		$Eventos.start()
 	if timeSecond == 60:
-		if miniBossSpawnRate > 100:
+		if miniBossSpawnRate > 50:
 			miniBossSpawnRate -= 10
 		timeSecond = 0
 		timeMinute += 1
 		showMessage(0, 0, 10)
+		$EventText.play("NormalTextEnter")
 	if timeSecond < 10 && timeMinute < 10: # Perdón, me dió flojera
 		$Time/Time.text =  "0%s:0%s" %  [timeMinute ,timeSecond]
 	elif timeSecond < 10:
@@ -116,7 +118,6 @@ func _on_timer_timeout():
 		$Time/Time.text =  "%s:%s" %  [timeMinute ,timeSecond]
 
 func showMessage(messageType, messageColor, messageTime): # 0 negro, 1 cilindro, 2 cubo, 3 esfera , 4 peakamide
-	$Time/Messages.show()
 	match messageColor:
 		0:
 			messageLabel.add_theme_color_override("font_color", Color.BLACK)
@@ -132,8 +133,7 @@ func showMessage(messageType, messageColor, messageTime): # 0 negro, 1 cilindro,
 		messageLabel.text = randomEventMessage[messageType]
 	else:
 		messageLabel.text = randomMessage[randi_range(0,randomMessage.size() -1)]
-	
-	$MessageTime.start(messageTime)
+
 	
 func _on_eventos_timeout():
 	var enemyRandom = randi_range(1,4)
@@ -149,15 +149,11 @@ func _on_eventos_timeout():
 			sameEnemy = true
 			enemyArmy = enemyRandom
 			$EventCooldown.start(40)
-		
-			
-func _on_message_time_timeout():
-	$Time/Messages.hide()
+	$EventText.play("EventTextEnter")	
 
 
 func _on_event_cooldown_timeout():
 	sameEnemy = false
-	nightMode = false
 
 func loopBgm():
 	$AudioStreamPlayer.play()
@@ -165,13 +161,16 @@ func loopBgm():
 
 func _on_day_cicle_animation_finished(anim_name):
 	if currentDayTime == "Day":
-		if randi_range(1,10) == 1:
-			$Time/Noche.add_theme_color_override("font_color", Color.DEEP_PINK)
-			$Time/Noche.text = "Esta noche oscura te tortura la locura"
+		if randi_range(1,nightDarkCounter) == 1:
+			nightDarkCounter = 10
+			$Time/Noche.add_theme_color_override("font_color", Color.WEB_PURPLE)
 			$Time/Noche.show()
+			$NightText.play("NightTextEntrance")
 			nightMode = true
 			$DayCicle.play("nightDark")
 		else:
+			if nightDarkCounter > 2:
+				nightDarkCounter -= 2
 			$DayCicle.play("night")
 	else:
 		$Time/Noche.hide()

@@ -15,22 +15,22 @@ func initialize(positionEnemy,_xpType): #1 = cilindro / 2 = cubo / 3 = esfera / 
 			get_node("Experience/SphereXP").hide()
 			get_node("Experience/PyramidXP").hide()
 			get_node("Experience/CubeXP").hide()
-			randomDespawn = 25
+			randomDespawn = 20
 		2:
 			get_node("Experience/SphereXP").hide()
 			get_node("Experience/PyramidXP").hide()
 			get_node("Experience/CilinderXP").hide()
-			randomDespawn = 45
+			randomDespawn = 35
 		3:
 			get_node("Experience/CubeXP").hide()
 			get_node("Experience/PyramidXP").hide()
 			get_node("Experience/CilinderXP").hide()
-			randomDespawn = 15
+			randomDespawn = 12
 		4:
 			get_node("Experience/SphereXP").hide()
 			get_node("Experience/CubeXP").hide()
 			get_node("Experience/CilinderXP").hide()
-			randomDespawn = 35
+			randomDespawn = 28
 
 func _onDespawn():
 	if randi_range(1,randomDespawn) < 5 : 
