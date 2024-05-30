@@ -1212,6 +1212,13 @@ libraries = {
 "": SubResource("AnimationLibrary_5ou4q")
 }
 
+[node name="Label" type="Label" parent="."]
+offset_left = 1013.0
+offset_top = 233.0
+offset_right = 1053.0
+offset_bottom = 256.0
+text = "FPS: - 15"
+
 [connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Exit" to="." method="_on_exit_pressed"]
 [connection signal="timeout" from="mobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]

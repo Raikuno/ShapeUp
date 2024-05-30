@@ -97,6 +97,9 @@ func _on_start_pressed():
 	$Menu.hide()
 	get_tree().paused = false
 
+func _process(delta):
+	$Label.text = "%s:%s" % ["FPS",Engine.get_frames_per_second()]
+	
 
 func _on_timer_timeout():
 	timeSecond += 1

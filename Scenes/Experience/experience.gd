@@ -61,3 +61,11 @@ func hideAndDestroy():
 
 func soundAndDestroy():
 	queue_free()
+
+
+func _on_visible_on_screen_notifier_3d_screen_entered():
+	pass # Replace with function body.
+
+
+func _on_visible_on_screen_notifier_3d_screen_exited():
+	pass # Replace with function body.
