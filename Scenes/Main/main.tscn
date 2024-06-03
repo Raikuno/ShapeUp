@@ -1152,10 +1152,10 @@ anchor_left = 13.025
 anchor_top = 15.875
 anchor_right = 13.025
 anchor_bottom = 15.875
-offset_left = -251.0
-offset_top = -181.0
-offset_right = 314.0
-offset_bottom = -120.001
+offset_left = -772.0
+offset_top = -816.0
+offset_right = -207.0
+offset_bottom = -755.001
 theme_override_colors/font_color = Color(0.654902, 0.639216, 0.278431, 1)
 theme_override_font_sizes/font_size = 20
 text = "los enemigos están flexeando sus putísimos musculos
@@ -1170,10 +1170,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 142.0
-offset_top = -89.0
-offset_right = 382.993
-offset_bottom = -18.0
+offset_left = 122.0
+offset_top = -109.0
+offset_right = 362.993
+offset_bottom = -38.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.654902, 0.639216, 0.278431, 1)
@@ -1213,13 +1213,6 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_5ou4q")
 }
-
-[node name="Label" type="Label" parent="."]
-offset_left = 1013.0
-offset_top = 233.0
-offset_right = 1053.0
-offset_bottom = 256.0
-text = "FPS: - 15"
 
 [connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Exit" to="." method="_on_exit_pressed"]
