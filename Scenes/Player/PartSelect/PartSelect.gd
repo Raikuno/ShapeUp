@@ -28,19 +28,19 @@ func setValues(part, newParts):
 	var pathToNode : String = part
 	match newParts["identity"]:
 		HEAD:
-			text.text = "Head"
+			text.text = "Cabeza"
 			pathToNode = pathToNode + "/SubViewportContainer/SubViewport/headPosition"
 		RIGHT:
-			text.text = "Right Arm"
+			text.text = "Brazo Derecho"
 			pathToNode = pathToNode + "/SubViewportContainer/SubViewport/armsPosition"
 		LEFT:
-			text.text = "Left Arm"
+			text.text = "Brazo Izquierdo"
 			pathToNode = pathToNode + "/SubViewportContainer/SubViewport/armsPosition"
 		FEET:
-			text.text = "Legs"
+			text.text = "Piernas"
 			pathToNode = pathToNode + "/SubViewportContainer/SubViewport/legsPosition"
 		BODY:
-			text.text = "Body"
+			text.text = "Cuerpo"
 			pathToNode = pathToNode + "/SubViewportContainer/SubViewport/bodyPosition"
 	match newParts["figure"]:
 		CUBE:
