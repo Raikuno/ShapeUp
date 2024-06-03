@@ -725,6 +725,7 @@ func fire(part):
 	match part["figure"]:
 		SPHERE:
 			variableDamage = 0.65
+			bulletSound = load("res://Resources/Sounds/Player/bullet03.ogg")
 			scaleIndex = part["level"]["sphere"]
 		AMEBA:
 			variableDamage = 0.5
@@ -732,6 +733,7 @@ func fire(part):
 			scaleIndex = part["level"]["part"]
 		PYRAMID:
 			variableDamage = 1
+			bulletSound = load("res://Resources/Sounds/Player/bullet.wav")
 			scaleIndex = part["level"]["pyramid"]
 		CUBE:
 			variableDamage = 0.8
@@ -739,6 +741,7 @@ func fire(part):
 			scaleIndex = part["level"]["cube"]
 		CYLINDER:
 			variableDamage = 0.3
+			bulletSound = load("res://Resources/Sounds/Player/bullet03.ogg")
 			scaleIndex = part["level"]["cylinder"]
 		
 	scaleIndex *=BALANCINGMULTIPLIER
