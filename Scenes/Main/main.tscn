@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://tddngfg7bjal"]
+[gd_scene load_steps=25 format=3 uid="uid://tddngfg7bjal"]
 
 [ext_resource type="PackedScene" uid="uid://0cg5kuus6aon" path="res://Objets/tree.tscn" id="1_32qud"]
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_iq3yo"]
 [ext_resource type="PackedScene" uid="uid://dcgthd8xx1r5n" path="res://Objets/rock.tscn" id="2_xg0ka"]
 [ext_resource type="PackedScene" uid="uid://epp8ep3svpij" path="res://Objets/fence.tscn" id="5_gdm2e"]
 [ext_resource type="PackedScene" uid="uid://bavtwemfemmxy" path="res://Scenes/Player/MainPlayer/player_bienHecho.tscn" id="5_rw2lt"]
+[ext_resource type="AudioStream" uid="uid://duhd7mar04wnh" path="res://Resources/Sounds/bgm/la puta musica.mp3" id="6_duw23"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0jysc"]
 size = Vector3(1800, 2, 1800)
@@ -1151,10 +1152,10 @@ anchor_left = 13.025
 anchor_top = 15.875
 anchor_right = 13.025
 anchor_bottom = 15.875
-offset_left = -772.0
-offset_top = -816.0
-offset_right = -207.0
-offset_bottom = -755.001
+offset_left = -251.0
+offset_top = -181.0
+offset_right = 314.0
+offset_bottom = -120.001
 theme_override_colors/font_color = Color(0.654902, 0.639216, 0.278431, 1)
 theme_override_font_sizes/font_size = 20
 text = "los enemigos están flexeando sus putísimos musculos
@@ -1169,10 +1170,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 122.0
-offset_top = -109.0
-offset_right = 362.993
-offset_bottom = -38.0
+offset_left = 142.0
+offset_top = -89.0
+offset_right = 382.993
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.654902, 0.639216, 0.278431, 1)
@@ -1194,6 +1195,7 @@ wait_time = 59.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
+stream = ExtResource("6_duw23")
 volume_db = -30.0
 autoplay = true
 

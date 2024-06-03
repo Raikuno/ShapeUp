@@ -13,7 +13,6 @@ var reallyHighMultiplier = 1.5
 
 func _ready():
 	$Timer2.start()
-	
 	$AnimationPlayer.speed_scale = 2
 	$AnimationPlayer2.speed_scale= 2
 	print("ASDASDASDASDASDASD")
@@ -22,6 +21,7 @@ func initialize(newParts): #node, figure, part
 	part1 = newParts[0]
 	part2 = newParts[1]
 	part3 = newParts[2]
+
 func setValues(part, newParts):
 	var text = get_node(NodePath(part + "/button"))
 	var bodyPart:Node3D

@@ -939,7 +939,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_left = -2.0
 offset_top = 55.0
-offset_right = -7.0
+offset_right = -2.0
 offset_bottom = 124.0
 grow_horizontal = 2
 text = "Select a SHAPE to UP!!"
@@ -976,41 +976,42 @@ layout_mode = 0
 offset_top = 25.0
 offset_right = 200.0
 offset_bottom = 60.0
-text = "Level: X"
+text = "Mejoras: X"
 label_settings = SubResource("LabelSettings_pb82a")
 
 [node name="Pyramid" type="Label" parent="Part1Desc"]
 layout_mode = 0
-offset_top = 58.0
-offset_right = 13.0
-offset_bottom = 86.0
+offset_left = 54.0
+offset_top = 427.0
+offset_right = 77.0
+offset_bottom = 455.0
 text = " X "
 label_settings = SubResource("LabelSettings_gjxwq")
 
 [node name="Sphere" type="Label" parent="Part1Desc"]
 layout_mode = 0
-offset_left = 23.0
-offset_top = 58.0
-offset_right = 46.0
-offset_bottom = 86.0
+offset_left = 77.0
+offset_top = 427.0
+offset_right = 100.0
+offset_bottom = 455.0
 text = " X "
 label_settings = SubResource("LabelSettings_j57k0")
 
 [node name="Cylinider" type="Label" parent="Part1Desc"]
 layout_mode = 0
-offset_left = 46.0
-offset_top = 58.0
-offset_right = 69.0
-offset_bottom = 86.0
+offset_left = 100.0
+offset_top = 427.0
+offset_right = 123.0
+offset_bottom = 455.0
 text = " X "
 label_settings = SubResource("LabelSettings_5ctf4")
 
 [node name="Cube" type="Label" parent="Part1Desc"]
 layout_mode = 0
-offset_left = 69.0
-offset_top = 58.0
-offset_right = 92.0
-offset_bottom = 86.0
+offset_left = 123.0
+offset_top = 427.0
+offset_right = 146.0
+offset_bottom = 455.0
 text = " X "
 label_settings = SubResource("LabelSettings_mwl5d")
 
@@ -1019,7 +1020,7 @@ layout_mode = 0
 offset_top = 300.0
 offset_right = 200.0
 offset_bottom = 323.0
-text = " Level: X"
+text = "Nivel Activo: X"
 
 [node name="Dmg" type="Label" parent="Part1Desc"]
 layout_mode = 0
@@ -1069,41 +1070,42 @@ layout_mode = 0
 offset_top = 25.0
 offset_right = 200.0
 offset_bottom = 60.0
-text = "Level: X"
+text = "Mejoras: X"
 label_settings = SubResource("LabelSettings_pb82a")
 
 [node name="Pyramid" type="Label" parent="Part2Desc"]
 layout_mode = 0
-offset_top = 58.0
-offset_right = 13.0
-offset_bottom = 86.0
+offset_left = 45.0
+offset_top = 427.0
+offset_right = 68.0
+offset_bottom = 455.0
 text = " X "
 label_settings = SubResource("LabelSettings_gjxwq")
 
 [node name="Sphere" type="Label" parent="Part2Desc"]
 layout_mode = 0
-offset_left = 23.0
-offset_top = 58.0
-offset_right = 46.0
-offset_bottom = 86.0
+offset_left = 68.0
+offset_top = 427.0
+offset_right = 91.0
+offset_bottom = 455.0
 text = " X "
 label_settings = SubResource("LabelSettings_j57k0")
 
 [node name="Cylinider" type="Label" parent="Part2Desc"]
 layout_mode = 0
-offset_left = 46.0
-offset_top = 58.0
-offset_right = 69.0
-offset_bottom = 86.0
+offset_left = 91.0
+offset_top = 427.0
+offset_right = 114.0
+offset_bottom = 455.0
 text = " X "
 label_settings = SubResource("LabelSettings_5ctf4")
 
 [node name="Cube" type="Label" parent="Part2Desc"]
 layout_mode = 0
-offset_left = 69.0
-offset_top = 58.0
-offset_right = 92.0
-offset_bottom = 86.0
+offset_left = 114.0
+offset_top = 427.0
+offset_right = 137.0
+offset_bottom = 455.0
 text = " X "
 label_settings = SubResource("LabelSettings_mwl5d")
 
@@ -1112,7 +1114,7 @@ layout_mode = 0
 offset_top = 300.0
 offset_right = 200.0
 offset_bottom = 323.0
-text = " Level: X"
+text = "Nivel Activo: X"
 
 [node name="Dmg" type="Label" parent="Part2Desc"]
 layout_mode = 0
@@ -1162,41 +1164,42 @@ layout_mode = 0
 offset_top = 25.0
 offset_right = 200.0
 offset_bottom = 60.0
-text = "Level: X"
+text = "Mejoras: X"
 label_settings = SubResource("LabelSettings_pb82a")
 
 [node name="Pyramid" type="Label" parent="Part3Desc"]
 layout_mode = 0
-offset_top = 58.0
-offset_right = 13.0
-offset_bottom = 86.0
+offset_left = 54.0
+offset_top = 427.0
+offset_right = 77.0
+offset_bottom = 455.0
 text = " X "
 label_settings = SubResource("LabelSettings_gjxwq")
 
 [node name="Sphere" type="Label" parent="Part3Desc"]
 layout_mode = 0
-offset_left = 23.0
-offset_top = 58.0
-offset_right = 46.0
-offset_bottom = 86.0
+offset_left = 77.0
+offset_top = 427.0
+offset_right = 100.0
+offset_bottom = 455.0
 text = " X "
 label_settings = SubResource("LabelSettings_j57k0")
 
 [node name="Cylinider" type="Label" parent="Part3Desc"]
 layout_mode = 0
-offset_left = 46.0
-offset_top = 58.0
-offset_right = 69.0
-offset_bottom = 86.0
+offset_left = 100.0
+offset_top = 427.0
+offset_right = 123.0
+offset_bottom = 455.0
 text = " X "
 label_settings = SubResource("LabelSettings_5ctf4")
 
 [node name="Cube" type="Label" parent="Part3Desc"]
 layout_mode = 0
-offset_left = 69.0
-offset_top = 58.0
-offset_right = 92.0
-offset_bottom = 86.0
+offset_left = 123.0
+offset_top = 427.0
+offset_right = 146.0
+offset_bottom = 455.0
 text = " X "
 label_settings = SubResource("LabelSettings_mwl5d")
 
@@ -1205,7 +1208,7 @@ layout_mode = 0
 offset_top = 300.0
 offset_right = 200.0
 offset_bottom = 323.0
-text = " Level: X"
+text = "Nivel Activo: X"
 
 [node name="Dmg" type="Label" parent="Part3Desc"]
 layout_mode = 0
