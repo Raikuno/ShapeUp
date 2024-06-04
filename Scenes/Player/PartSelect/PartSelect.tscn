@@ -155,22 +155,10 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Label:text")
+tracks/1/path = NodePath("Label:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["Select a SHAPE to UP!!"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Label:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -939,10 +927,10 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_left = -2.0
 offset_top = 55.0
-offset_right = -9.0
+offset_right = -4.0
 offset_bottom = 124.0
 grow_horizontal = 2
-text = "Select a SHAPE to UP!!"
+text = "¡Selecciona la parte que se mejorará!"
 label_settings = SubResource("LabelSettings_k86uq")
 horizontal_alignment = 1
 
