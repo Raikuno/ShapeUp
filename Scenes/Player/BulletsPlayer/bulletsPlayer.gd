@@ -74,6 +74,7 @@ func _physics_process(delta):
 			sphereLogic(delta)
 		CYLINDER:
 			cylinderLogic(delta)
+			
 		CUBE:
 			cubeLogic(delta)
 		PYRAMID:
@@ -123,10 +124,11 @@ func amebaLogic(delta):
 		global_transform.origin += Vector3(displacement.x, displacement.y + (height * delta), displacement.z)
 
 func cylinderLogic(delta):
+	rotation.x = 0
 	if !onFloor:
 		var direction = global_transform.basis.z.normalized()
-		var displacement : Vector3 = direction * -70 * delta
-		global_transform.origin += Vector3(displacement.x, displacement.y + (height * delta), displacement.z)
+		var displacement : Vector3 = direction * -60 * delta
+		global_transform.origin += Vector3(displacement.x, displacement.y + (height * delta * 2), displacement.z)
 	else:
 		$AnimationPlayer.play("cylinderBullet")
 		var direction = global_transform.basis.z.normalized()

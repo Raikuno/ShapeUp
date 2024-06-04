@@ -12,14 +12,12 @@ var enemy : PackedScene
 const MENU = "res://Scenes/Main/mainPPK.tscn"
 @onready var messageLabel = $Time/Messages
 
-var randomMessage = [
-	"Los enemigos están flexeando sus putísimos musculos 
- 	me encanta que los enemigos hagan pectorales", 
+var randomMessage = [ 
 	"Los enemigos están flexeando sus musculos ",
 	"Los enemigos se preparan para correr una maratón",
 	"Los cubos están afilando sus bordes",
 	"Las esferas están puliendose",
-	"Los cilindros aprendieron a no cagarse encima",
+	"Los cilindros aprendieron a ser útiles",
 	"Las pirámides están haciendo teorías cospiranoicas",
 	"Los enemigos están haciendo mewing",
 	"Supercalifragilisticoespialodoso...

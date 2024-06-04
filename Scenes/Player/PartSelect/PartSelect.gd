@@ -11,11 +11,43 @@ var mediumMultiplier = 1
 var highMultiplier = 1.25
 var reallyHighMultiplier = 1.5
 
+var partMultiplier = {
+	HEAD: {
+		"health" : highMultiplier,
+		"spd" : lowMultiplier,
+		"dmg" : mediumMultiplier,
+		"atkspd" : reallyHighMultiplier
+	},
+	RIGHT: {
+		"health" : mediumMultiplier,
+		"spd" : lowMultiplier,
+		"dmg" : highMultiplier,
+		"atkspd" : reallyHighMultiplier
+	},
+	LEFT: {
+		"health" : mediumMultiplier,
+		"spd" : lowMultiplier,
+		"dmg" : highMultiplier,
+		"atkspd" : reallyHighMultiplier
+	},
+	FEET: {
+		"health" : lowMultiplier,
+		"spd" : reallyHighMultiplier,
+		"dmg" : mediumMultiplier,
+		"atkspd" : highMultiplier
+	},
+	BODY: {
+		"health" : reallyHighMultiplier,
+		"spd" : highMultiplier,
+		"dmg" : lowMultiplier,
+		"atkspd" : mediumMultiplier
+	}
+}
+
 func _ready():
 	$Timer2.start()
 	$AnimationPlayer.speed_scale = 2
 	$AnimationPlayer2.speed_scale= 2
-	print("ASDASDASDASDASDASD")
 
 func initialize(newParts): #node, figure, part
 	part1 = newParts[0]
@@ -78,39 +110,38 @@ func showStats(nodePath:String, part):
 		SPHERE:
 			figureLevel.text = figureLevel.text.replace("X", str(part["level"]["sphere"]))
 			color = Color.SKY_BLUE
-			dmg.text = dmg.text.replace("X", str(part["figureStat"]["damage"]  + (BALANCEMODIFIER * part["figureStat"]["damage"] * part["level"]["sphere"])))
-			spd.text = spd.text.replace("X", str(part["figureStat"]["speed"]  + (BALANCEMODIFIER * part["figureStat"]["speed"] * part["level"]["sphere"])))
-			atkspd.text = atkspd.text.replace("X", str(part["figureStat"]["atqspd"] + (BALANCEMODIFIER * part["figureStat"]["atqspd"] * part["level"]["sphere"])))
-			health.text = health.text.replace("X", str(part["figureStat"]["health"] + (BALANCEMODIFIER * part["figureStat"]["health"] * part["level"]["sphere"])))
+			dmg.text = dmg.text.replace("X", str((part["figureStat"]["damage"]  + (BALANCEMODIFIER * part["figureStat"]["damage"] * part["level"]["sphere"])) * partMultiplier[part["identity"]]["dmg"]))
+			spd.text = spd.text.replace("X", str((part["figureStat"]["speed"]  + (BALANCEMODIFIER * part["figureStat"]["speed"] * part["level"]["sphere"])) * partMultiplier[part["identity"]]["spd"]))
+			atkspd.text = atkspd.text.replace("X", str((part["figureStat"]["atqspd"] + (BALANCEMODIFIER * part["figureStat"]["atqspd"] * part["level"]["sphere"])) * partMultiplier[part["identity"]]["atkspd"]))
+			health.text = health.text.replace("X", str((part["figureStat"]["health"] + (BALANCEMODIFIER * part["figureStat"]["health"] * part["level"]["sphere"])) * partMultiplier[part["identity"]]["health"]))
 		PYRAMID:
 			figureLevel.text = figureLevel.text.replace("X", str(part["level"]["pyramid"]))
 			color = Color.YELLOW
-			dmg.text = dmg.text.replace("X", str(part["figureStat"]["damage"]  + (BALANCEMODIFIER * part["figureStat"]["damage"] * part["level"]["pyramid"])))
-			spd.text = spd.text.replace("X", str(part["figureStat"]["speed"]  + (BALANCEMODIFIER * part["figureStat"]["speed"] * part["level"]["pyramid"])))
-			atkspd.text = atkspd.text.replace("X", str(part["figureStat"]["atqspd"] + (BALANCEMODIFIER * part["figureStat"]["atqspd"] * part["level"]["pyramid"])))
-			health.text = health.text.replace("X", str(part["figureStat"]["health"] + (BALANCEMODIFIER * part["figureStat"]["health"] * part["level"]["pyramid"])))
+			dmg.text = dmg.text.replace("X", str((part["figureStat"]["damage"]  + (BALANCEMODIFIER * part["figureStat"]["damage"] * part["level"]["pyramid"])) * partMultiplier[part["identity"]]["dmg"]))
+			spd.text = spd.text.replace("X", str((part["figureStat"]["speed"]  + (BALANCEMODIFIER * part["figureStat"]["speed"] * part["level"]["pyramid"])) * partMultiplier[part["identity"]]["spd"]))
+			atkspd.text = atkspd.text.replace("X", str((part["figureStat"]["atqspd"] + (BALANCEMODIFIER * part["figureStat"]["atqspd"] * part["level"]["pyramid"])) * partMultiplier[part["identity"]]["atkspd"]))
+			health.text = health.text.replace("X", str((part["figureStat"]["health"] + (BALANCEMODIFIER * part["figureStat"]["health"] * part["level"]["pyramid"])) * partMultiplier[part["identity"]]["health"]))
 		CUBE:
 			figureLevel.text = figureLevel.text.replace("X", str(part["level"]["cube"]))
 			color = Color.RED
-			dmg.text = dmg.text.replace("X", str(part["figureStat"]["damage"]  + (BALANCEMODIFIER * part["figureStat"]["damage"] * part["level"]["cube"])))
-			spd.text = spd.text.replace("X", str(part["figureStat"]["speed"]  + (BALANCEMODIFIER * part["figureStat"]["speed"] * part["level"]["cube"])))
-			atkspd.text = atkspd.text.replace("X", str(part["figureStat"]["atqspd"] + (BALANCEMODIFIER * part["figureStat"]["atqspd"] * part["level"]["cube"])))
-			health.text = health.text.replace("X", str(part["figureStat"]["health"] + (BALANCEMODIFIER * part["figureStat"]["health"] * part["level"]["cube"])))
+			dmg.text = dmg.text.replace("X", str((part["figureStat"]["damage"]  + (BALANCEMODIFIER * part["figureStat"]["damage"] * part["level"]["cube"]))* partMultiplier[part["identity"]]["dmg"]))
+			spd.text = spd.text.replace("X", str((part["figureStat"]["speed"]  + (BALANCEMODIFIER * part["figureStat"]["speed"] * part["level"]["cube"]))* partMultiplier[part["identity"]]["spd"]))
+			atkspd.text = atkspd.text.replace("X", str((part["figureStat"]["atqspd"] + (BALANCEMODIFIER * part["figureStat"]["atqspd"] * part["level"]["cube"]))* partMultiplier[part["identity"]]["atkspd"]))
+			health.text = health.text.replace("X", str((part["figureStat"]["health"] + (BALANCEMODIFIER * part["figureStat"]["health"] * part["level"]["cube"]))* partMultiplier[part["identity"]]["health"]))
 		CYLINDER:
 			figureLevel.text = figureLevel.text.replace("X", str(part["level"]["cylinder"]))
 			color = Color.WEB_GREEN
-			dmg.text = dmg.text.replace("X", str(part["figureStat"]["damage"]  + (BALANCEMODIFIER * part["figureStat"]["damage"] * part["level"]["cylinder"])))
-			spd.text = spd.text.replace("X", str(part["figureStat"]["speed"]  + (BALANCEMODIFIER * part["figureStat"]["speed"] * part["level"]["cylinder"])))
-			atkspd.text = atkspd.text.replace("X", str(part["figureStat"]["atqspd"] + (BALANCEMODIFIER * part["figureStat"]["atqspd"] * part["level"]["cylinder"])))
-			health.text = health.text.replace("X", str(part["figureStat"]["health"] + (BALANCEMODIFIER * part["figureStat"]["health"] * part["level"]["cylinder"])))
+			dmg.text = dmg.text.replace("X", str((part["figureStat"]["damage"]  + (BALANCEMODIFIER * part["figureStat"]["damage"] * part["level"]["cylinder"]))* partMultiplier[part["identity"]]["dmg"]))
+			spd.text = spd.text.replace("X", str((part["figureStat"]["speed"]  + (BALANCEMODIFIER * part["figureStat"]["speed"] * part["level"]["cylinder"]))* partMultiplier[part["identity"]]["spd"]))
+			atkspd.text = atkspd.text.replace("X", str((part["figureStat"]["atqspd"] + (BALANCEMODIFIER * part["figureStat"]["atqspd"] * part["level"]["cylinder"]))* partMultiplier[part["identity"]]["atkspd"]))
+			health.text = health.text.replace("X", str((part["figureStat"]["health"] + (BALANCEMODIFIER * part["figureStat"]["health"] * part["level"]["cylinder"]))* partMultiplier[part["identity"]]["health"]))
 		AMEBA:
 			figureLevel.text = figureLevel.text.replace("X", str(part["level"]["part"]))
 			color = Color.SADDLE_BROWN
-			dmg.text = dmg.text.replace("X", str(part["figureStat"]["damage"]  + (BALANCEMODIFIER * part["figureStat"]["damage"] * part["level"]["part"])))
-			spd.text = spd.text.replace("X", str(part["figureStat"]["speed"]  + (BALANCEMODIFIER * part["figureStat"]["speed"] * part["level"]["part"])))
-			atkspd.text = atkspd.text.replace("X", str(part["figureStat"]["atqspd"] + (BALANCEMODIFIER * part["figureStat"]["atqspd"] * part["level"]["part"])))
-			health.text = health.text.replace("X", str(part["figureStat"]["health"] + (BALANCEMODIFIER * part["figureStat"]["health"] * part["level"]["part"])))
-			
+			dmg.text = dmg.text.replace("X", str((part["figureStat"]["damage"]  + (BALANCEMODIFIER * part["figureStat"]["damage"] * part["level"]["part"]))* partMultiplier[part["identity"]]["dmg"]))
+			spd.text = spd.text.replace("X", str((part["figureStat"]["speed"]  + (BALANCEMODIFIER * part["figureStat"]["speed"] * part["level"]["part"]))* partMultiplier[part["identity"]]["spd"]))
+			atkspd.text = atkspd.text.replace("X", str((part["figureStat"]["atqspd"] + (BALANCEMODIFIER * part["figureStat"]["atqspd"] * part["level"]["part"]))* partMultiplier[part["identity"]]["atkspd"]))
+			health.text = health.text.replace("X", str((part["figureStat"]["health"] + (BALANCEMODIFIER * part["figureStat"]["health"] * part["level"]["part"]))* partMultiplier[part["identity"]]["health"]))
 	figureLevel.add_theme_color_override("font_color", color)
 	dmg.add_theme_color_override("font_color", color)
 	spd.add_theme_color_override("font_color", color)

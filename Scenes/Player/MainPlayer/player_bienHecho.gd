@@ -394,8 +394,6 @@ func _on_invisible_timeout():
 	
 func _physics_process(delta):
 	if alive:
-		if Input.is_action_just_pressed("debug"): #Poner esto a null explota, prefiero llamarlo desde el método correspondiente
-			selectPart()
 		feetLogic(delta)
 		aimingLogic(delta)
 		attackLogic(delta)
@@ -670,6 +668,7 @@ func feetLogic(delta):
 	if animation !=null:
 		$feet_animation.play(animation)
 func aimingLogic(delta):
+	const  allowedYModification = [CUBE, AMEBA]
 	if rotation.y != 0:
 		rotation.y = 0
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -684,6 +683,10 @@ func aimingLogic(delta):
 		bulletDirection = pos
 		right["resource"].look_at(Vector3(pos.x, right["resource"].position.y, pos.z), Vector3.UP)
 		left["resource"].look_at(Vector3(pos.x, left["resource"].position.y, pos.z), Vector3.UP)
+		if not right["figure"] in allowedYModification:
+			right["resource"].rotation.x = 0
+		if not left["figure"] in allowedYModification:
+			left["resource"].rotation.x = 0
 		$pivot.look_at(Vector3(pos.x, position.y, pos.z), Vector3.UP)
 func attackLogic(delta):
 	match right["figure"]:
@@ -749,6 +752,7 @@ func fire(part):
 	biggerWeapons = iNeedMoreBulletss.instantiate()
 	biggerWeapons.initialize(part["figure"], damage * variableDamage, bulletDirection, scaleIndex,part["resource"].global_position, part["resource"].global_rotation)
 	add_sibling(biggerWeapons)
+	$bulletsSound.stream = bulletSound
 	$bulletsSound.play()
 
 #Función que será llamada cada vez que finalice la animación de recarga. Esta animación y su velocidad determinarán la velocidad de ataque
