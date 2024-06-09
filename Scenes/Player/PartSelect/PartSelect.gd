@@ -176,7 +176,7 @@ func part3Selected():
 		$AudioStreamPlayer.play()
 		$AnimationPlayer2.play("moveContainer3")
 		$AnimationPlayer.play("RESET")
-		$AnimationPlayer.play("vanish")
+		$Label.hide()
 		$part3Container/button.queue_free()
 		$Part1Desc.queue_free()
 		$Part2Desc.queue_free()

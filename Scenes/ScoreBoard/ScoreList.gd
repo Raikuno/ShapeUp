@@ -19,7 +19,7 @@ func _ready():
 		giveListValue()
 		
 	else:
-		$TextureRect/Score.text = "Can't connect to the database"
+		$TextureRect/Score.text = "No se puede conectar al servidor"
 
 func giveListValue():
 	var position = 1
@@ -29,10 +29,10 @@ func giveListValue():
 		position +=1
 
 func setInfo():
-	$TextureRect/Score.text = "Score: " + str(playerScore)
-	$TextureRect/Name.text = "Name: " + playerName
-	$TextureRect/Time.text = "Time: " + playerTime
-	$TextureRect/Kills.text = "Kills: " + str(playerKills)
+	$TextureRect/Score.text = "Puntuación: " + str(playerScore)
+	$TextureRect/Name.text = "Nombre: " + playerName
+	$TextureRect/Time.text = "Tiempo: " + playerTime
+	$TextureRect/Kills.text = "Bajas: " + str(playerKills)
 	$TextureRect/Time.show()
 	$TextureRect/Kills.show()
 	$TextureRect/SubViewportContainer/SubViewport/playerPreview.resetVisibility()

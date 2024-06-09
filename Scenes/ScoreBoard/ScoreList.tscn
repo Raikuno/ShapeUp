@@ -62,13 +62,13 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.0720486
 anchor_top = -0.223765
-anchor_right = 0.0138889
+anchor_right = 0.180556
 anchor_bottom = -0.223765
 offset_left = 714.0
 offset_top = 209.0
 offset_right = 1082.0
 offset_bottom = 278.0
-text = "Select a player to see their score"
+text = "Selecciona un jugador "
 label_settings = SubResource("LabelSettings_r4vwx")
 metadata/_edit_use_anchors_ = true
 
@@ -95,7 +95,7 @@ offset_left = 918.0
 offset_top = 557.0
 offset_right = 1096.0
 offset_bottom = 624.0
-text = "Go to Menu"
+text = "Salir al menú"
 metadata/_edit_use_anchors_ = true
 
 [node name="Placement" type="Label" parent="TextureRect"]
@@ -136,9 +136,9 @@ label_settings = SubResource("LabelSettings_xjapk")
 [node name="Kills" type="Label" parent="TextureRect"]
 visible = false
 layout_mode = 0
-offset_left = 794.0
+offset_left = 858.0
 offset_top = 31.0
-offset_right = 905.0
+offset_right = 969.0
 offset_bottom = 66.0
 text = "Kills: X"
 label_settings = SubResource("LabelSettings_xjapk")
