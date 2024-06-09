@@ -21,7 +21,7 @@ var randomMessage = [
 	"Las esferas se están puliendo",
 	"Las esferas ruedan con desesperación",
 	"Los cilindros cilindrean su cilindrada cilíndrica",
-	"Los cilindros aprendieron a no cagarse encima",
+	"Los cilindros aprendieron a ser útiles",
 	"Las peakamides se cuestionan porqué son tan buenas",
 	"Las pirámides están haciendo teorías cospiranoicas",
 	"Los enemigos están haciendo mewing",

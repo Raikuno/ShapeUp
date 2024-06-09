@@ -5,7 +5,8 @@ const MAIN = "res://Scenes/Main/main.tscn"
 const TUTORIAL = "res://Scenes/Tutorial/tutorial.tscn"
 const SCOREBOARD = "res://Scenes/ScoreBoard/ScoreList.tscn"
 func _ready():
-	$Menu/VolumeNum.text ="Volume: " + str(RoomManager.globalVolume+100)
+	CheckBox
+	$Menu/VolumeNum.text ="Volumen: " + str(RoomManager.globalVolume+30)
 	$Menu/HSlider.value = RoomManager.globalVolume
 	for vector3 in arrayVectores:
 		var enemyRandom = randi_range(1,4) #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
@@ -51,5 +52,9 @@ func scoreboard():
 func volumeChanged(value_changed):
 	var master_bus = AudioServer.get_bus_index("Master")
 	RoomManager.globalVolume = value_changed
-	$Menu/VolumeNum.text ="Volume: " + str(RoomManager.globalVolume + 100)
+	$Menu/VolumeNum.text ="Volumen: " + str(RoomManager.globalVolume+30)
 	AudioServer.set_bus_volume_db(master_bus, value_changed)
+
+
+func _on_music_disable_toggled(toggled_on):
+	Score.disableMusic = toggled_on
