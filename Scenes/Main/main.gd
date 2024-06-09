@@ -13,13 +13,16 @@ const MENU = "res://Scenes/Main/mainPPK.tscn"
 @onready var messageLabel = $Time/Messages
 
 var randomMessage = [
-	"Los enemigos están flexeando sus putísimos musculos 
- 	me encanta que los enemigos hagan pectorales", 
-	"Los enemigos están flexeando sus musculos ",
+	"Los enemigos están desarrollando visión nocturna", 
+	"Los enemigos están flexeando sus músculos",
 	"Los enemigos se preparan para correr una maratón",
 	"Los cubos están afilando sus bordes",
-	"Las esferas están puliendose",
+	"Los cubos sienten envidia de los cubos de rubik",
+	"Las esferas se están puliendo",
+	"Las esferas ruedan con desesperación",
+	"Los cilindros cilindrean su cilindrada cilíndrica",
 	"Los cilindros aprendieron a no cagarse encima",
+	"Las peakamides se cuestionan porqué son tan buenas",
 	"Las pirámides están haciendo teorías cospiranoicas",
 	"Los enemigos están haciendo mewing",
 	"Supercalifragilisticoespialodoso...

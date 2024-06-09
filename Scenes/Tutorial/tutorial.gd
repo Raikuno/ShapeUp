@@ -26,14 +26,15 @@ var explanationTexts = [
 	"Este es el contador de bajas,
 	aquí se registrarán los enemigos que derrotes.",
 	"Este es el tiempo de juego, 
-	¡intenta conseguir el máximo posible antes de perder!",
+	¡intenta conseguir el máximo posible antes de quedarte sin salud!",
 	"El tiempo de juego y las bajas que obtengas al terminar el juego
 	será tu puntuación final, 
 	¡intenta llegar a la cima de la clasificación mundial!", #9
 	"Ahora veamos el movimiento, con WASD o las flechas direccionales podrás moverte,
 	usa el ratón para que el personaje mire en esa dirección,
 	verás que ataca automaticamente.",
-	"¡Apareció un enemigo! Apunta bien y acaba con él!",
+	"¡Apareció un enemigo, Apunta bien y acaba con él!
+	La bala siguen el ratón, si lo alejas verás que llegan lejos",
 	"Los enemigos sueltan experiencia, hay 4 tipos de enemigos
 	caracterizados por una forma y un color concreto,
 	este enemigo soltó la experiencia del 'cubo', intenta cogerla ",
@@ -43,14 +44,16 @@ var explanationTexts = [
 	cabeza, cuerpo, brazo izquierdo, brazo derecho y piernas.",
 	"Cada parte del cuerpo puede subir de nivel de manera independiente del resto.
 	Al inicio del juego y cada vez que subamos un nivel nos aparecerá un menú 
-	mostrando 3 partes aleatorias, ¡elige la que te apetezca!",
+	mostrando 3 partes aleatorias, podrás ver las estadísticas y niveles de 
+	cada parte del cuerpo. ¡elige la que te apetezca!",
 	"Bien! ahora estás mejorando la parte del cuerpo seleccionada', 
 	¡cojamos algo de experiencia!",
 	"¡Bien hecho!",
-	"Bien! veamos ahora las barras de experiencia.",
+	"Veamos ahora las barras de experiencia.",
 	"Estas son las barras de la mejora actual, 
 	necesitarás llenar de experiencia cualquiera de las 5 barras, 
-	cuando lo hagas mejorarás esa parte del cuerpo a esa figura. ",
+	cuando lo hagas mejorarás esa parte del cuerpo a la figura 
+	correspondiente al color de la barra llenada",
 	"Cada barra se llenará de su color, 
 	la barra grande se llenará de todos los colores, 
 	si esta es la barra que llenas primero obtendrás una 'mejora' al estado ameba.",
@@ -65,7 +68,7 @@ var explanationTexts = [
 	y son independientes en cada parte del cuerpo.",
 	"Por tanto, cuanta más experiencia obtengas, 
 	más nivel tendrás y más fuerte será tu personaje, 
-	pero si eres muy avaricioso te mantendrás en estado ameba y caerás con facilidad.",
+	Pero si eres muy avaricioso te mantendrás en estado ameba y caerás con facilidad.",
 	"Cada figura tiene sus fortalezas y debilidades, 
 	intenta encontrar tu forma favorita de jugar
 	y no te olvides de lo más importante, pasarlo bien :D.",
