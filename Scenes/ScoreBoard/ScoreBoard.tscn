@@ -130,6 +130,7 @@ text = "Subir Puntuación"
 metadata/_edit_use_anchors_ = true
 
 [node name="Placement" type="Label" parent="TextureRect"]
+visible = false
 layout_mode = 0
 offset_left = 631.0
 offset_top = 314.0
