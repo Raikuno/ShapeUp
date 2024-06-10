@@ -58,3 +58,12 @@ func volumeChanged(value_changed):
 
 func _on_music_disable_toggled(toggled_on):
 	Score.disableMusic = toggled_on
+
+
+func credits_pressed():
+	$AnimationPlayer.play("credits_show")
+
+
+
+func back_credits():
+	$AnimationPlayer.play_backwards("credits_show")
