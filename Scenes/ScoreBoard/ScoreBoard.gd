@@ -12,7 +12,7 @@ func _ready():
 	scores = (await FirebaseLite.RealtimeDatabase.read("/"))
 	print(scores)
 	if scores[0] != 0:
-		$TextureRect/Placement.text = "Couldn't calculate your \n global position"
+		$TextureRect/Placement.text = "No se puede calcular tu \n posición global"
 	else: 
 		if scores[1]!=null:
 			sortedScores = Score.orderScores(scores[1])
@@ -20,8 +20,8 @@ func _ready():
 		else: 
 			placement = 1
 		$TextureRect/Placement.text = $TextureRect/Placement.text.replace("X", str(placement))
-	$TextureRect/Kills.text = "Figures executed: " + str(Score.kills)
-	$TextureRect/Time.text = "Time Survived: " + str(Score.time)
+	$TextureRect/Kills.text = "Bajas: " + str(Score.kills)
+	$TextureRect/Time.text = "Tiempo: " + str(Score.time)
 	$TextureRect/ScoreNum.text = str(Score.score)
 	$TextureRect/SubViewportContainer/SubViewport/playerPreview.changeVisibility(Score.character)
 	$TextureRect/Placement.show()
@@ -41,18 +41,18 @@ func upload():
 			a = await FirebaseLite.RealtimeDatabase.write(asignedID, {"name" : $TextureRect/NameInput.text, "score": Score.score, "kills":Score.kills, "time":Score.time, "character":Score.characterToString()})
 			if a[0] != 0:
 				$notification.title = "Ups!"
-				$notification.dialog_text = "There was an error uploading your score. Check your conection"
+				$notification.dialog_text = "A ocurrido un error. Revisa tu conexión"
 				$notification.show()
 			else:
-				$notification.title = "Done!"
-				$notification.dialog_text = "Your score have been uploaded successfully!"
+				$notification.title = "Hecho!"
+				$notification.dialog_text = "Tu puntuación se ha subid con éxito!"
 				$notification.show()
 				idiotPrevention = true
 		elif !$TextureRect/NameInput.text == "" && len($TextureRect/NameInput.text) > MAXCHAR:
-			$warning.dialog_text = "Your name cant have more than" + str(MAXCHAR) +" characters!"
+			$warning.dialog_text = "Tu nombre no puede tener más de" + str(MAXCHAR) +" carácteres!"
 			$warning.show()
 		else:
-			$warning.dialog_text = "You cant submit your score without a name!"
+			$warning.dialog_text = "Necesitas un nombre para subir tu puntuación!"
 			$warning.show()
 
 func back():

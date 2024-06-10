@@ -930,7 +930,7 @@ offset_top = 55.0
 offset_right = -4.0
 offset_bottom = 124.0
 grow_horizontal = 2
-text = "¡Selecciona la parte que se mejorará!"
+text = "¡Selecciona la pieza a mejorar!"
 label_settings = SubResource("LabelSettings_k86uq")
 horizontal_alignment = 1
 
