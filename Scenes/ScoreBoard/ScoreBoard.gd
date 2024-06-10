@@ -24,6 +24,7 @@ func _ready():
 	$TextureRect/Time.text = "Tiempo: " + str(Score.time)
 	$TextureRect/ScoreNum.text = str(Score.score)
 	$TextureRect/SubViewportContainer/SubViewport/playerPreview.changeVisibility(Score.character)
+	$TextureRect/Score.show()
 	$TextureRect/Placement.show()
 func calculatePosition():
 	for entry in sortedScores:
