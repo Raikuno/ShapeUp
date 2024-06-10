@@ -10,6 +10,8 @@ var playerName
 var playerTime
 var playerKills
 func _ready():
+	$TextureRect/Score.text = tr("SCORELIST")
+	$TextureRect/Back.text = tr("SCORELIST_EXIT")
 	FirebaseLite.initializeFirebase(["Authentication", "Realtime Database"])
 	FirebaseLite.Authentication.initializeAuth(1)
 	scores = await FirebaseLite.RealtimeDatabase.read("/")
@@ -19,7 +21,7 @@ func _ready():
 		giveListValue()
 		
 	else:
-		$TextureRect/Score.text = "No se puede conectar al servidor"
+		$TextureRect/Score.text = tr("POSTION_ERROR")
 
 func giveListValue():
 	var position = 1
@@ -29,10 +31,10 @@ func giveListValue():
 		position +=1
 
 func setInfo():
-	$TextureRect/Score.text = "Puntuación: " + str(playerScore)
-	$TextureRect/Name.text = "Nombre: " + playerName
-	$TextureRect/Time.text = "Tiempo: " + playerTime
-	$TextureRect/Kills.text = "Bajas: " + str(playerKills)
+	$TextureRect/Score.text = tr("SCORE") + " " +str(playerScore)
+	$TextureRect/Name.text = tr("NAME") + " " + playerName
+	$TextureRect/Time.text = tr("TIME") + " " + playerTime
+	$TextureRect/Kills.text = tr("KILLS") + " " + str(playerKills)
 	$TextureRect/Time.show()
 	$TextureRect/Kills.show()
 	$TextureRect/SubViewportContainer/SubViewport/playerPreview.resetVisibility()

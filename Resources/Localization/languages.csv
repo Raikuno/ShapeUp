@@ -1,0 +1,36 @@
+key,en,es
+START,Start,Comenzar
+CLAS,Scoreboard,Clasificacion
+EXIT,Exit,Salir
+CREDITS_BUTTON,Credits,Creditos
+VOLUMEN,Volume,Volumen
+TUTORIAL_BUTTON,How to play,Como jugar
+CREDITS,Game made by: ,Proyecto realizado por:
+CREDITS2,Project made for the CFPS DAM ,Proyecto realizado como trabajo de fin de grado del Curso de Formacion Superior de Desarrollo de Aplicaciones Multiplataforma
+SCORELIST,Select a player,Selecciona un jugador
+SCORELIST_TIME,Time:,Tiempo:
+SCORELIST_KILLS,Kills:,Bajas:
+SCORELIST_EXIT,Exit to menu,Salir al menu
+HEAD,Head,Cabeza
+BODY,Body,Cuerpo
+LEFT,Left Arm,Brazo Izquierdo
+RIGHT,Right Arm,Brazo Derecho
+FEET,Legs,Piernas
+UPGRADES,Upgrades:,Mejoras:
+LEVEL,Active Level:,Nivel Activo:
+SHAPEUP,Select a SHAPE to UP!,¡Selecciona la pieza a mejorar!
+SCORE,Score:,Puntuación:
+POSITION,You are the {position}th best player in the world!,Eres el {position}º mejor jugador del mundo!
+NAME,Name,Nombre
+UPLOAD,Upload Score,Subir Puntuación
+WARNING_NAME_TITLE,Wait!,Un momento!
+WARNING_NAME,You can’t upload your score without a name!,¡Necesitas un nombre para subir tu puntuacion!
+WARNING_EXIT_TITLE,Are you sure?,¡Espera!
+WARNING_EXIT,Are you sure you want to leave without saving your score?,¿Seguro que quieres salir sin guardar la puntuacion?
+YES,Yes,Si
+SCORE_UPLOAD_TITLE,Done!,Hecho!
+SCORE_UPLOAD,Your score have been uploaded!,¡Se ha subido tu puntuación!
+SCORE_ERROR,There was an error. Check your connection,Ha ocurrido un error. Revisa tu conexión
+SCORE_ERROR_TITLE,Ups!,Ups!
+NAME_ERROR,Your name can’t have more than {characters} characters,Tu nombre no puede tener más de {characters} caracteres
+POSITION_ERROR,Connection error,Error de conexión

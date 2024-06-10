@@ -9,15 +9,15 @@ font_size = 30
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8428s"]
-font_size = 40
+font_size = 35
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ji6nb"]
-font_size = 40
+font_size = 30
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_n7wtg"]
-font_size = 30
+font_size = 50
 font_color = Color(0, 0, 0, 1)
 
 [node name="ScoreBoard" type="Node"]
@@ -132,9 +132,9 @@ metadata/_edit_use_anchors_ = true
 visible = false
 layout_mode = 0
 offset_left = 631.0
-offset_top = 314.0
+offset_top = 362.0
 offset_right = 1111.0
-offset_bottom = 511.0
+offset_bottom = 559.0
 text = "Eres el Xº
 mejor jugador del mundo!"
 label_settings = SubResource("LabelSettings_ji6nb")
@@ -142,15 +142,16 @@ label_settings = SubResource("LabelSettings_ji6nb")
 [node name="ScoreNum" type="Label" parent="TextureRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.730708
-anchor_top = 0.291309
-anchor_right = 1.04808
-anchor_bottom = 0.356222
+anchor_left = 0.547549
+anchor_top = 0.383901
+anchor_right = 0.949993
+anchor_bottom = 0.496654
 offset_left = 0.223938
 offset_top = 0.231995
 offset_right = -0.39209
 offset_bottom = 0.167999
 label_settings = SubResource("LabelSettings_n7wtg")
+horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="warning" type="AcceptDialog" parent="."]
@@ -161,7 +162,7 @@ dialog_text = "No puedes subir una puntuación sin nombre!"
 [node name="IdiotPrevention" type="ConfirmationDialog" parent="."]
 title = "Espera!"
 initial_position = 4
-ok_button_text = "Sí"
+ok_button_text = "Ok"
 dialog_text = "Seguro que quieres salir sin guardar la puntuación?"
 cancel_button_text = "No"
 
