@@ -5,8 +5,8 @@ const MAIN = "res://Scenes/Main/main.tscn"
 const TUTORIAL = "res://Scenes/Tutorial/tutorial.tscn"
 const SCOREBOARD = "res://Scenes/ScoreBoard/ScoreList.tscn"
 func _ready():
-	CheckBox
-	$Menu/VolumeNum.text ="Volumen: " + str(RoomManager.globalVolume+30)
+	setTexts()
+	$Menu/VolumeNum.text =tr("VOLUMEN") + ": " + str(RoomManager.globalVolume+30)
 	$Menu/HSlider.value = RoomManager.globalVolume
 	for vector3 in arrayVectores:
 		var enemyRandom = randi_range(1,4) #1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
@@ -29,6 +29,15 @@ func _input(event):
 	if Input.is_action_just_pressed("pause"):
 		get_tree().quit()
 
+func setTexts():
+	$Menu/Start.text = tr("START")
+	$Menu/Exit.text = tr("EXIT")
+	$Menu/ScoreBoard.text = tr("CLAS")
+	$Menu/Tutorial.text = tr("TUTORIAL_BUTTON")
+	$Menu/Credits.text = tr("CREDITS_BUTTON")
+	$Menu/VolumeNum.text = tr("VOLUMEN") + ": " + str(RoomManager.globalVolume+30)
+	$Menu/credits.text = tr("CREDITS") + "\nRaikuno (Jorge Rojas)\nPPKRex (Jose Carlos Pérez)"
+	$Menu/credits2.text = tr("CREDITS2")
 
 func _on_start_pressed():
 	var needsReset = get_tree().get_nodes_in_group("needsReset")
@@ -52,9 +61,29 @@ func scoreboard():
 func volumeChanged(value_changed):
 	var master_bus = AudioServer.get_bus_index("Master")
 	RoomManager.globalVolume = value_changed
-	$Menu/VolumeNum.text ="Volumen: " + str(RoomManager.globalVolume+30)
+	$Menu/VolumeNum.text =tr("VOLUMEN") + ": " + str(RoomManager.globalVolume+30)
 	AudioServer.set_bus_volume_db(master_bus, value_changed)
 
 
 func _on_music_disable_toggled(toggled_on):
 	Score.disableMusic = toggled_on
+
+
+func credits_pressed():
+	$AnimationPlayer.play("credits_show")
+
+
+
+func back_credits():
+	$AnimationPlayer.play_backwards("credits_show")
+
+
+func spanish():
+	Score.setLanguageSpanish()
+	setTexts()
+
+
+
+func english():
+	Score.setLanguageEnglish()
+	setTexts()

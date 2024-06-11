@@ -88,6 +88,10 @@ debug={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Resources/Localization/languages.en.translation", "res://Resources/Localization/languages.es.translation")
+
 [layer_names]
 
 3d_physics/layer_1="player"

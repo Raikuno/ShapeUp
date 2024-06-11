@@ -32,6 +32,7 @@ func characterToString():
 	return tempDict
 
 func _ready() -> void:
+	TranslationServer.set_locale("en")
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
 	
@@ -87,3 +88,9 @@ func customComparison(a, b):
 			return a["kills"]>b["kills"]
 	else:
 		return a["score"] > b["score"]
+
+func setLanguageEnglish():
+	TranslationServer.set_locale("en")
+
+func setLanguageSpanish():
+	TranslationServer.set_locale("es")

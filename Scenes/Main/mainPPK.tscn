@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnv4cf83pndpr"]
+[gd_scene load_steps=16 format=3 uid="uid://bnv4cf83pndpr"]
 
 [ext_resource type="Script" path="res://Scenes/Main/mainPPK.gd" id="1_ykc7c"]
 [ext_resource type="PackedScene" uid="uid://0cg5kuus6aon" path="res://Objets/tree.tscn" id="2_8ppjq"]
 [ext_resource type="PackedScene" uid="uid://dcgthd8xx1r5n" path="res://Objets/rock.tscn" id="3_43xk6"]
 [ext_resource type="PackedScene" uid="uid://dakevsqwteftq" path="res://Resources/Obstacles/nube.glb" id="4_euwge"]
 [ext_resource type="PackedScene" uid="uid://epp8ep3svpij" path="res://Objets/fence.tscn" id="6_82sr5"]
+[ext_resource type="Texture2D" uid="uid://clbis0qjmxvxb" path="res://Resources/Sprites and others/spanish.png" id="6_vjjav"]
+[ext_resource type="Texture2D" uid="uid://cesigym8gpyrr" path="res://Resources/Sprites and others/UK.png" id="7_1dsjt"]
 [ext_resource type="PackedScene" uid="uid://bdm0cur8gw70l" path="res://Scenes/Player/player.tscn" id="10_4hobi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wt6aa"]
@@ -17,6 +19,335 @@ size = Vector3(1000, 2, 700)
 top_radius = 66.337
 bottom_radius = 11.391
 height = 27.742
+
+[sub_resource type="LabelSettings" id="LabelSettings_ksrmh"]
+font_size = 38
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_adwkc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu/Name:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(430, 86)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Menu/Start:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(428, 230)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menu/ScoreBoard:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(428, 330)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Menu/Exit:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(428, 433)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Menu/Credits:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13, 18)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Menu/Tutorial:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(930, 18)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Menu/VolumeNum:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(927, 531)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Menu/HSlider:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(933, 559)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Menu/credits2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1233, 559)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Menu/credits:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1452, 174)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Menu/Button:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1174, 18)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Menu/spanish:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(933, 575)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Menu/english:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(981, 575)]
+}
+
+[sub_resource type="Animation" id="Animation_gmyxf"]
+resource_name = "credits_show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menu/Name:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(430, 86), Vector2(-729, 68)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Menu/Start:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(428, 230), Vector2(-731, 212)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menu/ScoreBoard:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(428, 330), Vector2(-731, 312)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Menu/Exit:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(428, 433), Vector2(-731, 415)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Menu/Credits:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(13, 18), Vector2(-662, 18)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Menu/Tutorial:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(930, 18), Vector2(-229, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Menu/VolumeNum:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(927, 531), Vector2(-232, 513)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Menu/HSlider:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(933, 559), Vector2(-226, 541)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Menu/credits2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1174, 588), Vector2(90, 526)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Menu/credits:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1180, 193), Vector2(345, 50)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Menu/Button:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1174, 18), Vector2(39, 29)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Menu/spanish:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(933, 575), Vector2(-226, 575)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Menu/english:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(981, 575), Vector2(-178, 575)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v2lcn"]
+_data = {
+"RESET": SubResource("Animation_adwkc"),
+"credits_show": SubResource("Animation_gmyxf")
+}
 
 [node name="main2" type="Node"]
 script = ExtResource("1_ykc7c")
@@ -192,8 +523,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -148.0
 offset_top = -94.0
-offset_right = 172.0
-offset_bottom = -19.0
+offset_right = 171.997
+offset_bottom = -18.9991
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 48
@@ -208,7 +539,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -148.0
 offset_top = 109.0
-offset_right = 172.0
+offset_right = 171.997
 offset_bottom = 184.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -224,7 +555,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -148.0
 offset_top = 6.0
-offset_right = 172.0
+offset_right = 171.997
 offset_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -238,7 +569,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -222.0
 offset_top = 18.0
-offset_right = -20.0
+offset_right = -19.9998
 offset_bottom = 68.0
 grow_horizontal = 0
 theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0.760784, 1)
@@ -255,7 +586,7 @@ offset_top = -30.0
 offset_right = 96.0
 offset_bottom = -7.0
 grow_vertical = 0
-text = "Estable 1.1"
+text = "Stable 1.2"
 
 [node name="HSlider" type="HSlider" parent="Menu"]
 layout_mode = 0
@@ -274,6 +605,81 @@ offset_top = 531.0
 offset_right = 1033.0
 offset_bottom = 554.0
 text = "Volumen: 30"
+
+[node name="Credits" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.011
+anchor_top = 0.028
+anchor_right = 0.187
+anchor_bottom = 0.103
+offset_left = 0.328
+offset_top = -0.144001
+offset_right = -0.424011
+offset_bottom = 1.256
+theme_override_font_sizes/font_size = 30
+text = "Créditos"
+
+[node name="credits" type="Label" parent="Menu"]
+layout_mode = 0
+offset_left = 1452.0
+offset_top = 174.0
+offset_right = 1941.01
+offset_bottom = 481.0
+text = "Proyecto realizado por:
+Raikuno (Jorge Rojas)
+PPKRex (Jose Carlos Pérez)"
+label_settings = SubResource("LabelSettings_ksrmh")
+
+[node name="credits2" type="Label" parent="Menu"]
+layout_mode = 0
+offset_left = 1233.0
+offset_top = 559.0
+offset_right = 2356.0
+offset_bottom = 582.0
+text = "Proyecto realizado como trabajo de fin de grado del Curso de Formación Superior de Desarrollo de Aplicaciones Multiplataforma"
+
+[node name="Button" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.034
+anchor_top = 0.045
+anchor_right = 0.113
+anchor_bottom = 0.196
+offset_left = 1134.83
+offset_top = -11.16
+offset_right = 1102.82
+offset_bottom = -41.008
+theme_override_font_sizes/font_size = 40
+text = "<"
+
+[node name="spanish" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.81
+anchor_top = 0.887
+anchor_right = 0.842
+anchor_bottom = 0.942
+offset_left = -0.119995
+offset_top = 0.223999
+offset_right = 332.016
+offset_bottom = 316.584
+scale = Vector2(0.1, 0.1)
+icon = ExtResource("6_vjjav")
+
+[node name="english" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.852
+anchor_top = 0.887
+anchor_right = 0.882
+anchor_bottom = 0.941
+offset_left = -0.504028
+offset_top = 0.223999
+offset_right = 173.936
+offset_bottom = 168.232
+scale = Vector2(0.17, 0.17)
+icon = ExtResource("7_1dsjt")
 
 [node name="fence" type="Node3D" parent="."]
 
@@ -410,8 +816,17 @@ transform = Transform3D(-5.90281, -0.00696559, 5.3997, 0.0648912, -7.99951, 0.06
 volume_db = -30.0
 autoplay = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v2lcn")
+}
+
 [connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Menu/ScoreBoard" to="." method="scoreboard"]
 [connection signal="pressed" from="Menu/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="value_changed" from="Menu/HSlider" to="." method="volumeChanged"]
+[connection signal="pressed" from="Menu/Credits" to="." method="credits_pressed"]
+[connection signal="pressed" from="Menu/Button" to="." method="back_credits"]
+[connection signal="pressed" from="Menu/spanish" to="." method="spanish"]
+[connection signal="pressed" from="Menu/english" to="." method="english"]

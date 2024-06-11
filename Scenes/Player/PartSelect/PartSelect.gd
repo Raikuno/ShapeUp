@@ -45,6 +45,7 @@ var partMultiplier = {
 }
 
 func _ready():
+	$Label.text = tr("SHAPEUP")
 	$Timer2.start()
 	$AnimationPlayer.speed_scale = 2
 	$AnimationPlayer2.speed_scale= 2
@@ -60,19 +61,19 @@ func setValues(part, newParts):
 	var pathToNode : String = part
 	match newParts["identity"]:
 		HEAD:
-			text.text = "Cabeza"
+			text.text = tr("HEAD")
 			pathToNode = pathToNode + "/SubViewportContainer/SubViewport/headPosition"
 		RIGHT:
-			text.text = "Brazo Derecho"
+			text.text = tr("RIGHT")
 			pathToNode = pathToNode + "/SubViewportContainer/SubViewport/armsPosition"
 		LEFT:
-			text.text = "Brazo Izquierdo"
+			text.text = tr("LEFT")
 			pathToNode = pathToNode + "/SubViewportContainer/SubViewport/armsPosition"
 		FEET:
-			text.text = "Piernas"
+			text.text = tr("FEET")
 			pathToNode = pathToNode + "/SubViewportContainer/SubViewport/legsPosition"
 		BODY:
-			text.text = "Cuerpo"
+			text.text = tr("BODY")
 			pathToNode = pathToNode + "/SubViewportContainer/SubViewport/bodyPosition"
 	match newParts["figure"]:
 		CUBE:
@@ -101,42 +102,42 @@ func showStats(nodePath:String, part):
 	var sphereLevel = get_node(NodePath(nodePath + "/Sphere"))
 	var cylinderLevel = get_node(NodePath(nodePath + "/Cylinider"))
 	var cubeLevel = get_node(NodePath(nodePath + "/Cube"))
-	partLevel.text = partLevel.text.replace("X", str(part["level"]["part"]))
+	partLevel.text = tr("UPGRADES") + " " + str(part["level"]["part"])
 	pyramidLevel.text = pyramidLevel.text.replace("X", str(part["level"]["pyramid"]))
 	sphereLevel.text = sphereLevel.text.replace("X", str(part["level"]["sphere"]))
 	cylinderLevel.text = cylinderLevel.text.replace("X", str(part["level"]["cylinder"]))
 	cubeLevel.text = cubeLevel.text.replace("X", str(part["level"]["cube"]))
 	match part["figure"]:
 		SPHERE:
-			figureLevel.text = figureLevel.text.replace("X", str(part["level"]["sphere"]))
+			figureLevel.text = tr("LEVEL") + " " + str(part["level"]["sphere"])
 			color = Color.SKY_BLUE
 			dmg.text = dmg.text.replace("X", str((part["figureStat"]["damage"]  + (BALANCEMODIFIER * part["figureStat"]["damage"] * part["level"]["sphere"])) * partMultiplier[part["identity"]]["dmg"]))
 			spd.text = spd.text.replace("X", str((part["figureStat"]["speed"]  + (BALANCEMODIFIER * part["figureStat"]["speed"] * part["level"]["sphere"])) * partMultiplier[part["identity"]]["spd"]))
 			atkspd.text = atkspd.text.replace("X", str((part["figureStat"]["atqspd"] + (BALANCEMODIFIER * part["figureStat"]["atqspd"] * part["level"]["sphere"])) * partMultiplier[part["identity"]]["atkspd"]))
 			health.text = health.text.replace("X", str((part["figureStat"]["health"] + (BALANCEMODIFIER * part["figureStat"]["health"] * part["level"]["sphere"])) * partMultiplier[part["identity"]]["health"]))
 		PYRAMID:
-			figureLevel.text = figureLevel.text.replace("X", str(part["level"]["pyramid"]))
+			figureLevel.text = tr("LEVEL") + " " + str(part["level"]["pyramid"])
 			color = Color.YELLOW
 			dmg.text = dmg.text.replace("X", str((part["figureStat"]["damage"]  + (BALANCEMODIFIER * part["figureStat"]["damage"] * part["level"]["pyramid"])) * partMultiplier[part["identity"]]["dmg"]))
 			spd.text = spd.text.replace("X", str((part["figureStat"]["speed"]  + (BALANCEMODIFIER * part["figureStat"]["speed"] * part["level"]["pyramid"])) * partMultiplier[part["identity"]]["spd"]))
 			atkspd.text = atkspd.text.replace("X", str((part["figureStat"]["atqspd"] + (BALANCEMODIFIER * part["figureStat"]["atqspd"] * part["level"]["pyramid"])) * partMultiplier[part["identity"]]["atkspd"]))
 			health.text = health.text.replace("X", str((part["figureStat"]["health"] + (BALANCEMODIFIER * part["figureStat"]["health"] * part["level"]["pyramid"])) * partMultiplier[part["identity"]]["health"]))
 		CUBE:
-			figureLevel.text = figureLevel.text.replace("X", str(part["level"]["cube"]))
+			figureLevel.text = tr("LEVEL") + " " + str(part["level"]["cube"])
 			color = Color.RED
 			dmg.text = dmg.text.replace("X", str((part["figureStat"]["damage"]  + (BALANCEMODIFIER * part["figureStat"]["damage"] * part["level"]["cube"]))* partMultiplier[part["identity"]]["dmg"]))
 			spd.text = spd.text.replace("X", str((part["figureStat"]["speed"]  + (BALANCEMODIFIER * part["figureStat"]["speed"] * part["level"]["cube"]))* partMultiplier[part["identity"]]["spd"]))
 			atkspd.text = atkspd.text.replace("X", str((part["figureStat"]["atqspd"] + (BALANCEMODIFIER * part["figureStat"]["atqspd"] * part["level"]["cube"]))* partMultiplier[part["identity"]]["atkspd"]))
 			health.text = health.text.replace("X", str((part["figureStat"]["health"] + (BALANCEMODIFIER * part["figureStat"]["health"] * part["level"]["cube"]))* partMultiplier[part["identity"]]["health"]))
 		CYLINDER:
-			figureLevel.text = figureLevel.text.replace("X", str(part["level"]["cylinder"]))
+			figureLevel.text = tr("LEVEL") + " " + str(part["level"]["cylinder"])
 			color = Color.WEB_GREEN
 			dmg.text = dmg.text.replace("X", str((part["figureStat"]["damage"]  + (BALANCEMODIFIER * part["figureStat"]["damage"] * part["level"]["cylinder"]))* partMultiplier[part["identity"]]["dmg"]))
 			spd.text = spd.text.replace("X", str((part["figureStat"]["speed"]  + (BALANCEMODIFIER * part["figureStat"]["speed"] * part["level"]["cylinder"]))* partMultiplier[part["identity"]]["spd"]))
 			atkspd.text = atkspd.text.replace("X", str((part["figureStat"]["atqspd"] + (BALANCEMODIFIER * part["figureStat"]["atqspd"] * part["level"]["cylinder"]))* partMultiplier[part["identity"]]["atkspd"]))
 			health.text = health.text.replace("X", str((part["figureStat"]["health"] + (BALANCEMODIFIER * part["figureStat"]["health"] * part["level"]["cylinder"]))* partMultiplier[part["identity"]]["health"]))
 		AMEBA:
-			figureLevel.text = figureLevel.text.replace("X", str(part["level"]["part"]))
+			figureLevel.text = tr("LEVEL") + " " + str(part["level"]["part"])
 			color = Color.SADDLE_BROWN
 			dmg.text = dmg.text.replace("X", str((part["figureStat"]["damage"]  + (BALANCEMODIFIER * part["figureStat"]["damage"] * part["level"]["part"]))* partMultiplier[part["identity"]]["dmg"]))
 			spd.text = spd.text.replace("X", str((part["figureStat"]["speed"]  + (BALANCEMODIFIER * part["figureStat"]["speed"] * part["level"]["part"]))* partMultiplier[part["identity"]]["spd"]))
@@ -152,7 +153,7 @@ func part1Selected():
 		$AudioStreamPlayer.play()
 		$AnimationPlayer2.play("moveContainer1")
 		$AnimationPlayer.play("RESET")
-		$AnimationPlayer.play("vanish")
+		$Label.hide()
 		$part1Container/button.queue_free()
 		$Part1Desc.queue_free()
 		$Part2Desc.queue_free()
@@ -164,7 +165,7 @@ func part2Selected():
 		$AudioStreamPlayer.play()
 		$AnimationPlayer2.play("moveContainer2")
 		$AnimationPlayer.play("RESET")
-		$AnimationPlayer.play("vanish")
+		$Label.hide()
 		$part2Container/button.queue_free()
 		$Part1Desc.queue_free()
 		$Part2Desc.queue_free()

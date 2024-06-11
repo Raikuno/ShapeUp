@@ -13,39 +13,45 @@ const MENU = "res://Scenes/Main/mainPPK.tscn"
 @onready var messageLabel = $Time/Messages
 
 var randomMessage = [
-	"Los enemigos están desarrollando visión nocturna", 
-	"Los enemigos están flexeando sus músculos",
-	"Los enemigos se preparan para correr una maratón",
-	"Los cubos están afilando sus bordes",
-	"Los cubos sienten envidia de los cubos de rubik",
-	"Las esferas se están puliendo",
-	"Las esferas ruedan con desesperación",
-	"Los cilindros cilindrean su cilindrada cilíndrica",
-	"Los cilindros aprendieron a ser útiles",
-	"Las peakamides se cuestionan porqué son tan buenas",
-	"Las pirámides están haciendo teorías cospiranoicas",
-	"Los enemigos están haciendo mewing",
-	"Supercalifragilisticoespialodoso...
-	los enemigos te intentan distraer...",
-	"Los enemigos están farmeando para subir a nv 100",
-	"Los enemigos se están poniendo MUY NERVIOSOS"]
+	tr("RAND_MSG1"), 
+	tr("RAND_MSG2"),
+	tr("RAND_MSG3"),
+	tr("RAND_MSG4"),
+	tr("RAND_MSG5"),
+	tr("RAND_MSG6"),
+	tr("RAND_MSG7"),
+	tr("RAND_MSG8"),
+	tr("RAND_MSG9"),
+	tr("RAND_MSG10"),
+	tr("RAND_MSG11"),
+	tr("RAND_MSG12"),
+	tr("RAND_MSG13"),
+	tr("RAND_MSG14"),
+	tr("RAND_MSG15")]
 var randomEventMessage = [
-	"¡¡Se aproxima una horda!!",
-	"¡¡Se aproxima un jefe!!",
-	"¡¡Están dominando el server!!"]
+	tr("RAND_MSG_A"),
+	tr("RAND_MSG_B"),
+	tr("RAND_MSG_C")]
 
 func _input(event):
+	$Time/Noche.text = tr("DARK_NIGHT")
 	if Input.is_action_just_pressed("pause"):
 		get_tree().paused = true
 		$Menu.show()
 
 
 func _ready():
+	setText()
 	SignalsTrain.clubPenguinIsKill.connect(endOfGame)
 	$Menu.hide()
 	$player.selectPart()	
 	$DayCicle.play("Day")
 	currentDayTime = $DayCicle.current_animation
+
+func setText():
+	$Menu/Pause.text = tr("PAUSE")
+	$Menu/Start.text = tr("PAUSE_RESUME")
+	$Menu/Exit.text = tr("PAUSE_BACK")
 
 func _on_mob_spawn_timer_timeout():
 	#1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide
