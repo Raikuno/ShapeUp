@@ -586,7 +586,7 @@ offset_top = -30.0
 offset_right = 96.0
 offset_bottom = -7.0
 grow_vertical = 0
-text = "Stable 1.1"
+text = "Stable 1.2"
 
 [node name="HSlider" type="HSlider" parent="Menu"]
 layout_mode = 0
