@@ -11,68 +11,33 @@ var expAmount = -1
 @onready var tryYourselfTimer = $tryYourself
 const MENU = "res://Scenes/Main/mainPPK.tscn"
 var explanationTexts = [
-	"Bienvenido a Shape Up! 
-	(haz click en continuar)", 
-	"Shape up es un juego en el que tendrás que sobrevivir
-	a oleadas de enemigos el máximo tiempo posible", 
-	"Para ello tendrás que acabar con tus enemigos y 
-	obtener sus puntos de experiencia, los cuales te permitirán 
-	hacerte más fuerte y por tanto, sobrevivir más tiempo.",
-	"Observemos los elementos del juego!", 
-	"Este eres tú, tendrás que moverte y 
-	apuntar a los enemigos para derrotarlos",
-	"Esta es tu barra de vida, si los enemigos te golpean bajará,
-	si llega a cero acabará la partida.",
-	"Este es el contador de bajas,
-	aquí se registrarán los enemigos que derrotes.",
-	"Este es el tiempo de juego, 
-	¡intenta conseguir el máximo posible antes de quedarte sin salud!",
-	"El tiempo de juego y las bajas que obtengas al terminar el juego
-	será tu puntuación final, 
-	¡intenta llegar a la cima de la clasificación mundial!", #9
-	"Ahora veamos el movimiento, con WASD o las flechas direccionales podrás moverte,
-	usa el ratón para que el personaje mire en esa dirección,
-	verás que ataca automaticamente.",
-	"¡Apareció un enemigo, Apunta bien y acaba con él!
-	La bala siguen el ratón, si lo alejas verás que llegan lejos",
-	"Los enemigos sueltan experiencia, hay 4 tipos de enemigos
-	caracterizados por una forma y un color concreto,
-	este enemigo soltó la experiencia del 'cubo', intenta cogerla ",
-	"Bien hecho! conseguiste un punto de experiencia, 
-	¡veamos para que sirve!",
-	"El jugador se compone de 5 partes del cuerpo: 
-	cabeza, cuerpo, brazo izquierdo, brazo derecho y piernas.",
-	"Cada parte del cuerpo puede subir de nivel de manera independiente del resto.
-	Al inicio del juego y cada vez que subamos un nivel nos aparecerá un menú 
-	mostrando 3 partes aleatorias, podrás ver las estadísticas y niveles de 
-	cada parte del cuerpo. ¡elige la que te apetezca!",
-	"Bien! ahora estás mejorando la parte del cuerpo seleccionada', 
-	¡cojamos algo de experiencia!",
-	"¡Bien hecho!",
-	"Veamos ahora las barras de experiencia.",
-	"Estas son las barras de la mejora actual, 
-	necesitarás llenar de experiencia cualquiera de las 5 barras, 
-	cuando lo hagas mejorarás esa parte del cuerpo a la figura 
-	correspondiente al color de la barra llenada",
-	"Cada barra se llenará de su color, 
-	la barra grande se llenará de todos los colores, 
-	si esta es la barra que llenas primero obtendrás una 'mejora' al estado ameba.",
-	"El estado ameba es el que tienes ahora mismo, 
-	no es rápido ni fuerte y su aspecto es algo deprimente,
-	 así que deberás evitarlo a toda costa.",
-	"Para evitarlo lo recomendable es centrarse en un solo tipo de experiencia, 
-	evitando así que la 'barra de ameba' incremente demasiado, Sin embargo...",
-	"Esta es tu barra de nivel, como puedes ver incrementa también 
-	con la experiencia que obtienes y muestra unos números.",
-	"Esos números son tu nivel de poder de cada figura 
-	y son independientes en cada parte del cuerpo.",
-	"Por tanto, cuanta más experiencia obtengas, 
-	más nivel tendrás y más fuerte será tu personaje, 
-	Pero si eres muy avaricioso te mantendrás en estado ameba y caerás con facilidad.",
-	"Cada figura tiene sus fortalezas y debilidades, 
-	intenta encontrar tu forma favorita de jugar
-	y no te olvides de lo más importante, pasarlo bien :D.",
-	"Fin del tutorial, mucha suerte ^^",
+	tr("TUTORIAL_MSG1"), 
+	tr("TUTORIAL_MSG2"), 
+	tr("TUTORIAL_MSG3"), 
+	tr("TUTORIAL_MSG4"),
+	tr("TUTORIAL_MSG5"),
+	tr("TUTORIAL_MSG6"),
+	tr("TUTORIAL_MSG7"),
+	tr("TUTORIAL_MSG8"), #9
+	tr("TUTORIAL_MSG9"),
+	tr("TUTORIAL_MSG10"),
+	tr("TUTORIAL_MSG11"),
+	tr("TUTORIAL_MSG12"),
+	tr("TUTORIAL_MSG13"),
+	tr("TUTORIAL_MSG14"),
+	tr("TUTORIAL_MSG15"),
+	tr("TUTORIAL_MSG16"),
+	"",
+	tr("TUTORIAL_MSG18"),
+	tr("TUTORIAL_MSG19"),
+	tr("TUTORIAL_MSG20"),
+	tr("TUTORIAL_MSG21"),
+	tr("TUTORIAL_MSG22"),
+	tr("TUTORIAL_MSG23"),
+	tr("TUTORIAL_MSG24"),
+	tr("TUTORIAL_MSG25"),
+	tr("TUTORIAL_MSG26"),
+	tr("TUTORIAL_MSG27"),
 	""]
 	
 var positionTexts = [
@@ -108,6 +73,8 @@ var positionTexts = [
 	Vector2(-450,-232),
 	]
 func _ready():
+	$Control/Salir.text = tr("TUTORIAL_EXIT")
+	$Control/Next.text = tr("TUTORIAL_CONTINUE")
 	SignalsTrain.isTutorialEnemy.connect(onTutorialEnemyDeath)
 	SignalsTrain.isTutorialExperience.connect(onTutorialExperiencePicked)
 	get_tree().paused = true
