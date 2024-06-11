@@ -33,8 +33,8 @@ func giveListValue():
 func setInfo():
 	$TextureRect/Score.text = tr("SCORE") + " " +str(playerScore)
 	$TextureRect/Name.text = tr("NAME") + " " + playerName
-	$TextureRect/Time.text = tr("TIME") + " " + playerTime
-	$TextureRect/Kills.text = tr("KILLS") + " " + str(playerKills)
+	$TextureRect/Time.text = tr("SCORELIST_TIME") + " " + playerTime
+	$TextureRect/Kills.text = tr("SCORELIST_KILLS") + " " + str(playerKills)
 	$TextureRect/Time.show()
 	$TextureRect/Kills.show()
 	$TextureRect/SubViewportContainer/SubViewport/playerPreview.resetVisibility()
