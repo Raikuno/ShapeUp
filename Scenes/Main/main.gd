@@ -41,11 +41,17 @@ func _input(event):
 
 
 func _ready():
+	setText()
 	SignalsTrain.clubPenguinIsKill.connect(endOfGame)
 	$Menu.hide()
 	$player.selectPart()	
 	$DayCicle.play("Day")
 	currentDayTime = $DayCicle.current_animation
+
+func setText():
+	$Menu/Pause.text = tr("PAUSE")
+	$Menu/Start.text = tr("PAUSE_RESUME")
+	$Menu/Exit.text = tr("PAUSE_BACK")
 
 func _on_mob_spawn_timer_timeout():
 	#1 = cilindro / 2 = cubo / 3 = esfera / 4 = peakamide

@@ -20,7 +20,7 @@ func _ready():
 			calculatePosition()
 		else: 
 			placement = 1
-		$TextureRect/Placement.text = $TextureRect/Placement.text.replace("X", str(placement))
+		$TextureRect/Placement.text = tr("POSITION").format({"position":str(placement)})
 	$TextureRect/Kills.text = tr("SCORELIST_KILLS") + str(Score.kills)
 	$TextureRect/Time.text = tr("SCORELIST_TIME") + str(Score.time)
 	$TextureRect/Score.text = tr("SCORE")
