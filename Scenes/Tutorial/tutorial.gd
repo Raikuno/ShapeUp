@@ -27,7 +27,6 @@ var explanationTexts = [
 	tr("TUTORIAL_MSG14"),
 	tr("TUTORIAL_MSG15"),
 	tr("TUTORIAL_MSG16"),
-	"",
 	tr("TUTORIAL_MSG18"),
 	tr("TUTORIAL_MSG19"),
 	tr("TUTORIAL_MSG20"),
